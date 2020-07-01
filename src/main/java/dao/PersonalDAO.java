@@ -39,4 +39,5 @@ public class PersonalDAO {
 	public int IdCheck(String id) {
 		return sqlsession.selectOne(PS + "IdCheck", id);
 	}
+	
 }

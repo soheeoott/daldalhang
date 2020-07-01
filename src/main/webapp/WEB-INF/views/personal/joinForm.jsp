@@ -9,20 +9,12 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/joinStyle.css">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
-	$(function() {
+	$(function(){
 		
-		$("#id").focusout(function() {
+		$("#id").blur(function() {
 			
-			// 아이디 정규식
-			var idCheck = RegExp(/[a-z.0-9]/gi, '');
-			var idsizeCheck = RegExp(/^{8,20}$/);
-			// 비밀번호 정규식
-			var pwCheck = RegExp(/^[A-Za-z0-9]{8,20}$/); 
-									// {8,20} : 범위 지정
-			// 이메일 검사 정규식
-			var mailCheck = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
-									// (/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/)
 			var id = $('#id').val();
+			var Check = /^[a-zA-Z0-9]{4,20}$/;
 			
 			$.ajax({
 				url : '${pageContext.request.contextPath}/personal/idCheck?Id='+ id,
@@ -31,66 +23,87 @@
 					console.log("1 = 중복o / 0 = 중복x : " + data);							
 					
 				if (data == 1) {
-						// 1 : 아이디가 중복되는 문구
-						$("#iMessage").html("사용중인 아이디입니다. ");
-						$("#iMessage").css("color", "red");
-						$("#submit").attr("disabled", true);
-						$('#id').focus();
+					
+					// 1 : 아이디가 중복되는 문구
+					$("#id_check").text("사용중인 아이디입니다. ");
+					$("#id_check").css("color", "red");
+					$("#submit").attr("disabled", true);
 				
-				} else {
-					
-					if(id == "") {
-						$('#iMessage').html('아이디를 입력해주세요.'); // html : 태그와 태그사이
-						$('#iMessage').css('color', 'red');
-						$("#submit").attr("disabled", true);
-						$('#id').focus();
-						return false;
-					
-					// 아이디 정규식 (영문, 숫자)
-					} else if(!idCheck.test(id)) {
-						$('#iMessage').html('영문 또는 숫자로 입력해주세요.');
-						$('#iMessage').css('color', 'red');
-						$("#submit").attr("disabled", true);
-						$('#id').focus();
-						return false;
-					
-					// 아이디 정규식 (8~20)
-					} else if(!idsizeCheck.test(id)) {
-						$('#iMessage').html('8~20자 이내로 입력해주세요.');
-						$('#iMessage').css('color', 'red');
-						$("#submit").attr("disabled", true);
-						$('#id').focus();
-						return false;
-					
-					/* } else if (id.replace(/[a-z.0-9]/gi, '').length > 0) {
-						$('#iMessage').html('ID는 영문자와 숫자로만 입력하세요.');
-						$('#id').focus();
-						return false;
-			
-					} else if(id.length < 4) {
-						$('#iMessage').html('4글자 이상 입력하세요.');
-						$('#iMessage').css('color', 'red');
-						$("#submit").attr("disabled", true);
-						$('#id').focus();
-						return false; */
-						
 					} else {
-						$('#iMessage').html('');
-						return true;
-					}
-					
-				} // else
+						
+						// 아이디 정규식 (영문, 숫자)
+						if(Check.test(id)) {
+							$('#id_check').text("");
+							$("#submit").attr("disabled", false);
+						
+						} else if(id = "") {
+							$('#id_check').text('아이디를 입력해주세요.'); // html : 태그와 태그사이
+							$('#id_check').css('color', 'red');
+							$("#submit").attr("disabled", true);
+						
+						} else {
+							$('#id_check').text("아이디는 영문과 숫자인 4~20자 이내로 입력해주세요. ");
+							$('#id_check').css('color', 'red');
+							$("#submit").attr("disabled", true);
+						}
+						
+					} // else
 					
 				}, error : function() { // if data
 							console.log("실패");
-					} // error
+				} // error
 					
-				}); // ajax
+			}); // ajax
 				
-			}); // focusout
+		}); // blur
+		
+		$("#password").blur(function() {
 			
-	}); // function
-	</script>	
+			var password = $('#password').val();
+			var Check = /^[a-zA-Z0-9]{4,20}$/;
+			
+			// 비밀번호 정규식 (영문, 숫자)
+			if(Check.test(password)) {
+				$('#pw_check').text("");
+				$("#submit").attr("disabled", false);
+			
+			} else if(password = "") {
+				$('#pw_check').text('비밀번호를 입력해주세요.'); // html : 태그와 태그사이
+				$('#pw_check').css('color', 'red');
+				$("#submit").attr("disabled", true);
+			
+			} else {
+				$('#pw_check').text("비밀번호는 영문과 숫자인 4~20자 이내로 입력해주세요. ");
+				$('#pw_check').css('color', 'red');
+				$("#submit").attr("disabled", true);
+			}
+				
+		}); // blur
+		
+		$("#email").blur(function() {
+			
+			var email = $('#email').val();
+			var mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			
+			// 비밀번호 정규식 (영문, 숫자)
+			if(mailCheck.test(email)) {
+				$('#email_check').text("");
+				$("#submit").attr("disabled", false);
+			
+			} else if(password = "") {
+				$('#email_check').text('이메일을 입력해주세요.'); // html : 태그와 태그사이
+				$('#email_check').css('color', 'red');
+				$("#submit").attr("disabled", true);
+			
+			} else {
+				$('#email_check').text("이메일 형식에 맞지 않습니다.");
+				$('#email_check').css('color', 'red');
+				$("#submit").attr("disabled", true);
+			}
+				
+		}); // blur
+	});
+	</script>
 </head>
 <body>
 	<div id="wrap">
@@ -104,21 +117,28 @@
 
             <div class="form">
               <form action="join" method="post" id = "myForm">
+                
                 <fieldset>
                   <strong class="j_title">회원가입</strong>
 
                 <section class="joinform"> <!-- renew_joinform_v2 -->
-
+					
+					<div class="all-check">
+                  	<input type="checkbox" class = "all_yes" name="all_yes" id="all_yes">
+                  	전체 동의
+                  	</div>
+                  
                   <section class="agreement"> <!-- mem_agreement_wrap -->
-                      <h5>
-                                                  홈페이지 이용약관 동의
-                      <span class="necessary">필수</span>
-                      </h5>
-
-                      <span class="agree-check">
-                        <input type="checkbox" name="agreement" id="h_agreement_yes" class="home">
+                  
+                  	 <span class="h_agree-check">
+                        <input type="checkbox" name="agreement" id="h_agreement_yes" class=h_agreement_yes>
                          <label for="h_agreement_yes"><!-- 동의 --></label>
                       </span>
+                      
+                      <h5>
+                                                     홈페이지 이용약관 동의
+                      	<span class="necessary">필수</span>
+                      </h5>
 
                       <div class="agreement_area">
                         <div id="privacy">
@@ -256,8 +276,8 @@
                       <span class="necessary">필수</span>
                     </h5>
 
-                    <span class="agree-check">
-                      <input type="checkbox" name="agreement" id="gps_agreement_yes" class="gps">
+                    <span class="g_agree-check">
+                      <input type="checkbox" name="agreement" id="gps_agreement_yes" class="gps_agreement_yes">
                        <label for="gps_agreement_yes"><!-- 동의 --></label>
                     </span>
 
@@ -412,28 +432,29 @@
                   </section>
 
                   <div class="input_box id">
-                      <input type="text" name="id" id="id" placeholder="아이디" class="input_warn">
-                      <!-- <input type = "button" value = "ID 중복확인" id = "idDup" onclick = "idDupCheck()"> -->
-                      <span id = "iMessage" class = "eMessage"></span>
+	                  	<label>아이디</label>
+	                  	<input type="text" name="id" id="id" placeholder="영문 또는 숫자, 4~20자 이내" class="input_warn">
+	                  	<div id="id_check"></div>
                   </div>
 
                   <div class="input_box pw">
-                      <input type="password" name="password" id="password" placeholder="비밀번호" class="input_warn">
-                      <!-- <input type="password" name="password" id="password" placeholder="비밀번호 확인" class="input_warn"> -->
-                      <!-- <span id = "pMessage" class = "eMessage"></span> -->
+	                  	<label>비밀번호</label>
+	                  	<input type="password" name="password" id="password" placeholder="영문 또는 숫자, 4~20자 이내" class="input_warn">
+	                  	<div id="pw_check"></div>
                   </div>
 
                   <div class="input_box email">
-                      <input type="text" name="email" id="email" placeholder="이메일" class="input_warn">
-                      <!-- <span id = "nMessage" class = "eMessage"></span> -->
+                  		<label>이메일</label>
+	                  	<input type="text" name="email" id="email" placeholder="xx@xxxx" class="input_warn">
+	                  	<div id="email_check"></div>
                   </div>
 					
-				  <div class="form_end">
-				  	<input type="submit" id = "submit" value="가입">&nbsp; <!-- onclick = "return inCheck()" disabled -->
-			    	<input type="reset"  value="취소">&nbsp;
-			    	<!-- <input type="button" id = "ajoin" value="AxJoin"> -->
-				  </div>				
                 </section>
+                
+               	  <div class="form_end">
+					  	<input type="submit" id = "submit" class = "submit" value="가입">
+				    	<input type="reset" class = "reset" value="취소">
+				  </div>
                 </fieldset>
               </form>
             </div>

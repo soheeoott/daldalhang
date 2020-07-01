@@ -25,24 +25,6 @@ public class PersonalController {
 	@Autowired
 	PService service; // 조상으로 정의, 후손으로 생성
 	
-	@RequestMapping(value = "/emailf")
-	public ModelAndView emailf(ModelAndView mv) {
-		mv.setViewName("personal/eupdateForm");
-		return mv;
-	}
-	
-	@RequestMapping(value = "/pupf")
-	public ModelAndView pupf(ModelAndView mv) {
-		mv.setViewName("personal/pwupdateForm");
-		return mv;
-	}
-	
-	@RequestMapping(value = "/mypagef")
-	public ModelAndView mypagef(ModelAndView mv) {
-		mv.setViewName("personal/mypage");
-		return mv;
-	}
-	
 	@RequestMapping(value = "/personal/idCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public int idCheck(@RequestParam("Id") String id) {

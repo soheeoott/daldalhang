@@ -66,6 +66,11 @@
 	  border-radius: 0;
 	}
 	
+	label {
+	    position: relative;
+	    bottom: 15px;
+	}
+	
 	.top {
 	  background-color : rgb(241,188,213);
 	  height : 100px;
@@ -129,33 +134,39 @@
 	  color: #666;
 	  height: 170px;
 	  width: 100%;
+	  overflow:auto;
 	}
 	
-	.agree-check {
+	.h_agree-check {
 	  position: absolute;
 	  display: block;
 	  width: 26px;
 	  left: 3px;
-	  top: 0;
+	  top: 6px;
+	}
+	
+	.g_agree-check {
+	  position: absolute;
+	  display: block;
+	  width: 26px;
+	  left: 3px;
+	  top: 6px;
 	}
 	
 	.id {
 	  background: #fff;
-	  border-bottom: 1px solid #ddd;
 	  padding: 20px 20px;
 	  position: relative;
 	}
 	
 	.pw {
 	  background: #fff;
-	  border-bottom: 1px solid #ddd;
 	  padding: 20px 20px;
 	  position: relative;
 	}
 	
 	.email {
 	  background: #fff;
-	  border-bottom: 1px solid #ddd;
 	  padding: 20px 20px;
 	  position: relative;
 	}
@@ -271,4 +282,36 @@
 	  border-top: 1px solid #222;
 	  border-bottom: 1px solid #ddd;
 	  border-right: 1px solid #ddd;
+	}
+	
+	.submit {
+		color: #fff;
+	    font-size: 20px;
+	    line-height: 45px;
+	    width : 200px;
+	    margin-left: 60px;
+	    margin-top: 20px;
+	    margin-bottom: 20px;
+	    background: rgb(241,188,213);
+	    border-radius: 3px;
+	    text-align: center;
+	    max-width: 570px;
+	}
+	
+	.reset {
+		color: #fff;
+	    font-size: 20px;
+	    line-height: 45px;
+	    width : 200px;
+	    margin-left: 45px;
+	    margin-top: 20px;
+	    margin-bottom: 20px;
+	    background: rgb(241,188,213);
+	    border-radius: 3px;
+	    text-align: center;
+	    max-width: 570px;
+	}
+	
+	.all_yes {
+		
 	}
