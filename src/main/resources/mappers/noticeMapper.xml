@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="daldal.mappers.noticeMapper">
+<!-- namespace : 자바클래스에서 maper 를 찾는 경로
+				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+				  
+	<!-- Search Criteria -->
+	<sql id="search">
+		<choose>
+			<when test="searchType=='tc'.toString()">
+				AND title LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+				OR content LIKE CONCAT(CONCAT('%',#{keyword}),'%'))
+			</when>
+			<otherwise> ) </otherwise>
+		</choose>
+	</sql>
+	
+	<select id="searchRowCount" resultType="int">
+	<![CDATA[
+		SELECT count(*) FROM notice WHERE (seq>0]]>
+		<include refid="search"></include>
+	</select>
+
+	<select id="searchList" resultType="vo.NoticeVO">
+	<![CDATA[
+		SELECT seq, title, id, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt
+		FROM (SELECT n.*, ROW_NUMBER() OVER(ORDER BY seq DESC) rnum
+		FROM notice n WHERE seq>0]]>
+		<include refid="search"></include>
+		WHERE rnum BETWEEN #{sno} AND #{eno}
+	</select>	
+	<!-- Search Criteria -->  
+				  
+	<!-- totalRowCount() -->
+	<select id="totalRowCount" resultType="int">
+		SELECT count(*) FROM notice
+	</select>
+			  
+	<!-- noticeDetail() -->
+	<select id="selectOne" resultType="vo.NoticeVO">
+		SELECT seq, title, id, content, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt 
+		FROM notice WHERE seq=#{seq}
+	</select>
+	
+	<!-- 이전글, 다음글 정보 가져오기 -->
+	<select id="selectPrevNext" resultType="vo.PrevNextVO">
+		SELECT * FROM
+		  (SELECT seq, title, id,
+		  LAG(seq,1) OVER(ORDER BY seq) prevSeq,
+		  LAG(title,1) OVER(ORDER BY seq) prevTitle,
+		  LEAD(seq,1) OVER(ORDER BY seq) nextSeq,
+		  LEAD(title,1) OVER(ORDER BY seq) nextTitle
+		  FROM notice)
+		WHERE seq=#{seq}
+	</select>
+	
+	<!-- noticeInsert() -->
+	<insert id="insert">
+		INSERT INTO notice (seq, title, id, content, regdate, cnt)
+		VALUES((SELECT NVL(MAX(seq), 0)+1 FROM notice), #{title}, #{id}, #{content},
+		SYSDATE, 0)
+	</insert>
+	
+	<!-- noticeUpdate() -->
+	<update id="update">
+		UPDATE notice SET title=#{title}, content=#{content} WHERE seq=#{seq}
+	</update>
+				  
+	<!-- boardDelete() -->
+	<delete id="delete">
+			DELETE notice WHERE seq=#{seq}
+	</delete>
+	
+	<!-- Reply countUp() -->
+	<update id="countUp">
+		UPDATE notice SET cnt=cnt+1 WHERE seq=#{seq}
+	</update>
+</mapper>

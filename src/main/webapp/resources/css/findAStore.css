@@ -1,0 +1,21 @@
+/* map을 출력하는 div 스타일 */
+#map {
+	width:800px;
+	height:250px;
+}
+
+#franchiseList {
+	width:790px;
+	padding:10px;
+	font-size:14px;
+	border:1px solid #f4f4f2;
+}
+
+#franchiseList a:hover {
+	font-weight:bold;
+	color:#F1BCD5;
+}
+
+* {
+	font-family: 'Jeju Gothic', sans-serif;
+}

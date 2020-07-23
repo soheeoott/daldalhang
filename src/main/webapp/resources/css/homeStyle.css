@@ -1,0 +1,70 @@
+* {
+	font-family: 'Jeju Gothic', sans-serif;
+}
+
+#header {
+	position: relative;
+    z-index: 100;
+    min-width: 1200px;
+}
+
+/* 스크롤바 항상 표시 */
+html { overflow-y:scroll; }
+
+br { mso-data-placement:same-cell; }
+
+#login_success {
+	font-size:14px;
+}
+
+/* home 이미지 */
+.banner {
+	width:auto;
+	height:auto;
+	max-width:1000px;
+}
+
+.main {
+	width:auto;
+	height:auto;
+	max-width:1000px;
+}
+
+/* 메인 메뉴 */
+.main_menu {
+	font-size:18px;
+	font-weight:bold;
+	margin-left:4em;
+}
+
+.main_menu:hover {
+ 	margin-top:20px;
+ 	border-bottom:5px solid #F1BCD5;
+ 	background-image:url('../image/bg_menu.png');
+}
+
+#personalBar {
+	font-size:13px;
+}
+
+/* 사이드 메뉴 포함 a태그 style */
+a {
+	color:black;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+hr {
+    border:none;
+    border-top:1px solid #f4f4f2;
+    width:80%;
+}
+
+/* footer */
+.footer_menu {
+	font-size:12px;
+}
+
+#footer {
+	font-size:12px;		
+}
