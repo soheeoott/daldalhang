@@ -9,4 +9,6 @@ public interface PDService {
 	List<ProductVO> selectList();
 	
 	ProductVO selectOne(ProductVO vo);
+	
+	int insert(ProductVO vo);
 }

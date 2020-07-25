@@ -1,5 +1,7 @@
 package vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductVO {
 	
 	private int pseq;
@@ -17,6 +19,9 @@ public class ProductVO {
 	private String mtcode1;
 	private String mtcode2;
 	private String mtcode3;
+	
+	private String uploadfile; // table의 컬럼과 동일
+	private MultipartFile uploadfilef; // form 의 inputTag 의 값 전달받기 // 설정 파일 필요
 	
 	public int getPseq() {
 		return pseq;
@@ -108,12 +113,26 @@ public class ProductVO {
 	public void setMtcode3(String mtcode3) {
 		this.mtcode3 = mtcode3;
 	}
+	public String getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(String uploadfile) {
+		this.uploadfile = uploadfile;
+	}
+	public MultipartFile getUploadfilef() {
+		return uploadfilef;
+	}
+	public void setUploadfilef(MultipartFile uploadfilef) {
+		this.uploadfilef = uploadfilef;
+	}
 	
 	@Override
 	public String toString() {
 		return "ProductVO [pseq=" + pseq + ", fcode=" + fcode + ", bcode=" + bcode + ", bname=" + bname + ", mcode="
 				+ mcode + ", mname=" + mname + ", productcode=" + productcode + ", productname=" + productname
 				+ ", price=" + price + ", imgpath=" + imgpath + ", producturl=" + producturl + ", hashtag=" + hashtag
-				+ ", mtcode1=" + mtcode1 + ", mtcode2=" + mtcode2 + ", mtcode3=" + mtcode3 + "]";
+				+ ", mtcode1=" + mtcode1 + ", mtcode2=" + mtcode2 + ", mtcode3=" + mtcode3 + ", uploadfile="
+				+ uploadfile + ", uploadfilef=" + uploadfilef + "]";
 	}
+	
 }

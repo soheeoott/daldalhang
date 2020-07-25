@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="ver01.mappers.metacodeMapper">
+	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
+				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+	
+	<select id="selectList" resultType="vo.MetacodeVO">
+		SELECT * FROM metacode ORDER BY mtcode
+	</select>
+
+	<select id="selectOne" resultType="vo.MetacodeVO">
+		SELECT mtname FROM metacode ORDER BY mtcode
+	</select>
+	
+</mapper>

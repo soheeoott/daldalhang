@@ -77,4 +77,13 @@
       </beans:property>
     </beans:bean>
     
+    <!-- 
+		ImageUpload = MultipartFile 	
+		- 대부분의  Resolver 로 끝나는 클래스의 경우에는 이미 정해져 있기 때문에 (id = multipartResolver) 변경 불가능
+		- maxUploadSize 지정하지 않으면 default = -1 이며 크기가 무제한 
+	-->	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="-1" />
+	</beans:bean> 
+	
 </beans:beans>

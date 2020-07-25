@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ include file="../common/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,18 +12,59 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 </head>
 <body>
-	<div class = "top">
-	<%@ include file="../common/header.jsp" %>
-	</div>
 	
+	<div class="btn_nlist" align="right">
+		<c:if test="${logID=='DalDal'}">
+			<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pinsertf'">
+		</c:if>
+	</div>
+				
 	<fieldset>
 	<div id = "wrap">
 		<div class="container">
 			<div class="main">
+			
 				<div class="productList">
 						<c:forEach var="list" items="${PList}">
+						
+						<c:if test = "${list.bcode == 1}">
+							<hr>
+								<div>
+									음료
+								</div>
+							<hr>
+						</c:if>
+						
+						<c:if test = "${list.bcode == 2}">
+							<hr>
+								<div>
+									빙수
+								</div>
+							<hr>
+						</c:if>
+						
+						<c:if test = "${list.bcode == 3}">
+							<hr>
+								<div>
+									디저트
+								</div>
+							<hr>
+						</c:if>
+						
+						<c:if test = "${list.bcode == 4}">
+							<hr>
+								<div>
+									상품
+								</div>
+							<hr>
+						</c:if>
+						
 						<div class = "plist">
-							<p>${list.pseq}</p>
+							<p>
+								<a href = "${list.producturl}">
+								<img src="${list.uploadfile}" width="200" height="200">
+								</a>
+							</p>
 							<p class = "pname">${list.productname}</p>
 							<p>${list.price} 원</p>
 							<div class = "hashtag">${list.hashtag}</div>

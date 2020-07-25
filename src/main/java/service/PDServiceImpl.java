@@ -23,4 +23,9 @@ public class PDServiceImpl implements PDService {
 	public ProductVO selectOne(ProductVO vo) { 
 		return dao.selectOne(vo);
 	}
+	
+	@Override
+	public int insert(ProductVO vo) {
+		return dao.insert(vo);
+	}
 }

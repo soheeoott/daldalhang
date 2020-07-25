@@ -11,6 +11,7 @@ public class PersonalVO {
 	private String email_id;
 	private String email_domain;
 	private char verify;
+	
 	public String getId() {
 		return id;
 	}
@@ -47,4 +48,5 @@ public class PersonalVO {
 		return "PersonalVO [id=" + id + ", password=" + password + ", email_id=" + email_id + ", email_domain="
 				+ email_domain + ", verify=" + verify + "]";
 	}
+	
 }

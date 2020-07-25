@@ -17,6 +17,12 @@ br { mso-data-placement:same-cell; }
 	font-size:14px;
 }
 
+.logo {
+	display: block;
+    position: relative;
+    left: -650px;
+}
+
 /* home 이미지 */
 .banner {
 	width:auto;
@@ -30,11 +36,17 @@ br { mso-data-placement:same-cell; }
 	max-width:1000px;
 }
 
+.menu {
+	display: block;
+    position: relative;
+    top: -40px;
+}
+
 /* 메인 메뉴 */
 .main_menu {
-	font-size:18px;
-	font-weight:bold;
-	margin-left:4em;
+	font-size: 20px;
+    font-weight: bold;
+    margin-left: 9em;
 }
 
 .main_menu:hover {

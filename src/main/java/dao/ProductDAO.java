@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import vo.PersonalVO;
 import vo.ProductVO;
 
 @Repository
@@ -22,5 +21,9 @@ public class ProductDAO {
 	
 	public ProductVO selectOne(ProductVO vo) {
 		return sqlsession.selectOne(PD + "selectOne", vo);
+	}
+	
+	public int insert(ProductVO vo) {
+		return sqlsession.insert(PD + "insert", vo);
 	}
 }
