@@ -18,35 +18,38 @@
 </head>
 <body>
 		
-	<form action = "pinsert" method = "post" enctype="multipart/form-data"> <!-- img [enctype="multipart/form-data"] -->
+	<form action = "pdinsert" method = "post" enctype="multipart/form-data"> <!-- img [enctype="multipart/form-data"] -->
 		<table>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  			
 			<tr height = "40">
 				<td bgcolor = "yellow">상호명</td>
 				<td>
-					<select name="fcode">
+					<select name="frcode">
 						<option value= "">---</option>
-						<option value= "A01" <c:if test="${fclist.fcode=='A01'}">selected</c:if>>${fclist.fname}</option>
-                   		<option value= "A02" <c:if test="${fclist.fcode=='A02'}">selected</c:if>>${fclist.fname}</option>
-                  		<option value= "A03" <c:if test="${fclist.fcode=='A03'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A04" <c:if test="${fclist.fcode=='A04'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A05" <c:if test="${fclist.fcode=='A05'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A06" <c:if test="${fclist.fcode=='A06'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A07" <c:if test="${fclist.fcode=='A07'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A08" <c:if test="${fclist.fcode=='A08'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A09" <c:if test="${fclist.fcode=='A09'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A10" <c:if test="${fclist.fcode=='A10'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A11" <c:if test="${fclist.fcode=='A11'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A12" <c:if test="${fclist.fcode=='A12'}">selected</c:if>>${fclist.fname}</option>
-                 		<option value= "A13" <c:if test="${fclist.fcode=='A13'}">selected</c:if>>${fclist.fname}</option>
-					</select>
+ 					
+						<option value= "A01" <c:if test="${frlist.frcode=='A01'}">selected</c:if>>${frlist.frkname}</option>
+<%--
+                   		<option value= "A02" <c:if test="${frlist.fcode=='A02'}">selected</c:if>>${frlist.fname}</option>
+                  		<option value= "A03" <c:if test="${frlist.fcode=='A03'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A04" <c:if test="${frlist.fcode=='A04'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A05" <c:if test="${frlist.fcode=='A05'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A06" <c:if test="${frlist.fcode=='A06'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A07" <c:if test="${frlist.fcode=='A07'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A08" <c:if test="${frlist.fcode=='A08'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A09" <c:if test="${frlist.fcode=='A09'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A10" <c:if test="${frlist.fcode=='A10'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A11" <c:if test="${frlist.fcode=='A11'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A12" <c:if test="${frlist.fcode=='A12'}">selected</c:if>>${frlist.fname}</option>
+                 		<option value= "A13" <c:if test="${frlist.fcode=='A13'}">selected</c:if>>${frlist.fname}</option>
+ --%>					
+ 					</select>
 				</td>
 			</tr>
 			
 			<tr height = "40">
 				<td bgcolor = "yellow">상품명</td>
 				<td>
-					<input type = "text" name = "productname" id = "productname" required>
+					<input type = "text" name = "pdname" id = "pdname" required>
 				</td>
 			</tr>
 			
@@ -60,10 +63,10 @@
 			<tr height = "40">
 				<td bgcolor = "yellow">메뉴1</td>
 				<td>
-					<select name="mtcode1">
+					<select name="mucode1">
 						<option value= "">---</option>
-						<option value= "C01" <c:if test="${metalist.mtcode=='C01'}">selected</c:if>>${metalist.mtname}</option>
-                   		<option value= "C02" <c:if test="${metalist.mtcode=='C02'}">selected</c:if>>${metalist.mtname}</option>
+						<option value= "C01" <c:if test="${mulist.mucode=='C01'}">selected</c:if>>${mulist.muname}</option>
+                   		<%-- <option value= "C02" <c:if test="${metalist.mtcode=='C02'}">selected</c:if>>${metalist.mtname}</option>
                   		<option value= "C03" <c:if test="${metalist.mtcode=='C03'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "C04" <c:if test="${metalist.mtcode=='C04'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "C05" <c:if test="${metalist.mtcode=='C05'}">selected</c:if>>${metalist.mtname}</option>
@@ -108,7 +111,7 @@
                   		<option value= "S03" <c:if test="${metalist.mtcode=='S03'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "S04" <c:if test="${metalist.mtcode=='S04'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "S05" <c:if test="${metalist.mtcode=='S05'}">selected</c:if>>${metalist.mtname}</option>
-                 		<option value= "S06" <c:if test="${metalist.mtcode=='S06'}">selected</c:if>>${metalist.mtname}</option>
+                 		<option value= "S06" <c:if test="${metalist.mtcode=='S06'}">selected</c:if>>${metalist.mtname}</option> --%>
 					</select>
 				</td>
 			</tr>
@@ -116,9 +119,10 @@
 			<tr height = "40">
 				<td bgcolor = "yellow">메뉴2</td>
 				<td>
-					<select name="mtcode2">
+					<select name="mucode2">
 						<option value= "">---</option>
-						<option value= "C01" <c:if test="${metalist.mtcode=='C01'}">selected</c:if>>${metalist.mtname}</option>
+						<option value= "C01" <c:if test="${mulist.mucode=='C01'}">selected</c:if>>${mulist.muname}</option>
+						<%-- <option value= "C01" <c:if test="${metalist.mtcode=='C01'}">selected</c:if>>${metalist.mtname}</option>
                    		<option value= "C02" <c:if test="${metalist.mtcode=='C02'}">selected</c:if>>${metalist.mtname}</option>
                   		<option value= "C03" <c:if test="${metalist.mtcode=='C03'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "C04" <c:if test="${metalist.mtcode=='C04'}">selected</c:if>>${metalist.mtname}</option>
@@ -164,7 +168,7 @@
                   		<option value= "S03" <c:if test="${metalist.mtcode=='S03'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "S04" <c:if test="${metalist.mtcode=='S04'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "S05" <c:if test="${metalist.mtcode=='S05'}">selected</c:if>>${metalist.mtname}</option>
-                 		<option value= "S06" <c:if test="${metalist.mtcode=='S06'}">selected</c:if>>${metalist.mtname}</option>
+                 		<option value= "S06" <c:if test="${metalist.mtcode=='S06'}">selected</c:if>>${metalist.mtname}</option> --%>
 					</select>
 				</td>
 			</tr>
@@ -172,9 +176,10 @@
 			<tr height = "40">
 				<td bgcolor = "yellow">메뉴3</td>
 				<td>
-					<select name="mtcode3">
+					<select name="mucode3">
 						<option value= "">---</option>
-						<option value= "C01" <c:if test="${metalist.mtcode=='C01'}">selected</c:if>>${metalist.mtname}</option>
+						<option value= "C01" <c:if test="${mulist.mucode=='C01'}">selected</c:if>>${mulist.muname}</option>
+						<%-- <option value= "C01" <c:if test="${metalist.mtcode=='C01'}">selected</c:if>>${metalist.mtname}</option>
                    		<option value= "C02" <c:if test="${metalist.mtcode=='C02'}">selected</c:if>>${metalist.mtname}</option>
                   		<option value= "C03" <c:if test="${metalist.mtcode=='C03'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "C04" <c:if test="${metalist.mtcode=='C04'}">selected</c:if>>${metalist.mtname}</option>
@@ -220,7 +225,7 @@
                   		<option value= "S03" <c:if test="${metalist.mtcode=='S03'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "S04" <c:if test="${metalist.mtcode=='S04'}">selected</c:if>>${metalist.mtname}</option>
                  		<option value= "S05" <c:if test="${metalist.mtcode=='S05'}">selected</c:if>>${metalist.mtname}</option>
-                 		<option value= "S06" <c:if test="${metalist.mtcode=='S06'}">selected</c:if>>${metalist.mtname}</option>
+                 		<option value= "S06" <c:if test="${metalist.mtcode=='S06'}">selected</c:if>>${metalist.mtname}</option> --%>
 					</select>
 				</td>
 			</tr>

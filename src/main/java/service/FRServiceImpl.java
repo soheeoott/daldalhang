@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.FranchiseDAO;
-import vo.FranchisecodeVO;
+import vo.FranchiseVO;
 
 @Service
-public class FServiceImpl implements FService {
+public class FRServiceImpl implements FRService {
 	
 	@Autowired
 	FranchiseDAO dao;
 	
 	@Override
-	public List<FranchisecodeVO> selectList() {
+	public List<FranchiseVO> selectList() {
 		return dao.selectList();
 	}
 	
 	@Override
-	public FranchisecodeVO selectOne(FranchisecodeVO fvo) {
+	public FranchiseVO selectOne(FranchiseVO fvo) {
 		return dao.selectOne(fvo);
 	}
 }

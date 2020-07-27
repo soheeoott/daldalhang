@@ -7,19 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import service.FService;
-import vo.FranchisecodeVO;
+import service.FRService;
+import vo.FranchiseVO;
 
 @Controller
 public class FranchiseController {
 
 	@Autowired
-	FService service;
+	FRService service;
 	
 	@RequestMapping(value="/flist")
 	public ModelAndView flist(ModelAndView mv) {
 		
-		List<FranchisecodeVO> list = service.selectList();
+		List<FranchiseVO> list = service.selectList();
 		
 		if(list != null) {
 			mv.addObject("franchiseList", list);

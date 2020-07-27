@@ -8,16 +8,17 @@
 				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 				  
 	<select id ="selectList" resultType="vo.ProductVO"> 
-		select pseq, fcode, productname, price, hashtag, uploadfile from product order by pseq
+		select * from product order by pdseq
 	</select>
 
 	<select id = "selectOne" resultType="vo.ProductVO">
-		SELECT pseq, productname, price, mtcode1, mtcode2, mtcode3, hashtag, uploadfile 
-		FROM product WHERE pseq=#{pseq}
+		select pdseq, frcode, bname, mname, pdname, price, pduploadfile, pdurl, hashtag, mucode1, mucode2, mucode3 
+		from product where pdseq=#{pdseq}
 	</select>
 	
 	<insert id="insert">
-		insert into product (pseq, productname, price, mtcode1, mtcode2, mtcode3, hashtag, uploadfile) values ((SELECT NVL(MAX(pseq), 0)+1 FROM personal), #{productname},#{price},#{mtcode1},#{mtcode2},#{mtcode3},#{hashtag},#{uploadfile})
+		insert into product (pdseq, frcode, pdname, price, mucode1, mucode2, mucode3, hashtag, pduploadfile) 
+			values ((select nvl(max(pdseq), 0)+1 from product),${frcode},#{pdname},#{price},#{mucode1},#{mucode2},#{mucode3},#{hashtag},#{pduploadfile})
 	</insert>
 	
 </mapper>

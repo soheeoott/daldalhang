@@ -38,8 +38,8 @@
 				</a>&nbsp;&nbsp;
 			</div>
 			<div class = "menu">
-				<a href="pdlist" class="main_menu">브랜드</a>
-				<a href="#" class="main_menu">메뉴</a>
+				<a href="#" class="main_menu">브랜드</a>
+				<a href="pdlist" class="main_menu">메뉴</a>
 				<a href="#" class="main_menu">이벤트</a>
 				<a href="flist" class="main_menu">매장찾기</a>
 				<a href="nlist" class="main_menu">공지사항</a>

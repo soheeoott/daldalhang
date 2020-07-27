@@ -15,7 +15,7 @@
 	
 	<div class="btn_nlist" align="right">
 		<c:if test="${logID=='DalDal'}">
-			<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pinsertf'">
+			<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
 		</c:if>
 	</div>
 				
@@ -25,9 +25,9 @@
 			<div class="main">
 			
 				<div class="productList">
-						<c:forEach var="list" items="${PList}">
+						<c:forEach var="list" items="${pdlist}">
 						
-						<c:if test = "${list.bcode == 1}">
+						<%-- <c:if test = "${list.bcode == 1}">
 							<hr>
 								<div>
 									음료
@@ -57,15 +57,15 @@
 									상품
 								</div>
 							<hr>
-						</c:if>
+						</c:if> --%>
 						
 						<div class = "plist">
 							<p>
-								<a href = "${list.producturl}">
-								<img src="${list.uploadfile}" width="200" height="200">
+								<a href = "${list.pdurl}">
+								<img src="${list.pduploadfile}" width="200" height="200">
 								</a>
 							</p>
-							<p class = "pname">${list.productname}</p>
+							<p class = "pname">${list.pdname}</p>
 							<p>${list.price} 원</p>
 							<div class = "hashtag">${list.hashtag}</div>
 						</div>

@@ -7,12 +7,12 @@
 	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
 				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 	
-	<select id="selectList" resultType="vo.FranchisecodeVO">
-		SELECT * FROM franchisecode ORDER BY fcode
+	<select id="selectList" resultType="vo.FranchiseVO">
+		select * from franchise order by frcode
 	</select>
 
-	<select id="selectOne" resultType="vo.FranchisecodeVO">
-		SELECT franchisename FROM franchisecode ORDER BY fcode
+	<select id="selectOne" resultType="vo.FranchiseVO">
+		select frename, frkname from franchise order by frcode
 	</select>
 	
 </mapper>

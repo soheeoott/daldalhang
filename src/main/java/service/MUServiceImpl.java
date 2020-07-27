@@ -5,22 +5,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.MetacodeDAO;
-import vo.MetacodeVO;
+import dao.MenuDAO;
+import vo.MenuVO;
 
 @Service
-public class MetaServiceImpl implements MetaService {
+public class MUServiceImpl implements MUService {
 	
 	@Autowired
-	MetacodeDAO dao;
+	MenuDAO dao;
 	
 	@Override
-	public List<MetacodeVO> selectList() {
+	public List<MenuVO> selectList() {
 		return dao.selectList();
 	}
 	
 	@Override
-	public MetacodeVO selectOne(MetacodeVO mvo) {
+	public MenuVO selectOne(MenuVO mvo) {
 		return dao.selectOne(mvo);
 	}
 }

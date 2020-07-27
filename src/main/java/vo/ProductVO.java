@@ -4,135 +4,157 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ProductVO {
 	
-	private int pseq;
-	private String fcode;
+	private int pdseq;
+	private String frcode;
 	private int bcode;
 	private String bname;
 	private int mcode;
 	private String mname;
-	private int productcode;
-	private String productname;
-	private int price; 
-	private String imgpath;
-	private String producturl;
+	private int pdcode;
+	private String pdname;
+	private int price;
+	private String pduploadfile;
+	private String pdurl;
 	private String hashtag;
-	private String mtcode1;
-	private String mtcode2;
-	private String mtcode3;
+	private String mucode1;
+	private String mucode2;
+	private String mucode3;
 	
-	private String uploadfile; // table의 컬럼과 동일
 	private MultipartFile uploadfilef; // form 의 inputTag 의 값 전달받기 // 설정 파일 필요
-	
-	public int getPseq() {
-		return pseq;
+
+	public int getPdseq() {
+		return pdseq;
 	}
-	public void setPseq(int pseq) {
-		this.pseq = pseq;
+
+	public void setPdseq(int pdseq) {
+		this.pdseq = pdseq;
 	}
-	public String getFcode() {
-		return fcode;
+
+	public String getFrcode() {
+		return frcode;
 	}
-	public void setFcode(String fcode) {
-		this.fcode = fcode;
+
+	public void setFrcode(String frcode) {
+		this.frcode = frcode;
 	}
+
 	public int getBcode() {
 		return bcode;
 	}
+
 	public void setBcode(int bcode) {
 		this.bcode = bcode;
 	}
+
 	public String getBname() {
 		return bname;
 	}
+
 	public void setBname(String bname) {
 		this.bname = bname;
 	}
+
 	public int getMcode() {
 		return mcode;
 	}
+
 	public void setMcode(int mcode) {
 		this.mcode = mcode;
 	}
+
 	public String getMname() {
 		return mname;
 	}
+
 	public void setMname(String mname) {
 		this.mname = mname;
 	}
-	public int getProductcode() {
-		return productcode;
+
+	public int getPdcode() {
+		return pdcode;
 	}
-	public void setProductcode(int productcode) {
-		this.productcode = productcode;
+
+	public void setPdcode(int pdcode) {
+		this.pdcode = pdcode;
 	}
-	public String getProductname() {
-		return productname;
+
+	public String getPdname() {
+		return pdname;
 	}
-	public void setProductname(String productname) {
-		this.productname = productname;
+
+	public void setPdname(String pdname) {
+		this.pdname = pdname;
 	}
+
 	public int getPrice() {
 		return price;
 	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getImgpath() {
-		return imgpath;
+
+	public String getPduploadfile() {
+		return pduploadfile;
 	}
-	public void setImgpath(String imgpath) {
-		this.imgpath = imgpath;
+
+	public void setPduploadfile(String pduploadfile) {
+		this.pduploadfile = pduploadfile;
 	}
-	public String getProducturl() {
-		return producturl;
+
+	public String getPdurl() {
+		return pdurl;
 	}
-	public void setProducturl(String producturl) {
-		this.producturl = producturl;
+
+	public void setPdurl(String pdurl) {
+		this.pdurl = pdurl;
 	}
+
 	public String getHashtag() {
 		return hashtag;
 	}
+
 	public void setHashtag(String hashtag) {
 		this.hashtag = hashtag;
 	}
-	public String getMtcode1() {
-		return mtcode1;
+
+	public String getMucode1() {
+		return mucode1;
 	}
-	public void setMtcode1(String mtcode1) {
-		this.mtcode1 = mtcode1;
+
+	public void setMucode1(String mucode1) {
+		this.mucode1 = mucode1;
 	}
-	public String getMtcode2() {
-		return mtcode2;
+
+	public String getMucode2() {
+		return mucode2;
 	}
-	public void setMtcode2(String mtcode2) {
-		this.mtcode2 = mtcode2;
+
+	public void setMucode2(String mucode2) {
+		this.mucode2 = mucode2;
 	}
-	public String getMtcode3() {
-		return mtcode3;
+
+	public String getMucode3() {
+		return mucode3;
 	}
-	public void setMtcode3(String mtcode3) {
-		this.mtcode3 = mtcode3;
+
+	public void setMucode3(String mucode3) {
+		this.mucode3 = mucode3;
 	}
-	public String getUploadfile() {
-		return uploadfile;
-	}
-	public void setUploadfile(String uploadfile) {
-		this.uploadfile = uploadfile;
-	}
+
 	public MultipartFile getUploadfilef() {
 		return uploadfilef;
 	}
+
 	public void setUploadfilef(MultipartFile uploadfilef) {
 		this.uploadfilef = uploadfilef;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "ProductVO [pseq=" + pseq + ", fcode=" + fcode + ", bcode=" + bcode + ", bname=" + bname + ", mcode="
-				+ mcode + ", mname=" + mname + ", productcode=" + productcode + ", productname=" + productname
-				+ ", price=" + price + ", imgpath=" + imgpath + ", producturl=" + producturl + ", hashtag=" + hashtag
-				+ ", mtcode1=" + mtcode1 + ", mtcode2=" + mtcode2 + ", mtcode3=" + mtcode3 + ", uploadfile="
-				+ uploadfile + ", uploadfilef=" + uploadfilef + "]";
+		return "ProductVO [pdseq=" + pdseq + ", frcode=" + frcode + ", bcode=" + bcode + ", bname=" + bname + ", mcode="
+				+ mcode + ", mname=" + mname + ", pdcode=" + pdcode + ", pdname=" + pdname + ", price=" + price
+				+ ", pduploadfile=" + pduploadfile + ", pdurl=" + pdurl + ", hashtag=" + hashtag + ", mucode1="
+				+ mucode1 + ", mucode2=" + mucode2 + ", mucode3=" + mucode3 + ", uploadfilef=" + uploadfilef + "]";
 	}
-	
 }

@@ -11,32 +11,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import service.FService;
-import service.MetaService;
+import service.FRService;
+import service.MUService;
 import service.PDService;
-import vo.FranchisecodeVO;
-import vo.MetacodeVO;
+import vo.FranchiseVO;
+import vo.MenuVO;
 import vo.ProductVO;
 
 @Controller
 public class ProductController {
 
 	@Autowired
-	PDService productservice;
+	PDService pdservice;
 	
 	@Autowired
-	MetaService metaservice;
+	MUService muservice;
 	
 	@Autowired
-	FService fcservice;
+	FRService frservice;
 
 	@RequestMapping(value="/pdlist")
 	public ModelAndView pdlist(ModelAndView mv) {
 		
-		List<ProductVO> list = productservice.selectList();
+		List<ProductVO> pdlist = pdservice.selectList();
 		
-		if (list != null) {
-			mv.addObject("PList", list);
+		if (pdlist != null) {
+			mv.addObject("pdlist", pdlist);
 		} else {
 			mv.addObject("message", "검색된 자료가 없습니다.");
 		}
@@ -44,23 +44,23 @@ public class ProductController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/pinsertf")
-	public ModelAndView pinsertf(ModelAndView mv, List<MetacodeVO> metalist, 
-			List<FranchisecodeVO> fclist) {
+	@RequestMapping(value="/pdinsertf")
+	public ModelAndView pinsertf(ModelAndView mv, List<MenuVO> mulist, 
+			List<FranchiseVO> frlist) {
 		
-		metalist = metaservice.selectList();
-		fclist = fcservice.selectList();
+		mulist = muservice.selectList();
+		frlist = frservice.selectList();
 		
-		if(metalist != null || fclist != null) {			
-			mv.addObject("metalist", metalist);
-			mv.addObject("fclist", fclist);
+		if(mulist != null || frlist != null) {			
+			mv.addObject("mulist", mulist);
+			mv.addObject("frlist", frlist);
 		}	
 		
 		mv.setViewName("product/productWrite");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/pinsert")
+	@RequestMapping(value = "/pdinsert")
 	public ModelAndView pinsert(ModelAndView mv, ProductVO vo) throws IOException {
 
 		// uploadfile 처리
@@ -82,16 +82,16 @@ public class ProductController {
 			
 			if(!uploadfilef.isEmpty()) {
 				// 실제 저장 경로 생성하고 저장
-				file1= "D:/eclipse/workspace/daldalhang-feature_ver01/src/main/webapp/resources/product_img/"
+				file1 = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_product/"
 							+uploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				uploadfilef.transferTo(new File(file1));
-				file2="resources/product_img/"+uploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
+				file2="resources/img_product"+uploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
 			}
-		} // *폴더에 넣기 연습
+		}
 		
-		vo.setUploadfile(file2);
+		vo.setPduploadfile(file2);
 		
-		if (productservice.insert(vo) > 0) {
+		if (pdservice.insert(vo) > 0) {
 			// 성공
 			mv.setViewName("pdlist");
 		} else {
