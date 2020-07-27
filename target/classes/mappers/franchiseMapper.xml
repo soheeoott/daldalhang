@@ -8,11 +8,11 @@
 				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 	
 	<select id="selectList" resultType="vo.FranchiseVO">
-		select * from franchise order by frcode
+		SELECT * FROM franchise ORDER BY frcode
 	</select>
 
 	<select id="selectOne" resultType="vo.FranchiseVO">
-		select frename, frkname from franchise order by frcode
+		SELECT frkname FROM franchise ORDER BY frcode
 	</select>
 	
 </mapper>
