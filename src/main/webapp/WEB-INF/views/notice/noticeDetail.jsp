@@ -11,7 +11,7 @@
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 </head>
 <body>
-<div align="center">
+<div align="center" id="wrap">
 	<span id="notice_title">공지사항</span><br><br>
 	<table>
 		<tr id="ndetail_title">

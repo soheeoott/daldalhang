@@ -22,7 +22,7 @@ $(function() {
 </script>
 </head>
 <body>
-<div align="center">
+<div align="center" id="wrap">
 	<span id="notice_title">공지사항</span><br><br>
 	<table>
 		<tr id="notice_search">

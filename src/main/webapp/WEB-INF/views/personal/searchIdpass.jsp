@@ -48,7 +48,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-
+<div id="wrap">
 	<div id="searchIdPwSearch">
 		<br>
 		<br>
@@ -135,6 +135,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

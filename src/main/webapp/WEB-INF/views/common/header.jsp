@@ -14,7 +14,7 @@
 </head>
 <body>
 	<!-- header -->
-	<div id = "header">
+	<div id = "header" align="center">
 		<!-- 사이드 메뉴 -->
 		<div align="right" id="personalBar">
 			<c:if test="${logID == null}">

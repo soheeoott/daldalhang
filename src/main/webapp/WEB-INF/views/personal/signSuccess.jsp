@@ -11,7 +11,7 @@
     <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 </head>
 <body>
-    <div id="ssWrapper">
+    <div id="ssWrapper" class="wrap">
     <br><br><br><br><br><br><br><br><br><br><br>
     <div id="ssBoxes">
         <div class="ssTextBox">

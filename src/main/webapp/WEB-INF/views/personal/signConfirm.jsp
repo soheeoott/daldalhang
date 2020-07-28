@@ -12,7 +12,7 @@
     <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 </head>
 <body>
-<div id="scWrapper">
+<div id="scWrapper" class="wrap">
 <br><br><br><br><br><br><br><br><br>
     <div id="scBoxes">
         <p class="scMessage1">인증메일을 전송하였습니다.</p>

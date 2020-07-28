@@ -22,7 +22,7 @@
  </script>
 </head>
 <body>
-<div align="center">
+<div align="center" id="wrap">
 	<span id="notice_title">공지수정</span><br><br>
 	<form action="nupdate" method="post">
 		<table id="noticeForm">

@@ -12,14 +12,13 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 </head>
 <body>
-	
+<div id="product_box" align="center">
 	<div class="btn_nlist" align="right">
 		<c:if test="${logID=='DalDal'}">
 			<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
 		</c:if>
 	</div>
 				
-	<fieldset>
 	<div id = "wrap">
 		<div class="container">
 			<div class="main">
@@ -74,12 +73,12 @@
 			</div>
 		</div>
 	</div>
-	</fieldset>
 <%-- 
 <c:if test="${message != null}">
  => ${message}
 </c:if> 
 --%>
+</div><hr>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

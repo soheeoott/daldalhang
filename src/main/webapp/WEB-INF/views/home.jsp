@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-	<div align="center">
+	<div align="center" id="wrap">
 		<div id="resultArea01">
 			<!-- 배너 공간 -->
 			<img src="resources/image/slide_banner.png" class="banner" alt="banner">

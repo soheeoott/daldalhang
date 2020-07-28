@@ -17,7 +17,7 @@
 	 -->
 </head>
 <body>
-		
+<div id="product_box">
 	<form action = "pdinsert" method = "post" enctype="multipart/form-data"> <!-- img [enctype="multipart/form-data"] -->
 		<table>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  			
@@ -266,6 +266,7 @@
 			</tr>
 		</table>
 	</form>
-	<%@ include file="../common/footer.jsp" %>
+</div>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

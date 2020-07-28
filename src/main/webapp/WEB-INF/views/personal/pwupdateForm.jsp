@@ -9,7 +9,7 @@
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 </head>
 <body>
-   <div class="wrap">
+   <div class="wrap" id="wrap">
 
       <div class="container">
 
