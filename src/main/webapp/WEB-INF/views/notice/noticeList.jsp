@@ -28,7 +28,7 @@ $(function() {
 		<tr id="notice_search">
 			<td colspan="9">
 				<div class="box-body" id="searchBar" align="right">
-				<select name="searchType" id="searchType" hidden="">
+				<select name="searchType" id="searchType" hidden>
 						<option value="tc"
 							<c:out value="${cri.searchType eq 'tc' ? 'selected':''}"/>>제목&내용
 						</option>
@@ -91,8 +91,6 @@ $(function() {
 			<img src="resources/image/next.jpg" class="npn_img"></a>
 	</c:if>
 </div>
-
 <%@ include file="../common/footer.jsp" %>
-
 </body>
 </html>

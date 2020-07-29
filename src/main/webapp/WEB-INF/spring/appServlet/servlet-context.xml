@@ -29,7 +29,7 @@
 	<!-- 1) JDBC Connection -->
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<beans:property name="url" value="jdbc:oracle:thin:@192.168.0.8:1521:orcl"/>
+		<beans:property name="url" value="jdbc:oracle:thin:@505-10:1521:orcl"/>
 		<beans:property name="username" value="daldalhang"/>
 		<beans:property name="password" value="dalhang2020"/>
 	</beans:bean>

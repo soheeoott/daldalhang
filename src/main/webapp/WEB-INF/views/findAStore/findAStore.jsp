@@ -17,56 +17,76 @@
 </head>
 <body>
 <div align="center" id="wrap">
-	<span id="notice_title">매장찾기</span><br><br>
 
 	<!-- 지도 API를 담을 div -->
 	<div id="map">
 		<div class="map_wrap">
 			<div id="menu_wrap" class="bg_white">
-		        <div class="option">
-		            <div>
-		            	<table width="100%">
-		            		<tr>
-		            			<td>매장명</td>
-		            			<td>블라블라</td>
-		            		</tr>
-		            		<tr>
-		            			<td colspan="2">키워드 : <input type="text" value="미금역 카페" id="keyword" size="15">
-		            			<button type="submit">검색하기</button></td>
-		            		</tr>
-		            	
-		            	</table>
-		            	<!-- ------------------- -->
-		            	<div class="tab_wrap">
-							<div class="tab_menu_container">
-							  <button class="tab_menu_btn1 tab_menu_btn" type="button">매장명</button>
-							  <button class="tab_menu_btn2 tab_menu_btn on" type="button">주소</button>
-							</div> <!-- tab_menu_container e -->
-							
-							<div class="tab_box_container">
-							  <div class="tab_box1 tab_box">테스트1</div>
-							  <div class="tab_box2 tab_box on">테스트2</div>
-							</div>
+				<div class="container">
+					<ul class="tabs">
+						<li class="tab-link current" data-tab="tab-1">매장명</li>
+						<li class="tab-link" data-tab="tab-2">주소</li>
+					</ul>
+					<div id="tab-1" class="tab-content current">
+						<div class="search">
+							<input type="text" placeholder="검색창">
+							<img src="resources/image/search_icon.png" alt="search_icon" id="searchBtn">
 						</div>
-						<!-- ------------------- -->
-						
-		                <form onsubmit="searchPlaces(); return false;">
-		                </form>
-		            </div>
-		        </div>
-		        <hr>
-		        <ul id="placesList"></ul>
-		        <div id="pagination"></div>
-		    </div>
-	    </div>
+						<br><br><hr>
+						<div class="tab_content_css">
+							<c:forEach var="list" items="${storeList}">
+								${list.frkname}<br>
+								${list.llname}<br>
+								<hr>
+							</c:forEach>
+							매장명은 이렇게 이렇게 요렇게<br>
+							안에<br>
+							내용이<br>
+							많으면<br>
+							어떻게<br>
+							표시가<br>
+							돨까?<br>
+							카페아이콘 frkname llname<br>
+							lladdr<br>
+							표시해 주면 되겠다 	<br>		
+						</div>
+
+					</div>
+					<div id="tab-2" class="tab-content">
+						<div class="search">
+							<input type="text" placeholder="검색창">
+							<img src="resources/image/search_icon.png" alt="search_icon" id="searchBtn">
+						</div>
+						<br><br><hr>
+						<div class="tab_content_css">
+							매장명은 이렇게 이렇게 요렇게<br>
+							안에<br>
+							내용이<br>
+							많으면<br>
+							어떻게<br>
+							표시가<br>
+							돨까?<br>
+							카페아이콘 frkname llname<br>
+							lladdr<br>
+							표시해 주면 되겠다 	<br>		
+						</div>
+					</div>
+				</div>
+				<!-- ------------------- -->
+		        <form onsubmit="searchPlaces(); return false;">
+				</form>
+			</div>
+		</div>
+        <hr>
+        <ul id="placesList"></ul>
+        <div id="pagination"></div>
 	</div>
 	<!-- 프랜차이즈 카페 목록 나열 -->
-	<div id="franchiseList">
+<%-- 	<div id="franchiseList">
 		<c:forEach var="list" items="${franchiseList}">
 			<a href="javascript:void(0);" id="${list.frcode}" onclick="initMap(id)">${list.frkname}</a>&nbsp;&nbsp;&nbsp;
 		</c:forEach>
-	</div>
-
+	</div> --%>
 	<input type="button" value="reset" onclick="initMap()">
 </div>
 <%@ include file="../common/footer.jsp" %>

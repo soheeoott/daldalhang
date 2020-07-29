@@ -2,17 +2,13 @@ var map = null;
 
 // 콜백 함수 설정/비동기 방식으로 로드
 function initMap(id) {
-	console.log("클릭한 카페의 frcode => "+id);
+//	console.log("클릭한 카페의 frcode => "+id);
 	
 	var map = new naver.maps.Map('map', {
 		center: new naver.maps.LatLng(37.350177, 127.108960),
 		zoom: 17,
 		scaleControl: false,
 		logoControl: false,
-		zoomControl: true,
-		zoomControlOptions: {
-		  position : naver.maps.Position.TOP_RIGHT
-		},
 		minZoom: 10
 	});
 	    
@@ -58,7 +54,7 @@ function initMap(id) {
 			});
 		}
 		 */
-	if(id=='A01') {
+	
 		var marker = new naver.maps.Marker({
 		    position: A01,
 		    content: '<div>공차</div>',
@@ -78,7 +74,7 @@ function initMap(id) {
 		    	infowindow.open(map, marker);
 		    }
 		});
-	}
+
 	/*var marker = new naver.maps.Marker({
 	    position: A01,
 	    content: '<div>공차</div>',
@@ -86,14 +82,15 @@ function initMap(id) {
 	});*/
 }
 
-$('.tab_menu_btn').on('click',function(){
-	  //버튼 색 제거,추가
-	  $('.tab_menu_btn').removeClass('on');
-	  $(this).addClass('on')
-	  
-	  //컨텐츠 제거 후 인덱스에 맞는 컨텐츠 노출
-	  var idx = $('.tab_menu_btn').index(this);
-	  
-	  $('.tab_box').hide();
-	  $('.tab_box').eq(idx).show();
-	});
+$(document).ready(function(){
+	$('ul.tabs li').click(function(){
+		var tab_id = $(this).attr('data-tab');
+
+		$('ul.tabs li').removeClass('current');
+		$('.tab-content').removeClass('current');
+
+		$(this).addClass('current');
+		$("#"+tab_id).addClass('current');
+	})
+
+})

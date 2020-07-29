@@ -9,19 +9,17 @@
 </head>
 <body>
 <!-- footer -->
-<br><br><br>
-<div align="center" id="footer">
+<div id="footer">
 	<font color="gray">
 	<a href="#" class="footer_menu">개인정보처리방침</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 	<a href="#" class="footer_menu">홈페이지 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 	<a href="#" class="footer_menu">위치정보 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 	<a href="#" class="footer_menu">디지털콘텐츠 표준약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 	<a href="#" class="footer_menu">전자상거래 표준약관</a><br><br>
-	(주)달달행 대표이사 : 달달쓰 TEL : 1234-5555 개인정보 책임자 : 달달<br>
+	(주)달달행 대표이사 : 달달쓰 TEL : 1234-5555 개인정보 책임자 : 김달달<br>
 	ⓒ 2020 DalDal Company. All Rights Reserved.
 	</font>
 </div>
-<br><br>
 <!-- /footer -->
 </body>
 </html>
