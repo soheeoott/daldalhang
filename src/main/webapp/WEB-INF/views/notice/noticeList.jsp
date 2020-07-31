@@ -24,7 +24,7 @@ $(function() {
 <body>
 <div align="center" id="wrap">
 	<span id="notice_title">공지사항</span><br><br>
-	<table>
+	<table class="ntable">
 		<tr id="notice_search">
 			<td colspan="9">
 				<div class="box-body" id="searchBar" align="right">

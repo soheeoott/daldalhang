@@ -16,7 +16,7 @@ public class MenuDAO {
 	private static final String MU = "ver01.mappers.menuMapper.";
 	
 	public List<MenuVO> selectList() {
-		return (List)sqlsession.selectList(MU + "selectList");
+		return sqlsession.selectList(MU + "selectList");
 	}
 	
 	public MenuVO selectOne(MenuVO mvo) {

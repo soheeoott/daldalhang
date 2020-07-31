@@ -13,7 +13,7 @@
 <body>
 <div align="center" id="wrap">
 	<span id="notice_title">공지사항</span><br><br>
-	<table>
+	<table class="ntable">
 		<tr id="ndetail_title">
 			<td>${notice.title}</td>
 			<td align="right" id="ndetail_regdate">${notice.regdate}</td>

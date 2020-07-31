@@ -7,15 +7,13 @@
 	height:500px;
  	margin:50px 0 0 50px;
 	padding:5px;
-	overflow:auto;
 	background:rgba(255, 255, 255, 0.8);
 	z-index: 1;
-	font-size:12px;
 }
 
 /* map을 출력하는 div 스타일 */
 #map {
-	width:1000px;
+	width:1200px;
 	height:600px;
 }
 
@@ -64,7 +62,13 @@ ul.tabs li{
 }
 
 div .tab_content_css {
+	/* font-size:12px; */
 	overflow-y: auto;
 	overflow-x: hidden;
+	height:370px;
 }
 
+.tab_table {
+	width: 260px;
+	margin: 15px 5px 15px 5px;
+}

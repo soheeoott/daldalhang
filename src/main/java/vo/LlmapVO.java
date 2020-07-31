@@ -5,10 +5,12 @@ public class LlmapVO {
 	private String frcode;
 	private String frkname;
 	private String llname;
+	private String fruploadfile;
 	private String lladdr;
 	private String streetnum;
 	private String latvalue;
 	private String lngvalue;
+	
 	public String getLlcode() {
 		return llcode;
 	}
@@ -32,6 +34,12 @@ public class LlmapVO {
 	}
 	public void setLlname(String llname) {
 		this.llname = llname;
+	}
+	public String getFruploadfile() {
+		return fruploadfile;
+	}
+	public void setFruploadfile(String fruploadfile) {
+		this.fruploadfile = fruploadfile;
 	}
 	public String getLladdr() {
 		return lladdr;
@@ -60,8 +68,8 @@ public class LlmapVO {
 	
 	@Override
 	public String toString() {
-		return "llmapVO [llcode=" + llcode + ", frcode=" + frcode + ", frkname=" + frkname + ", llname=" + llname
-				+ ", lladdr=" + lladdr + ", streetnum=" + streetnum + ", latvalue=" + latvalue + ", lngvalue="
-				+ lngvalue + "]";
+		return "LlmapVO [llcode=" + llcode + ", frcode=" + frcode + ", frkname=" + frkname + ", llname=" + llname
+				+ ", fruploadfile=" + fruploadfile + ", lladdr=" + lladdr + ", streetnum=" + streetnum + ", latvalue="
+				+ latvalue + ", lngvalue=" + lngvalue + "]";
 	}
 }

@@ -32,43 +32,45 @@
 							<input type="text" placeholder="검색창">
 							<img src="resources/image/search_icon.png" alt="search_icon" id="searchBtn">
 						</div>
-						<br><br><hr>
-						<div class="tab_content_css">
+						<br><hr>
+						<div class="tab_content_css" align="left">
 							<c:forEach var="list" items="${storeList}">
-								${list.frkname}<br>
-								${list.llname}<br>
+								<table class="tab_table">
+									<tr>
+										<td rowspan="2" width="70px">
+											<img src="${list.fruploadfile}" width="60px" align="middle">
+										</td>
+										<td>
+											<a onclick="javascript:;initMap(${list.frkname}&${list.llname}&${list.latvalue}&${list.lngvalue})>${list.frkname}&nbsp;${list.llname}</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											${list.lladdr}
+										</td>
+									</tr>							
+								</table>
 								<hr>
-							</c:forEach>
-							매장명은 이렇게 이렇게 요렇게<br>
-							안에<br>
-							내용이<br>
-							많으면<br>
-							어떻게<br>
-							표시가<br>
-							돨까?<br>
-							카페아이콘 frkname llname<br>
-							lladdr<br>
-							표시해 주면 되겠다 	<br>		
+							</c:forEach>	
 						</div>
-
 					</div>
 					<div id="tab-2" class="tab-content">
 						<div class="search">
 							<input type="text" placeholder="검색창">
 							<img src="resources/image/search_icon.png" alt="search_icon" id="searchBtn">
 						</div>
-						<br><br><hr>
+						<br><hr>
 						<div class="tab_content_css">
-							매장명은 이렇게 이렇게 요렇게<br>
-							안에<br>
-							내용이<br>
-							많으면<br>
-							어떻게<br>
-							표시가<br>
-							돨까?<br>
+							검색창에<br>
+							주소를 입력하면<br>
+							검색어=keyword를 받아서<br>
+							서치 돌리고<br>
+							결과를 여기에<br>
+							표시해<br>
+							줍니다<br>
 							카페아이콘 frkname llname<br>
 							lladdr<br>
-							표시해 주면 되겠다 	<br>		
+							폰트 사이즈 줄이기<br>		
 						</div>
 					</div>
 				</div>

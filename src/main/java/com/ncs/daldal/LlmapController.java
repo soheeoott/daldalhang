@@ -20,7 +20,6 @@ public class LlmapController {
 	public ModelAndView maplist(ModelAndView mv) {
 		
 		List<LlmapVO> maplist = service.selectList();
-		System.out.println(maplist);
 		
 		if(maplist != null) {
 			mv.addObject("storeList", maplist);

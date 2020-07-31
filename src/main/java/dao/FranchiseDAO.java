@@ -16,7 +16,7 @@ public class FranchiseDAO {
 	private static final String FD = "ver01.mappers.franchiseMapper.";
 	
 	public List<FranchiseVO> selectList() {
-		return (List)sqlsession.selectList(FD + "selectList");
+		return sqlsession.selectList(FD + "selectList");
 	}
 	
 	public FranchiseVO selectOne(FranchiseVO fvo) {

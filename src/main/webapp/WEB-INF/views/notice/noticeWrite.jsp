@@ -33,7 +33,7 @@
 			<tr>
 				<td>Title</td>
 				<td>
-					<input type="text" name="title" id="title" size="50"><br>
+					<input type="text" name="title" id="title" size="60"><br>
 					<span id="tMessage" class="eMessage"></span></td>
 			</tr>
 			<tr>
