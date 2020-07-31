@@ -13,18 +13,21 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	
-	<!-- <script>
-	$("#submit").click(function(){
-		if($("#check").is(":checked") == false){
-	        alert("필수 항목 체크란에 동의해주세요.");
-			return false;
-	    }
-		
-		if($("#check").is(":checked") == true){
-			return true;
-	    }
-	});
-	</script> -->
+	<script>
+	function agreeCheck() {
+		$("#submit").click(function(){
+			if($("#check").is(":checked") == false){
+		        alert("필수 항목 체크란에 동의해주세요.");
+				return false;
+		    }
+			
+			if($("#check").is(":checked") == true){
+				return true;
+		    }
+		})
+	}
+	
+	</script>
 	
 	<script>
 	$(function validate(){
@@ -183,8 +186,6 @@
               <form action="join" onsubmit="return validate();" method="post">
                 
                 <div>
-	                <fieldset>
-	                  <strong class="j_title">회원가입</strong>
 	
 	                <section class="joinform"> <!-- renew_joinform_v2 -->
 						
@@ -553,10 +554,9 @@
 	                </section>
 	                
 	               	  <div class="form_end">
-						  	<input type="submit" id = "submit" class = "submit" value="가입">
+						  	<input type="submit" id = "submit" class = "submit" value="가입" onclick = "agreeCheck()">
 					    	<input type="reset" class = "reset" value="취소">
 					  </div>
-	                </fieldset>
                 </div>
               </form>
             </div>

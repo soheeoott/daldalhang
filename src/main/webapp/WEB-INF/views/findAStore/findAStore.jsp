@@ -28,10 +28,15 @@
 						<li class="tab-link" data-tab="tab-2">주소</li>
 					</ul>
 					<div id="tab-1" class="tab-content current">
-						<div class="search">
-							<input type="text" placeholder="검색창">
-							<img src="resources/image/search_icon.png" alt="search_icon" id="searchBtn">
+						<div>
+							<div class="searchMap">
+								<input type="text" placeholder="검색창" class = "MapsearchInput">
+							</div>
+							<button class="searchMapBtn">
+								<img src="resources/image/search.png" width= "23" height = "23" alt="search_icon"> <!-- id="searchBtn" -->
+							</button>
 						</div>
+												
 						<br><hr>
 						<div class="tab_content_css" align="left">
 							<c:forEach var="list" items="${storeList}">

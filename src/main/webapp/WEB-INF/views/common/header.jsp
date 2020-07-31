@@ -18,15 +18,38 @@
 		<div id="header-css">
 			<!-- 사이드 메뉴 -->
 			<div id="personalBar" align="right">
-				<c:if test="${logID == null}">
-					<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-					<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
-				</c:if>
-				<c:if test="${logID != null}">
-						<a href="mypagef" id="id_hover">${logID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+			
+			<c:choose>
+	
+				<c:when test="${logID != null}">
+					<p id="login_success">
+						<a href="mypagef">${logID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 						<a href="mypagef">마이페이지</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 						<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
-				</c:if>
+					</p>
+				</c:when>
+				
+				<c:when test="${slogID != null}">
+					<p id="login_success">
+						<a href="mypagef">${slogID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+					</p>
+				</c:when>
+			
+				<c:when test="${logID == null}">
+					<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
+				</c:when>
+				
+				<c:when test="${slogID == null}">
+					<p id="login_success">
+						<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
+					</p>
+				</c:when>
+		
+			</c:choose>
+			
 			</div>
 			<!-- 메인 메뉴 -->
 			<div id="menubar">
@@ -43,9 +66,22 @@
 					<a href="nlist" class="main_menu">공지사항</a>
 				</div>
 			</div>
+			
 			<!-- 검색창 -->
 			<hr hidden>
-			<div align="center"><input type="text" placeholder="통합 검색">아이콘</div>
+			<div>
+				<div class="searchWrap">
+					
+					<div class="search">
+						<input type="text" placeholder="통합 검색" class="searchInput">
+					</div>
+					<div class= "searchB">
+						<button class="searchBtn">
+							<img src="resources/image/search.png" width= "23" height = "23">
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- /header -->

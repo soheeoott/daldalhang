@@ -9,34 +9,47 @@
 	    <title>네이버/카카오 로그인</title>
 	     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	     <link rel="stylesheet" type="text/css" href="resources/css/loginStyle.css">
+	     <script src="https://apis.google.com/js/platform.js" async defer></script>
+		 <meta name = "google-signin-client_id" content = "771757649911-vakhnpdq4sm5bdri1m3pokbm5tj04007.apps.googleusercontent.com">
 	     <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+	     
 	     <script>
-				$(document).ready(function(){
-			    var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
+			$(document).ready(function(){
+				
+				var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
 			    $("input[name='id']").val(userInputId); 
-			     
+			    
+			    if($("input[name='notExist']").val() == "true"){
+			    	alert("이메일이 인증되지 않았습니다. 회원 가입을 해주세요.");
+				}
+				
 			    if($("input[name='id']").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩
 			                                           // 아이디 저장하기 체크되어있을 시,
 			        $("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
 			    }
-			     
+			    
 			    $("#idSaveCheck").change(function(){ // 체크박스에 변화가 발생시
-			        if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
-			            var userInputId = $("input[name='id']").val();
-			            setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
-			        }else{ // ID 저장하기 체크 해제 시,
-			            deleteCookie("userInputId");
-			        }
-			    });//idSaveCheck_change
-			     
-			    // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+			    
+			    	 if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
+				            var userInputId = $("input[name='id']").val();
+				            setCookie("userInputId", userInputId, 1); // 1일 동안 쿠키 보관
+				            //alert(userInputId);
+				        }else{ // ID 저장하기 체크 해제 시,
+				            deleteCookie("userInputId");
+				        }
+			    
+			    }); //idSaveCheck_change
+
+			 	// ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
 			    $("input[name='id']").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
 			        if($("#idSaveCheck").is(":checked")){ // ID 저장하기를 체크한 상태라면,
 			            var userInputId = $("input[name='id']").val();
-			            setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+			            setCookie("userInputId", userInputId, 1); // 7일 동안 쿠키 보관
 			        }
 			    });
+			    
 			}); //ready
+
 			
 			function setCookie(cookieName, value, exdays){
 			    var exdate = new Date();
@@ -73,26 +86,43 @@
 
           <div class="form">  
           
-      		<form action="login" method="post"> 
+      		<form action="login" name="form1" method="post"> 
                 <section class="loginform">
                 
-                <div class = "img_wrap">
+                <div class= "img_wrap">
                   <img src="resources/image/logo2.png" width="200" class="img">
                  </div>
             		
-            			<div class="input_box id">
+            			<div class="input_box id" align="center">
             				<input type="text" name="id" id="id" placeholder="아이디">
             				<div id="id_check"></div> <!-- placeholder="영문 또는 숫자, 4~20자 이내"  -->
             			</div>
             		
             			<div class="input_box pw">
             				<input type="password" name="password" id="password" placeholder="비밀번호">
+            				<!-- Kakao -->
+            				<input type="hidden" name="kakaoAccess_token" 				id="kakakoAccess_token">
+            				<input type="hidden" name="kakaoToken_type" 				id="kakakoToken_type">
+            				<input type="hidden" name="kakaoRefresh_token" 				id="kakakoRefresh_token">
+            				<input type="hidden" name="kakaoExpires_in" 				id="kakakoExpires_in">
+            				<input type="hidden" name="kakaoRefresh_token_expires_in" 	id="kakakoRefresh_token_expires_in">
+            				
+            				<!-- Google -->
+            				<input type="hidden" name="googleEmail" 					id="googleEmail">
+            				<input type="hidden" name="googleName" 						id="googleName">
+            				
+            				<!-- Login Flag -->
+            				<input type="hidden" name="loginFlag" 						id="loginFlag" value="L">
+            				
+            				<!-- notExist -->
+            				<input type="hidden" name="notExist" 						id="notExist" value="${notExist}">
+            				
             				<div id="pw_check"></div>
             			</div>
             			
-            			<div class="check">
+            			<div class="check" >
             				<label class ="idsave_check">
-            					<input type="checkbox" id="idSaveheck" class="idSaveCheck" >
+            					<input type="checkbox" id="idSaveCheck" class="idSaveCheck" >
             		   			아이디 저장
             		   		</label>
             			</div>
@@ -105,14 +135,14 @@
 						
 						<div class = "find">
 							<div class = "find_id">	
-								<a href="findIdReady">아이디 찾기</a> 
+								<a href="findidf">아이디/비밀번호 찾기</a> 
 									<span class = "stick">|</span>
 							</div>
 							
-							<div class = "find_pw">
+							<!-- <div class = "find_pw">
 								<a href="findPwReady" >비밀번호 찾기</a>
 									<span class = "stick">|</span>
-							</div>
+							</div> -->
 							
 							<div class = "joinf">
 								<a href="joinForm">회원가입</a>
@@ -123,9 +153,9 @@
             				<input type="submit" class="submit" value="로그인">
             			</div>
     	
-		  <%
+		 <%
 		    String clientId = "6S696taO_GdRdtrcL2WK";//애플리케이션 클라이언트 아이디값";
-		    String redirectURI = URLEncoder.encode("http://localhost:8080/naverapi/callback.jsp", "UTF-8");
+		    String redirectURI = URLEncoder.encode("http://localhost:8080/daldal/login?loginFlag=N", "UTF-8");
 		    SecureRandom random = new SecureRandom();
 		    String state = new BigInteger(130, random).toString();
 		    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -135,15 +165,21 @@
 		    session.setAttribute("state", state);
 		   %>
 			
-			<div class = "socialform">
-        		<div class = "btn">
-	        		<a href="<%=apiURL%>">
-	        			<img height="50" class="naver-login-btn" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/>
-	        		</a>
-	        		
-	        		<a id="kakao-login-btn" class = "kakao-login-btn"></a>
-	      	  	</div>
-		      	 	
+			
+    		</section>
+      		</form>
+      		
+      		<div class = "socialform">
+        		<div class = "btn" align="center">
+        			<div>
+		        		<a href="<%=apiURL%>">
+	        				<img id="naver-login-btn" src="resources/image/login_btn_naver.png" class = "socialbtn"/>
+	        			</a>
+	        				<img id="kakao-login-btn" src="resources/image/login_btn_kakao.png" class = "socialbtn"/>
+	        				<img src="resources/image/login_btn_google.png" class = "socialbtn"/>
+	      	  		</div>
+		      	 </div>	
+		      	 
 				<script type='text/javascript'>
 			        //<![CDATA[
 			        // 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -152,18 +188,45 @@
 			        Kakao.Auth.createLoginButton({
 			            container: '#kakao-login-btn',
 			            success: function (authObj) {
-			                alert(JSON.stringify(authObj));
+			            
+			            	document.form1.kakaoAccess_token.value 			= authObj.access_token;
+			            	document.form1.kakaoToken_type.value 			= authObj.token_type;
+			            	document.form1.kakaoRefresh_token.value 		= authObj.refresh_token;
+			            	document.form1.kakaoExpires_in.value 			= authObj.expires_in;
+			            	document.form1.kakaoRefresh_token_expires_in.value = authObj.refresh_token_expires_in;
+			            	document.form1.loginFlag.value = "K";			            	
+			            	
+			                //alert(JSON.stringify(authObj));
+			            	
+			            	document.form1.submit();
 			            },
 			            fail: function (err) {
 			                alert(JSON.stringify(err));
 			            }
 			        });
+			        
+			        function onSignIn(googleUser) {
+			      	  	var profile = googleUser.getBasicProfile();
+			      	  	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			      	  	console.log('Name: ' + profile.getName());
+			      	  	/* console.log('Image URL: ' + profile.getImageUrl()); */
+			      	  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			      	  	
+			      	  	alert("profile.getId=" + profile.getId() + "profile.getName=" + profile.getName() + "profile.getImageUrl()=" + profile.getImageUrl() + "profile.getEmail()=" + profile.getEmail());
+			      	  	
+			      	  	document.form1.googleEmail.value 	= profile.getEmail();
+		            	document.form1.googleName.value 	= profile.getName();
+		            	document.form1.loginFlag.value 		= "G";
+		            	
+		                // alert(JSON.stringify(authObj));
+		            	
+		            	document.form1.submit();
+			        }//onSignIn
+			       			        
 			      //]]>
 				</script>
     		</div> <!-- socialform -->
     		
-    		</section>
-      		</form>
           </div> <!-- form   -->
           </div>  <!-- container -->
   	</div> <!-- wrap -->

@@ -54,6 +54,10 @@ br { mso-data-placement:same-cell; }
 	max-width:1000px;
 }
 
+#menubar {
+	height : 90px;
+}
+
 .menu {
 /* 	display: block; */
     position: relative;
@@ -100,6 +104,47 @@ hr {
     border:none;
     border-top:1px solid #f4f4f2;
     width:80%;
+}
+
+/* 검색창 */
+input:-ms-input-placeholder {color:#a8a8a8; } 
+input::-webkit-input-placeholder {color:#a8a8a8;} 
+input::-moz-placeholder {color:#a8a8a8;} 
+
+.searchWrap {
+	width: 100%;
+}
+
+.search {
+	height: 40px;
+    width: 800px;
+    border: 3px solid pink;
+    background: #ffffff;
+    float: left;
+    margin-left: 90px;
+}
+
+.searchInput {
+	font-size: 18px;
+    width: 780px;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    float: left;
+}
+
+.searchB {
+	
+}
+
+.searchBtn {
+	width: 50px;
+    height: 46px;
+    border: 0px;
+    outline: none;
+    float: left;
+    color: #ffffff;
+    background-color: pink;
 }
 
 /* footer */

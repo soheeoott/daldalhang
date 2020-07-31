@@ -26,9 +26,13 @@
 
 	<select id="searchList" resultType="vo.NoticeVO">
 	<![CDATA[
-		SELECT seq, title, id, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt
+		SELECT n.seq, n.title, n.id, n.date_format(regdate,'%Y%m%d'), n.cnt
 		FROM (SELECT n.*, ROW_NUMBER() OVER(ORDER BY seq DESC) rnum
 		FROM notice n WHERE seq>0]]>
+	<!-- <![CDATA[
+		SELECT seq, title, id, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt
+		FROM (SELECT n.*, ROW_NUMBER() OVER(ORDER BY seq DESC) rnum
+		FROM notice n WHERE seq>0]]> -->
 		<include refid="search"></include>
 		WHERE rnum BETWEEN #{sno} AND #{eno}
 	</select>	
@@ -41,7 +45,8 @@
 			  
 	<!-- noticeDetail() -->
 	<select id="selectOne" resultType="vo.NoticeVO">
-		SELECT seq, title, id, content, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt 
+		<!-- SELECT seq, title, id, content, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt -->
+		SELECT seq, title, id, content, date_format(regdate,'%Y%m%d'), cnt 
 		FROM notice WHERE seq=#{seq}
 	</select>
 	
@@ -60,8 +65,10 @@
 	<!-- noticeInsert() -->
 	<insert id="insert">
 		INSERT INTO notice (seq, title, id, content, regdate, cnt)
-		VALUES((SELECT NVL(MAX(seq), 0)+1 FROM notice), #{title}, #{id}, #{content},
-		SYSDATE, 0)
+		<!-- VALUES((SELECT NVL(MAX(seq), 0)+1 FROM notice), #{title}, #{id}, #{content},
+			 SYSDATE, 0) -->
+		VALUES((select * from (select max(seq)+1 from notice), #{title}, #{id}, #{content},
+		now(), 0)
 	</insert>
 	
 	<!-- noticeUpdate() -->

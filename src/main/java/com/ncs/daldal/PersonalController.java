@@ -2,7 +2,13 @@ package com.ncs.daldal;
 
 import email.MailHandler;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import javax.inject.Inject;
 import javax.mail.MessagingException;
@@ -10,8 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.social.google.connect.GoogleOAuth2Template;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +37,9 @@ public class PersonalController {
 
 	@Autowired
 	PSService service; // 조상으로 정의, 후손으로 생성
-
+	private GoogleOAuth2Template googleOAuth2Template;
+	private OAuth2Parameters googleOAuth2Parameters;
+	
 	@Inject
 	private JavaMailSender mailSender;
 
@@ -68,40 +80,224 @@ public class PersonalController {
 	}
 	
 	@RequestMapping("/login")
-	public ModelAndView login(ModelAndView mv, PersonalVO vo, HttpServletRequest request) {
+	public ModelAndView login(ModelAndView mv, PersonalVO vo, HttpServletRequest request) throws Exception {
 		
 		System.out.println("로그인 인증 처리...");
-		System.out.println(vo.getId().trim().substring(0, 1));
+		
+		// login flag : N - Naver, K - Kakao, G - Google, L - Login
+		
+		if(vo.getLoginFlag().equals("N")) {
+			// 네이버 로그인
+			String clientId = "6S696taO_GdRdtrcL2WK";//애플리케이션 클라이언트 아이디값";
+			String clientSecret = "o67GQ6g1dO";//애플리케이션 클라이언트 시크릿값";
+			String redirectURI = URLEncoder.encode("http://localhost:8080/daldal/login", "UTF-8");
+			String apiURL;
+			apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
+			apiURL += "client_id=" + clientId;
+			apiURL += "&client_secret=" + clientSecret;
+			apiURL += "&redirect_uri=" + redirectURI;
+			apiURL += "&code=" + vo.getCode();
+			apiURL += "&state=" + vo.getState();
+			
+			// 접근계정 호출 URL
+			System.out.println("apiURL="+apiURL);
+				
+			try {
+				URL url = new URL(apiURL);
+			    HttpURLConnection con = (HttpURLConnection)url.openConnection();
+			    con.setRequestMethod("GET");
+			    int responseCode = con.getResponseCode();
+			    BufferedReader br;
+			    
+			    // 호출코드 확인
+			    System.out.println("responseCode="+responseCode);
+			     
+			    if(responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+			    	br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			    } else {  // 에러 발생
+			    	br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			    }
+			     
+			    String inputLine;
+			    StringBuffer res = new StringBuffer();
+			    
+			    while ((inputLine = br.readLine()) != null) {
+			    	res.append(inputLine);
+			    }
+			    
+			    br.close();
+			    
+			    if(responseCode == HttpURLConnection.HTTP_OK) {
+			    	// {"access_token":"AAAAOafaeVljoUMFhzX7MHNCP1bB2xrEfhkduDVQ05KPpZ80pi3oJIYIdKh55LpS3D0DPB57BxOR7LeEmEGvnTFoZUk","refresh_token":"jisIbLEO7R0QOZUtWBRKlGzddjbG3w4sAg6VY3yaCRXmb0TrCIIHaO9nSUGUbFCHOwlisckdP0iiiiR9kipkDdnb11ipis94ii4DGqycD15Fz0Sx8iijqTI77u3FLMJZIRzxMSsPii","token_type":"bearer","expires_in":"3600"}
+			    	JSONParser jParser = new JSONParser();
+			    	JSONObject jObject = (JSONObject) jParser.parse(res.toString());
+			    
+			    	apiURL = "https://openapi.naver.com/v1/nid/me";
+			    	
+			    	// api URL
+				    System.out.println("apiURL="+apiURL);
+			    	
+			    	url = new URL(apiURL);
+			    	con = (HttpURLConnection)url.openConnection();
+				    con.setRequestMethod("GET");
+				    
+		            con.setRequestProperty("Authorization", "Bearer "+jObject.get("access_token"));		            
+				    responseCode = con.getResponseCode();
+				    
+				    // 연결결과
+				    System.out.println("responseCode="+responseCode);
+				    
+				    if(responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+				    	br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				    } else {  // 에러 발생
+				    	br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+				    }
+				     
+				    res = new StringBuffer();
+				    
+				    while ((inputLine = br.readLine()) != null) {
+				    	res.append(inputLine);
+				    }
+				    
+				    br.close();
+				    
+				    // {"resultcode":"00","message":"success","response":{"id":"40713573","email":"kskymama@gmail.com","name":"\uc2ec\ud604\uc8fc"}}
+				    System.out.println(res.toString());
+
+				    // 이메일 추출
+				    jObject = (JSONObject) jParser.parse(res.toString());
+				    jObject = (JSONObject) jParser.parse(jObject.get("response").toString());
+				    
+				    
+				    // Value 확인
+				    System.out.println("name=>"+jObject.get("name").toString());
+				    
+				    String name = URLDecoder.decode("name","UTF-8");
+				    System.out.println("name="+name);
+				    // ID에 name 값을 넣을것
+				    vo.setId(jObject.get("name").toString());
+				    vo.setVerify('s');
+			    }	
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			
+		} else if(vo.getLoginFlag().equals("K")) {
+			// 카카오 로그인
+		 
+			try {
+		    	String apiURL = "https://kapi.kakao.com/v2/user/me";
+		    	
+		    	// api URL
+			    System.out.println("apiURL="+apiURL);
+		    	
+			    URL url = new URL(apiURL);
+			    HttpURLConnection con = (HttpURLConnection)url.openConnection();
+			    con.setRequestMethod("GET");
+			    
+	            con.setRequestProperty("Authorization", "Bearer "+vo.getKakaoAccess_token());		            
+			    int responseCode = con.getResponseCode();
+			    BufferedReader br;
+			    
+			    // 연결결과
+			    System.out.println("responseCode="+responseCode);
+			    
+			    if(responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+			    	br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			    } else {  // 에러 발생
+			    	br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			    }
+			     
+			    String inputLine;
+			    StringBuffer res = new StringBuffer();
+			    
+			    while ((inputLine = br.readLine()) != null) {
+			    	res.append(inputLine);
+			    }
+			    
+			    br.close();
+			    
+			    // {"id":1413884680,"connected_at":"2020-07-23T12:17:33Z","kakao_account":{"has_email":true,"email_needs_agreement":false,"is_email_valid":true,"is_email_verified":true,"email":"aboutkh@gmail.com"}}
+			    System.out.println(res.toString());
+
+			    // 이메일 추출
+			    JSONParser jParser = new JSONParser();
+			    JSONObject jObject = (JSONObject) jParser.parse(res.toString());
+			    
+			    // 이메일추출
+			    //jObject = (JSONObject) jParser.parse(jObject.get("kakao_account").toString());
+			    
+			    // 닉네임추출
+			    jObject = (JSONObject) jParser.parse(jObject.get("properties").toString());
+			    
+			    // 이메일추출
+			    //if(jObject.get("email_needs_agreement").toString().equals("true")) {
+			    
+			    // 닉네임 추출
+			    if(jObject.get("nickname") == null) {
+			    	vo.setId("");
+			    } else {
+				    // Value 확인
+				    System.out.println("nickname=>"+jObject.get("nickname").toString());
+				    
+				    // ID에 이메일 값을 넣을것
+				    vo.setId(jObject.get("nickname").toString());
+				    vo.setVerify('s');
+			    }
+			 	
+			} catch (Exception e) {
+				System.out.println(e);
+			}			
+		} else if (vo.getLoginFlag().equals("G")) {
+			// 구글 로그인
+			  System.out.println("google name=>"+vo.getGoogleName());
+			  
+			  // ID에 이메일 값을 넣을것
+			  vo.setId(vo.getGoogleName());
+			  vo.setVerify('s');
+		}
+		
 		HttpSession session = request.getSession();
-		
-		if (vo.getId().trim().substring(0, 1).equals("@")) {
-			mv.setViewName("redirect:home");
-			mv.addObject(vo);
 			
-			return mv;
-		
-		} else {
-			
+		if (vo.getLoginFlag().contentEquals("L")) {
+			// 회원가입 여부를 체크하는 로직이 아닙니다. 로직 수정하세요.
 			vo = service.selectOne(vo);
+			vo.setVerify('y');	
+		} else {
+			if(vo.getId() == null || vo.getId().trim().length() < 1) {
+				vo = null;
+			} else {
+				// 소셜로 로그인 했을때는 기본 값을 설정
+				vo.setVerify('s');	
+			}				
+		}
+		
+		if (vo != null) {
 			
-			if (vo != null) {
+			if (vo.getVerify() == 's') {
 				
-				if (vo.getVerify() == 'y') {
-					session.setAttribute("logID", vo.getId());
-					mv.setViewName("redirect:home");
-					
-					return mv;
+				session.setAttribute("slogID", vo.getId());
+				mv.setViewName("redirect:home");
+				return mv;
+			
+			} else if(vo.getVerify() == 'y'){
+				session.setAttribute("logID", vo.getId());
+				mv.setViewName("redirect:home");
+				return mv;
 				
-				} else
-					mv.setViewName("loginf");
-					mv.addObject("notVerify", true); // 아이디나 비밀번호가 일치하지 않습니다!
-					return mv;
-				
-			} else
-				mv.setViewName("loginf");
+			} else if(vo.getVerify() == 'n') {
+				mv.setViewName("personal/loginForm");
 				mv.addObject("notExist", true); // 이메일 인증이 되지 않았습니다! 이메일을 확인하시고 인증해주시기 바랍니다!
 				return mv;
+			}
+			
+		} else {
+			mv.setViewName("personal/loginForm");
+			mv.addObject("notVerify", true); // 아이디나 비밀번호가 일치하지 않습니다!
+			return mv;
 		}
+		
+		return mv;
 	}
 			
 	@RequestMapping(value = "/personal/idCheck", method = RequestMethod.GET)
@@ -118,7 +314,7 @@ public class PersonalController {
 
 	@RequestMapping(value = "/loginf")
 	public ModelAndView loginf(ModelAndView mv) {
-		mv.setViewName("personal/n_loginForm");
+		mv.setViewName("personal/loginForm");
 		return mv;
 	}
 
@@ -143,28 +339,34 @@ public class PersonalController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/findpwf")
-	public ModelAndView findpwf(ModelAndView mv) {
-		mv.setViewName("personal/findpwForm");
-		return mv;
-	}
+//	@RequestMapping(value = "/findpwf")
+//	public ModelAndView findpwf(ModelAndView mv) {
+//		mv.setViewName("personal/findpwForm");
+//		return mv;
+//	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/findid", method = RequestMethod.POST)
-	public String findid(HttpServletRequest request) {
-		
+	public @ResponseBody String findid(HttpServletRequest request) {
+		System.out.println("아이디찾기");
 		String email_id = request.getParameter("email_id");
 		String email_domain = request.getParameter("email_domain");
 
+		System.out.println("email_id =>" + email_id);
+		System.out.println("email_domain =>" + email_domain);
+		
 		PersonalVO vo = new PersonalVO();
 		vo.setEmail_id(email_id);
 		vo.setEmail_domain(email_domain);
 		
 		PersonalVO search = service.findid(vo);
+		 System.out.println(search);
+
+		 
 		if (search != null) {
+//			request.setAttribute("data",search.getId());
 			return search.getId();
 		} else {
-			return "";
+			return "x";
 		}
 	}
 
