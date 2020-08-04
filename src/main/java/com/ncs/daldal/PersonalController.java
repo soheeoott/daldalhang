@@ -1,7 +1,5 @@
 package com.ncs.daldal;
 
-import email.MailHandler;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -9,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.mail.MessagingException;
@@ -29,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import email.MailHandler;
 import service.PSService;
 import vo.PersonalVO;
 
@@ -308,12 +308,14 @@ public class PersonalController {
 
 	@RequestMapping(value = "/joinf")
 	public ModelAndView joinf(ModelAndView mv) {
+
 		mv.setViewName("personal/joinForm");
 		return mv;
 	}
 
 	@RequestMapping(value = "/loginf")
 	public ModelAndView loginf(ModelAndView mv) {
+		
 		mv.setViewName("personal/loginForm");
 		return mv;
 	}

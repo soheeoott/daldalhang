@@ -13,7 +13,7 @@ public class FranchiseDAO {
 
 	@Autowired
 	private SqlSession sqlsession;
-	private static final String FD = "ver01.mappers.franchiseMapper.";
+	private static final String FD = "daldal.mappers.franchiseMapper.";
 	
 	public List<FranchiseVO> selectList() {
 		return sqlsession.selectList(FD + "selectList");

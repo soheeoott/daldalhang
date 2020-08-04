@@ -13,10 +13,10 @@ public class ProductDAO {
 	
 	@Autowired // 자동주입
 	private SqlSession sqlsession;
-	private static final String PD = "ver01.mappers.productMapper.";
+	private static final String PD = "daldal.mappers.productMapper.";
 	
 	public List<ProductVO> selectList() {
-		return (List)sqlsession.selectList(PD + "selectList");
+		return sqlsession.selectList(PD + "selectList");
 	}
 	
 	public ProductVO selectOne(ProductVO vo) {
@@ -25,5 +25,13 @@ public class ProductDAO {
 	
 	public int insert(ProductVO vo) {
 		return sqlsession.insert(PD + "insert", vo);
+	}
+	
+	public List<ProductVO> productList() {
+		return sqlsession.selectList(PD + "productList");
+	}
+
+	public List<ProductVO> mProductList(String muname) {
+		return sqlsession.selectList(PD + "mProductList", muname);
 	}
 }

@@ -6,10 +6,18 @@
 <meta charset="UTF-8">
 <title>** DalDal **</title>
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+<script src="resources/js/jquery-3.2.1.min.js"></script>
+<script src="resources/js/home.js"></script>
 </head>
 <body>
 <!-- footer -->
 <div id="footer">
+
+	<!-- TOP 버튼 -->
+	<div id="top">
+		<a href="#header"><img src="resources/image/top_button.png" id="topImg"/></a>
+	</div>
+
 	<font color="gray">
 	<a href="#" class="footer_menu">개인정보처리방침</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 	<a href="#" class="footer_menu">홈페이지 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;

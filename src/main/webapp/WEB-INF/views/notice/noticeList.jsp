@@ -46,12 +46,12 @@ $(function() {
 		<c:forEach var="list" items="${daldal}">
 		<tr height="50" id="nlist_content">
 			<td align="center" width="100">${list.seq}</td>		
-			<td width="700">		
+			<td width="600">		
 				<!-- 조회수 증가를 위해 글쓴이의 id도 포함 (무조건 관리자 id) -->
 				<a href="ndetail?seq=${list.seq}&id=${list.id}" id="nlist_title">${list.title}</a>
 			</td>				
-			<td align="center">${list.regdate}</td>		
-			<td align="center" width="100">${list.cnt}</td>		
+			<td align="center" width="100">${list.regdate}</td>		
+			<td align="center">${list.cnt}</td>		
 		</tr>
 		</c:forEach>
 	</table>

@@ -19,11 +19,11 @@ body {
 br { mso-data-placement:same-cell; } 
 
 #wrap {
-	padding-top: 200px;
+	padding-top: 250px;
 }
 
 .wrap {
-	padding-top: 200px;
+	padding-top: 250px;
 }
 
 #header {
@@ -33,7 +33,7 @@ br { mso-data-placement:same-cell; }
 	right: 0;
     z-index: 100;
     width: 100%;
-    height: 200px;
+    height: 230px;
     background-color: #fff;
 }
 
@@ -90,8 +90,44 @@ br { mso-data-placement:same-cell; }
 
 .main_menu:hover {
  	margin-top:20px;
- 	border-bottom:5px solid #F1BCD5;
+ 	border-bottom: 5px solid #F1BCD5;
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.menu_dropdown {
+  display: none;
+  position: absolute;
+  background:rgba(255, 255, 255, 0.8);
+  min-width: 200px;
+  z-index: 1;
+  margin-top: 6px;
+  margin-left: 43px;
+}
+
+.menu_dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.menu_dropdown a:hover {
+	border-bottom: 2px solid #F1BCD5;
+}
+
+.dropdown:hover .menu_dropdown {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}
+
+
 
 /* 사이드 메뉴 포함 a태그 style */
 a {
@@ -164,4 +200,17 @@ input::-moz-placeholder {color:#a8a8a8;}
 .footer_menu {
 	width: 100%;
 	color: white;
+}
+
+#top {
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+	color: pink;
+	font-size: 20px;
+}
+
+#topImg {
+	width: 50px;
+	margin: 0 300px 200px 0;
 }

@@ -13,7 +13,7 @@ public class MenuDAO {
 
 	@Autowired
 	private SqlSession sqlsession;
-	private static final String MU = "ver01.mappers.menuMapper.";
+	private static final String MU = "daldal.mappers.menuMapper.";
 	
 	public List<MenuVO> selectList() {
 		return sqlsession.selectList(MU + "selectList");
@@ -21,5 +21,9 @@ public class MenuDAO {
 	
 	public MenuVO selectOne(MenuVO mvo) {
 		return sqlsession.selectOne(MU + "selectOne", mvo);
+	}
+
+	public List<MenuVO> productList(String mucategory) {
+		return sqlsession.selectList(MU + "productList", mucategory);
 	}
 }

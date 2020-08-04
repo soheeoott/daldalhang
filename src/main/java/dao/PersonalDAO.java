@@ -13,7 +13,7 @@ public class PersonalDAO {
 	
 	@Autowired // 자동주입
 	private SqlSession sqlsession;
-	private static final String PS = "ver01.mappers.personalMapper."; // NameSpace 상수 = 대문자
+	private static final String PS = "daldal.mappers.personalMapper."; // NameSpace 상수 = 대문자
 	
 	public void verify(PersonalVO vo){
 		sqlsession.update(PS + "verify", vo);

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ver01.mappers.personalMapper"> <!-- mapper의 이름표 -->
+<mapper namespace="daldal.mappers.personalMapper"> <!-- mapper의 이름표 -->
 	
 	<select id ="selectList" resultType="vo.PersonalVO"> 
 		select id, password, email_id, email_domain, verify from personal order by id

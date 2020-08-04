@@ -35,8 +35,7 @@
 							<button class="searchMapBtn">
 								<img src="resources/image/search.png" width= "23" height = "23" alt="search_icon"> <!-- id="searchBtn" -->
 							</button>
-						</div>
-												
+						</div>					
 						<br><hr>
 						<div class="tab_content_css" align="left">
 							<c:forEach var="list" items="${storeList}">
@@ -46,7 +45,42 @@
 											<img src="${list.fruploadfile}" width="60px" align="middle">
 										</td>
 										<td>
-											<a onclick="javascript:;initMap(${list.frkname}&${list.llname}&${list.latvalue}&${list.lngvalue})>${list.frkname}&nbsp;${list.llname}</a>
+											<a href="javascript:void(0);" onclick="initMap('${list.frkname}','${list.llname}','${list.lladdr}','${list.streetnum}','${list.latvalue}','${list.lngvalue}')">
+												${list.frkname}&nbsp;${list.llname}
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											${list.lladdr}
+										</td>
+									</tr>						
+								</table>
+								<hr>
+							</c:forEach>	
+						</div>
+					</div>
+					<div id="tab-2" class="tab-content">
+						<div>
+							<div class="searchMap">
+								<input type="text" placeholder="검색창" class = "MapsearchInput">
+							</div>
+							<button class="searchMapBtn">
+								<img src="resources/image/search.png" width= "23" height = "23" alt="search_icon"> <!-- id="searchBtn" -->
+							</button>
+						</div>
+						<br><hr>
+						<div class="tab_content_css">
+							<c:forEach var="list" items="${storeList}">
+								<table class="tab_table">
+									<tr>
+										<td rowspan="2" width="70px">
+											<img src="${list.fruploadfile}" width="60px" align="middle">
+										</td>
+										<td>
+											<%-- <a onclick="javascript:;initMap(${list.frkname}&${list.llname}&${list.latvalue}&${list.lngvalue})"> --%>
+												${list.frkname}&nbsp;${list.llname}
+											<!-- </a> -->
 										</td>
 									</tr>
 									<tr>
@@ -56,30 +90,10 @@
 									</tr>							
 								</table>
 								<hr>
-							</c:forEach>	
-						</div>
-					</div>
-					<div id="tab-2" class="tab-content">
-						<div class="search">
-							<input type="text" placeholder="검색창">
-							<img src="resources/image/search_icon.png" alt="search_icon" id="searchBtn">
-						</div>
-						<br><hr>
-						<div class="tab_content_css">
-							검색창에<br>
-							주소를 입력하면<br>
-							검색어=keyword를 받아서<br>
-							서치 돌리고<br>
-							결과를 여기에<br>
-							표시해<br>
-							줍니다<br>
-							카페아이콘 frkname llname<br>
-							lladdr<br>
-							폰트 사이즈 줄이기<br>		
+							</c:forEach>
 						</div>
 					</div>
 				</div>
-				<!-- ------------------- -->
 		        <form onsubmit="searchPlaces(); return false;">
 				</form>
 			</div>
@@ -88,14 +102,15 @@
         <ul id="placesList"></ul>
         <div id="pagination"></div>
 	</div>
-	<!-- 프랜차이즈 카페 목록 나열 -->
-<%-- 	<div id="franchiseList">
+<%--	<!-- 프랜차이즈 카페 목록 나열 -->
+ 	<div id="franchiseList">
 		<c:forEach var="list" items="${franchiseList}">
 			<a href="javascript:void(0);" id="${list.frcode}" onclick="initMap(id)">${list.frkname}</a>&nbsp;&nbsp;&nbsp;
 		</c:forEach>
 	</div> --%>
 	<input type="button" value="reset" onclick="initMap()">
 </div>
+<br><br>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

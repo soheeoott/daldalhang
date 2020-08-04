@@ -23,7 +23,7 @@
 </head>
 <body>
 <div align="center" id="wrap">
-	<span id="notice_title">공지작성</span><br><br>
+	<span id="notice_title">공지작성</span><br><br><br>
 	<form action="ninsert" method="post">
 		<table id="noticeForm">
 			<tr>

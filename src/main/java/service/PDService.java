@@ -11,4 +11,6 @@ public interface PDService {
 	ProductVO selectOne(ProductVO vo);
 	
 	int insert(ProductVO vo);
+	
+	List<ProductVO> mProductList(String muname);
 }

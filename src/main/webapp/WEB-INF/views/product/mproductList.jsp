@@ -43,7 +43,7 @@
 			<div class="main">
 			
 				<div class="productList">
-						<c:forEach var="list" items="${pdlist}">
+						<c:forEach var="list" items="${mpdlist}">
 						
 						<%-- <c:if test = "${list.bcode == 1}">
 							<hr>

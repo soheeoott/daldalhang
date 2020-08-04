@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, vo.NoticeVO, service.NServiceImpl"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList" %>
+    <!-- , vo.NoticeVO, service.NServiceImpl -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -19,8 +20,7 @@
 			<!-- 사이드 메뉴 -->
 			<div id="personalBar" align="right">
 			
-			<c:choose>
-	
+			<c:choose>	
 				<c:when test="${logID != null}">
 					<p id="login_success">
 						<a href="mypagef">${logID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -46,8 +46,7 @@
 						<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 						<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
 					</p>
-				</c:when>
-		
+				</c:when>		
 			</c:choose>
 			
 			</div>
@@ -60,7 +59,20 @@
 				</div>
 				<div class = "menu">
 					<a href="#" class="main_menu">브랜드</a>
-					<a href="pdlist" class="main_menu">메뉴</a>
+					
+					<div class="dropdown">
+						<a href="pdlist" class="main_menu">메뉴</a>
+						<div class="menu_dropdown">
+							<c:forEach var="list" items="${menulist}">
+								<c:if test="${list.mucategory=='coffee'}"><a href="pdlist?mucategory=${list.mucategory}" value="coffee">커피</a></c:if>
+								<c:if test="${list.mucategory=='dessert'}"><a href="pdlist?mucategory=${list.mucategory}" value="dessert">디저트</a></c:if>
+								<c:if test="${list.mucategory=='drink'}"><a href="pdlist?mucategory=${list.mucategory}" value="drink">음료</a></c:if>
+								<c:if test="${list.mucategory=='food'}"><a href="pdlist?mucategory=${list.mucategory}" value="food">음식</a></c:if>
+								<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">특별!</a></c:if>							
+							</c:forEach>
+						 </div>
+					 </div>
+					
 					<a href="#" class="main_menu">이벤트</a>
 					<a href="maplist" class="main_menu">매장찾기</a>
 					<a href="nlist" class="main_menu">공지사항</a>

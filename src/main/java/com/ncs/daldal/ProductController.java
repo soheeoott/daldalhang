@@ -1,9 +1,10 @@
 package com.ncs.daldal;
 
 import java.io.File;
-
 import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,14 +30,79 @@ public class ProductController {
 	
 	@Autowired
 	FRService frservice;
+	
+	@Autowired
+	MUService menuservice;
 
-	@RequestMapping(value="/pdlist")
-	public ModelAndView pdlist(ModelAndView mv) {
+/*	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView (ModelAndView mv,
+				@RequestParam String mucategory) {
+
+		List<MenuVO> menulist = menuservice.selectList();
+		vo.setEmail_id(mucategory);
+
+		service.verify(vo);
 		
+		mv.setViewName("personal/signSuccess");
+		return mv;
+	}
+	*/
+	
+	// 2020-08-04 메뉴를 눌렀을 때 출력되는 상품 페이지
+	@RequestMapping(value="/mpdlist")
+	public ModelAndView mpdlist(ModelAndView mv, MenuVO mvo, HttpSession session) {
+		
+		// 세션에 저장된 값 menu 불러와 다시 저장 => session null
+/*		String menulist = (String)session.getAttribute("menulist");
+		mv.addObject("menulist", menulist);		
+		System.out.println("menulist => "+menulist);
+*/		
+		// 2020.08.03 menu 출력
+		List<MenuVO> mulist = menuservice.selectList();
+		mv.addObject("mulist", mulist);
+		
+		// menu category 출력
+		String menucategory = mvo.getMucategory();
+		List<MenuVO> cpdlist = menuservice.productList(menucategory);
+		mv.addObject("cpdlist", cpdlist);
+		
+		// menu category 클릭 시 상품 리스트 출력
+		String muname = mvo.getMuname();
+		List<ProductVO> mpdlist = pdservice.mProductList(muname);
+		
+		if (mpdlist != null) {
+			mv.addObject("mpdlist", mpdlist);
+
+		} else {
+			mv.addObject("message", "검색된 자료가 없습니다.");
+		}
+		mv.setViewName("product/mproductList");
+		return mv;
+	}
+	
+	@RequestMapping(value="/pdlist")
+	public ModelAndView pdlist(ModelAndView mv, MenuVO mvo, HttpSession session) {
+		
+		// 세션에 저장된 값 menu 불러와 다시 저장 => session null
+/*		String menulist = (String)session.getAttribute("menulist");
+		mv.addObject("menulist", menulist);
+	*/	
+		// 상품 리스트 출력
 		List<ProductVO> pdlist = pdservice.selectList();
+
+		// 2020.08.03 menu 출력
+		List<MenuVO> mulist = menuservice.selectList();
+		mv.addObject("mulist", mulist);
+		
+		// menu 클릭했을 때 나오는 category 출력
+		String mucategory = mvo.getMucategory();
+
+		List<MenuVO> cpdlist = menuservice.productList(mucategory);
+		mv.addObject("cpdlist", cpdlist);
 		
 		if (pdlist != null) {
 			mv.addObject("pdlist", pdlist);
+
 		} else {
 			mv.addObject("message", "검색된 자료가 없습니다.");
 		}

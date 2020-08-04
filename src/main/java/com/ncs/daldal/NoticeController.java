@@ -18,13 +18,13 @@ import vo.PrevNextVO;
 public class NoticeController {
 	@Autowired
 	NService service;
-	
+
 	// Criteria를 이용한 공지사항 페이징 : notice/noticeList.jsp
 	@RequestMapping(value="/nlist")
 	public ModelAndView nlist(ModelAndView mv, SearchCriteria cri) {
 		cri.setSnoEno();	
 		mv.addObject("daldal",service.searchList(cri));
-		
+
 		// 2) Page 처리
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);

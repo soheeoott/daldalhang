@@ -24,3 +24,12 @@
 	.hashtag {
 		color : gray;
 	}
+	
+	.menu_css {
+
+	}
+	
+	.menu_css a {
+		margin-right: 5em;
+		margin-top: 3em;
+	}
