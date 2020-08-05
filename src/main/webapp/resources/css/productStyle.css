@@ -1,4 +1,7 @@
-
+	.count {
+		margin-bottom: 20px;
+	}
+	
 	.productList p {
 	  display: block;
 	  margin-block-start: 1em;

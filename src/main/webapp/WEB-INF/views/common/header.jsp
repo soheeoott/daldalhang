@@ -79,36 +79,49 @@
 			</div>
 			
 			<!-- 검색창 -->
-			<div>
-			<form name="searchform" method="post" action="searchList">
-			        <select name="searchOption">
-			            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
-			           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >해시태그</option>
-			           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >브랜드</option>
-			           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >상품명</option>
-			           <option value="muname" <c:out value="${map.searchOption == 'muname'?'selected':''}"/> >메뉴</option>
-			       </select>
-			       
-			       <input name="keyword" value="${map.keyword}">
-			       <input type="submit" value="조회">
-			</form>
+			<div class="searchWrap">
+				<form name="searchform" method="post" action="searchList">
+						<div class="searchSelect">
+					        <select name="searchOption" class="searchOption">
+					            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+					           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >해시태그</option>
+					           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >브랜드</option>
+					           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >상품명</option>
+					           <option value="muname" <c:out value="${map.searchOption == 'muname'?'selected':''}"/> >메뉴</option>
+					       </select>
+				       </div>
+				       
+				       <div class="search">
+				       
+				       		<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="통합 검색">
+				       		<%-- <c:choose>
+				       			<c:when test="${map.searchOption == 'hashtag'?'selected':''}">
+				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="해시태그 검색">
+				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="통합 검색">
+				       			</c:when>
+				       			
+				       			<c:when test="${map.searchOption == 'franchise'?'selected':''}">
+				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="브랜드명 검색">
+				       			</c:when>
+				       			
+				       			<c:when test="${map.searchOption == 'pdname'?'selected':''}">
+				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="상품명 검색">
+				       			</c:when>
+				       			
+				       			<c:when test="${map.searchOption == 'muname'?'selected':''}">
+				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="메뉴 검색">
+				       			</c:when>
+				       		</c:choose> --%>
+				       </div>
+				       
+				       <div class= "searchB">
+				       		<button class="searchBtn">
+				       			<img src="resources/image/search.png" width= "23" height = "23">
+				      			<!-- <input type="submit" value="조회" class="searchBtn"> -->
+				      		</button>
+				       </div>
+				</form>
     		</div>
-    					
-			<!-- 검색창 -->
-			<hr hidden>
-			<div>
-				<div class="searchWrap">
-					
-					<div class="search">
-						<input type="text" placeholder="통합 검색" class="searchInput">
-					</div>
-					<div class= "searchB">
-						<button class="searchBtn">
-							<img src="resources/image/search.png" width= "23" height = "23">
-						</button>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 	<!-- /header -->
