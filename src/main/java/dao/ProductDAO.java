@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +29,31 @@ public class ProductDAO {
 		return sqlsession.insert(PD + "insert", vo);
 	}
 	
+	// 전체 제품 목록 출력
 	public List<ProductVO> productList() {
 		return sqlsession.selectList(PD + "productList");
 	}
 
+	// '메뉴' 이용했을 때 제품 목록 출력
 	public List<ProductVO> mProductList(String muname) {
 		return sqlsession.selectList(PD + "mProductList", muname);
+	}
+	
+	// 05. 게시글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가
+	public List<ProductVO> listAll(String searchOption, String keyword) throws Exception {
+	    // 검색옵션, 키워드 맵에 저장
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put("searchOption", searchOption);
+	    map.put("keyword", keyword);
+	    return sqlsession.selectList("listAll", map);
+	}
+	
+	// 07. 게시글 레코드 갯수
+	public int countArticle(String searchOption, String keyword) throws Exception {
+	    // 검색옵션, 키워드 맵에 저장
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put("searchOption", searchOption);
+	    map.put("keyword", keyword);
+	    return sqlsession.selectOne("countArticle", map);
 	}
 }

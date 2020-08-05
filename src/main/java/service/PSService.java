@@ -22,6 +22,7 @@ public interface PSService {
 
 	PersonalVO findid(PersonalVO vo);
 	
-	public void updatepw(PersonalVO vo);
-
+	int eupdate(PersonalVO vo);
+	
+	int pwupdate(PersonalVO vo);
 }

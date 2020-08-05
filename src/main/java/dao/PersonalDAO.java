@@ -21,7 +21,7 @@ public class PersonalDAO {
 	
 	// @Override : 조상에 아무것도 없는데 Override 지정 - 오류
 	public List<PersonalVO> selectList() {
-		return (List)sqlsession.selectList(PS + "selectList");
+		return sqlsession.selectList(PS + "selectList");
 	}
 	
 	public PersonalVO selectOne(PersonalVO vo) {
@@ -48,7 +48,11 @@ public class PersonalDAO {
 		return sqlsession.selectOne(PS + "findid", vo);
 	}
 
-	public void updatepw(PersonalVO vo) {
-		sqlsession.update(PS + "updatepw", vo);
+	public int eupdate(PersonalVO vo) {
+		return sqlsession.update(PS+ "eupdate", vo);
+	}
+	
+	public int pwupdate(PersonalVO vo) {
+		return sqlsession.update(PS+ "pwupdate", vo);
 	}
 }

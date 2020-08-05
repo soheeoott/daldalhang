@@ -58,7 +58,7 @@
 					</a>
 				</div>
 				<div class = "menu">
-					<a href="#" class="main_menu">브랜드</a>
+					<a href="frlist" class="main_menu">브랜드</a>
 					
 					<div class="dropdown">
 						<a href="pdlist" class="main_menu">메뉴</a>
@@ -71,14 +71,29 @@
 								<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">특별!</a></c:if>							
 							</c:forEach>
 						 </div>
-					 </div>
-					
+					</div>
 					<a href="#" class="main_menu">이벤트</a>
 					<a href="maplist" class="main_menu">매장찾기</a>
 					<a href="nlist" class="main_menu">공지사항</a>
 				</div>
 			</div>
 			
+			<!-- 검색창 -->
+			<div>
+			<form name="searchform" method="post" action="searchList">
+			        <select name="searchOption">
+			            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+			           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >해시태그</option>
+			           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >브랜드</option>
+			           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >상품명</option>
+			           <option value="muname" <c:out value="${map.searchOption == 'muname'?'selected':''}"/> >메뉴</option>
+			       </select>
+			       
+			       <input name="keyword" value="${map.keyword}">
+			       <input type="submit" value="조회">
+			</form>
+    		</div>
+    					
 			<!-- 검색창 -->
 			<hr hidden>
 			<div>

@@ -6,11 +6,6 @@
 <head>
 <title>** DalDal **</title>
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-<style>
-	* {
-		font-family: 'Jeju Gothic', sans-serif;
-	}
-</style>
 </head>
 <body>
 	<div align="center" id="wrap">

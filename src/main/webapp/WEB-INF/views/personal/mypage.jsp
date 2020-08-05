@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <title>내정보</title>
 <link rel="stylesheet" type="text/css" href="resources/css/mypageStyle.css">
-<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">ㄴ
+<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+<script src="resources/jqLib/jquery-3.2.1.min.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -29,15 +30,15 @@
             </div>
             <div class="mail_wrap">
                 <%-- <input id="input2" type="text" name="email" readonly="readonly" value="${myInfo.email}" style="vertical-align:middle;"> --%>
-                 <div id="input2">${myInfo.email}</div>
+                 <div id="input2">${myInfo.email_id}@${myInfo.email_domain}</div>
             </div>
         <!--  <button type="submit" class="button" name="update">내가 즐겨찾는 메뉴</button>&nbsp;&nbsp;&nbsp; -->
           
-          	<input type="button" class="button" value="이메일 변경" onclick="location.href='detail?code=M'">
+          	<input type="button" class="button" value="이메일 변경" onclick="location.href='mypagef?code=M'">
           		&nbsp;&nbsp;&nbsp;
-          	<input type="button" class="button" value="비밀번호 변경" onclick="location.href='detail?code=P'">
+          	<input type="button" class="button" value="비밀번호 변경" onclick="location.href='mypagef?code=P'">
           		&nbsp;&nbsp;&nbsp;
-          	<input type="button" class="button" value="회원 탈퇴" onclick="location.href='detail?code=D'">
+          	<input type="button" class="button" value="회원 탈퇴" onclick="location.href='mypagef?code=D'">
          </form>
        	 </div>
         </fieldset>

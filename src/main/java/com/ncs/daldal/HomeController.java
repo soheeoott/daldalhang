@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import service.MUService;
 import vo.MenuVO;
@@ -20,7 +19,7 @@ import vo.MenuVO;
 @Controller
 public class HomeController {
 	
-	// 2020-08-04 메뉴 세션
+	// 2020-08-04 메뉴 세션 추가
 	@Autowired
 	MUService menuservice;
 	
@@ -34,24 +33,5 @@ public class HomeController {
 		session.setAttribute("menulist", menulist);
 		
 		return "home";
-	}
-	// ------------------------------------------------------------------
-	
-	@RequestMapping(value = "/emailf")
-	public ModelAndView emailf(ModelAndView mv) {
-		mv.setViewName("personal/eupdateForm");
-		return mv;
-	}
-	
-	@RequestMapping(value = "/pupf")
-	public ModelAndView pupf(ModelAndView mv) {
-		mv.setViewName("personal/pwupdateForm");
-		return mv;
-	}
-	
-	@RequestMapping(value = "/mypagef")
-	public ModelAndView mypagef(ModelAndView mv) {
-		mv.setViewName("personal/mypage");
-		return mv;
 	}
 }

@@ -29,4 +29,57 @@
 		WHERE m.muname=#{muname}
 		ORDER BY p.pdseq
 	</select>
+
+	<!-- 01_01. 게시글 전체목록 조회 및 검색 조회까지 -->
+	<select id="listAll" resultType="vo.ProductVO">
+	    <![CDATA[
+		SELECT DISTINCT f.frkname, p.frcode, p.pdname, p.price, p.hashtag, p.pdurl, p.pduploadfile, p.price
+		FROM product p
+		]]>
+	    <!-- WHERE절을 include 태그로 삽입 -->
+	    <include refid="search"></include>
+	</select>
+	 
+	<!-- 01_02. 게시글 레코드 갯수 -->
+	<select id="countArticle" resultType="int">
+	    SELECT count(*) FROM product p
+	    <!-- WHERE절을 include 태그로 삽입 -->
+	    <include refid="search"></include>
+	</select>
+	 
+	<!-- sql code 조각 -->
+	<!-- 반복되는 sql의 일부를 sql태그를 이용하여 따로 빼둘수 있다. -->
+	<sql id="search">
+	    <choose>
+	        <!-- 검색옵션이 전체 검색일 경우 -->
+	        <when test="searchOption == 'hashtag'">
+	            JOIN franchise f ON p.frcode=f.frcode
+	            WHERE p.hashtag LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+				ORDER BY p.pdseq;
+	        </when>
+	        
+	        <when test="searchOption == 'franchise'">
+	            JOIN franchise f ON p.frcode=f.frcode
+	            WHERE f.frkname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+				ORDER BY p.pdseq;
+	        </when>
+	        
+	        <when test="searchOption == 'pdname'">
+	            JOIN franchise f ON p.frcode=f.frcode
+	            WHERE p.pdname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+				ORDER BY p.pdseq;
+	        </when>
+	        
+	        <when test="searchOption == 'muname'">
+	           JOIN franchise f ON p.frcode=f.frcode
+	           JOIN menu m ON p.mucode1=m.mucode OR p.mucode2=m.mucode OR p.mucode3=m.mucode
+			   WHERE m.muname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+			   ORDER BY p.pdseq;
+	        </when>
+	        <!-- 전체 검색이 아닐 경우 -->
+	        <!-- <otherwise>
+	            /
+	        </otherwise> -->
+	    </choose>
+	</sql>
 </mapper>

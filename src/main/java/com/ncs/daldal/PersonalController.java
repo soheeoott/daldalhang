@@ -1,13 +1,15 @@
 package com.ncs.daldal;
 
+import email.MailHandler;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.mail.MessagingException;
@@ -28,7 +30,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import email.MailHandler;
 import service.PSService;
 import vo.PersonalVO;
 
@@ -42,7 +43,132 @@ public class PersonalController {
 	
 	@Inject
 	private JavaMailSender mailSender;
+	
+	@RequestMapping(value = "/mypagef")
+	public ModelAndView mypagef(HttpServletRequest request, ModelAndView mv, PersonalVO vo) {
 
+		// 1) login 여부 확인
+		String id = "";
+		HttpSession session = request.getSession(false);
+		if (session != null && session.getAttribute("logID") != null) {
+			id = (String) session.getAttribute("logID");
+		} else {
+			// login 하도록 유도 후에 메서드 return 으로 종료
+			mv.addObject("message", "로그인 후 이용 가능합니다");
+			mv.setViewName("personal/loginForm");
+			return mv;
+		}
+		vo.setId(id);
+		vo = service.selectOne(vo);
+		mv.addObject("myInfo", vo);
+
+		// 4) 결과 ( Detail or Update 인지 )
+		// => request.getParameter("code") 가 U 인지 확인
+		mv.setViewName("personal/mypage");
+		if ("M".equals(request.getParameter("code"))) {
+			// 이메일 수정화면으로
+			mv.setViewName("personal/eupdateForm");
+		} else if ("P".equals(request.getParameter("code"))) {
+			// 비밀번호 수정화면으로
+			mv.setViewName("personal/pwupdateForm");
+		} else if ("D".equals(request.getParameter("code"))) {
+			// 회원탈퇴 화면으로
+			mv.setViewName("personal/deleteForm");
+		//} else if ("E".equals(request.getParameter("code"))) { // 내정보 수정에서 오류 상황
+		//	mv.addObject("message", "변경에 실패했습니다. 다시 시도 해주세요");
+		}
+		return mv;
+	}
+	
+	@RequestMapping(value = "/pwupdate")
+	public ModelAndView pwupdate(HttpServletRequest request, 
+			ModelAndView mv, PersonalVO vo) throws IOException {
+	
+		service.pwupdate(vo);
+		
+		if (service.pwupdate(vo) > 0) {
+			//mv.setViewName("redirect:mypagef");
+			mv.addObject("fCode", "PS");
+		} else {
+			//mv.setViewName("personal/pwupdateForm");
+			mv.addObject("fCode", "PF");
+		}
+		System.out.println("vo***"+vo);
+		/* mv.setViewName("jsonView"); */
+		mv.setViewName("jsonView");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/delete")
+	public ModelAndView mdelete(HttpServletRequest request, ModelAndView mv, PersonalVO vo) {
+		
+		String id = "";
+		HttpSession session = request.getSession(false);
+		/* 1) login 여부 확인
+		if (session != null && session.getAttribute("logID") != null) {
+			id = (String) session.getAttribute("logID");
+		} else {
+			// login 하도록 유도 후에 메서드 return 으로 종료
+			mv.addObject("message", "~~ 로그인 후에 하세요 ~~");
+			mv.setViewName("login/loginForm");
+			return mv;
+		}*/
+		vo.setId(id);
+
+		if (service.delete(vo) > 0) {
+			// Delete 성공
+			session.invalidate(); // 삭제 되면 session 도 삭제해야함.
+		} else {
+			// Delete 실패
+			mv.setViewName("personal/deleteForm");
+			mv.addObject("fCode", "회원 탈퇴에 실패했습니다. 다시 시도하세요.");
+		}
+		return mv;
+	}
+	
+	@RequestMapping("/eupdateM")
+	public ModelAndView eupdate(ModelAndView mv, PersonalVO vo) throws MessagingException, UnsupportedEncodingException {
+
+		MailHandler sendMail = new MailHandler(mailSender);
+		sendMail.setSubject("[달달행 이메일 변경 확인]");
+		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
+				.append("이메일 변경을 확인해주세요.<br><a href='http://localhost:8080/daldal/eupdate?email_id=" + vo.getEmail_id()
+						+ "&email_domain=" + vo.getEmail_domain() + "&id=" + vo.getId())
+				.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
+		sendMail.setTo(vo.getEmail_id() + "@" + vo.getEmail_domain());
+		sendMail.send();
+		
+		mv.setViewName("personal/eupdateConfirm");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/eupdate", method = RequestMethod.GET)
+	public ModelAndView eupdateSuccess(HttpServletResponse response, HttpServletRequest request, PersonalVO vo, ModelAndView mv,
+			@RequestParam String id, @RequestParam String email_id, @RequestParam String email_domain) {
+
+		/*
+		 * HttpSession session = request.getSession(false); id = (String)
+		 * session.getAttribute("logID");
+		 */
+		id = vo.getId();
+		vo.setEmail_id(email_id);
+		vo.setEmail_domain(email_domain);
+
+		service.eupdate(vo);
+		
+		if (service.eupdate(vo) > 0) {
+			mv.setViewName("redirect:mypagef");
+			mv.addObject("fCode", "US");
+		} else {
+			// 회원수정 실패 -> 내정보 보기 화면으로
+			mv.setViewName("personal/eupdateForm");
+			mv.addObject("fCode", "UF");
+		}
+		return mv;
+	}
+	
 	@RequestMapping("/join")
 	public ModelAndView join(ModelAndView mv, PersonalVO vo) throws MessagingException, UnsupportedEncodingException {
 
@@ -308,14 +434,12 @@ public class PersonalController {
 
 	@RequestMapping(value = "/joinf")
 	public ModelAndView joinf(ModelAndView mv) {
-
 		mv.setViewName("personal/joinForm");
 		return mv;
 	}
 
 	@RequestMapping(value = "/loginf")
 	public ModelAndView loginf(ModelAndView mv) {
-		
 		mv.setViewName("personal/loginForm");
 		return mv;
 	}
@@ -387,7 +511,9 @@ public class PersonalController {
 		
 		String temp_pw = "te" + id + "mp";
 		vo.setPassword(temp_pw);
-		service.updatepw(vo);
+		
+		/* service.pwupdate(vo); */
+		service.pwupdate(vo);
 		
 		MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setSubject("[비밀번호 찾기]");

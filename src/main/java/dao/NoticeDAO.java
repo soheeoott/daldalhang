@@ -42,7 +42,7 @@ public class NoticeDAO {
 	} // countUp() 조회수
 	
 	public List<NoticeVO> selectList() {
-		return (List)sqlsession.selectList(NS+"selectList");
+		return sqlsession.selectList(NS+"selectList");
 	} // selectList()
 
 	public NoticeVO selectOne(NoticeVO vo){

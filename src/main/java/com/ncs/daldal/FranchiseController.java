@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import service.FRService;
 import service.MAPService;
+import service.PDService;
 import vo.FranchiseVO;
 import vo.LlmapVO;
 
@@ -16,14 +17,18 @@ import vo.LlmapVO;
 public class FranchiseController {
 
 	@Autowired
-	FRService service;
+	FRService frservice;
+	
 	@Autowired
 	MAPService mservice;
+	
+	@Autowired
+	PDService pdservice;
 	
 	@RequestMapping(value="/flist")
 	public ModelAndView flist(ModelAndView mv) {
 		
-		List<FranchiseVO> list = service.selectList();
+		List<FranchiseVO> list = frservice.selectList();
 		List<LlmapVO> slist = mservice.selectList();
 		
 		if(list != null || slist != null) {
@@ -33,6 +38,20 @@ public class FranchiseController {
 			mv.addObject("message", "검색된 자료가 없습니다.");
 		}
 		mv.setViewName("findAStore/findAStore");
+		return mv;
+	}
+	
+	@RequestMapping(value="/frlist")
+	public ModelAndView frlist(ModelAndView mv) {
+		
+		List<FranchiseVO> frlist = frservice.selectList();
+		
+		if(frlist != null) {
+			mv.addObject("frlist", frlist);
+		} else {
+			mv.addObject("message", "검색된 자료가 없습니다.");
+		}
+		mv.setViewName("franchise/franchiseList");
 		return mv;
 	}
 }

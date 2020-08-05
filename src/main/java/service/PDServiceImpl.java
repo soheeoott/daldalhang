@@ -33,4 +33,15 @@ public class PDServiceImpl implements PDService {
 	public List<ProductVO> mProductList(String muname) {
 		return dao.mProductList(muname);
 	}
+	
+	// 05. 게시글 전체 목록 boardDAO.listAll메서드 호출
+	@Override
+	public List<ProductVO> listAll(String searchOption, String keyword) throws Exception {
+	    return dao.listAll(searchOption, keyword);
+	}
+	// 07. 게시글 레코드 갯수 boardDao.countArticle메서드 
+	@Override
+	public int countArticle(String searchOption, String keyword) throws Exception {
+	    return dao.countArticle(searchOption, keyword);
+	}
 }

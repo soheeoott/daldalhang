@@ -68,9 +68,9 @@
 							<button class="searchMapBtn">
 								<img src="resources/image/search.png" width= "23" height = "23" alt="search_icon"> <!-- id="searchBtn" -->
 							</button>
-						</div>
+						</div>					
 						<br><hr>
-						<div class="tab_content_css">
+						<div class="tab_content_css" align="left">
 							<c:forEach var="list" items="${storeList}">
 								<table class="tab_table">
 									<tr>
@@ -78,19 +78,19 @@
 											<img src="${list.fruploadfile}" width="60px" align="middle">
 										</td>
 										<td>
-											<%-- <a onclick="javascript:;initMap(${list.frkname}&${list.llname}&${list.latvalue}&${list.lngvalue})"> --%>
+											<a href="javascript:void(0);" onclick="initMap('${list.frkname}','${list.llname}','${list.lladdr}','${list.streetnum}','${list.latvalue}','${list.lngvalue}')">
 												${list.frkname}&nbsp;${list.llname}
-											<!-- </a> -->
+											</a>
 										</td>
 									</tr>
 									<tr>
 										<td>
 											${list.lladdr}
 										</td>
-									</tr>							
+									</tr>						
 								</table>
 								<hr>
-							</c:forEach>
+							</c:forEach>	
 						</div>
 					</div>
 				</div>

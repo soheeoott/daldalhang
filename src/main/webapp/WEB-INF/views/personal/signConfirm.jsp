@@ -21,7 +21,6 @@
         <div id="ssBtnBox">
                 <a href="home"><div class="ssBtn" style=" cursor: pointer;"><p class="ssBtnText">메인으로 이동</p></div></a>
         </div>
-        
     </div>
 </div>
 </body>

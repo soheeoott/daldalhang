@@ -145,7 +145,7 @@
 							</div> -->
 							
 							<div class = "joinf">
-								<a href="joinForm">회원가입</a>
+								<a href="joinf">회원가입</a>
 							</div>
 						</div>
 						

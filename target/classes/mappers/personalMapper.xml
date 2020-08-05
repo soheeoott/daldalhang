@@ -13,7 +13,8 @@
 	</select>
 	
 	<insert id = "insert" parameterType="vo.PersonalVO">
-		insert into personal (id, password, email_id, email_domain, verify) values (#{id}, #{password}, #{email_id}, #{email_domain}, #{verify})
+		insert into personal VALUES (#{id}, #{password}, #{email_id}, #{email_domain}, #{verify})
+		<!-- insert into personal (id, password, email_id, email_domain, verify) values (#{id}, #{password}, #{email_id}, #{email_domain}, #{verify}) -->
 	</insert>
 	
 	<select id = "IdCheck" parameterType="String" resultType="int">

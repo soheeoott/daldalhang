@@ -16,8 +16,13 @@ public class PSServiceImpl implements PSService {
 	PersonalDAO dao;
 	
 	@Override
-	public void updatepw(PersonalVO vo){
-		dao.updatepw(vo);
+	public int pwupdate(PersonalVO vo) {
+		return dao.pwupdate(vo);
+	}
+	
+	@Override
+	public int eupdate(PersonalVO vo) {
+		return dao.eupdate(vo);
 	}
 	
 	@Override
