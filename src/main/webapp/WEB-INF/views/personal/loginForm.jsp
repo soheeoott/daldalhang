@@ -17,17 +17,27 @@
 			$(document).ready(function(){
 				
 				var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
-			    $("input[name='id']").val(userInputId); 
-			    
-			    if($("input[name='notExist']").val() == "true"){
-			    	alert("이메일이 인증되지 않았습니다. 회원 가입을 해주세요.");
+			    $("input[name='id']").val(userInputId);
+			   
+				if($("input[name='notExist']").val() == "true"){
+				    	
+					/* alert('가입하지 않은 아이디 이거나 잘못된 비밀번호 입니다!'); */
+						$('#iMessage').html('가입하지 않은 아이디이거나 잘못된 비밀번호 입니다!');
+				    	$('#iMessage').css('color', 'red');
+				} 
+				    
+				if($("input[name='notVerify']").val() == "true"){
+					/* alert('이메일 인증이 되지 않았습니다! 이메일을 확인하시고 인증해주시기 바랍니다!'); */
+					
+					$('#iMessage').html('이메일 인증이 되지 않았습니다. <br> 이메일을 확인하시고 인증해주시기 바랍니다!');
+				   	$('#iMessage').css('color', 'red');
 				}
 				
-			    if($("input[name='id']").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩
-			                                           // 아이디 저장하기 체크되어있을 시,
-			        $("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
-			    }
-			    
+				 if($("input[name='id']").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩
+                     // 아이디 저장하기 체크되어있을 시,
+					$("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+				}
+				
 			    $("#idSaveCheck").change(function(){ // 체크박스에 변화가 발생시
 			    
 			    	 if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
@@ -84,14 +94,14 @@
 
           <div class="container">
 
-          <div class="form">  
+          	<div class="form">  
           
-      		<form action="login" name="form1" method="post"> 
-                <section class="loginform">
+      			<form action="login" name="form1" method="post"> 
+             	   <section class="loginform">
                 
-                <div class= "img_wrap">
-                  <img src="resources/image/logo2.png" width="200" class="img">
-                 </div>
+              	 	 	<div class= "img_wrap">
+              	 	  	 <img src="resources/image/logo2.png" width="200" class="img">
+              	 	 	</div>
             		
             			<div class="input_box id" align="center">
             				<input type="text" name="id" id="id" placeholder="아이디">
@@ -100,6 +110,8 @@
             		
             			<div class="input_box pw">
             				<input type="password" name="password" id="password" placeholder="비밀번호">
+            				<div id = "iMessage"></div>
+            				
             				<!-- Kakao -->
             				<input type="hidden" name="kakaoAccess_token" 				id="kakakoAccess_token">
             				<input type="hidden" name="kakaoToken_type" 				id="kakakoToken_type">
@@ -116,6 +128,9 @@
             				
             				<!-- notExist -->
             				<input type="hidden" name="notExist" 						id="notExist" value="${notExist}">
+            				
+            				<!-- notVerify -->
+            				<input type="hidden" name="notVerify" 						id="notVerify" value="${notVerify}">
             				
             				<div id="pw_check"></div>
             			</div>
@@ -139,97 +154,123 @@
 									<span class = "stick">|</span>
 							</div>
 							
-							<!-- <div class = "find_pw">
-								<a href="findPwReady" >비밀번호 찾기</a>
-									<span class = "stick">|</span>
-							</div> -->
-							
 							<div class = "joinf">
 								<a href="joinf">회원가입</a>
 							</div>
 						</div>
 						
 						<div class="form_end">
-            				<input type="submit" class="submit" value="로그인">
+            				<input type="submit" class="submit" id="submit" value="로그인">
             			</div>
-    	
-		 <%
-		    String clientId = "6S696taO_GdRdtrcL2WK";//애플리케이션 클라이언트 아이디값";
-		    String redirectURI = URLEncoder.encode("http://localhost:8080/daldal/login?loginFlag=N", "UTF-8");
-		    SecureRandom random = new SecureRandom();
-		    String state = new BigInteger(130, random).toString();
-		    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-		    apiURL += "&client_id=" + clientId;
-		    apiURL += "&redirect_uri=" + redirectURI;
-		    apiURL += "&state=" + state;
-		    session.setAttribute("state", state);
-		   %>
-			
-			
-    		</section>
-      		</form>
-      		
-      		<div class = "socialform">
-        		<div class = "btn" align="center">
-        			<div>
-		        		<a href="<%=apiURL%>">
-	        				<img id="naver-login-btn" src="resources/image/login_btn_naver.png" class = "socialbtn"/>
-	        			</a>
-	        				<img id="kakao-login-btn" src="resources/image/login_btn_kakao.png" class = "socialbtn"/>
-	        				<img src="resources/image/login_btn_google.png" class = "socialbtn"/>
-	      	  		</div>
-		      	 </div>	
-		      	 
-				<script type='text/javascript'>
-			        //<![CDATA[
-			        // 사용할 앱의 JavaScript 키를 설정해 주세요.
-			        Kakao.init('7a1993d1c33d5ff4f8871de6ef549ab1');
-			        // 카카오 로그인 버튼을 생성합니다.
-			        Kakao.Auth.createLoginButton({
-			            container: '#kakao-login-btn',
-			            success: function (authObj) {
-			            
-			            	document.form1.kakaoAccess_token.value 			= authObj.access_token;
-			            	document.form1.kakaoToken_type.value 			= authObj.token_type;
-			            	document.form1.kakaoRefresh_token.value 		= authObj.refresh_token;
-			            	document.form1.kakaoExpires_in.value 			= authObj.expires_in;
-			            	document.form1.kakaoRefresh_token_expires_in.value = authObj.refresh_token_expires_in;
-			            	document.form1.loginFlag.value = "K";			            	
-			            	
-			                //alert(JSON.stringify(authObj));
-			            	
-			            	document.form1.submit();
-			            },
-			            fail: function (err) {
-			                alert(JSON.stringify(err));
-			            }
-			        });
-			        
-			        function onSignIn(googleUser) {
-			      	  	var profile = googleUser.getBasicProfile();
-			      	  	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-			      	  	console.log('Name: ' + profile.getName());
-			      	  	/* console.log('Image URL: ' + profile.getImageUrl()); */
-			      	  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-			      	  	
-			      	  	alert("profile.getId=" + profile.getId() + "profile.getName=" + profile.getName() + "profile.getImageUrl()=" + profile.getImageUrl() + "profile.getEmail()=" + profile.getEmail());
-			      	  	
-			      	  	document.form1.googleEmail.value 	= profile.getEmail();
-		            	document.form1.googleName.value 	= profile.getName();
-		            	document.form1.loginFlag.value 		= "G";
-		            	
-		                // alert(JSON.stringify(authObj));
-		            	
-		            	document.form1.submit();
-			        }//onSignIn
-			       			        
-			      //]]>
-				</script>
-    		</div> <!-- socialform -->
+    					
+    					<!-- 네이버로 로그인을 위한 설정 -->
+						<%
+   							String clientId = "6S696taO_GdRdtrcL2WK";//애플리케이션 클라이언트 아이디값";
+  							String redirectURI = URLEncoder.encode("http://localhost:8080/daldal/login?loginFlag=N", "UTF-8");
+  							SecureRandom random = new SecureRandom();
+   							String state = new BigInteger(130, random).toString();
+   							String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+   							apiURL += "&client_id=" + clientId;
+   							apiURL += "&redirect_uri=" + redirectURI;
+   							apiURL += "&state=" + state;
+   							session.setAttribute("state", state);
+  						%>
+
     		
-          </div> <!-- form   -->
-          </div>  <!-- container -->
+    					<div class = "socialform">
+        					<div class = "btn" align="center">
+        							
+        							 <!-- 네이버 로그인 버튼 -->
+        							<div class="sbtn">
+        								<a href="<%=apiURL%>">
+	        							<img id="naver-login-btn" src="resources/image/naver_small_Green.png" class = "socialbtn" />
+	        							</a>
+        							</div>
+        							
+        							<!-- 카카오 로그인 버튼 -->
+		        					<div class="sbtn">
+		        						<img id="kakao-login-btn" src="resources/image/login_btn_kakao.jpg" class = "socialbtn" />
+		        					</div>
+		        					
+		        					<!-- 구글 로그인 버튼 -->
+	        						<div id="my-signin2" class = "sbtn"></div>
+	        						
+	        					<!-- 구글 로그인 버튼 변경을 위한 설정	 -->
+ 								 <script>
+  								  function onSuccess(googleUser) {
+     								//console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+      
+    								var profile = googleUser.getBasicProfile();
+									console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+									console.log('Name: ' + profile.getName());
+									console.log('Image URL: ' + profile.getImageUrl()); 
+									console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	
+								  	document.form1.googleEmail.value 	= profile.getEmail();
+  									document.form1.googleName.value 	= profile.getName();
+									document.form1.loginFlag.value 		= "G";
+
+									// alert(JSON.stringify(authObj));
+
+									document.form1.submit();
+    							}
+    							
+  								function onFailure(error) {
+      								console.log(error);
+    							}
+  								
+    							function renderButton() {
+      								gapi.signin2.render('my-signin2', {
+        							'scope': 'profile email',
+        							'width': 60,
+        							'height': 60,
+        							'longtitle': true,
+        							'theme': 'dark',
+        							'onsuccess': onSuccess,
+        							'onfailure': onFailure
+      								});
+    							}
+  							</script>
+
+  							<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+	        						
+	      	  				</div><!-- btn -->	
+	      				</div><!-- socialform -->
+		      	 
+						<script type='text/javascript'>
+			      		  //<![CDATA[
+			      		  // 사용할 앱의 JavaScript 키를 설정해 주세요.
+			        		Kakao.init('7a1993d1c33d5ff4f8871de6ef549ab1');
+			       		 // 카카오 로그인 버튼을 생성합니다.
+			        		Kakao.Auth.createLoginButton({
+			            		container: '#kakao-login-btn',
+			            		success: function (authObj) {
+			            
+			            		document.form1.kakaoAccess_token.value 			= authObj.access_token;
+			            		document.form1.kakaoToken_type.value 			= authObj.token_type;
+			            		document.form1.kakaoRefresh_token.value 		= authObj.refresh_token;
+			            		document.form1.kakaoExpires_in.value 			= authObj.expires_in;
+			            		document.form1.kakaoRefresh_token_expires_in.value = authObj.refresh_token_expires_in;
+			            		document.form1.loginFlag.value = "K";			            	
+			            	
+			                	//alert(JSON.stringify(authObj));
+			            	
+			            		document.form1.submit();
+			            		},
+			            		fail: function (err) {
+			                		alert(JSON.stringify(err));
+			            		}
+			        		});
+			        
+			        					       			        
+			      		//]]>
+						</script>
+    				</section>
+  		  		</form>
+  			 </div> <!-- form   -->
+		 </div>  <!-- container -->
   	</div> <!-- wrap -->
+  	
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

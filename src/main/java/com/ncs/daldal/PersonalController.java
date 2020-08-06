@@ -373,7 +373,8 @@ public class PersonalController {
 			 	
 			} catch (Exception e) {
 				System.out.println(e);
-			}			
+			}	
+			
 		} else if (vo.getLoginFlag().equals("G")) {
 			// 구글 로그인
 			  System.out.println("google name=>"+vo.getGoogleName());
@@ -384,46 +385,39 @@ public class PersonalController {
 		}
 		
 		HttpSession session = request.getSession();
-			
-		if (vo.getLoginFlag().contentEquals("L")) {
-			// 회원가입 여부를 체크하는 로직이 아닙니다. 로직 수정하세요.
-			vo = service.selectOne(vo);
-			vo.setVerify('y');	
-		} else {
-			if(vo.getId() == null || vo.getId().trim().length() < 1) {
-				vo = null;
-			} else {
-				// 소셜로 로그인 했을때는 기본 값을 설정
-				vo.setVerify('s');	
-			}				
-		}
+		String password = vo.getPassword();
 		
-		if (vo != null) {
+		if (vo.getLoginFlag().contentEquals("L")) {
+			vo = service.selectOne(vo);
 			
-			if (vo.getVerify() == 's') {
+			if (vo != null && vo.getPassword().equals(password)) {
 				
-				session.setAttribute("slogID", vo.getId());
-				mv.setViewName("redirect:home");
-				return mv;
-			
-			} else if(vo.getVerify() == 'y'){
-				session.setAttribute("logID", vo.getId());
-				mv.setViewName("redirect:home");
-				return mv;
+				if(vo.getVerify() == 'y'){
+					session.setAttribute("logID", vo.getId());
+					mv.setViewName("redirect:home");
+					return mv;
+					
+				}  else if(vo.getVerify() == 'n') {
+					mv.setViewName("personal/loginForm");
+					mv.addObject("notVerify", true); // 이메일 인증이 되지 않았습니다! 이메일을 확인하시고 인증해주시기 바랍니다!
+					return mv;
+					
+				} 	else {
+					mv.setViewName("personal/loginForm");
+					mv.addObject("notVerify", true); // 이메일 인증이 되지 않았습니다! 이메일을 확인하시고 인증해주시기 바랍니다!
+					return mv;
+				}
 				
-			} else if(vo.getVerify() == 'n') {
+			} else {
 				mv.setViewName("personal/loginForm");
-				mv.addObject("notExist", true); // 이메일 인증이 되지 않았습니다! 이메일을 확인하시고 인증해주시기 바랍니다!
-				return mv;
+				mv.addObject("notExist", true); // 가입하지 않은 아이디나 잘못된 비밀번호 입니다!
 			}
 			
-		} else {
-			mv.setViewName("personal/loginForm");
-			mv.addObject("notVerify", true); // 아이디나 비밀번호가 일치하지 않습니다!
-			return mv;
+		}  else if (vo.getVerify() == 's') {
+			session.setAttribute("slogID", vo.getId());
+			mv.setViewName("redirect:home");
 		}
-		
-		return mv;
+			return mv;
 	}
 			
 	@RequestMapping(value = "/personal/idCheck", method = RequestMethod.GET)
@@ -461,15 +455,9 @@ public class PersonalController {
 	
 	@RequestMapping(value = "/findidf")
 	public ModelAndView findidf(ModelAndView mv) {
-		mv.setViewName("personal/findidForm");
+		mv.setViewName("personal/searchIdpass");
 		return mv;
 	}
-	
-//	@RequestMapping(value = "/findpwf")
-//	public ModelAndView findpwf(ModelAndView mv) {
-//		mv.setViewName("personal/findpwForm");
-//		return mv;
-//	}
 	
 	@RequestMapping(value = "/findid", method = RequestMethod.POST)
 	public @ResponseBody String findid(HttpServletRequest request) {

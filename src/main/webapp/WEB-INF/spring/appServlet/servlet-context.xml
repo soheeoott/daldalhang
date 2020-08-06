@@ -96,37 +96,9 @@
   		<beans:constructor-arg value="dbcI3lEYoEm3uo2O12NsZhSm" />
     </beans:bean>
    
-   <!-- <bean id="googleOAuth2Template"
-        class="org.springframework.social.google.connect.GoogleOAuth2Template">
-        <constructor-arg
-            value="771757649911-vakhnpdq4sm5bdri1m3pokbm5tj04007.apps.googleusercontent.com" />
-        <constructor-arg value="dbcI3lEYoEm3uo2O12NsZhSm" />
-    </bean> -->
- 	
  	<beans:bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
  		<beans:property name="scope" value="email"></beans:property>
  		<beans:property name="redirectUri" value="http://localhost:8080/daldal/home"/>
  	</beans:bean>
  
-    <!-- <bean id="googleOAuth2Parameters"
-        class="org.springframework.social.oauth2.OAuth2Parameters">
-        <property name="scope"
-            value="email"></property>
-        <property name="redirectUri"
-            value="http://localhost:8080/daldal/home" />
-    </bean> -->
- 
- 	<!-- <beans:bean id="authInfo" class="vo.AuthInfo">
- 		<beans:constructor-arg value="771757649911-vakhnpdq4sm5bdri1m3pokbm5tj04007.apps.googleusercontent.com"/>
- 		<beans:constructor-arg value="dbcI3lEYoEm3uo2O12NsZhSm" />
- 	</beans:bean> -->
- 
-    <!-- <bean id="authInfo" class="com.google.test.AuthInfo">
-        <constructor-arg
-            value="Your Client Id" />
-        <constructor-arg value="Your Client Secret" />
- 
-    </bean>
-  -->
-	
 </beans:beans>

@@ -14,10 +14,10 @@ $(document).ready(function(){
     	//alert($('#m_id').val());
         $.ajax({
             type: 'POST',
-            url: '/ver01/findid',
+            url: '/daldal/findid',
             data: {
-                "p_email_id" : $('#p_email_id').val(),
-                "p_email_domain" : $('#p_email_domain').val()
+                "email_id" : $('#email_id').val(),
+                "email_domain" : $('#email_domain').val()
             },
             success: function(data){
                 if($.trim(data) == "x"){
@@ -34,11 +34,11 @@ $(document).ready(function(){
     	//alert($('#m_id').val());
         $.ajax({
             type: 'POST',
-            url: '/ver01/findpw',
+            url: '/daldal/findpw',
             data: {
                 "id" : $('#id2').val(),
-                "p_email_id" : $('#p_email_id2').val(),
-                "p_email_domain" : $('#p_email_domain2').val()
+                "email_id" : $('#email_id2').val(),
+                "email_domain" : $('#email_domain2').val()
             },
             success: function(data){
             }
@@ -65,8 +65,8 @@ $(document).ready(function(){
 				
 				<div class="siInputText">
 					<input type="text" maxlength="50" class="siInputTextBox_Email"
-						id="p_email_id" placeholder="이메일">@ <input type="text"
-						maxlength="50" class="siInputTextBox_Email" id="p_email_domain"
+						id="email_id" placeholder="이메일">@ <input type="text"
+						maxlength="50" class="siInputTextBox_Email" id="email_domain"
 						placeholder="도메인">
 				</div>
 			</div>
@@ -107,9 +107,9 @@ $(document).ready(function(){
 			
 			<div class="spwInputText">
 				<input type="text" maxlength="50" class="siInputTextBox_Email"
-					id="p_email_id2" placeholder="이메일">@ 
+					id="email_id2" placeholder="이메일">@ 
 				<input type="text" maxlength="50" class="siInputTextBox_Email" 
-					id="p_email_domain2" placeholder="도메인">
+					id="email_domain2" placeholder="도메인">
 			</div>
 			
 			<img id="spwOkbtn" class="sendEmail" src="resources/image/btn_email.png" style="cursor: pointer;">
