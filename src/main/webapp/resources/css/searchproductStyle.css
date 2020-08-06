@@ -1,0 +1,42 @@
+	.count {
+		margin-bottom: 20px;
+	}
+	
+	.productList p {
+	  display: block;
+	  margin-block-start: 1em;
+	  margin-block-end: 1em;
+	  margin-inline-start: 0px;
+	  margin-inline-end: 0px;
+	  margin-left: 15px;
+	}
+	
+	.container {
+	  width : 100%;
+	}
+	
+	.hashtagsplit {
+		float: left;
+	}
+	
+	.plist {
+		float: left;
+	    width: 25%;
+	    height: 380px;
+	    padding: 0 20px;
+	    box-sizing: border-box;
+		text-align: center;
+	}
+	
+	.hashtag {
+		color : gray;
+	}
+	
+	.menu_css {
+
+	}
+	
+	.menu_css a {
+		margin-right: 5em;
+		margin-top: 3em;
+	}

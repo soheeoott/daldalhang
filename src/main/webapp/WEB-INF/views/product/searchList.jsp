@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ include file="../common/header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,7 @@
 <title></title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/searchproductStyle.css">
 </head>
 <body>
 <div id="wrap">
@@ -45,7 +46,13 @@
 				            <c:if test="${map.frcode=='A13'}"><p>흑화당</p></c:if>
 				            <p class = "pname">${map.pdname}</p>
 				            <p>${map.price} 원</p>
-				            <div class = "hashtag">${map.hashtag}</div>
+				            
+				            <div class = "hashtag">
+				            	<c:forEach var="hashtag" items="${fn:split(map.hashtag,'#')}">
+				            		<div class = "hashtagsplit"><p># ${hashtag}</p></div>
+				            	</c:forEach>
+				            </div>
+				            
 				            <%-- <p>
 				            	<a href="${path}/board/view.do?bno=${row.bno}">${row.title}</a>
 				            </p> --%>
