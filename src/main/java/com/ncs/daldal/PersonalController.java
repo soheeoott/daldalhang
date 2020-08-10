@@ -102,26 +102,37 @@ public class PersonalController {
 	@RequestMapping(value = "/delete")
 	public ModelAndView mdelete(HttpServletRequest request, ModelAndView mv, PersonalVO vo) {
 		
-		String id = "";
+		/*String id = "";
 		HttpSession session = request.getSession(false);
-		/* 1) login 여부 확인
-		if (session != null && session.getAttribute("logID") != null) {
-			id = (String) session.getAttribute("logID");
-		} else {
-			// login 하도록 유도 후에 메서드 return 으로 종료
-			mv.addObject("message", "~~ 로그인 후에 하세요 ~~");
-			mv.setViewName("login/loginForm");
-			return mv;
-		}*/
+		
 		vo.setId(id);
 
 		if (service.delete(vo) > 0) {
 			// Delete 성공
 			session.invalidate(); // 삭제 되면 session 도 삭제해야함.
+			mv.setViewName("personal/deleteSuccess");
 		} else {
 			// Delete 실패
 			mv.setViewName("personal/deleteForm");
 			mv.addObject("fCode", "회원 탈퇴에 실패했습니다. 다시 시도하세요.");
+		}
+		return mv;
+	}*/
+		HttpSession session = request.getSession(false);
+		
+		String id = request.getParameter("id");
+		vo.setId(id);
+		
+		mv.setViewName("personal/deleteSuccess");
+		
+		if (service.delete(vo) > 0) {
+			// Delete 성공
+			session.invalidate(); // 삭제 되면 session 도 삭제해야함.
+			//mv.addObject("fCode", "DS");
+		} else {
+			// Delete 실패
+			mv.setViewName("personal/deleteForm");
+			//mv.addObject("fCode", "DF");
 		}
 		return mv;
 	}

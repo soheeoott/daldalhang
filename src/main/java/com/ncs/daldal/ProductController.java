@@ -33,6 +33,32 @@ public class ProductController {
 	@Autowired
 	FRService frservice;
 
+	@RequestMapping(value="/hashtagList")
+	public ModelAndView hashtaglist(ModelAndView mv, String keyword) throws Exception{
+	    
+		System.out.println("keyword => " + keyword);
+		
+		List<ProductVO> htlist = pdservice.hashtagAll(keyword);
+		
+		// 레코드의 갯수
+	    int count = pdservice.hashtagCount(keyword);
+	    
+	    // 데이터를 맵에 저장
+	    // Map<String, Object> hashtag = new HashMap<String, Object>();
+//	    hashtag.put("htlist", htlist); // list
+//	    hashtag.put("count", count); // 레코드의 갯수
+//	    hashtag.put("keyword", keyword); // 검색키워드
+//	    mv.addObject("hashtag", hashtag); // 맵에 저장된 데이터를 mv에 저장
+	    mv.addObject("htlist", htlist);
+	    
+	    System.out.println("htlist =>" + htlist.get(0));
+	    
+	    mv.addObject("count", count);
+	    mv.setViewName("product/hashtagList");
+	    
+	    return mv;
+	}
+	
 	// @RequestParam(defaultValue="") ==> 기본값 할당	
 	@RequestMapping(value="/searchList")
 	public ModelAndView searchlist(
@@ -42,13 +68,8 @@ public class ProductController {
 		// 레코드의 갯수
 	    int count = pdservice.countArticle(searchOption, keyword);
 	    
-	    // ModelAndView - 모델과 뷰
 	    ModelAndView mv = new ModelAndView();
-	    /*mav.addObject("list", list); // 데이터를 저장
-	    mav.addObject("count", count);
-	    mav.addObject("searchOption", searchOption);
-	    mav.addObject("keyword", keyword);*/
-	    
+
 	    // 데이터를 맵에 저장
 	    Map<String, Object> map = new HashMap<String, Object>();
 	    map.put("pdlist", pdlist); // list

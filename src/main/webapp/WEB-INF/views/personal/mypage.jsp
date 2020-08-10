@@ -9,16 +9,14 @@
 <title>내정보</title>
 <link rel="stylesheet" type="text/css" href="resources/css/mypageStyle.css">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-<script src="resources/jqLib/jquery-3.2.1.min.js"></script>
+<script src="resources/js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-  <div class="wrap">
+  <div id = "wrap">
 
       <div class="container">
 
         <div class="main">
-
-        <fieldset class="fs">
 
         <div class="mypage">
           <strong class="j_title">마이 페이지</strong>
@@ -41,7 +39,6 @@
           	<input type="button" class="button" value="회원 탈퇴" onclick="location.href='mypagef?code=D'">
          </form>
        	 </div>
-        </fieldset>
       </div>
     </div>
   </div> 

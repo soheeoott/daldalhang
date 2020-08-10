@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>  
 <%@ include file="../common/header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -85,7 +86,16 @@
 							</p>
 							<p class = "pname">${list.pdname}</p>
 							<p>${list.price} 원</p>
-							<div class = "hashtag">${list.hashtag}</div>
+							
+							<div class = "hashtag">
+				            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
+				            		<a href="hashtagList?keyword=${hashtag}">
+				            			<span class = "hashtagsplit"># ${hashtag}</span>
+				            		</a>
+				            	</c:forEach>
+				            </div>
+				            
+<%-- 							<div class = "hashtag">${list.hashtag}</div> --%>
 						</div>
 						</c:forEach>
 				</div>

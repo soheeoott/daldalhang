@@ -12,6 +12,7 @@ import service.MAPService;
 import service.PDService;
 import vo.FranchiseVO;
 import vo.LlmapVO;
+import vo.ProductVO;
 
 @Controller
 public class FranchiseController {
@@ -24,6 +25,26 @@ public class FranchiseController {
 	
 	@Autowired
 	PDService pdservice;
+	
+	@RequestMapping(value="/franchiseSortList")
+	public ModelAndView franchiseSortList(ModelAndView mv, String keyword) throws Exception{
+	    
+		System.out.println("keyword => " + keyword);
+		
+		List<ProductVO> htlist = pdservice.hashtagAll(keyword);
+		
+		// 레코드의 갯수
+	    int count = pdservice.hashtagCount(keyword);
+	    
+	    mv.addObject("htlist", htlist);
+	    
+	    System.out.println("htlist =>" + htlist.get(0));
+	    
+	    mv.addObject("count", count);
+	    mv.setViewName("product/hashtagList");
+	    
+	    return mv;
+	}
 	
 	@RequestMapping(value="/flist")
 	public ModelAndView flist(ModelAndView mv) {

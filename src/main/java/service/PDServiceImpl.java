@@ -39,9 +39,20 @@ public class PDServiceImpl implements PDService {
 	public List<ProductVO> listAll(String searchOption, String keyword) throws Exception {
 	    return dao.listAll(searchOption, keyword);
 	}
+	
 	// 07. 게시글 레코드 갯수 boardDao.countArticle메서드 
 	@Override
 	public int countArticle(String searchOption, String keyword) throws Exception {
 	    return dao.countArticle(searchOption, keyword);
+	}
+
+	@Override
+	public List<ProductVO> hashtagAll(String keyword) throws Exception {
+		return dao.hashtagAll(keyword);
+	}
+
+	@Override
+	public int hashtagCount(String keyword) throws Exception {
+		return dao.hashtagCount(keyword);
 	}
 }

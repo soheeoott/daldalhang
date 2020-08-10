@@ -1,58 +1,55 @@
-  body {
-        line-height: 1;
-      }
+	  body {
+	        line-height: 1;
+	      }
 
-      * {
-        margin: 0 auto;
-        padding: 0;
-        vertical-align: baseline;
-        border: 0;
-        text-decoration: none;
-	    font-family: 'Jeju Gothic', sans-serif;
-      }
-
-      #wrap {
-        position: relative;
-        width: 100%;
-      }
         div {
           display: block;
+         
         }
+        
        .icon{
          display: block;
-         width: 45px;
          height: 45px;
-         margin-top: 40px;
-         margin-bottom: 10px;
-
+         padding-top: 40px;
+    	 margin: 0 auto;
        }
-        .info {
-          border: 1px solid #ddd;
-          border-radius: 3px;
-          box-sizing: border-box;
-          max-width: 570px;
-          margin: 0 auto 30px;
-          position: relative;
+        
+        .mypage{
+         border: 1px solid #ddd;
+         border-radius: 3px;
+         box-sizing: border-box;
+         margin: 0 auto 30px;
+         height: 275px;
         }
 
-       .input {
+       #password {
+        border: 1px solid #ddd;
+	    border-radius: 3px;
+	    box-sizing: border-box;
+	    display: block;
+	    padding: 15px;
+	    width: 60%;
+	    margin: 0 auto;
+	    position: relative;
+	    top: 100px;
+		}
+       
+       #pwCheck {
         border: 1px solid #ddd;
         border-radius: 3px;
         box-sizing: border-box;
-        display: block;
-        /* margin-top: 10px; */
-        max-width: 530px;
-        /* outline: none; */
         padding: 15px;
-        width: 100%;
-        margin-bottom: 20px;
-        margin-top: 20px;
-
+        width: 60%;
+        display: block;
+    	margin: 0 auto;
        }
-
-       .id_wrap {
-         background: #fff;
-        position: relative;
+       
+       .pMessage {
+       	display: block;
+       }
+       
+       .pcMessage {
+       	display: block;
        }
 
         .j_title {
@@ -64,30 +61,49 @@
 
         }
 
-        .top {
-          background-color : rgb(241,188,213);
-          height : 100px;
-          position : fixed;
-          width : 100%;
-          z-index: 99;
-        }
-        .container {
-          width : 100%;
-        }
-
         .main {
           max-width: 570px;
           margin: 0 auto;
-          padding: 100px 0 50px;
+          padding: 0;
+          border: 0;
         }
 
         .button{
           width: 75px;
           height: 30px;
          display: block;
-         margin-top: 10px;
-         position: relative;
          border-radius: 3px;
-         text-align: center;
-         border-bottom: 30px;
+         cursor:pointer;
+         border: 0;
+         margin: 0 auto;
         }
+        
+        #pMessage{
+         font-style: italic;
+         font-size: 13px;
+         color: red;
+         display: block;
+    	 margin-left: 110px;
+    	 margin-top: -13px;
+    	 margin-bottom: -10px;
+        }
+        
+        #pcMessage{
+         font-style: italic;
+         font-size: 13px;
+         color: red;
+         display: block;
+    	 margin-left: 115px;
+         margin-top: 5px;
+        }
+        
+       input[type=password] { font-family: "Iropke Batang", serif; }
+        
+       input::placeholder {
+        	font-family: 'Jeju Gothic', sans-serif;
+       }
+       
+       input[type="password"]:focus {outline:2px solid #ddd;}
+       
+       input[type="submit"]:focus {outline:none;}
+     

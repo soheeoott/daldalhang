@@ -355,3 +355,7 @@
 	.email_check {
 		padding: 7px;
 	}
+	
+	input[type=password] { font-family: "Iropke Batang", serif; }
+	
+	input::placeholder { font-family: 'Jeju Gothic', sans-serif; }

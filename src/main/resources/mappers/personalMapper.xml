@@ -30,8 +30,15 @@
 		where email_id=#{email_id} and email_domain=#{email_domain}
 	</select>
 	
-	<update id="updatepw">
-		update personal set password = #{password} 
-		where id = #{id} and email_id=#{email_id} and email_domain = #{email_domain}
+	<update id="eupdate">
+		update personal set email_id = #{email_id}, email_domain = #{email_domain} where id = #{id}
 	</update>
+	
+	<update id="pwupdate">
+		update personal set password = #{password} where id = #{id}
+	</update>
+	
+	<select id="delete">
+		delete from personal where id=#{id}
+	</select>
 </mapper>

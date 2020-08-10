@@ -1,131 +1,115 @@
 	body {
 	     line-height: 1;
 	   }
+	
+		.main {
+        max-width: 570px;
+        margin: 0 auto;
+        padding: 0;
+        border: 0;
+      }
+      
+        div {
+          display: block;
+        }
+        
+       .icon {
+		    display: block;
+		    width: 45px;
+		    padding-top: 80px;
+		    margin: 0 auto;
+		}
+       
+       .mypage{
+        border: 1px solid #ddd;
+          border-radius: 3px;
+          box-sizing: border-box;
+          max-width: 800px;
+          position: relative;
+          height: 275px;
+          top: 80px;
+          margin-bottom: 150px;
+		}
+ 
 
-	* {
-		margin: 0 auto;
-		/* padding: 0; */
-		vertical-align: baseline;
-		border: 0;
-		text-decoration: none;
-	}
-	
-	#wrap {
-		position: relative;
-		width: 100%;
-	}
-	
-	div {
-		display: block;
-	}
-	
-	.icon {
-		display: block;
-		width: 45px;
-		height: 45px;
-		margin-top: 40px;
-	}
-	
-	.info {
-		border: 1px solid #ddd;
-		border-radius: 3px;
-		box-sizing: border-box;
-		max-width: 800px;
-        margin: 0 auto 30px;
-        position: relative;
-        height: 300px;
-		/* max-width: 570px;
-		margin: 0 auto 30px;
-		position: relative; */
-	}
-	
-	 /* .input{
-	  border: 1px solid #ddd;
-	  border-radius: 7px 7px 7px 7px;
-	  width: 250px;
-	  height: 30px;
-	  font-size: 15px;
-	  margin-bottom: 10px;
-	  padding-left: 10px;
-	} */
-	
-	.input {
-		/* border: 1px solid #ddd;*/
-		/*border-radius: 3px;*/
-		box-sizing: border-box;
-		display: inline-block
-		/* margin-top: 10px; */
-		max-width: 530px;
-		/* outline: none; */
-		padding: 10px;
-		/*width: 100%;*/
-		/* margin-bottom: 35px;
-		text-align: center;
-		font-size: 15px; */
-		text-align: center;
-        font-size: 15px;
-	}
-	
-	.input2 {
-		border: 1px solid #ddd;
-		border-radius: 3px;
-		box-sizing: border-box;
-		display: block;
-		
-		max-width: 530px;
-		/* outline: none; */
-		/* padding: 15px;
-		width: 100%;
-		
-		margin-top: 20px;
-		margin-bottom: 20px; */
-		padding: 15px;
+       .input {
+         padding: 10px;
+         font-size: 15px;
+         width: 300px;
+         text-align: center;
+         margin-bottom: -10px;
+         border: 0;
+
+       }
+       .input2 {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-sizing: border-box;
+        display: block;
+        max-width: 530px;
+        padding: 15px;
         width: 60%;
         margin-top: 20px;
         margin-bottom: 50px;
-	}
-	
-	.id_wrap {
-		background: #fff;
-		/* border-bottom: 1px solid #ddd; */
-		padding: 20px 20px;
-		position: relative;
-		text-align: center;
-	}
-	
-	.info {
-			width : 800px;
-	}
-	
-	 .j_title {
-		display: block;
-		font-size: 30px;
-		font-weight: normal;
-		margin-bottom: 30px;
-		margin-top: 30px;
-        margin-left: 90px;
-	 }
-	
-	 .container {
-		width : 100%;
-	 }
-	
-	 .main {
-		/* max-width: 570px;
-		margin: 0 auto; */
-		margin: 0 auto;
-        padding: 0 0 50px;
-	 }
-	
-	 .button{
-		width: 75px;
-		height: 30px;
-		display: block;
-		border-bottom: 1px;
-		position: relative;
-		border-radius: 3px;
-		text-align: center;
-		border-bottom: 30px;
-		margin-top: 10px;
-		cursor:pointer
-	 }
+
+       }
+
+       .id_wrap {
+         padding: 20px 20px;
+         text-align: center;
+       }
+		
+        .j_title {
+          display: block;
+          font-size: 30px;
+          font-weight: normal;
+          margin-top: -60px;
+        }
+
+        .top {
+          background-color : rgb(241,188,213);
+          height : 100px;
+          position : fixed;
+          width : 100%;
+          z-index: 99;
+        }
+    
+        .button{
+         width: 75px;
+         height: 30px;
+         display: block;
+         border-radius: 3px;
+         margin: 0 auto;
+         cursor:pointer;
+         border: 0;
+        }
+        
+        .input_warn {
+		  border: 1px solid #ed1c24;
+		}
+		
+        .input_box input {
+		  border: 1px solid #ddd;
+		  border-radius: 3px;
+		  box-sizing: border-box;
+		  padding: 15px;
+		}
+		
+		.email {
+		  margin-left: 101px;
+		}
+		
+		.mail_wrap {
+			    margin-bottom: 50px;
+		}
+		
+		.selectEmail {
+			margin-right: 10px;
+			margin-left: 290px;
+			height: 45px;
+			border: 0; 
+		}
+		
+		input[type="text"]:focus {outline:2px solid #ddd;}
+		
+		input[type="submit"]:focus {outline:none;}

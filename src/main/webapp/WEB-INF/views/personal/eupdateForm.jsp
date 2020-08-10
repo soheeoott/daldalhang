@@ -8,31 +8,53 @@
 <title>이메일 변경</title>
 <link rel="stylesheet" type="text/css" href="resources/css/eupdateStyle.css">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+<script src="resources/js/jquery-3.2.1.min.js"></script>
+<script>
+function emailCheck() {
+
+	var id = $("#email_id").val();
+	var domain = $('#email_domain').val();
+	var mailCheck1 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])/;
+	var mailCheck2 = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+	if (!mailCheck1.test(id)) {
+		$(".button").attr("disabled", false);
+		alert("이메일 형식을 확인 해주세요.");
+		return false;
+		
+	}else if(!mailCheck2.test(domain)) {
+		$(".button").attr("disabled", false); 
+		alert("이메일 형식을 확인 해주세요.");
+		return false;
+		
+	}else {
+		return true;
+	}
+};
+</script>
 </head>
 <body>
-    <div class="wrap" id="wrap">
+    <div id="wrap">
 
       <div class="container">
 
         <div class="main">
-
-        <fieldset class="fs">
 
         <div class="mypage">
           <strong class="j_title">이메일 변경</strong>
           <form class="info" action="eupdateM" method="post">
             <img class="icon" src="resources/image/mail.png" alt="">
             <div class="id_wrap">
-                <input class="input" type="text" name="email" readonly="readonly" value="${myInfo.email_id}@${myInfo.email_domain}" style="vertical-align:middle;">
+                <input class="input" type="email" name="email" readonly="readonly" value="${myInfo.email_id}@${myInfo.email_domain}" style="vertical-align:middle;">
 	            <input type="text" name="id" value="${myInfo.id}" hidden=true>
             </div>
             
             <div class="mail_wrap">
                 <div class="input_box email">
-                	<input type="text" name="email_id" id="email_id" class="email_id input_warn" required style = "width:182px;">
+                	<input type="text" name="email_id" id="email_id" class="email_id input_warn">
                 	@
-                	<input type="text" name="email_domain" id="email_domain" class="email_domain" required style = "width:182px;">
-                	 	<select style="margin-right: 10px; margin-left: 10px; height: 50px; border: 1px;" name="selectEmail" id="selectEmail">
+                	<input type="text" name="email_domain" id="email_domain" class="email_domain">
+                	 	<select name="selectEmail" class="selectEmail" id="selectEmail">
 							<option value="1" selected>직접입력</option>
 							<option value="naver.com">naver.com</option>
 							<option value="hanmail.net">hanmail.net</option>
@@ -58,10 +80,9 @@
 						</script>	
 		         </div>
             </div>
-           		<button type="submit" class="button" name="update" id="eupdate">확인</button>&nbsp;&nbsp;&nbsp;
+           		<input type="submit" class="button" name="update" id="eupdate" onclick="return emailCheck()" value="확인">&nbsp;&nbsp;&nbsp;
           </form>
         </div>
-        </fieldset>
       </div>
     </div>
    </div> 

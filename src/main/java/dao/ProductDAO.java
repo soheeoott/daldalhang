@@ -39,7 +39,7 @@ public class ProductDAO {
 		return sqlsession.selectList(PD + "mProductList", muname);
 	}
 	
-	// 05. 게시글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가
+	// 게시글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가
 	public List<ProductVO> listAll(String searchOption, String keyword) throws Exception {
 	    // 검색옵션, 키워드 맵에 저장
 	    Map<String, String> map = new HashMap<String, String>();
@@ -48,7 +48,7 @@ public class ProductDAO {
 	    return sqlsession.selectList("listAll", map);
 	}
 	
-	// 07. 게시글 레코드 갯수
+	// 게시글 레코드 갯수
 	public int countArticle(String searchOption, String keyword) throws Exception {
 	    // 검색옵션, 키워드 맵에 저장
 	    Map<String, String> map = new HashMap<String, String>();
@@ -56,4 +56,17 @@ public class ProductDAO {
 	    map.put("keyword", keyword);
 	    return sqlsession.selectOne("countArticle", map);
 	}
+	
+	// 해시태그 전체 목록 ==> 키워드 매개변수 추가
+	public List<ProductVO> hashtagAll(String keyword) throws Exception {
+	    // 키워드 맵에 저장
+	    return sqlsession.selectList("hashtagAll", keyword);
+	}
+	
+	// 해시태그 레코드 갯수
+	public int hashtagCount(String keyword) throws Exception {
+	    // 키워드 맵에 저장
+	    return sqlsession.selectOne("hashtagCount", keyword);
+	}
+	
 }

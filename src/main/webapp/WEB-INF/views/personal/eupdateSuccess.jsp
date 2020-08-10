@@ -10,7 +10,7 @@
     <title>이메일 변경 성공</title>
     <link rel="stylesheet" type="text/css" href="resources/css/mypageStyle.css">
     <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-    <script src="resources/jqLib/jquery-3.2.1.min.js"></script>
+    <script src="resources/js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 

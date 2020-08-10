@@ -24,6 +24,11 @@
 		text-align: center;
 	}
 	
+	.hashtagsplit {
+		float: left;
+		color: gray;
+	}
+	
 	.hashtag {
 		color : gray;
 	}

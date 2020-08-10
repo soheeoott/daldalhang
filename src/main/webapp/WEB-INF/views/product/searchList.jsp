@@ -18,7 +18,7 @@
 	    	<div class="main">
 	    		<div class="count">
 				    <!-- 레코드의 갯수를 출력 -->
-				    ${map.count}개의 게시물이 있습니다.
+				    ${map.count}개의 상품이 있습니다.
 			    </div>
 			    
 			    <hr>
@@ -49,10 +49,11 @@
 				            
 				            <div class = "hashtag">
 				            	<c:forEach var="hashtag" items="${fn:split(map.hashtag,'#')}">
-				            		<div class = "hashtagsplit"><p># ${hashtag}</p></div>
+				            		<a href="hashtagList?keyword=${hashtag}">
+				            				<span class = "hashtagsplit"># ${hashtag}</span>
+				            		</a>
 				            	</c:forEach>
 				            </div>
-				            
 				            <%-- <p>
 				            	<a href="${path}/board/view.do?bno=${row.bno}">${row.title}</a>
 				            </p> --%>

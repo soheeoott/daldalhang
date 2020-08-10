@@ -60,7 +60,7 @@
 						
 						<div class = "frlist">
 							<div class = "frwrap">
-								<a href = "franchise/franchiseSortList?code=${list.frcode}">
+								<a href = "franchise/franchiseSortList?frcode=${list.frcode}">
 									<img src="${list.fruploadfile}" width="200" height="200">
 								</a>
 								
