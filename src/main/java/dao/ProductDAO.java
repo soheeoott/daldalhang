@@ -69,4 +69,16 @@ public class ProductDAO {
 	    return sqlsession.selectOne("hashtagCount", keyword);
 	}
 	
+	// 메뉴 목록
+	public List<ProductVO> category(String mubcode) throws Exception {
+		return sqlsession.selectList("category", mubcode);
+	}
+	
+	// 메뉴 갯수
+	public int categoryCount(String mubcode) throws Exception {
+		return sqlsession.selectOne("categoryCount", mubcode);
+	}
+	
+	
+	
 }

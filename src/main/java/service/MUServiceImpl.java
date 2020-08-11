@@ -28,4 +28,9 @@ public class MUServiceImpl implements MUService {
 	public List<MenuVO> productList(String mucategory) {
 		return dao.productList(mucategory);
 	}
+
+	@Override
+	public List<MenuVO> menu() {
+		return dao.menu();
+	}
 }

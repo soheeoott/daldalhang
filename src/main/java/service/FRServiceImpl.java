@@ -23,4 +23,14 @@ public class FRServiceImpl implements FRService {
 	public FranchiseVO selectOne(FranchiseVO fvo) {
 		return dao.selectOne(fvo);
 	}
+
+	@Override
+	public List<FranchiseVO> fsortList(String frcode) {
+		return dao.fsortList(frcode);
+	}
+
+	@Override
+	public int fsortCount(String frcode) {
+		return dao.fsortCount(frcode);
+	}
 }

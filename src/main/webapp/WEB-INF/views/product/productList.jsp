@@ -15,7 +15,7 @@
 <body>
 <div id = "wrap">
 	<div id="product_box" align="center">
-		<div class="btn_nlist" align="right">
+		<div class="btn_nlist" align="left">
 			<c:if test="${logID=='DalDal'}">
 				<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
 			</c:if>
@@ -34,7 +34,7 @@
 			<c:forEach var="cpdlist" items="${cpdlist}" end="5">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>
-			<br><br>
+			<br>
 			<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>		
@@ -42,7 +42,6 @@
 		<br><br><br>
 		<div class="container">
 			<div class="main">
-			
 				<div class="productList">
 						<c:forEach var="list" items="${pdlist}">
 						
@@ -62,7 +61,7 @@
 				            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
 				            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
 				            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-				            <c:if test="${list.frcode=='A10'}"><p>투썸</p></c:if>
+				            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
 				            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
 				            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
 				            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>

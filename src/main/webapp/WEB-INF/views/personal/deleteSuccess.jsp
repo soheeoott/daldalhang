@@ -7,7 +7,8 @@
     <!-- <meta charset="UTF-8"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>회원가입 성공</title>
+    <title></title>
+    <link rel="stylesheet" href="resources/css/signConfirm.css">
     <link rel="stylesheet" href="resources/css/signSuccess.css">
 </head>
 <body>
@@ -22,13 +23,13 @@
 	        
 	        <div id="ssBtnBox">
                 <a href="home">
-                	<div class="ssBtn" style=" cursor: pointer;">
+                	<div class="ssBtn">
                 		<p class="ssBtnText">메인으로 이동</p>
                 	</div>
                 </a>
                 
                 <a href="loginf">
-                	<div class="ssBtn" style=" cursor: pointer;">
+                	<div class="ssBtn">
                 		<p class="ssBtnText">로그인하기</p>
                 	</div>
                 </a>

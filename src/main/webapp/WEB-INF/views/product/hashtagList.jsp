@@ -40,7 +40,7 @@
 				            <c:if test="${hashtag.frcode=='A07'}"><p>이디야</p></c:if>
 				            <c:if test="${hashtag.frcode=='A08'}"><p>쥬씨</p></c:if>
 				            <c:if test="${hashtag.frcode=='A09'}"><p>설빙</p></c:if>
-				            <c:if test="${hashtag.frcode=='A10'}"><p>투썸</p></c:if>
+				            <c:if test="${hashtag.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
 				            <c:if test="${hashtag.frcode=='A11'}"><p>파리바게뜨</p></c:if>
 				            <c:if test="${hashtag.frcode=='A12'}"><p>파스쿠찌</p></c:if>
 				            <c:if test="${hashtag.frcode=='A13'}"><p>흑화당</p></c:if>

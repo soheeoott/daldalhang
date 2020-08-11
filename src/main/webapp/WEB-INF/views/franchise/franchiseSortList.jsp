@@ -10,16 +10,25 @@
 <title></title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="resources/css/franchiseStyle.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 </head>
 <body>
 <div id = "wrap">
 <div id="product_box" align="center">
+	
 	<div class="btn_nlist" align="right">
 		<c:if test="${logID=='DalDal'}">
 			<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href=''">
 		</c:if>
 	</div>
+	
+	<div class="container">
+	
+	<div class="count">
+	    <!-- 레코드의 갯수를 출력 -->
+	    ${count}개의 음료/디저트가 있습니다.
+    <br><br><br>
+    </div>
 				
 	<!-- 2020.08.03 product menu name 출력 -->
 		<div class="menu_css">
@@ -28,9 +37,9 @@
 					<c:if test="${list.mucategory=='dessert'}"><a href="pdlist?mucategory=${list.mucategory}" value="dessert">디저트</a></c:if>
 					<c:if test="${list.mucategory=='drink'}"><a href="pdlist?mucategory=${list.mucategory}" value="drink">음료</a></c:if>
 					<c:if test="${list.mucategory=='food'}"><a href="pdlist?mucategory=${list.mucategory}" value="food">음식</a></c:if>
-					<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">특별!</a></c:if>		
+					<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">스페셜</a></c:if>		
 			</c:forEach>
-			<hr>
+			<hr><br>
 			<c:forEach var="cpdlist" items="${cpdlist}" end="5">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>
@@ -39,44 +48,11 @@
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>		
 		</div>
-		<br><br>
+		<br><br><br>
 		<div class="container">
 			<div class="main">
-			
 				<div class="productList">
-						<c:forEach var="list" items="${pdlist}">
-						
-						<%-- <c:if test = "${list.bcode == 1}">
-							<hr>
-								<div>
-									음료
-								</div>
-							<hr>
-						</c:if>
-						
-						<c:if test = "${list.bcode == 2}">
-							<hr>
-								<div>
-									빙수
-								</div>
-							<hr>
-						</c:if>
-						
-						<c:if test = "${list.bcode == 3}">
-							<hr>
-								<div>
-									디저트
-								</div>
-							<hr>
-						</c:if>
-						
-						<c:if test = "${list.bcode == 4}">
-							<hr>
-								<div>
-									상품
-								</div>
-							<hr>
-						</c:if> --%>
+						<c:forEach var="list" items="${fpdlist}">
 						
 						<div class = "plist">
 							<p>
@@ -84,6 +60,21 @@
 								<img src="${list.pduploadfile}" width="200" height="200">
 								</a>
 							</p>
+							
+							<c:if test="${list.frcode=='A01'}"><p class = "brand">공차</p></c:if>
+				            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
+				            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
+				            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
+				            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
+				            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
+				            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
+				            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
+				            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
+				            <c:if test="${list.frcode=='A10'}"><p>투썸</p></c:if>
+				            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
+				            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
+				            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
+							
 							<p class = "pname">${list.pdname}</p>
 							<p>${list.price} 원</p>
 							
@@ -94,13 +85,12 @@
 				            		</a>
 				            	</c:forEach>
 				            </div>
-				            
-<%-- 							<div class = "hashtag">${list.hashtag}</div> --%>
 						</div>
 						</c:forEach>
 				</div>
 			</div>
 		</div>
+	</div>
 </div>		
 <%-- 
 <c:if test="${message != null}">

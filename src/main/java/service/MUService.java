@@ -11,4 +11,6 @@ public interface MUService {
 	MenuVO selectOne(MenuVO mvo);
 	
 	List<MenuVO> productList(String mucategory);
+	
+	List<MenuVO> menu();
 }

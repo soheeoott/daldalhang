@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>  
 <%@ include file="../common/header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
 <body>
 <div id = "wrap">
 	<div id="product_box" align="center">
-		<div class="btn_nlist" align="right">
+		<div class="btn_nlist" align="left">
 			<c:if test="${logID=='DalDal'}">
 				<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
 			</c:if>
@@ -61,21 +61,27 @@
 				            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
 				            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
 				            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-				            <c:if test="${list.frcode=='A10'}"><p>투썸</p></c:if>
+				            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
 				            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
 				            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
 				            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
 							
 							<p class = "pname">${list.pdname}</p>
 							<p>${list.price} 원</p>
-							<div class = "hashtag">${list.hashtag}</div>
+							
+							<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
+			            		<a href="hashtagList?keyword=${hashtag}">
+			            			<span class = "hashtagsplit"># ${hashtag}</span>
+			            		</a>
+			            	</c:forEach>
+			            	
 						</div>
-						</c:forEach>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
-</div><br><hr><br><br>
+</div><hr>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

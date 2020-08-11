@@ -25,4 +25,11 @@ public interface PDService {
 	
 	// 해시태그 레코드 갯수 메서드 추가
 	public int hashtagCount(String keyword) throws Exception;
+	
+	// 메뉴 목록
+	public List<ProductVO> category(String mubcode) throws Exception;
+	
+	// 메뉴 갯수
+	public int categoryCount(String mubcode) throws Exception;
+	
 }

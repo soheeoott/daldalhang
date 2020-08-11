@@ -136,7 +136,6 @@ a {
 
 hr {
     border:none;
-    border-top:1px solid #f4f4f2;
     width:80%;
 }
 
@@ -218,5 +217,7 @@ input::-moz-placeholder {color:#a8a8a8;}
 
 #topImg {
 	width: 50px;
-	margin: 0 300px 200px 0;
+    position: absolute;
+    left: -300px;
+    top: -350px;
 }

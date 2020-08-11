@@ -26,4 +26,8 @@ public class MenuDAO {
 	public List<MenuVO> productList(String mucategory) {
 		return sqlsession.selectList(MU + "productList", mucategory);
 	}
+	
+	public List<MenuVO> menu() {
+		return sqlsession.selectList(MU + "menu");
+	}
 }

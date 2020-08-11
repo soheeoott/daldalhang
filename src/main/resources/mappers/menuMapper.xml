@@ -8,7 +8,11 @@
 				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 	
 	<select id="selectList" resultType="vo.MenuVO">
-		SELECT DISTINCT mucategory FROM menu ORDER BY mucode
+		SELECT * FROM menu ORDER BY mucode
+	</select>
+	
+	<select id="menu" resultType="vo.MenuVO">
+		SELECT DISTINCT mucategory, mubcode FROM menu ORDER BY mucode
 	</select>
 
 	<select id="selectOne" resultType="vo.MenuVO">

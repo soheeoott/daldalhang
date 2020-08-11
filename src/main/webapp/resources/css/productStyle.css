@@ -29,10 +29,21 @@
     	margin: 0 auto;
 	}
 	
-	.menu_css {
-
-	}
-	
 	.menu_css a {
 		margin-right: 5em;
+		line-height: 3;
+	}
+	
+	.btn_nlist {
+		width:880px;
+		padding-top:10px;
+	}
+
+	.buttonStyle {
+		width:70px;
+		height:30px;
+		cursor:pointer;
+		background-color:white;
+		border-radius:5px;
+		border:1px solid silver;
 	}

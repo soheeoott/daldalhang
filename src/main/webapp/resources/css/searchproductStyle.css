@@ -33,11 +33,21 @@
 		color : gray;
 	}
 	
-	.menu_css {
-
-	}
-	
 	.menu_css a {
 		margin-right: 5em;
 		margin-top: 3em;
+	}
+	
+	.btn_nlist {
+		width:880px;
+		padding-top:10px;
+	}
+
+	.buttonStyle {
+		width:70px;
+		height:30px;
+		cursor:pointer;
+		background-color:white;
+		border-radius:5px;
+		border:1px solid silver;
 	}

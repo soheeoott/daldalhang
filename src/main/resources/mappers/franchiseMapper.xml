@@ -15,4 +15,16 @@
 		SELECT frkname FROM franchise ORDER BY frcode
 	</select>
 	
+	<select id="fsortList" resultType="vo.ProductVO">
+		SELECT * FROM franchise f 
+		JOIN product p ON f.frcode = p.frcode 
+		WHERE f.frcode = #{frcode} ORDER BY p.pdseq;
+	</select>
+	
+	<select id="fsortCount" resultType="int">
+		SELECT COUNT(*) FROM franchise f 
+		JOIN product p ON f.frcode = p.frcode 
+		WHERE f.frcode = #{frcode} ORDER BY p.pdseq;
+	</select>
+	
 </mapper>

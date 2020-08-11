@@ -1,6 +1,8 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +23,13 @@ public class FranchiseDAO {
 	
 	public FranchiseVO selectOne(FranchiseVO fvo) {
 		return sqlsession.selectOne(FD + "selectOne", fvo);
+	}
+	
+	public List<FranchiseVO> fsortList(String frcode) {
+		return sqlsession.selectList(FD + "fsortList", frcode);
+	}
+	
+	public int fsortCount(String frcode) {
+	    return sqlsession.selectOne("fsortCount", frcode);
 	}
 }

@@ -55,4 +55,14 @@ public class PDServiceImpl implements PDService {
 	public int hashtagCount(String keyword) throws Exception {
 		return dao.hashtagCount(keyword);
 	}
+
+	@Override
+	public List<ProductVO> category(String mubcode) throws Exception {
+		return dao.category(mubcode);
+	}
+
+	@Override
+	public int categoryCount(String mubcode) throws Exception {
+		return dao.categoryCount(mubcode);
+	}
 }

@@ -33,8 +33,30 @@ public class ProductController {
 	@Autowired
 	FRService frservice;
 
+	@RequestMapping(value="/category")
+	public ModelAndView category(ModelAndView mv, String mubcode) throws Exception{
+		
+		System.out.println("mubcode => " + mubcode);
+		
+		List<ProductVO> ctlist = pdservice.category(mubcode);
+		mv.addObject("ctlist", ctlist);
+		
+		System.out.println("ctlist =>" + ctlist.get(0));
+		
+		// 메뉴 상품 갯수
+	    int count = pdservice.categoryCount(mubcode); 
+	    		
+		List<MenuVO> mulist = muservice.menu();
+		mv.addObject("mulist", mulist);
+		mv.addObject("count", count);
+		
+		mv.setViewName("product/categoryList");
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="/hashtagList")
-	public ModelAndView hashtaglist(ModelAndView mv, String keyword) throws Exception{
+	public ModelAndView hashtagList(ModelAndView mv, String keyword) throws Exception{
 	    
 		System.out.println("keyword => " + keyword);
 		
@@ -43,12 +65,6 @@ public class ProductController {
 		// 레코드의 갯수
 	    int count = pdservice.hashtagCount(keyword);
 	    
-	    // 데이터를 맵에 저장
-	    // Map<String, Object> hashtag = new HashMap<String, Object>();
-//	    hashtag.put("htlist", htlist); // list
-//	    hashtag.put("count", count); // 레코드의 갯수
-//	    hashtag.put("keyword", keyword); // 검색키워드
-//	    mv.addObject("hashtag", hashtag); // 맵에 저장된 데이터를 mv에 저장
 	    mv.addObject("htlist", htlist);
 	    
 	    System.out.println("htlist =>" + htlist.get(0));
@@ -92,7 +108,7 @@ public class ProductController {
 		System.out.println("menulist => "+menulist);
 */		
 		// 2020.08.03 menu 출력
-		List<MenuVO> mulist = muservice.selectList();
+		List<MenuVO> mulist = muservice.menu();
 		mv.addObject("mulist", mulist);
 		
 		// menu category 출력
@@ -125,7 +141,7 @@ public class ProductController {
 		List<ProductVO> pdlist = pdservice.selectList();
 
 		// 2020.08.03 menu 출력
-		List<MenuVO> mulist = muservice.selectList();
+		List<MenuVO> mulist = muservice.menu();
 		mv.addObject("mulist", mulist);
 		
 		// menu 클릭했을 때 나오는 category 출력
@@ -148,7 +164,7 @@ public class ProductController {
 	public ModelAndView pinsertf(ModelAndView mv, List<MenuVO> mulist, 
 			List<FranchiseVO> frlist) {
 		
-		mulist = muservice.selectList();
+		mulist = muservice.menu();
 		frlist = frservice.selectList();
 		
 		if(mulist != null || frlist != null) {			

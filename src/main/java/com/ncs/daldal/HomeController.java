@@ -21,7 +21,7 @@ public class HomeController {
 	
 	// 2020-08-04 메뉴 세션 추가
 	@Autowired
-	MUService menuservice;
+	MUService muservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -29,7 +29,7 @@ public class HomeController {
 	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		List<MenuVO> menulist = menuservice.selectList();
+		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 		
 		return "home";

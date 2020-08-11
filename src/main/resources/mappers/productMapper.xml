@@ -6,9 +6,25 @@
 	<mapper namespace="daldal.mappers.productMapper">
 	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
 				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+	
+	<!-- 2020-08-11 -->	
+	<select id="category" resultType="vo.ProductVO">
+		SELECT * FROM menu n JOIN product p 
+		ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
+		WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') ORDER BY mucode asc, pdseq asc;
+	</select>
+	
+	<!-- 2020-08-11 -->
+	<select id="categoryCount" resultType="int">
+		SELECT COUNT(*) FROM menu n JOIN product p 
+		ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
+		WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') ORDER BY mucode asc, pdseq asc;
+	</select>
 				  
 	<select id ="selectList" resultType="vo.ProductVO"> 
-		select * from product order by pdseq
+		SELECT * FROM menu n JOIN product p 
+		ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
+		ORDER BY mucode asc, pdseq asc
 	</select>
 
 	<select id = "selectOne" resultType="vo.ProductVO">
