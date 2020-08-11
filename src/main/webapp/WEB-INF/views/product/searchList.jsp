@@ -18,10 +18,9 @@
 	    	<div class="main">
 	    		<div class="count">
 				    <!-- 레코드의 갯수를 출력 -->
-				    ${map.count}개의 상품이 있습니다.
+				    ${map.count}개의 음료/디저트가 있습니다.
+			    <br><br><br>
 			    </div>
-			    
-			    <hr>
 			    
 			    <div class="productList">
 			        <c:forEach var="map" items="${map.pdlist}">
@@ -44,6 +43,7 @@
 				            <c:if test="${map.frcode=='A11'}"><p>파리바게뜨</p></c:if>
 				            <c:if test="${map.frcode=='A12'}"><p>파스쿠찌</p></c:if>
 				            <c:if test="${map.frcode=='A13'}"><p>흑화당</p></c:if>
+				            
 				            <p class = "pname">${map.pdname}</p>
 				            <p>${map.price} 원</p>
 				            
@@ -54,9 +54,6 @@
 				            		</a>
 				            	</c:forEach>
 				            </div>
-				            <%-- <p>
-				            	<a href="${path}/board/view.do?bno=${row.bno}">${row.title}</a>
-				            </p> --%>
 				        </div>    
 			        </c:forEach>
 			    </div> 

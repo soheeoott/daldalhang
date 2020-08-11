@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>** DalDal **</title>
-<link rel="stylesheet" type="text/css" href="resources/css/noticeStyle.css">
 <link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <script src="resources/js/home.js"></script>
@@ -68,7 +67,7 @@
 								<c:if test="${list.mucategory=='dessert'}"><a href="pdlist?mucategory=${list.mucategory}" value="dessert">디저트</a></c:if>
 								<c:if test="${list.mucategory=='drink'}"><a href="pdlist?mucategory=${list.mucategory}" value="drink">음료</a></c:if>
 								<c:if test="${list.mucategory=='food'}"><a href="pdlist?mucategory=${list.mucategory}" value="food">음식</a></c:if>
-								<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">특별!</a></c:if>							
+								<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">스페셜</a></c:if>							
 							</c:forEach>
 						 </div>
 					</div>

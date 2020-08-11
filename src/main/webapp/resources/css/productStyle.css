@@ -1,14 +1,10 @@
-	.count {
-		margin-bottom: 20px;
-	}
-	
+
 	.productList p {
 	  display: block;
 	  margin-block-start: 1em;
 	  margin-block-end: 1em;
 	  margin-inline-start: 0px;
 	  margin-inline-end: 0px;
-	  margin-left: 15px;
 	}
 	
 	.container {
@@ -24,9 +20,8 @@
 		text-align: center;
 	}
 	
-	.hashtagsplit {
-		float: left;
-		color: gray;
+	.plist p {
+		margin: 8px 0px 8px 0px;
 	}
 	
 	.hashtag {
@@ -39,5 +34,4 @@
 	
 	.menu_css a {
 		margin-right: 5em;
-		margin-top: 3em;
 	}

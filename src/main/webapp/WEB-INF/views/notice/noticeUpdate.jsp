@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>** DalDal **</title>
+<script src="resources/js/noticeCheck.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/noticeStyle.css">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 <!-- Tiny API Key : p94bjfog4l71b0rpo346ohluewcnl4st7roux4squjwp3ckz -->
 <script src="https://cdn.tiny.cloud/1/p94bjfog4l71b0rpo346ohluewcnl4st7roux4squjwp3ckz/tinymce/5/tinymce.min.js" 
@@ -16,8 +18,18 @@
 		selector: 'textarea',
 		menubar:'false',
 		plugins: 'autolink autosave code link media image table textcolor autoresize',
-		toolbar: 'undo redo | forecolor bold italic underline | alignleft aligncenter alignright alignjustify | custom_image code',
+		toolbar: 'undo redo | forecolor bold italic underline | alignleft aligncenter alignright alignjustify | image code',
 		min_height:'800'
+			/* ,
+			setup: function(editor) {
+	            editor.addButton('custom_image', {
+	                    title: '이미지삽입',
+	                    icon: 'image',
+	                    onclick: function() {
+	                        window.open("POPUP_URL","tinymcePop","width=400,height=350");
+	                    }
+	                });
+	            } */
 	});
  </script>
 </head>

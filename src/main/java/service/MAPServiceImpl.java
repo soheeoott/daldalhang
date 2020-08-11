@@ -23,4 +23,9 @@ public class MAPServiceImpl implements MAPService {
 	public LlmapVO selectOne(LlmapVO lvo) {
 		return dao.selectOne(lvo);
 	}
+
+	@Override
+	public List<LlmapVO> mapSearch(String searchOption, String keyword) throws Exception {
+		return dao.mapSearch(searchOption, keyword);
+	}
 }

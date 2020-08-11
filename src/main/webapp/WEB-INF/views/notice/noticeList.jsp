@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>** DalDal **</title>
+<script src="resources/js/noticeCheck.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/noticeStyle.css">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 <script>
 $(function() {
@@ -30,9 +32,9 @@ $(function() {
 				<div class="box-body" id="searchBar" align="right">
 				<select name="searchType" id="searchType" hidden>
 						<option value="tc"
-							<c:out value="${cri.searchType eq 'tc' ? 'selected':''}"/>>제목&내용
-						</option>
-					</select>
+						<c:out value="${cri.searchType eq 'tc' ? 'selected':''}"/>>제목&내용
+					</option>
+				</select>
 					<input type="text" name="keyword" id="keyword" 
 						value="${cri.keyword}" size="25" placeholder="검색어를 입력해 주세요.">
 					<img src="resources/image/search_icon.png" alt="search_icon" id="searchBtn">

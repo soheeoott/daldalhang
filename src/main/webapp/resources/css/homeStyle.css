@@ -28,12 +28,12 @@ br { mso-data-placement:same-cell; }
 
 #header {
 	position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+	top: 0;
+	left: 0;
+	right: 0;
     z-index: 100;
     width: 100%;
-    height: 200px;
+    height: 230px;
     background-color: #fff;
 }
 
@@ -126,8 +126,6 @@ br { mso-data-placement:same-cell; }
 .dropdown:hover .dropbtn {
 	background-color: #3e8e41;
 }
-
-
 
 /* 사이드 메뉴 포함 a태그 style */
 a {

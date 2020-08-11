@@ -15,4 +15,31 @@
 		SELECT frkname FROM llmap ORDER BY llcode
 	</select>
 	
+	<!-- 지도 검색 -->
+	<select id="mapSearch" resultType="vo.LlmapVO">
+		<![CDATA[
+			SELECT * FROM llmap l 
+		]]>
+		<!-- WHERE절을 include 태그로 삽입 -->
+		<include refid="search"></include>
+	</select>
+	
+	<!-- WHERE절 -->
+	<sql id="search">
+		<choose>
+			<!-- 매장명 검색 -->
+			<when test="searchOption=='llname'">
+				WHERE llname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+				ORDER BY llcode
+			</when>
+			<!-- 주소 검색 -->
+			<when test="searchOption=='frcode'">
+				JOIN franchise f ON l.frcode=f.frcode 
+				WHERE f.frkname LIKE CONCAT(CONCAT('%',#{keyword}),'%') 
+<!-- 				OR streetnum LIKE CONCAT(CONCAT('%',#{keyword}),'%') -->
+				ORDER BY llcode
+			</when>
+		</choose>
+	</sql>
+	
 	</mapper>

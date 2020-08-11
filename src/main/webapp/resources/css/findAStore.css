@@ -12,9 +12,8 @@
 }
 
 .MapsearchInput {
-    font-size: 18px;
-    width: 220px;
-    padding: 10px;
+    width: 200px;
+    padding: 8px;
     border: 0px;
     outline: none;
     float: left;
@@ -36,23 +35,15 @@
 	height:600px;
 }
 
-#franchiseList {
-	width:790px;
-	padding:10px;
-	font-size:14px;
-	border:1px solid #f4f4f2;
-}
-
-#franchiseList a:hover {
-	color:#F1BCD5;
+#searchResult td #addr_css {
+	font-size:10px;
 }
 
 /* 탭 메뉴 */
-
 .container{
 	width: 300px;
 	height: 100%;
-	font-size:16px;
+	font-size:14px;
 }
 
 ul.tabs{
@@ -93,6 +84,7 @@ div .tab_content_css {
 }
 
 .searchMap {
+	font-size: 14px;
 	height: 40px;
     width: 220px;
     border: 3px solid pink;

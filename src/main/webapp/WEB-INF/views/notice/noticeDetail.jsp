@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>** DalDal **</title>
 <script src="resources/js/noticeCheck.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/noticeStyle.css">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 </head>
 <body>
