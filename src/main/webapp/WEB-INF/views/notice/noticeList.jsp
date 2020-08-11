@@ -12,7 +12,7 @@
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 <script>
 $(function() {
-	$('#searchBtn').on("click",function() {
+	$('#nsearchBtn').on("click",function() {
 		self.location="nlist"
 					+"${pageMaker.makeQuery(1)}"		// 페이지 번호
 					+"&searchType="
@@ -37,7 +37,7 @@ $(function() {
 				</select>
 					<input type="text" name="keyword" id="keyword" 
 						value="${cri.keyword}" size="25" placeholder="검색어를 입력해 주세요.">
-					<img src="resources/image/search_icon.png" alt="search_icon" id="searchBtn">
+					<img src="resources/image/search_icon.png" alt="search_icon" id="nsearchBtn">
 				</div>
 			</td>
 		</tr>

@@ -70,20 +70,19 @@
 							<p class = "pname">${list.pdname}</p>
 							<p>${list.price} 원</p>
 							
-							<div class = "hashtag">
-				            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
-				            		<a href="hashtagList?keyword=${hashtag}">
-				            			<span class = "hashtagsplit"># ${hashtag}</span>
-				            		</a>
-				            	</c:forEach>
-				            </div>
+			            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
+			            		<a href="hashtagList?keyword=${hashtag}">
+			            			<span class = "hashtagsplit"># ${hashtag}</span>
+			            		</a>
+			            	</c:forEach>
+						
 						</div>
-						</c:forEach>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
-</div><br><hr><br><br>
+</div><hr>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

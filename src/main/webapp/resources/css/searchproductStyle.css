@@ -16,8 +16,8 @@
 	}
 	
 	.hashtagsplit {
-		float: left;
-		color: gray;
+    	color: gray;
+    	margin: 0 auto;
 	}
 	
 	.plist {

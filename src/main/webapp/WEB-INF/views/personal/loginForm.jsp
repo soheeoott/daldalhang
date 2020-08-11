@@ -20,15 +20,11 @@
 			    $("input[name='id']").val(userInputId);
 			   
 				if($("input[name='notExist']").val() == "true"){
-				    	
-					/* alert('가입하지 않은 아이디 이거나 잘못된 비밀번호 입니다!'); */
 						$('#iMessage').html('가입하지 않은 아이디이거나 잘못된 비밀번호 입니다!');
 				    	$('#iMessage').css('color', 'red');
 				} 
 				    
 				if($("input[name='notVerify']").val() == "true"){
-					/* alert('이메일 인증이 되지 않았습니다! 이메일을 확인하시고 인증해주시기 바랍니다!'); */
-					
 					$('#iMessage').html('이메일 인증이 되지 않았습니다. <br> 이메일을 확인하시고 인증해주시기 바랍니다!');
 				   	$('#iMessage').css('color', 'red');
 				}

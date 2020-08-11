@@ -11,6 +11,16 @@
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <script src="resources/js/home.js"></script>
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+	<script type="text/javascript">
+	$(function(){
+		if (document.formName.searchOption[0].value.length == 0 && document.formName.searchOption[1].value.length == 0) {
+			alert('검색 조건을 선택해주세요!');
+			return false;
+		} else {
+			return true;
+		}
+	});	
+	</script>
 </head>
 <body>
 	<!-- header -->
@@ -83,6 +93,7 @@
 						<div class="searchSelect">
 					        <select name="searchOption" class="searchOption">
 					            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+					           <option selected="selected" value="">선택</option>
 					           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >해시태그</option>
 					           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >브랜드</option>
 					           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >상품명</option>
@@ -91,30 +102,11 @@
 				       </div>
 				       
 				       <div class="search">
-				       
 				       		<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="통합 검색">
-				       		<%-- <c:choose>
-				       			<c:when test="${map.searchOption == 'hashtag'?'selected':''}">
-				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="해시태그 검색">
-				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="통합 검색">
-				       			</c:when>
-				       			
-				       			<c:when test="${map.searchOption == 'franchise'?'selected':''}">
-				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="브랜드명 검색">
-				       			</c:when>
-				       			
-				       			<c:when test="${map.searchOption == 'pdname'?'selected':''}">
-				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="상품명 검색">
-				       			</c:when>
-				       			
-				       			<c:when test="${map.searchOption == 'muname'?'selected':''}">
-				       				<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="메뉴 검색">
-				       			</c:when>
-				       		</c:choose> --%>
 				       </div>
 				       
 				       <div class= "searchB">
-				       		<button class="searchBtn">
+				       		<button class="searchBtn" id="searchBtn" onclick="optionCheck()">
 				       			<img src="resources/image/search.png" width= "23" height = "23">
 				      			<!-- <input type="submit" value="조회" class="searchBtn"> -->
 				      		</button>

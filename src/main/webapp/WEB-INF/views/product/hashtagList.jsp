@@ -18,7 +18,7 @@
 	    	<div class="main">
 	    		<div class="count">
 				    <!-- 레코드의 갯수를 출력 -->
-				    ${count}개의 상품이 있습니다.
+				    ${count}개의 음료/디저트가 있습니다.
 			    </div>
 			    
 			    <hr>

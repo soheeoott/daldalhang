@@ -24,12 +24,14 @@
 			    
 			    <div class="productList">
 			        <c:forEach var="map" items="${map.pdlist}">
+				        
 				        <div class = "plist">
 				            <p>
 				            	<a href = "${map.pdurl}">
 				            		<img src="${map.pduploadfile}" width="200" height="200">
 				            	</a>
 				            </p>
+				            
 				            <c:if test="${map.frcode=='A01'}"><p>공차</p></c:if>
 				            <c:if test="${map.frcode=='A02'}"><p>던킨도너츠</p></c:if>
 				            <c:if test="${map.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
@@ -47,13 +49,13 @@
 				            <p class = "pname">${map.pdname}</p>
 				            <p>${map.price} 원</p>
 				            
-				            <div class = "hashtag">
-				            	<c:forEach var="hashtag" items="${fn:split(map.hashtag,'#')}">
-				            		<a href="hashtagList?keyword=${hashtag}">
-				            				<span class = "hashtagsplit"># ${hashtag}</span>
-				            		</a>
-				            	</c:forEach>
-				            </div>
+				            
+			            	<c:forEach var="hashtag" items="${fn:split(map.hashtag,'#')}">
+			            		<a href="hashtagList?keyword=${hashtag}">
+			            			<span class = "hashtagsplit"># ${hashtag}</span>
+			            		</a>
+			            	</c:forEach>
+				            
 				        </div>    
 			        </c:forEach>
 			    </div> 

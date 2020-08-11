@@ -24,8 +24,9 @@
 		margin: 8px 0px 8px 0px;
 	}
 	
-	.hashtag {
-		color : gray;
+	.hashtagsplit {
+    	color: gray;
+    	margin: 0 auto;
 	}
 	
 	.menu_css {
