@@ -57,12 +57,17 @@ public class PDServiceImpl implements PDService {
 	}
 
 	@Override
-	public List<ProductVO> category(String mubcode) throws Exception {
-		return dao.category(mubcode);
+	public List<ProductVO> category(String mubcode, String mucategory) throws Exception {
+		return dao.category(mubcode, mucategory);
 	}
 
 	@Override
 	public int categoryCount(String mubcode) throws Exception {
 		return dao.categoryCount(mubcode);
+	}
+
+	@Override
+	public int mProductCount(String muname) throws Exception {
+		return dao.mProductCount(muname);
 	}
 }

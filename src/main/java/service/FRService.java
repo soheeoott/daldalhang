@@ -13,4 +13,10 @@ public interface FRService {
 	List<FranchiseVO> fsortList(String frcode);
 	
 	public int fsortCount(String frcode);
+	
+	List<FranchiseVO> franchiseMenu(String frcode);
+	
+	List<FranchiseVO> franchiseSubMenu(String mname, String frcode);
+	
+	public int franchiseSubCount(String mname, String frcode);
 }

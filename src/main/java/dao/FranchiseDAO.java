@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.FranchiseVO;
+import vo.ProductVO;
 
 @Repository
 public class FranchiseDAO {
@@ -30,6 +31,27 @@ public class FranchiseDAO {
 	}
 	
 	public int fsortCount(String frcode) {
-	    return sqlsession.selectOne("fsortCount", frcode);
+	    return sqlsession.selectOne(FD + "fsortCount", frcode);
 	}
+	
+	public List<FranchiseVO> franchiseMenu(String frcode) {
+		return sqlsession.selectList(FD + "franchiseMenu", frcode);
+	}
+	
+	public List<FranchiseVO> franchiseSubMenu(String mname, String frcode) {
+		
+		Map<String, String> submenu = new HashMap<String, String>();
+		submenu.put("mname", mname);
+		submenu.put("frcode", frcode);
+		return sqlsession.selectList(FD + "franchiseSubMenu", submenu);
+	}
+	
+	public int franchiseSubCount(String mname, String frcode) {
+		
+		Map<String, String> submenu = new HashMap<String, String>();
+		submenu.put("mname", mname);
+		submenu.put("frcode", frcode);
+		return sqlsession.selectOne(FD + "franchiseSubCount", submenu);
+	}
+		
 }

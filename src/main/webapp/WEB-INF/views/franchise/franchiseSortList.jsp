@@ -10,7 +10,7 @@
 <title></title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/franchiseListStyle.css">
 </head>
 <body>
 <div id = "wrap">
@@ -22,6 +22,10 @@
 		</c:if>
 	</div>
 	
+	<div class="btn_nlist" align="left">
+			<input type="button" value="브랜드 홈" class="brandHomebutton" onclick="location.href='http://localhost:8080/daldal/frlist'">
+	</div>
+	
 	<div class="container">
 	
 	<div class="count">
@@ -30,20 +34,33 @@
     <br><br><br>
     </div>
 				
-	<!-- 2020.08.03 product menu name 출력 -->
+	<!-- 2020.08.12 franchise menu 출력 -->
 		<div class="menu_css">
-			<c:forEach var="list" items="${mulist}" end="5">
+			<%-- <c:forEach var="list" items="${mulist}" end="5">
 					<c:if test="${list.mucategory=='coffee'}"><a href="pdlist?mucategory=${list.mucategory}" value="coffee">커피</a></c:if>
 					<c:if test="${list.mucategory=='dessert'}"><a href="pdlist?mucategory=${list.mucategory}" value="dessert">디저트</a></c:if>
 					<c:if test="${list.mucategory=='drink'}"><a href="pdlist?mucategory=${list.mucategory}" value="drink">음료</a></c:if>
 					<c:if test="${list.mucategory=='food'}"><a href="pdlist?mucategory=${list.mucategory}" value="food">음식</a></c:if>
 					<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">스페셜</a></c:if>		
+			</c:forEach> --%>
+			
+			<c:forEach var="menu" items="${frachiseMenu}" end="6">
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mname}</a>
 			</c:forEach>
+			
+			<br>
+			
+			<c:forEach var="menu" items="${frachiseMenu}" begin="7">
+					<a href="#">${menu.mname}</a>
+			</c:forEach>
+			
 			<hr><br>
 			<c:forEach var="cpdlist" items="${cpdlist}" end="5">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>
+			
 			<br>
+			
 			<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>		

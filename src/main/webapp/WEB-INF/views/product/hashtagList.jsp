@@ -48,7 +48,15 @@
 				            <p>${hashtag.price} 원</p>
 				            
 				            <div class = "hashtag">
-				            	<c:forEach var="hashtag" items="${fn:split(hashtag.hashtag,'#')}">
+				            	<c:forEach var="hashtag" items="${fn:split(hashtag.hashtag,'#')}" end="1">
+				            		<a href="hashtagList?keyword=${hashtag}">
+				            			<span class = "hashtagsplit"># ${hashtag}</span>
+				            		</a>
+				            	</c:forEach>
+				            </div>
+				            
+				            <div class = "hashtag">
+				            	<c:forEach var="hashtag" items="${fn:split(hashtag.hashtag,'#')}" begin="2">
 				            		<a href="hashtagList?keyword=${hashtag}">
 				            			<span class = "hashtagsplit"># ${hashtag}</span>
 				            		</a>

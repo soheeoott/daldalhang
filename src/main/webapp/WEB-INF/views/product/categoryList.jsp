@@ -25,27 +25,66 @@
 	
 		<div class="count">
 		    <!-- 레코드의 갯수를 출력 -->
-		    ${count}개의 음료/디저트가 있습니다.
+		    ${count}개의 
+		         
+			<c:choose>
+				<c:when test="${mubcode =='C'}">
+					커피가
+				</c:when>
+				
+				<c:when test="${mubcode =='DE'}">
+					디저트가
+				</c:when>
+				
+				<c:when test="${mubcode =='DR'}">
+					음료가
+				</c:when>
+				
+				<c:when test="${mubcode =='F'}">
+					음식이
+				</c:when>
+				
+				<c:when test="${mubcode =='S'}">
+					스페셜이
+				</c:when>
+			</c:choose>					
+			
+		         있습니다.
 	    <br><br><br>
 	    </div>
 		
 		<!-- 2020.08.03 product menu name 출력 -->
 		<div class="menu_css">
-			<c:forEach var="list" items="${mulist}" end="5">
-					<c:if test="${list.mucategory=='coffee'}"><a href="pdlist?mucategory=${list.mucategory}" value="coffee">커피</a></c:if>
-					<c:if test="${list.mucategory=='dessert'}"><a href="pdlist?mucategory=${list.mucategory}" value="dessert">디저트</a></c:if>
-					<c:if test="${list.mucategory=='drink'}"><a href="pdlist?mucategory=${list.mucategory}" value="drink">음료</a></c:if>
-					<c:if test="${list.mucategory=='food'}"><a href="pdlist?mucategory=${list.mucategory}" value="food">음식</a></c:if>
-					<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">스페셜</a></c:if>		
+			<c:forEach var="list" items="${menulist}">
+				<c:if test="${list.mucategory=='coffee'}">
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
+				</c:if>
+				
+				<c:if test="${list.mucategory=='dessert'}">
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
+				</c:if>
+				
+				<c:if test="${list.mucategory=='drink'}">
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
+				</c:if>
+				
+				<c:if test="${list.mucategory=='food'}">
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
+				</c:if>
+				
+				<c:if test="${list.mucategory=='special'}">
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
+				</c:if>							
 			</c:forEach>
 			<hr><br>
-			<c:forEach var="cpdlist" items="${cpdlist}" end="5">
+			 <c:forEach var="cpdlist" items="${cpdlist}" end="5">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
-			</c:forEach>
+			</c:forEach> 
+			
 			<br>
 			<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
-			</c:forEach>		
+			</c:forEach>
 		</div>
 		<br><br><br>
 			<div class="container">

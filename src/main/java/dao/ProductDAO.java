@@ -70,8 +70,11 @@ public class ProductDAO {
 	}
 	
 	// 메뉴 목록
-	public List<ProductVO> category(String mubcode) throws Exception {
-		return sqlsession.selectList("category", mubcode);
+	public List<ProductVO> category(String mubcode, String mucategory) throws Exception {
+		Map<String, String> cate = new HashMap<String, String>();
+		cate.put("mubcode", mubcode);
+		cate.put("mucategory", mucategory);
+		return sqlsession.selectList("category", cate);
 	}
 	
 	// 메뉴 갯수
@@ -79,6 +82,8 @@ public class ProductDAO {
 		return sqlsession.selectOne("categoryCount", mubcode);
 	}
 	
-	
-	
+	// 서브 메뉴 갯수
+	public int mProductCount(String muname) throws Exception {
+		return sqlsession.selectOne("mProductCount", muname);
+	}
 }

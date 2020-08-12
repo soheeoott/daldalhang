@@ -55,7 +55,15 @@
 		WHERE m.muname=#{muname}
 		ORDER BY p.pdseq
 	</select>
-
+	
+	<select id ="mProductCount" resultType="int">
+		SELECT COUNT(*) FROM product p 
+		JOIN menu m 
+		ON p.mucode1=m.mucode OR p.mucode2=m.mucode OR p.mucode3=m.mucode
+		WHERE m.muname=#{muname}
+		ORDER BY p.pdseq
+	</select>
+	
 	<!-- 01_01. 게시글 전체목록 조회 및 검색 조회까지 -->
 	<select id="listAll" resultType="vo.ProductVO">
 	    <![CDATA[
@@ -87,6 +95,7 @@
 	        <when test="searchOption == 'franchise'">
 	            JOIN franchise f ON p.frcode=f.frcode
 	            WHERE f.frkname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+	            || f.frename LIKE CONCAT(CONCAT('%',#{keyword}),'%')
 				ORDER BY p.pdseq;
 	        </when>
 	        

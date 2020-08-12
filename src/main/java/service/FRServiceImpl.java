@@ -33,4 +33,19 @@ public class FRServiceImpl implements FRService {
 	public int fsortCount(String frcode) {
 		return dao.fsortCount(frcode);
 	}
+	
+	@Override
+	public List<FranchiseVO> franchiseMenu(String frcode) {
+		return dao.franchiseMenu(frcode);
+	}
+	
+	@Override
+	public List<FranchiseVO> franchiseSubMenu(String mname, String frcode) {
+		return dao.franchiseSubMenu(mname, frcode);
+	}
+	
+	@Override
+	public int franchiseSubCount(String mname, String frcode) {
+		return dao.franchiseSubCount(mname, frcode);
+	}
 }

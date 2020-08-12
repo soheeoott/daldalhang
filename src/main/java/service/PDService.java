@@ -27,9 +27,12 @@ public interface PDService {
 	public int hashtagCount(String keyword) throws Exception;
 	
 	// 메뉴 목록
-	public List<ProductVO> category(String mubcode) throws Exception;
+	public List<ProductVO> category(String mubcode, String mucategory) throws Exception;
 	
 	// 메뉴 갯수
 	public int categoryCount(String mubcode) throws Exception;
+	
+	// 서브 메뉴 갯수
+	public int mProductCount(String muname) throws Exception;
 	
 }

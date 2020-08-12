@@ -31,22 +31,38 @@ public class FranchiseController {
 	@Autowired
 	MUService muservice;
 	
+	@RequestMapping(value="/franchiseSubList")
+	public ModelAndView franchiseSubList(ModelAndView mv, String mname, String frcode) throws Exception{
+
+		int count = frservice.franchiseSubCount(mname, frcode);
+		mv.addObject("count", count);
+		
+		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(frcode);
+		mv.addObject("frachiseMenu", frachiseMenu);
+		
+		List<FranchiseVO> frachiseSub = frservice.franchiseSubMenu(mname, frcode);
+		mv.addObject("frachiseSub", frachiseSub);
+		
+		mv.setViewName("franchise/franchiseSubList");
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="/franchiseSortList")
 	public ModelAndView franchiseSortList(ModelAndView mv, String frcode) throws Exception{
 	    
-		System.out.println("frcode => " + frcode);
-		
 		// 레코드의 갯수
 		int count = frservice.fsortCount(frcode);
 
 		List<MenuVO> mulist = muservice.selectList();
 		mv.addObject("mulist", mulist);
 		
+		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(frcode);
+		mv.addObject("frachiseMenu", frachiseMenu);
+		
 		List<FranchiseVO> fpdlist = frservice.fsortList(frcode);
 		mv.addObject("fpdlist", fpdlist);
 
-		System.out.println("fpdlist =>" + fpdlist.get(0));
-	    
 		mv.addObject("count", count);
 	    mv.setViewName("franchise/franchiseSortList");
 	    

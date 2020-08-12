@@ -19,12 +19,15 @@
 	</div>
 
 	<font color="gray" style="line-height: 2;">
-
+		
+		<a href="#" class="footer_menu">달달 프로젝트 소개</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 		<a href="#" class="footer_menu">홈페이지 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 		<a href="#" class="footer_menu">위치정보 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<a href="#" class="footer_menu">사이트맵</a>&nbsp;&nbsp;&nbsp;
+		
 	<hr>
 	<!-- 
-	<a href="#" class="footer_menu">개인정보처리방침</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+	
 	<a href="#" class="footer_menu">디지털콘텐츠 표준약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 	<a href="#" class="footer_menu">전자상거래 표준약관</a><br><br> 
 	-->

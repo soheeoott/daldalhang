@@ -34,21 +34,27 @@ public class ProductController {
 	FRService frservice;
 
 	@RequestMapping(value="/category")
-	public ModelAndView category(ModelAndView mv, String mubcode) throws Exception{
+	public ModelAndView category(ModelAndView mv, MenuVO mvo, String mubcode, String mucategory, HttpSession session) throws Exception{
 		
 		System.out.println("mubcode => " + mubcode);
+
 		
-		List<ProductVO> ctlist = pdservice.category(mubcode);
+		// menu(커피, 디저트, 음료, 식품, 스페셜 출력)
+		List<ProductVO> ctlist = pdservice.category(mubcode, mucategory);
 		mv.addObject("ctlist", ctlist);
 		
 		System.out.println("ctlist =>" + ctlist.get(0));
 		
+		// menu category 출력 (커피, 디저트, 음료, 식품, 스페셜을 눌렀을 때 각 하위 메뉴 출력)
+		List<MenuVO> cpdlist = muservice.productList(mucategory);
+		mv.addObject("cpdlist", cpdlist);
+		
 		// 메뉴 상품 갯수
 	    int count = pdservice.categoryCount(mubcode); 
-	    		
-		List<MenuVO> mulist = muservice.menu();
-		mv.addObject("mulist", mulist);
+	    
+		/* List<MenuVO> mulist = muservice.menu(); */
 		mv.addObject("count", count);
+		mv.addObject("mubcode", mubcode);
 		
 		mv.setViewName("product/categoryList");
 		
@@ -100,25 +106,39 @@ public class ProductController {
 	
 	// 2020-08-04 메뉴를 눌렀을 때 출력되는 상품 페이지
 	@RequestMapping(value="/mpdlist")
-	public ModelAndView mpdlist(ModelAndView mv, MenuVO mvo, HttpSession session) {
+	public ModelAndView mpdlist(
+			ModelAndView mv, MenuVO mvo, HttpSession session,
+			String mubcode, String mucategory) throws Exception {
 		
 		// 세션에 저장된 값 menu 불러와 다시 저장 => session null
 /*		String menulist = (String)session.getAttribute("menulist");
 		mv.addObject("menulist", menulist);		
 		System.out.println("menulist => "+menulist);
 */		
-		// 2020.08.03 menu 출력
-		List<MenuVO> mulist = muservice.menu();
-		mv.addObject("mulist", mulist);
+		// 커피, 디저트, 음료, 식품, 스페셜 출력
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
 		
-		// menu category 출력
+//		// 2020.08.03 menu 출력
+//		List<MenuVO> mulist = muservice.menu();
+//		mv.addObject("mulist", mulist);
+		
+		List<ProductVO> ctlist = pdservice.category(mubcode, mucategory);
+		mv.addObject("ctlist", ctlist);
+		mv.addObject("mubcode", mubcode);
+		
+		// menu category 출력 (커피, 디저트, 음료, 식품, 스페셜을 눌렀을 때 각 하위 메뉴 출력)
 		String menucategory = mvo.getMucategory();
 		List<MenuVO> cpdlist = muservice.productList(menucategory);
 		mv.addObject("cpdlist", cpdlist);
 		
 		// menu category 클릭 시 상품 리스트 출력
 		String muname = mvo.getMuname();
+		int count = pdservice.mProductCount(muname); 
 		List<ProductVO> mpdlist = pdservice.mProductList(muname);
+		
+		mv.addObject("count", count);
+		mv.addObject("muname", muname);
 		
 		if (mpdlist != null) {
 			mv.addObject("mpdlist", mpdlist);
@@ -128,7 +148,7 @@ public class ProductController {
 		}
 		mv.setViewName("product/mproductList");
 		return mv;
-	}
+	} 
 	
 	@RequestMapping(value="/pdlist")
 	public ModelAndView pdlist(ModelAndView mv, MenuVO mvo, HttpSession session) {
@@ -137,12 +157,15 @@ public class ProductController {
 /*		String menulist = (String)session.getAttribute("menulist");
 		mv.addObject("menulist", menulist);
 	*/	
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
+		
 		// 상품 리스트 출력
 		List<ProductVO> pdlist = pdservice.selectList();
 
 		// 2020.08.03 menu 출력
-		List<MenuVO> mulist = muservice.menu();
-		mv.addObject("mulist", mulist);
+//		List<MenuVO> mulist = muservice.menu();
+//		mv.addObject("mulist", mulist);
 		
 		// menu 클릭했을 때 나오는 category 출력
 		String mucategory = mvo.getMucategory();

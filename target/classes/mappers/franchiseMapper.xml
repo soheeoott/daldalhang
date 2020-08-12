@@ -27,4 +27,24 @@
 		WHERE f.frcode = #{frcode} ORDER BY p.pdseq;
 	</select>
 	
+	<select id = "franchiseMenu" resultType="vo.ProductVO">
+		SELECT DISTINCT mname, f.frcode FROM franchise f 
+		JOIN product p ON f.frcode = p.frcode 
+		WHERE f.frcode = #{frcode} ORDER BY p.pdseq
+	</select>
+	
+	<select id = "franchiseSubMenu" resultType="vo.ProductVO">
+		SELECT * FROM franchise f 
+		JOIN product p ON f.frcode = p.frcode 
+		WHERE p.mname = #{mname} AND p.frcode = #{frcode} 
+		ORDER BY p.pdseq
+	</select>
+	
+	<select id = "franchiseSubCount" resultType="int">
+		SELECT COUNT(*) FROM franchise f 
+		JOIN product p ON f.frcode = p.frcode 
+		WHERE p.mname = #{mname} AND p.frcode = #{frcode} 
+		ORDER BY p.pdseq
+	</select>
+	
 </mapper>

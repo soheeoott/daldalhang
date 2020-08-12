@@ -1,0 +1,61 @@
+	.productList p {
+	  display: block;
+	  margin-block-start: 1em;
+	  margin-block-end: 1em;
+	  margin-inline-start: 0px;
+	  margin-inline-end: 0px;
+	}
+	
+	.container {
+	  width : 100%;
+	}
+
+	.plist {
+		float: left;
+	    width: 25%;
+	    height: 380px;
+	    padding: 0 20px;
+	    box-sizing: border-box;
+		text-align: center;
+	}
+	
+	.plist p {
+		margin: 8px 0px 8px 0px;
+	}
+	
+	.hashtagsplit {
+    	color: gray;
+    	margin: 0 auto;
+	}
+	
+	.menu_css a {
+		margin-right: 5em;
+		line-height: 3;
+	}
+	
+	.btn_nlist {
+		width:880px;
+		padding-top:10px;
+	}
+
+	.buttonStyle {
+		width:70px;
+		height:30px;
+		cursor:pointer;
+		background-color:white;
+		border-radius:5px;
+		border:1px solid silver;
+	}
+	
+	.brandHomebutton {
+		width:70px;
+		height:30px;
+		left: 100px;
+		cursor:pointer;
+		background-color:white;
+		border-radius:5px;
+		border:1px solid silver;
+		position: fixed;
+	}
+	
+	
