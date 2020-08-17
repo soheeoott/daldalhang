@@ -13,10 +13,12 @@
 
 .MapsearchInput {
     width: 200px;
-    padding: 8px;
+    padding: 10px;
     border: 0px;
     outline: none;
     float: left;
+    font-size: 15px;
+    height: 20px;
 }
 
 .searchMapBtn {
@@ -35,7 +37,7 @@
 	height:600px;
 }
 
-#searchResult td #addr_css {
+#mapSearchResult td #addr_css {
 	font-size:10px;
 }
 

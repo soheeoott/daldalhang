@@ -25,7 +25,12 @@ public class MAPServiceImpl implements MAPService {
 	}
 
 	@Override
-	public List<LlmapVO> mapSearch(String searchOption, String keyword) throws Exception {
-		return dao.mapSearch(searchOption, keyword);
+	public List<LlmapVO> mapBSearch(String mapBKeyword) throws Exception {
+		return dao.mapBSearch(mapBKeyword);
+	}
+
+	@Override
+	public List<LlmapVO> mapFSearch(String mapFKeyword) throws Exception {
+		return dao.mapFSearch(mapFKeyword);
 	}
 }

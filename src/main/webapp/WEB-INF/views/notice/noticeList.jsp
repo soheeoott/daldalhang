@@ -31,7 +31,7 @@ $(function() {
 			<td colspan="9">
 				<div class="box-body" id="searchBar" align="right">
 				<select name="searchType" id="searchType" hidden>
-						<option value="tc"
+					<option value="tc"
 						<c:out value="${cri.searchType eq 'tc' ? 'selected':''}"/>>제목&내용
 					</option>
 				</select>

@@ -30,7 +30,7 @@
 	
 	<div class="count">
 	    <!-- 레코드의 갯수를 출력 -->
-	    ${count}개의 음료/디저트가 있습니다.
+	    ${count}개의 ${mname}(이)가 있습니다.
     <br><br><br>
     </div>
 				

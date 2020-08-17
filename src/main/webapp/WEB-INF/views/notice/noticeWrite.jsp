@@ -14,23 +14,72 @@
 <script src="https://cdn.tiny.cloud/1/p94bjfog4l71b0rpo346ohluewcnl4st7roux4squjwp3ckz/tinymce/5/tinymce.min.js" 
 		referrerpolicy="origin"></script>
 <script>
-	tinymce.init({
+ 	tinymce.init({
 		selector: 'textarea',
 		menubar: 'false',
 		plugins: 'autolink autosave code link image table textcolor autoresize',
 		toolbar: 'undo redo | forecolor bold italic underline | alignleft aligncenter alignright alignjustify | image code',
-		min_height:'800'/* ,
+		min_height:'800',
+		    image_advtab: true,
+		    file_picker_callback: function(callback, value, meta) {
+		      if (meta.filetype == 'image') {
+		        $('#upload').trigger('click');
+		        $('#upload').on('change', function() {
+		          var file = this.files[0];
+		          var reader = new FileReader();
+		          reader.onload = function(e) {
+		            callback(e.target.result, {
+		              alt: ''
+		            });
+		          };
+		          reader.readAsDataURL(file);
+		        });
+		      }
+		    }/* ,
 		setup: function(editor) {
             editor.addButton('custom_image', {
                     title: '이미지삽입',
                     icon: 'image',
                     onclick: function() {
-                        window.open("/notice/noticeFileUpload.jsp","_blank","width=400,height=350");
+                        window.open("/notice/noticeFileUpload.jsp","tinymcePop","width=400,height=350");
                     }
                 });
             } */
 	});
- </script>
+ 	
+// 개별적 오류 확인을 위한 switch 변수 정의
+var tCheck = false;
+var cCheck = false;
+
+// 개별적 focusout 리벤트 리스터 function 작성 : JQuery
+$(function() {
+	$('#title').focus();
+	$('#title').focusout(function() {
+		tCheck = titleCheck();
+	}); // title_focusout
+	
+	$('#content').focusout(function() {
+		cCheck = contentCheck();
+	}); // content_focusout
+}); // ready
+
+// 전체적으로 입력 오류가 없음을 확인, submit 여부 판단 : JavaScript function
+function inCheck() {
+	if(tCheck==true) {
+		return true;
+	} else {
+		$('#tMessage').html('제목을 확인하세요!');
+		return false;
+	} // title 오류 확인
+	
+	if(cCheck==true) {
+		return true;
+	} else {
+		$('#cMessage').html('내용을 확인하세요!');
+		return false;
+	} // content 오류 확인
+}
+</script>
 </head>
 <body>
 <div align="center" id="wrap">
@@ -49,15 +98,16 @@
 			</tr>
 			<tr>
 				<td>Content</td>
-				<div class="editor">
-					<td>
-						<textarea rows="10" cols="50" name="content"></textarea>
-					</td>
-				</div>
+				<td>
+					<textarea rows="10" cols="50" name="content" id="content"></textarea>
+					<span id="cMessage" class="eMessage"></span>
+					<input name="image" type="file" id="upload" class="hidden" onchange=""></td>
+				</td>
+				
 			</tr>
 			<tr>
 				<td colspan="2" align="center" height="80">
-					<input type="submit" value="등록" class="buttonStyle">&nbsp;&nbsp;&nbsp;
+					<input type="submit" value="등록" class="buttonStyle" onclick="return inCheck()">&nbsp;&nbsp;&nbsp;
 					<input type="reset" value="취소" class="buttonStyle">&nbsp;&nbsp;&nbsp;
 					<input type="button" value="목록" class="buttonStyle" onclick="location.href='nlist'">
 				</td>

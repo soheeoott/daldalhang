@@ -56,23 +56,53 @@ $(function() {
 		$("#" + tab_id).addClass('current');
 	});
 
-	$('#searchBtn').click(function() {
-		$.ajax({
-			type: 'GET',
-			url: 'mapSearch',
-			data: {
-				searchOption: $('#searchOption').val(),
-				keyword: $('#keyword').val()
-			},
-			success: function(data) {
-/*				$.each(data, function(storeList) {*/
-/*				$('#searchResult').html(data);*/
-				$('.map_wrap').html(data);
-/*				})*/
-			},
-			error: function() {
-				alert("ERROR 출력되지 않음 ERROR");
-			}
-		});
+	// 브랜드명으로 매장찾기
+	$('#BSearchMapBtn').click(function() {
+		var mapBKeyword = $('#mapBKeyword').val();
+		if(mapBKeyword==null) {
+			alert('브랜드명을 입력해 주세요.');
+		} else {
+			$.ajax({
+				type: 'GET',
+				url: 'mapBSearch',
+				dataType: 'JSON',
+				data: {
+					mapBKeyword: mapBKeyword
+				},
+				success: function(data) {
+					$.each(data, storeList) {
+						alert('storeList =>'+storeList);
+					}
+				},
+				error: function() {
+					alert("ERROR 출력되지 않음 ERROR");
+				}
+			});			
+		} // if-else
 	});
-});
+	
+	// 매장명으로 매장찾기
+	$('#FSearchMapBtn').click(function() {
+		var mapFKeyword = $('#mapFKeyword').val();
+		if(mapFKeyword==null) {
+			alert('매장명을 입력해 주세요.');
+		} else {
+			$.ajax({
+				type: 'GET',
+				url: 'mapFSearch',
+				dataType: 'JSON',
+				data: {
+					mapFKeyword: mapFKeyword
+				},
+				success: function(data) {
+					$.each(data, function()) {
+						alert('llname =>'+llname);
+					}
+				},
+				error: function() {
+					alert("ERROR 출력되지 않음 ERROR");
+				}
+			});			
+		} // if-else
+	});
+}); // ready

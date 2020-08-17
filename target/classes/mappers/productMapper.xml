@@ -11,20 +11,23 @@
 	<select id="category" resultType="vo.ProductVO">
 		SELECT * FROM menu n JOIN product p 
 		ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
-		WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') ORDER BY mucode asc, pdseq asc;
+		WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') 
+		ORDER BY mucode asc, pdseq asc
 	</select>
 	
 	<!-- 2020-08-11 -->
 	<select id="categoryCount" resultType="int">
 		SELECT COUNT(*) FROM menu n JOIN product p 
 		ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
-		WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') ORDER BY mucode asc, pdseq asc;
+		WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') 
+		ORDER BY mucode asc, pdseq asc
 	</select>
 				  
 	<select id ="selectList" resultType="vo.ProductVO"> 
 		SELECT * FROM menu n JOIN product p 
 		ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
-		ORDER BY mucode asc, pdseq asc
+		<!-- ORDER BY bcode ASC, mcode ASC, pdcode ASC, pdseq ASC -->
+		ORDER BY frcode ASC, pdseq ASC   
 	</select>
 
 	<select id = "selectOne" resultType="vo.ProductVO">
@@ -39,12 +42,12 @@
 	
 	<!-- 2020-08-10  해시태그 전체목록 키워드 조회 -->
 	<select id = "hashtagAll" resultType="vo.ProductVO">
-		SELECT * FROM product WHERE hashtag LIKE CONCAT('%',#{keyword},'%')
+		SELECT * FROM product WHERE hashtag LIKE CONCAT('%',#{keyword},'%') 
 	</select>
 	
 	<!-- 2020-08-10  해시태그 레코드 갯수 -->
 	<select id = "hashtagCount" resultType="int">
-		SELECT count(*) FROM product WHERE hashtag LIKE CONCAT('%',#{keyword},'%')
+		SELECT count(*) FROM product WHERE hashtag LIKE CONCAT('%',#{keyword},'%') 
 	</select>
 	
 	<!-- 2020-08-04 메뉴 클릭 시 상품 출력 -->
@@ -89,27 +92,27 @@
 	        <when test="searchOption == 'hashtag'">
 	            JOIN franchise f ON p.frcode=f.frcode
 	            WHERE p.hashtag LIKE CONCAT(CONCAT('%',#{keyword}),'%')
-				ORDER BY p.pdseq;
+				ORDER BY p.pdseq
 	        </when>
 	        
 	        <when test="searchOption == 'franchise'">
 	            JOIN franchise f ON p.frcode=f.frcode
 	            WHERE f.frkname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
 	            || f.frename LIKE CONCAT(CONCAT('%',#{keyword}),'%')
-				ORDER BY p.pdseq;
+				ORDER BY p.pdseq
 	        </when>
 	        
 	        <when test="searchOption == 'pdname'">
 	            JOIN franchise f ON p.frcode=f.frcode
 	            WHERE p.pdname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
-				ORDER BY p.pdseq;
+				ORDER BY p.pdseq
 	        </when>
 	        
 	        <when test="searchOption == 'muname'">
 	           JOIN franchise f ON p.frcode=f.frcode
 	           JOIN menu m ON p.mucode1=m.mucode OR p.mucode2=m.mucode OR p.mucode3=m.mucode
 			   WHERE m.muname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
-			   ORDER BY p.pdseq;
+			   ORDER BY p.pdseq
 	        </when>
 	        <!-- 전체 검색이 아닐 경우 -->
 	        <!-- <otherwise>

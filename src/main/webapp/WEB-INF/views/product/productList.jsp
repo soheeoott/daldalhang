@@ -25,24 +25,24 @@
 		<div class="menu_css">
 			<c:forEach var="list" items="${menulist}">
 				<c:if test="${list.mucategory=='coffee'}">
-					<a href="category?mubcode=${list.mubcode}">커피</a>
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
 				</c:if>
 				
 				<c:if test="${list.mucategory=='dessert'}">
-					<a href="category?mubcode=${list.mubcode}">디저트</a>
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
 				</c:if>
 				
 				<c:if test="${list.mucategory=='drink'}">
-					<a href="category?mubcode=${list.mubcode}">음료</a>
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
 				</c:if>
 				
 				<c:if test="${list.mucategory=='food'}">
-					<a href="category?mubcode=${list.mubcode}">음식</a>
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
 				</c:if>
 				
 				<c:if test="${list.mucategory=='special'}">
-					<a href="category?mubcode=${list.mubcode}">스페셜</a>
-				</c:if>							
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
+				</c:if>					
 			</c:forEach>
 			<hr><br>
 			<c:forEach var="cpdlist" items="${cpdlist}" end="5">

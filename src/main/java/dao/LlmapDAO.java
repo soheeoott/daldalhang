@@ -25,10 +25,11 @@ public class LlmapDAO {
 		return sqlsession.selectOne(LD + "selectOne", lvo);
 	}
 	
-	public List<LlmapVO> mapSearch(String searchOption, String keyword) throws Exception {
-		Map<String, String> mmap = new HashMap<String, String>();
-	    mmap.put("searchOption", searchOption);
-	    mmap.put("keyword", keyword);		
-		return sqlsession.selectList("mapSearch", mmap);
+	public List<LlmapVO> mapBSearch(String mapBKeyword) throws Exception {	
+		return sqlsession.selectList(LD + "mapBSearch", mapBKeyword);
+	}
+	
+	public List<LlmapVO> mapFSearch(String mapFKeyword) throws Exception {
+		return sqlsession.selectList(LD + "mapFSearch", mapFKeyword);
 	}
 }

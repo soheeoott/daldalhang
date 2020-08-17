@@ -28,6 +28,13 @@ public class FRServiceImpl implements FRService {
 	public List<FranchiseVO> fsortList(String frcode) {
 		return dao.fsortList(frcode);
 	}
+	
+	/*
+	@Override
+	public List<FranchiseVO> fsortList(String frcode, String frkname) {
+		return dao.fsortList(frcode, frkname);
+	}
+	*/
 
 	@Override
 	public int fsortCount(String frcode) {

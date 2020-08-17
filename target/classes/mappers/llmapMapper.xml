@@ -7,7 +7,7 @@
 	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
 				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 	
-	<select id="selectList" resultType="vo.LlmapVO">
+		<select id="selectList" resultType="vo.LlmapVO">
 		SELECT * FROM llmap ORDER BY llcode
 	</select>
 
@@ -15,31 +15,46 @@
 		SELECT frkname FROM llmap ORDER BY llcode
 	</select>
 	
-	<!-- 지도 검색 -->
+	<!-- 브랜드명으로 매장찾기 -->
+	<select id="mapBSearch" resultType="vo.LlmapVO">
+		SELECT * FROM llmap l 
+		JOIN franchise f ON l.frcode=f.frcode 
+		WHERE f.frkname LIKE CONCAT(CONCAT('%',#{mapBKeyword}),'%') 
+		ORDER BY llcode
+	</select>
+	
+	<!-- 매장명으로 매장찾기 -->
+	<select id="mapFSearch" resultType="vo.LlmapVO">
+		SELECT * FROM llmap l 
+		WHERE llname LIKE CONCAT(CONCAT('%',#{mapFKeyword}),'%')
+		ORDER BY llcode
+	</select>
+	
+	
+<!-- 	지도 검색 
 	<select id="mapSearch" resultType="vo.LlmapVO">
 		<![CDATA[
 			SELECT * FROM llmap l 
 		]]>
-		<!-- WHERE절을 include 태그로 삽입 -->
+		WHERE절을 include 태그로 삽입
 		<include refid="search"></include>
 	</select>
 	
-	<!-- WHERE절 -->
+	WHERE절
 	<sql id="search">
 		<choose>
-			<!-- 매장명 검색 -->
-			<when test="searchOption=='llname'">
-				WHERE llname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
+			브랜드명 검색
+			<when test="mapSearchOption=='frcode'">
+				JOIN franchise f ON l.frcode=f.frcode 
+				WHERE f.frkname LIKE CONCAT(CONCAT('%',#{mapKeyword}),'%') 
 				ORDER BY llcode
 			</when>
-			<!-- 주소 검색 -->
-			<when test="searchOption=='frcode'">
-				JOIN franchise f ON l.frcode=f.frcode 
-				WHERE f.frkname LIKE CONCAT(CONCAT('%',#{keyword}),'%') 
-<!-- 				OR streetnum LIKE CONCAT(CONCAT('%',#{keyword}),'%') -->
+			매장명 검색
+			<when test="mapSearchOption=='llname'">
+				WHERE llname LIKE CONCAT(CONCAT('%',#{mapKeyword}),'%')
 				ORDER BY llcode
 			</when>
 		</choose>
-	</sql>
+	</sql> -->
 	
 	</mapper>

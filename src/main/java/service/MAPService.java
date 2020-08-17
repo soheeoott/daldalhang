@@ -9,5 +9,6 @@ public interface MAPService {
 	List<LlmapVO> selectList();
 	LlmapVO selectOne(LlmapVO lvo);
 	
-	List<LlmapVO> mapSearch(String searchOption, String keyword) throws Exception;
+	List<LlmapVO> mapBSearch(String mapBKeyword) throws Exception;
+	List<LlmapVO> mapFSearch(String mapFKeyword) throws Exception;
 }

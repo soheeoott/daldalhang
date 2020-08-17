@@ -31,7 +31,11 @@
 	<a href="#" class="footer_menu">디지털콘텐츠 표준약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 	<a href="#" class="footer_menu">전자상거래 표준약관</a><br><br> 
 	-->
-	(주)달달행 대표이사 : 달달쓰 TEL : 1234-5555 개인정보 책임자 : 김달달<br>
+	(주)달달행 대표이사 : 달달쓰 
+	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+	TEL : 1234-5555 
+	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+	 개인정보 책임자 : 김달달<br>
 	ⓒ 2020 DalDal Company. All Rights Reserved.
 	</font>
 </div>

@@ -30,6 +30,15 @@ public class FranchiseDAO {
 		return sqlsession.selectList(FD + "fsortList", frcode);
 	}
 	
+	/*
+	public List<FranchiseVO> fsortList(String frcode, String frkname) {
+		Map<String, String> fsort = new HashMap<String, String>();
+		fsort.put("frcode", frcode);
+		fsort.put("frkname", frkname);
+		return sqlsession.selectList(FD + "fsortList", fsort);
+	}
+	*/
+	
 	public int fsortCount(String frcode) {
 	    return sqlsession.selectOne(FD + "fsortCount", frcode);
 	}
@@ -53,5 +62,4 @@ public class FranchiseDAO {
 		submenu.put("frcode", frcode);
 		return sqlsession.selectOne(FD + "franchiseSubCount", submenu);
 	}
-		
 }

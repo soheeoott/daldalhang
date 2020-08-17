@@ -159,7 +159,12 @@ table {
 	border-bottom:1px solid black;
 }
 
-/* tinymce textarea 사이즈 */
+/* TinyMCE textarea 사이즈 */
 .tox-tinymce {
 	min-height:300px;
 }
+
+/* 정규식 에러 메세지 표시 */
+.eMessage { color:red; font-style:italic; font-size:x-small; }
+
+.hidden{display:none;}

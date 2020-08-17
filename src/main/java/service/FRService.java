@@ -9,8 +9,10 @@ public interface FRService {
 	List<FranchiseVO> selectList();
 	
 	FranchiseVO selectOne(FranchiseVO fvo);
-	
+
 	List<FranchiseVO> fsortList(String frcode);
+	
+//	List<FranchiseVO> fsortList(String frcode, String frkname);
 	
 	public int fsortCount(String frcode);
 	

@@ -33,22 +33,23 @@
 						<div id="tab-1" class="tab-content current">
 							<div>
 								<div class="searchMap">
-									<select name="searchOption" id="searchOption" hidden>
+<%-- 									<select name="mapSearchOption" id="mapSearchOption" hidden>
 										<option value="frcode"
-											<c:out value="${mmap.searchOption eq 'frcode' ? 'selected':''}"/>>브랜드명
+											<c:out value="${mmap.mapSearchOption eq 'frcode' ? 'selected':''}"/>>브랜드명
 										</option>
-									</select> <input type="text" name="keyword" id="keyword"
-										value="${mmap.keyword}" placeholder="브랜드명을 입력해 주세요."
+									</select> --%>
+									<input type="text" name="mapBKeyword" id="mapBKeyword"
+										value="${mmap.mapBKeyword}" placeholder="브랜드명을 입력해 주세요."
 										class="MapsearchInput">
 								</div>
 								<button class="searchMapBtn">
 									<img src="resources/image/search.png" width="23" height="23"
-										alt="search_icon" id="searchBtn">
+										alt="search_icon" id="BSearchMapBtn">
 								</button>
 							</div>
 							<br>
 							<hr>
-							<div id="searchResult" class="tab_content_css" align="left">
+							<div id="mapSearchResult" class="tab_content_css" align="left">
 								<c:forEach var="list" items="${storeList}">
 									<a href="javascript:void(0);"
 										onclick="initMap('${list.frkname}','${list.llname}','${list.fruploadfile}',
@@ -73,22 +74,23 @@
 						<div id="tab-2" class="tab-content">
 							<div>
 								<div class="searchMap">
-									<select name="searchOption" id="searchOption" hidden>
+<%-- 									<select name="mapSearchOption" id="mapSearchOption" hidden>
 										<option value="llname"
-											<c:out value="${mmap.searchOption eq 'llname' ? 'selected':''}"/>>매장명
+											<c:out value="${mmap.mapSearchOption eq 'llname' ? 'selected':''}"/>>매장명
 										</option>
-									</select> <input type="text" name="keyword" id="keyword"
-										value="${mmap.keyword}" placeholder="매장명을 입력해 주세요."
+									</select> --%>
+									<input type="text" name="mapFKeyword" id="mapFKeyword"
+										value="${mmap.mapFKeyword}" placeholder="매장명을 입력해 주세요."
 										class="MapsearchInput">
 								</div>
 								<button class="searchMapBtn">
 									<img src="resources/image/search.png" width="23" height="23"
-										alt="search_icon" id="searchBtn">
+										alt="search_icon" id="FSearchMapBtn">
 								</button>
 							</div>
 							<br>
 							<hr>
-							<div id="searchResult" class="tab_content_css" align="left">
+							<div id="mapSearchResult" class="tab_content_css" align="left">
 								<c:forEach var="list" items="${storeList}">
 									<a href="javascript:void(0);"
 										onclick="initMap('${list.frkname}','${list.llname}','${list.fruploadfile}',
@@ -111,12 +113,9 @@
 							</div>
 						</div>
 					</div>
-					<!-- <form onsubmit="searchPlaces(); return false;"></form> -->
 				</div>
 			</div>
 			<hr>
-<!-- 			<ul id="placesList"></ul>
-			<div id="pagination"></div> -->
 		</div>
 		<input type="button" value="reset" onclick="initMap()">
 	</div>

@@ -31,27 +31,35 @@ public class LlmapController {
 		}
 		mv.setViewName("findAStore/findAStore");
 		return mv;
-		}	
+	}	
 	
-		// 매장명/주소로 찾기
-		@RequestMapping(value="/mapSearch")
-		public ModelAndView mapSearch(ModelAndView mv, String searchOption, String keyword) throws Exception{
-		  
-		List<LlmapVO> maplist = mservice.mapSearch(searchOption, keyword);
+	// 브랜드명으로 매장찾기
+	@RequestMapping(value="/mapBSearch")
+	public ModelAndView mapBSearch(ModelAndView mv, String mapBKeyword) throws Exception {
+	  
+		List<LlmapVO> maplist = mservice.mapBSearch(mapBKeyword);	
+		System.out.println("mapBKeyword => "+mapBKeyword);
 		
-		// 데이터를 맵에 저장
-/*		Map<String, Object> mmap = new HashMap<String, Object>();
-		mmap.put("storeList", maplist);
-		mmap.put("searchOption", searchOption);
-		mmap.put("keyword", keyword);
-		mv.addObject("storeList", mmap);*/
-		
-		System.out.println("searchOption => "+searchOption+", keyword => "+keyword);
 		mv.addObject("storeList", maplist);
-		System.out.println("storeList => "+maplist);
+		System.out.println("BstoreList => "+maplist);
 		
+	//			mv.setViewName("jsonView");
 		mv.setViewName("findAStore/findAStore");
-		  
 		return mv;
-	  }	
+	}
+	
+	// 매장명으로 매장찾기
+	@RequestMapping(value="/mapFSearch")
+	public ModelAndView mapFSearch(ModelAndView mv, String mapFKeyword) throws Exception {
+	
+		List<LlmapVO> maplist = mservice.mapFSearch(mapFKeyword);	
+		System.out.println("mapFKeyword => "+mapFKeyword);
+		
+		mv.addObject("storeList", maplist);
+		System.out.println("FstoreList => "+maplist);
+		
+	//			mv.setViewName("jsonView");
+		mv.setViewName("findAStore/findAStore");
+		return mv;
+	}
 }

@@ -30,7 +30,8 @@
 	
 	<div class="count">
 	    <!-- 레코드의 갯수를 출력 -->
-	    ${count}개의 음료/디저트가 있습니다.
+	    ${count}개의 <%-- ${frkname} --%>
+	    	가 있습니다.
     <br><br><br>
     </div>
 				
@@ -51,7 +52,7 @@
 			<br>
 			
 			<c:forEach var="menu" items="${frachiseMenu}" begin="7">
-					<a href="#">${menu.mname}</a>
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mname}</a>
 			</c:forEach>
 			
 			<hr><br>
@@ -109,11 +110,6 @@
 		</div>
 	</div>
 </div>		
-<%-- 
-<c:if test="${message != null}">
- => ${message}
-</c:if> 
---%>
 </div><hr>
 <%@ include file="../common/footer.jsp" %>
 </body>
