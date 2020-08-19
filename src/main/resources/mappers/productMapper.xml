@@ -6,6 +6,27 @@
 	<mapper namespace="daldal.mappers.productMapper">
 	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
 				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+	<select id ="SeasonList" resultType="vo.ProductVO">
+		SELECT * FROM product 
+		WHERE hashtag LIKE CONCAT('%',"시즌",'%') 
+		ORDER BY frcode asc, bcode ASC;
+	</select>
+	
+	<select id ="NewList" resultType="vo.ProductVO">
+		SELECT * FROM product 
+		WHERE hashtag LIKE CONCAT('%',"신제품",'%') 
+		ORDER BY frcode asc, bcode ASC;
+	</select>
+	
+	<select id ="BestList" resultType="vo.ProductVO">
+		SELECT * FROM product 
+		WHERE hashtag LIKE CONCAT('%',"추천",'%') 
+		ORDER BY frcode asc, bcode ASC
+		<!-- SELECT * FROM product p JOIN franchise f
+		ON p.frcode = f.frcode
+		WHERE hashtag LIKE CONCAT('%',"추천",'%') 
+		ORDER BY p.frcode asc, bcode ASC -->
+	</select>
 	
 	<!-- 2020-08-11 -->	
 	<select id="category" resultType="vo.ProductVO">

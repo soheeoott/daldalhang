@@ -6,6 +6,12 @@ import vo.ProductVO;
 
 public interface PDService {
 
+	public List<ProductVO> SeasonList();
+	
+	public List<ProductVO> NewList();
+	
+	public List<ProductVO> BestList();
+	
 	List<ProductVO> selectList();
 	
 	ProductVO selectOne(ProductVO vo);

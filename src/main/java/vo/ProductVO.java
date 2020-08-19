@@ -10,6 +10,7 @@ public class ProductVO {
 	private String bname;
 	private int mcode;
 	private String mname;
+	private String mkname;
 	private int pdcode;
 	private String pdname;
 	private int price;
@@ -19,6 +20,9 @@ public class ProductVO {
 	private String mucode1;
 	private String mucode2;
 	private String mucode3;
+	private String bestproduct;
+	private String newproduct;
+	private String seasonproduct;
 	
 	private MultipartFile uploadfilef; // form 의 inputTag 의 값 전달받기 // 설정 파일 필요
 
@@ -68,6 +72,14 @@ public class ProductVO {
 
 	public void setMname(String mname) {
 		this.mname = mname;
+	}
+
+	public String getMkname() {
+		return mkname;
+	}
+
+	public void setMkname(String mkname) {
+		this.mkname = mkname;
 	}
 
 	public int getPdcode() {
@@ -142,6 +154,30 @@ public class ProductVO {
 		this.mucode3 = mucode3;
 	}
 
+	public String getBestproduct() {
+		return bestproduct;
+	}
+
+	public void setBestproduct(String bestproduct) {
+		this.bestproduct = bestproduct;
+	}
+
+	public String getNewproduct() {
+		return newproduct;
+	}
+
+	public void setNewproduct(String newproduct) {
+		this.newproduct = newproduct;
+	}
+
+	public String getSeasonproduct() {
+		return seasonproduct;
+	}
+
+	public void setSeasonproduct(String seasonproduct) {
+		this.seasonproduct = seasonproduct;
+	}
+
 	public MultipartFile getUploadfilef() {
 		return uploadfilef;
 	}
@@ -153,8 +189,10 @@ public class ProductVO {
 	@Override
 	public String toString() {
 		return "ProductVO [pdseq=" + pdseq + ", frcode=" + frcode + ", bcode=" + bcode + ", bname=" + bname + ", mcode="
-				+ mcode + ", mname=" + mname + ", pdcode=" + pdcode + ", pdname=" + pdname + ", price=" + price
-				+ ", pduploadfile=" + pduploadfile + ", pdurl=" + pdurl + ", hashtag=" + hashtag + ", mucode1="
-				+ mucode1 + ", mucode2=" + mucode2 + ", mucode3=" + mucode3 + ", uploadfilef=" + uploadfilef + "]";
+				+ mcode + ", mname=" + mname + ", mkname=" + mkname + ", pdcode=" + pdcode + ", pdname=" + pdname
+				+ ", price=" + price + ", pduploadfile=" + pduploadfile + ", pdurl=" + pdurl + ", hashtag=" + hashtag
+				+ ", mucode1=" + mucode1 + ", mucode2=" + mucode2 + ", mucode3=" + mucode3 + ", bestproduct="
+				+ bestproduct + ", newproduct=" + newproduct + ", seasonproduct=" + seasonproduct + ", uploadfilef="
+				+ uploadfilef + "]";
 	}
 }

@@ -15,6 +15,21 @@ public class PDServiceImpl implements PDService {
 	ProductDAO dao;
 	
 	@Override
+	public List<ProductVO> SeasonList() {
+		return dao.SeasonList();
+	}
+	
+	@Override
+	public List<ProductVO> NewList() {
+		return dao.NewList();
+	}
+	
+	@Override
+	public List<ProductVO> BestList() {
+		return dao.BestList();
+	}
+	
+	@Override
 	public List<ProductVO> selectList() {
 		return dao.selectList();
 	}

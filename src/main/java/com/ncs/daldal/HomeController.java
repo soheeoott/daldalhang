@@ -12,9 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import service.MUService;
+import service.PDService;
 import vo.MenuVO;
+import vo.ProductVO;
 
 @Controller
 public class HomeController {
@@ -23,14 +26,28 @@ public class HomeController {
 	@Autowired
 	MUService muservice;
 	
+	@Autowired
+	PDService pdservice;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpSession session) {
+	public String home(Locale locale, ModelAndView mv, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
+		
+		List<ProductVO> bestlist = pdservice.BestList();
+		session.setAttribute("bestlist", bestlist);
+		
+		List<ProductVO> newlist = pdservice.NewList();
+		session.setAttribute("newlist", newlist);
+		
+		List<ProductVO> seasonlist = pdservice.SeasonList();
+		session.setAttribute("seasonlist", seasonlist);
+		
+		// mv.addObject("bestlist", bestlist);
 		
 		return "home";
 	}

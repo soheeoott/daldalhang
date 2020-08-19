@@ -17,6 +17,18 @@ public class ProductDAO {
 	private SqlSession sqlsession;
 	private static final String PD = "daldal.mappers.productMapper.";
 	
+	public List<ProductVO> SeasonList() {
+		return sqlsession.selectList(PD + "SeasonList");
+	}
+	
+	public List<ProductVO> NewList() {
+		return sqlsession.selectList(PD + "NewList");
+	}
+	
+	public List<ProductVO> BestList() {
+		return sqlsession.selectList(PD + "BestList");
+	}
+	
 	public List<ProductVO> selectList() {
 		return sqlsession.selectList(PD + "selectList");
 	}
