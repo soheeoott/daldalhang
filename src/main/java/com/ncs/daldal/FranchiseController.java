@@ -65,12 +65,6 @@ public class FranchiseController {
 		List<FranchiseVO> fpdlist = frservice.fsortList(frcode);
 		mv.addObject("fpdlist", fpdlist);
 
-		/*
-		FranchiseVO fvo = new FranchiseVO();
-		String frkname = fvo.getFrkname();
-		mv.addObject("frkname", frkname);
-		*/
-		
 		mv.addObject("count", count);
 	    mv.setViewName("franchise/franchiseSortList");
 	    

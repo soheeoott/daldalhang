@@ -26,7 +26,7 @@
 					<c:forEach var="list" items="${frlist}">
 						<div class = "frlist">
 							<div class = "frwrap">
-								<a href = "franchiseSortList?frcode=${list.frcode}?frkname=${list.frkname}">
+								<a href = "franchiseSortList?frcode=${list.frcode}">
 									<img src="${list.fruploadfile}" width="200" height="200">
 									<p class = "pname">
 										${list.frkname}
