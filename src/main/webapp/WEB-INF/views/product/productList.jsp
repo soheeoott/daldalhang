@@ -11,6 +11,28 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
+	
+	<script>
+	/* $(function() {
+		
+		/* var url = '<c:out value="${list.pdurl}"/>'; */
+		var url = ${list.pdurl};
+		var toggle = "off";
+		
+		$("#img").click(function(){
+			if(toggle == "off") {
+				url.setAttribute("src","resources/image/bg_menu.png");
+				toggle == "on";
+			} else {
+				toggle == "off";
+			}
+		});
+		
+		$("#img").dblclick(function(){
+			window.open(url, '_blank'); 
+		});
+	});
+	</script>
 </head>
 <body>
 <div id = "wrap">
@@ -61,9 +83,26 @@
 						
 						<div class = "plist">
 							<p>
-								<a href = "${list.pdurl}" target="_blank">
-								<img src="${list.pduploadfile}" width="200" height="200">
+								<%-- <a class="url" href = "${list.pdurl}" target="_blank"> --%>
+								<a id="url">
+									<img src="${list.pduploadfile}" width="200" height="200" id="img">
 								</a>
+								
+								<script type="text/javascript">
+								
+									var toggle = "off";	
+								
+									img.onclick = function(){
+										if(toggle == "off"){
+											img.setAttribute("src","resources/image/bg_menu.png");
+											toggle = "on";
+										} else {
+											img.setAttribute("src","");
+											toggle = "off";
+										}
+									}
+								</script>
+								
 							</p>
 							
 							<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
