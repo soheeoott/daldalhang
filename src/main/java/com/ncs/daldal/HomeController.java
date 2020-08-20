@@ -38,6 +38,8 @@ public class HomeController {
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 		
+		System.out.println();
+		
 		List<ProductVO> bestlist = pdservice.BestList();
 		session.setAttribute("bestlist", bestlist);
 		

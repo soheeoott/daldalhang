@@ -129,12 +129,6 @@
 				ORDER BY p.pdseq
 	        </when>
 	        
-	        <when test="searchOption == 'muname'">
-	           JOIN franchise f ON p.frcode=f.frcode
-	           JOIN menu m ON p.mucode1=m.mucode OR p.mucode2=m.mucode OR p.mucode3=m.mucode
-			   WHERE m.muname LIKE CONCAT(CONCAT('%',#{keyword}),'%')
-			   ORDER BY p.pdseq
-	        </when>
 	        <!-- 전체 검색이 아닐 경우 -->
 	        <!-- <otherwise>
 	            /

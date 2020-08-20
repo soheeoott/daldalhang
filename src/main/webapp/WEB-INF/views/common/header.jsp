@@ -111,7 +111,6 @@
 					           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >해시태그</option>
 					           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >브랜드</option>
 					           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >상품명</option>
-					           <option value="muname" <c:out value="${map.searchOption == 'muname'?'selected':''}"/> >메뉴</option>
 					       </select>
 				       </div>
 				       

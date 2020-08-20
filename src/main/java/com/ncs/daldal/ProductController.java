@@ -76,6 +76,7 @@ public class ProductController {
 	    System.out.println("htlist =>" + htlist.get(0));
 	    
 	    mv.addObject("count", count);
+	    mv.addObject("keyword", keyword);
 	    mv.setViewName("product/hashtagList");
 	    
 	    return mv;
@@ -98,7 +99,10 @@ public class ProductController {
 	    map.put("count", count); // 레코드의 갯수
 	    map.put("searchOption", searchOption); // 검색옵션
 	    map.put("keyword", keyword); // 검색키워드
+	    
 	    mv.addObject("map", map); // 맵에 저장된 데이터를 mv에 저장
+	    mv.addObject("keyword", keyword); // 맵에 저장된 데이터를 mv에 저장
+	    
 	    mv.setViewName("product/searchList");
 	    
 	    return mv;

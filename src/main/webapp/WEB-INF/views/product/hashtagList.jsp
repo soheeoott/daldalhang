@@ -18,7 +18,8 @@
 	    	<div class="main">
 	    		<div class="count">
 				    <!-- 레코드의 갯수를 출력 -->
-				    ${count}개의 음료/디저트가 있습니다.
+				    <c:if test="${count > 0}">${count}개의 ${keyword}(이)가 있습니다.</c:if>
+				    <c:if test="${count == 0}">검색 결과가 없습니다.</c:if>
 			    </div>
 			    
 			    <hr>
