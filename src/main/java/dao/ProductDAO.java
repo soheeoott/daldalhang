@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import ProductCri.Criteria;
+import ProductCri.PageMaker;
 import vo.ProductVO;
 
 @Repository
@@ -17,6 +19,16 @@ public class ProductDAO {
 	private SqlSession sqlsession;
 	private static final String PD = "daldal.mappers.productMapper.";
 	
+	// Cri
+	public List<ProductVO> listCriteria (PageMaker pageMaker) throws Exception {
+		return sqlsession.selectList(PD + "listCriteria", pageMaker);
+	}
+	 
+    // 전체 게시글 수 구하기
+    public int TotalCount() throws Exception {
+    	return sqlsession.selectOne(PD + "getTotalCount");
+    }
+
 	public List<ProductVO> SeasonList() {
 		return sqlsession.selectList(PD + "SeasonList");
 	}
@@ -57,7 +69,7 @@ public class ProductDAO {
 	    Map<String, String> map = new HashMap<String, String>();
 	    map.put("searchOption", searchOption);
 	    map.put("keyword", keyword);
-	    return sqlsession.selectList("listAll", map);
+	    return sqlsession.selectList(PD + "listAll", map);
 	}
 	
 	// 게시글 레코드 갯수
@@ -66,19 +78,19 @@ public class ProductDAO {
 	    Map<String, String> map = new HashMap<String, String>();
 	    map.put("searchOption", searchOption);
 	    map.put("keyword", keyword);
-	    return sqlsession.selectOne("countArticle", map);
+	    return sqlsession.selectOne(PD + "countArticle", map);
 	}
 	
 	// 해시태그 전체 목록 ==> 키워드 매개변수 추가
 	public List<ProductVO> hashtagAll(String keyword) throws Exception {
 	    // 키워드 맵에 저장
-	    return sqlsession.selectList("hashtagAll", keyword);
+	    return sqlsession.selectList(PD + "hashtagAll", keyword);
 	}
 	
 	// 해시태그 레코드 갯수
 	public int hashtagCount(String keyword) throws Exception {
 	    // 키워드 맵에 저장
-	    return sqlsession.selectOne("hashtagCount", keyword);
+	    return sqlsession.selectOne(PD + "hashtagCount", keyword);
 	}
 	
 	// 메뉴 목록
@@ -86,16 +98,16 @@ public class ProductDAO {
 		Map<String, String> cate = new HashMap<String, String>();
 		cate.put("mubcode", mubcode);
 		cate.put("mucategory", mucategory);
-		return sqlsession.selectList("category", cate);
+		return sqlsession.selectList(PD + "category", cate);
 	}
 	
 	// 메뉴 갯수
 	public int categoryCount(String mubcode) throws Exception {
-		return sqlsession.selectOne("categoryCount", mubcode);
+		return sqlsession.selectOne(PD + "categoryCount", mubcode);
 	}
 	
 	// 서브 메뉴 갯수
 	public int mProductCount(String muname) throws Exception {
-		return sqlsession.selectOne("mProductCount", muname);
+		return sqlsession.selectOne(PD + "mProductCount", muname);
 	}
 }

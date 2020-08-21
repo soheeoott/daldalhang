@@ -3,25 +3,58 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
+	<!-- 
+		페이징
+		 1) 게시글 목록을 가지고 올 때, 페이지 마다 출력해야하는 VO를 담은 List를 반환하는 부분(listCriteria)
+	     2) 전체 게시글이 몇개인지를 가져오는 부분(getTotalCount)
+	 -->
+	
 	<mapper namespace="daldal.mappers.productMapper">
-	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
-				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+	
+	<!-- 페이징 처리
+    	 (1) 띄워줄 시작 페이지 번호는 현재 페이지인 page 변수가 오는게 아니라, (page-1) * perPageNum 값이 와야한다.
+    	 (2) #{pageStart} 는 받은 객체의 get 메서드를 호출하기 때문에 getPageStart() 메서드를 호출하게 되고
+    	 (3) Criteria 클래스의 getPageStart에서 위의 계산식을 반환하도록 해놨음으로 
+    	         시작 페이지 튜플의 행번호를 가져올 수 있다.
+    -->
+    
+    <!-- 
+    	resultType를 클래스 명으로만 쓰고 싶은 경우
+		=> Mybatis 설정시 <typeAlias>에 default 패키지를 지정
+    -->
+    
+    <!-- 게시글 목록을 가지고 올 때, 페이지 마다 출력해야하는 VO를 담은 List를 반환하는 부분(listCriteria) -->
+    <select id="listCriteria" resultType="vo.ProductVO">
+        <![CDATA[
+            SELECT * FROM menu n JOIN product p 
+			ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
+			ORDER BY frcode ASC, pdseq ASC
+			limit #{sno}, #{perPageNum}
+        ]]>
+    </select>
+    
+    <!-- 전체 게시글이 몇개인지를 가져오는 부분(getTotalCount) -->
+    <select id="getTotalCount" resultType="int">
+        select count(*) from product
+    </select>
+
 	<select id ="SeasonList" resultType="vo.ProductVO">
 		SELECT * FROM product 
 		WHERE hashtag LIKE CONCAT('%',"시즌",'%') 
-		ORDER BY frcode asc, bcode ASC;
+		ORDER BY frcode ASC, bcode ASC;
 	</select>
 	
 	<select id ="NewList" resultType="vo.ProductVO">
 		SELECT * FROM product 
 		WHERE hashtag LIKE CONCAT('%',"신제품",'%') 
-		ORDER BY frcode asc, bcode ASC;
+		ORDER BY frcode ASC, bcode ASC;
 	</select>
 	
 	<select id ="BestList" resultType="vo.ProductVO">
 		SELECT * FROM product 
 		WHERE hashtag LIKE CONCAT('%',"추천",'%') 
-		ORDER BY frcode asc, bcode ASC
+		ORDER BY frcode ASC, bcode ASC
 		<!-- SELECT * FROM product p JOIN franchise f
 		ON p.frcode = f.frcode
 		WHERE hashtag LIKE CONCAT('%',"추천",'%') 
@@ -48,7 +81,7 @@
 		SELECT * FROM menu n JOIN product p 
 		ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
 		<!-- ORDER BY bcode ASC, mcode ASC, pdcode ASC, pdseq ASC -->
-		ORDER BY frcode ASC, pdseq ASC   
+		ORDER BY frcode ASC, pdseq ASC
 	</select>
 
 	<select id = "selectOne" resultType="vo.ProductVO">

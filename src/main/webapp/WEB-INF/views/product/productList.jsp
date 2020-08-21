@@ -11,28 +11,6 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
-	
-	<script>
-	/* $(function() {
-		
-		/* var url = '<c:out value="${list.pdurl}"/>'; */
-		var url = ${list.pdurl};
-		var toggle = "off";
-		
-		$("#img").click(function(){
-			if(toggle == "off") {
-				url.setAttribute("src","resources/image/bg_menu.png");
-				toggle == "on";
-			} else {
-				toggle == "off";
-			}
-		});
-		
-		$("#img").dblclick(function(){
-			window.open(url, '_blank'); 
-		});
-	});
-	</script>
 </head>
 <body>
 <div id = "wrap">
@@ -83,26 +61,11 @@
 						
 						<div class = "plist">
 							<p>
-								<%-- <a class="url" href = "${list.pdurl}" target="_blank"> --%>
-								<a id="url">
-									<img src="${list.pduploadfile}" width="200" height="200" id="img">
-								</a>
-								
-								<script type="text/javascript">
-								
-									var toggle = "off";	
-								
-									img.onclick = function(){
-										if(toggle == "off"){
-											img.setAttribute("src","resources/image/bg_menu.png");
-											toggle = "on";
-										} else {
-											img.setAttribute("src","");
-											toggle = "off";
-										}
-									}
-								</script>
-								
+								<%-- <a href ="${list.pdurl}" target="_blank"> --%>
+									<a href ="${list.pdurl}" target="_blank">
+										<img src="${list.pduploadfile}" width="200" height="200">
+									</a>
+								<!-- </a> -->
 							</p>
 							
 							<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
@@ -130,6 +93,55 @@
 						
 						</div>
 					</c:forEach>
+				</div>
+				
+				<hr>
+				
+				<div class="pagination">
+					  <!--
+					      이전 버튼이 클릭가능한 조건이면, a태그를 이용해 이전 버튼이 뜨도록 하고, href 로 링크를 걸되
+					      아까 만든 makeQuery 메서드를 이용해서 쿼리문자열을 만들어 줍니다.
+					      ?page=어쩌고&perPageNum=어쩌고 이 부분을 생성해서 넣게 되는데 단 이전 버튼을 클릭하면
+					      현재 페이지가 시작페이지의 -1 이 되도록 되어야 함으로 그 부분만 신경써 주면 됩니다.
+					   -->
+					   
+					  <c:if test="${pageMaker.start}">
+					      <div style = "float:left; margin: 0 auto;">
+					          <a href="listPage${pageMaker.makeQuery(1)}">[처음]</a>
+					      </div>
+					  </c:if>
+					  
+					  <c:if test="${pageMaker.prev}">
+					      <div style = "float:left; margin: 0 auto;">
+					          <a href="listPage${pageMaker.makeQuery(pageMaker.startPage - 1)}">[이전]</a>
+					      </div>
+					  </c:if>
+					
+					  <!--
+					      [1][2][3]....[10] 이 부분을 삽입하는 부분이다. jstl 이용해for문을 돌면서 startPage ~ endPage까지
+					      	표시해주되, a태그 눌렀을 때 이동하는 page 부분에 index 지정하는 부분을 유의
+					   -->
+
+					  <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
+					  	  <div style= "float:left; margin: 0 auto;">
+					      	  <a href="listPage${pageMaker.makeQuery(index)}">[${index}]</a>
+					      </div>
+					  </c:forEach> 
+					
+					  <c:if test="${pageMaker.next}">
+					      <!--
+					                  이전버튼과 마찬가지로 다음버튼을 끝 페이지보다1개 큰게 현재 페이지가 되도록 makeQuery에 page를 넣어줍시다.
+					       -->
+					      <div style= "float:left; margin: 0 auto;">
+					          <a href="listPage${pageMaker.makeQuery(pageMaker.endPage + 1)}">[다음]</a>
+					      </div>
+					  </c:if>
+					  
+					  <%-- <c:if test="">
+					      <div style = "float:left; margin: 0 auto;">
+					          <a href="">[끝]</a>
+					      </div>
+					  </c:if>  --%> 
 				</div>
 			</div>
 		</div>

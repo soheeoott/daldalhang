@@ -70,7 +70,8 @@
 					<a href="frlist" class="main_menu">브랜드</a>
 					
 					<div class="dropdown">
-						<a href="pdlist" class="main_menu">메뉴</a>
+						<a href="listPage" class="main_menu">메뉴</a>
+						<!-- <a href="pdlist" class="main_menu">메뉴</a> -->
 						<div class="menu_dropdown">
 							<c:forEach var="list" items="${menulist}">
 								<c:if test="${list.mucategory=='coffee'}">

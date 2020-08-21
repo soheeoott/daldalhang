@@ -1,6 +1,7 @@
 package com.ncs.daldal;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -10,10 +11,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ProductCri.Criteria;
+import ProductCri.PageMaker;
 import service.FRService;
 import service.MUService;
 import service.PDService;
@@ -33,6 +38,58 @@ public class ProductController {
 	@Autowired
 	FRService frservice;
 
+	@RequestMapping(value = "/listPage", method = RequestMethod.GET) 
+	public ModelAndView listPage(MenuVO mvo, HttpSession session,
+			@ModelAttribute("cri") PageMaker pageMaker, ModelAndView mv) throws Exception {
+		
+		System.out.println("pageMaker=> " + pageMaker);
+		
+		pageMaker.setPerPageNum(20);
+		pageMaker.setSno();
+		
+		if (pageMaker.getPage() < 1) {
+			pageMaker.setPage(1);
+		}
+		
+		int totalNum = pdservice.TotalCount();
+	    pageMaker.setTotalCount(totalNum);
+	    
+		List<ProductVO> pvo = pdservice.listCriteria(pageMaker);
+	    
+	    mv.addObject("pageMaker", pageMaker);
+	    
+	    System.out.println("pageMaker=> " + pageMaker);
+	    
+	    mv.addObject("list", pvo);
+	    
+	    List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
+		
+		// 상품 리스트 출력
+		/* List<ProductVO> pdlist = pdservice.selectList(); */
+
+		// 2020.08.03 menu 출력
+//		List<MenuVO> mulist = muservice.menu();
+//		mv.addObject("mulist", mulist);
+		
+		// menu 클릭했을 때 나오는 category 출력
+		String mucategory = mvo.getMucategory();
+
+		List<MenuVO> cpdlist = muservice.productList(mucategory);
+		mv.addObject("cpdlist", cpdlist);
+		
+		if (pvo != null) {
+			mv.addObject("pdlist", pvo);
+
+		} else {
+			mv.addObject("message", "검색된 자료가 없습니다.");
+		}
+		
+	    mv.setViewName("product/productList");
+	    
+	    return mv;
+	}
+	
 	@RequestMapping(value="/category")
 	public ModelAndView category(ModelAndView mv, MenuVO mvo, String mubcode, String mucategory, HttpSession session) throws Exception{
 		

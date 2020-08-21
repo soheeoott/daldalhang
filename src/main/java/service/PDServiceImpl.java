@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ProductCri.Criteria;
+import ProductCri.PageMaker;
 import dao.ProductDAO;
 import vo.ProductVO;
 
@@ -13,6 +15,16 @@ public class PDServiceImpl implements PDService {
 	
 	@Autowired
 	ProductDAO dao;
+	
+	@Override
+	public List<ProductVO> listCriteria (PageMaker pageMaker) throws Exception {
+		return dao.listCriteria(pageMaker);
+	}
+	
+	@Override
+	public int TotalCount() throws Exception {
+		return dao.TotalCount();
+	}
 	
 	@Override
 	public List<ProductVO> SeasonList() {

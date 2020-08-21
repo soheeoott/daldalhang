@@ -2,10 +2,16 @@ package service;
 
 import java.util.List;
 
+import ProductCri.Criteria;
+import ProductCri.PageMaker;
 import vo.ProductVO;
 
 public interface PDService {
 
+	public List<ProductVO> listCriteria (PageMaker pageMaker) throws Exception;
+	
+	public int TotalCount() throws Exception;
+	
 	public List<ProductVO> SeasonList();
 	
 	public List<ProductVO> NewList();
