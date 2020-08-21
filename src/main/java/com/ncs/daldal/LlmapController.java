@@ -2,15 +2,15 @@ package com.ncs.daldal;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.MAPService;
-import service.MUService;
 import vo.LlmapVO;
-import vo.MenuVO;
 
 @Controller
 public class LlmapController {
@@ -35,31 +35,33 @@ public class LlmapController {
 	
 	// 브랜드명으로 매장찾기
 	@RequestMapping(value="/mapBSearch")
-	public ModelAndView mapBSearch(ModelAndView mv, String mapBKeyword) throws Exception {
-	  
+	public ModelAndView mapBSearch(ModelAndView mv, String mapBKeyword, HttpServletResponse response) throws Exception {
+		response.setCharacterEncoding("UTF-8");
+
 		List<LlmapVO> maplist = mservice.mapBSearch(mapBKeyword);	
-		System.out.println("mapBKeyword => "+mapBKeyword);
-		
-		mv.addObject("storeList", maplist);
-		System.out.println("BstoreList => "+maplist);
-		
-	//			mv.setViewName("jsonView");
-		mv.setViewName("findAStore/findAStore");
+
+		if(maplist != null) {
+			mv.addObject("storeList", maplist);
+		} else {
+			mv.addObject("fCode", "000");
+		}
+		mv.setViewName("jsonView");
 		return mv;
 	}
 	
 	// 매장명으로 매장찾기
 	@RequestMapping(value="/mapFSearch")
-	public ModelAndView mapFSearch(ModelAndView mv, String mapFKeyword) throws Exception {
-	
-		List<LlmapVO> maplist = mservice.mapFSearch(mapFKeyword);	
-		System.out.println("mapFKeyword => "+mapFKeyword);
-		
-		mv.addObject("storeList", maplist);
-		System.out.println("FstoreList => "+maplist);
-		
-	//			mv.setViewName("jsonView");
-		mv.setViewName("findAStore/findAStore");
+	public ModelAndView mapFSearch(ModelAndView mv, String mapFKeyword, HttpServletResponse response) throws Exception {
+		response.setCharacterEncoding("UTF-8");
+
+		List<LlmapVO> maplist = mservice.mapFSearch(mapFKeyword);
+
+		if(maplist != null) {
+			mv.addObject("storeList", maplist);
+		} else {
+			mv.addObject("fCode", "000");
+		}
+		mv.setViewName("jsonView");
 		return mv;
 	}
 }

@@ -84,8 +84,8 @@ public class PDServiceImpl implements PDService {
 	}
 
 	@Override
-	public List<ProductVO> category(String mubcode, String mucategory) throws Exception {
-		return dao.category(mubcode, mucategory);
+	public List<ProductVO> category(String mubcode, String mucategory, PageMaker pageMaker) throws Exception {
+		return dao.category(mubcode, mucategory, pageMaker);
 	}
 
 	@Override

@@ -33,11 +33,6 @@
 						<div id="tab-1" class="tab-content current">
 							<div>
 								<div class="searchMap">
-<%-- 									<select name="mapSearchOption" id="mapSearchOption" hidden>
-										<option value="frcode"
-											<c:out value="${mmap.mapSearchOption eq 'frcode' ? 'selected':''}"/>>브랜드명
-										</option>
-									</select> --%>
 									<input type="text" name="mapBKeyword" id="mapBKeyword"
 										value="${mmap.mapBKeyword}" placeholder="브랜드명을 입력해 주세요."
 										class="MapsearchInput">
@@ -49,13 +44,12 @@
 							</div>
 							<br>
 							<hr>
-							<div id="mapSearchResult" class="tab_content_css" align="left">
+							<div id="mapBSearchResult" class="tab_content_css" align="left">
 								<c:forEach var="list" items="${storeList}">
 									<a href="javascript:void(0);"
 										onclick="initMap('${list.frkname}','${list.llname}','${list.fruploadfile}',
 														'${list.lladdr}','${list.latvalue}','${list.lngvalue}')">
 										<table class="tab_table">
-
 											<tr>
 												<td rowspan="2" width="70px"><img
 													src="${list.fruploadfile}" width="60px" align="middle">
@@ -74,11 +68,6 @@
 						<div id="tab-2" class="tab-content">
 							<div>
 								<div class="searchMap">
-<%-- 									<select name="mapSearchOption" id="mapSearchOption" hidden>
-										<option value="llname"
-											<c:out value="${mmap.mapSearchOption eq 'llname' ? 'selected':''}"/>>매장명
-										</option>
-									</select> --%>
 									<input type="text" name="mapFKeyword" id="mapFKeyword"
 										value="${mmap.mapFKeyword}" placeholder="매장명을 입력해 주세요."
 										class="MapsearchInput">
@@ -90,13 +79,12 @@
 							</div>
 							<br>
 							<hr>
-							<div id="mapSearchResult" class="tab_content_css" align="left">
+							<div id="mapFSearchResult" class="tab_content_css" align="left">
 								<c:forEach var="list" items="${storeList}">
 									<a href="javascript:void(0);"
 										onclick="initMap('${list.frkname}','${list.llname}','${list.fruploadfile}',
 														'${list.lladdr}','${list.latvalue}','${list.lngvalue}')">
 										<table class="tab_table">
-
 											<tr>
 												<td rowspan="2" width="70px"><img
 													src="${list.fruploadfile}" width="60px" align="middle">
@@ -117,7 +105,6 @@
 			</div>
 			<hr>
 		</div>
-		<input type="button" value="reset" onclick="initMap()">
 	</div>
 	<br>
 	<br>

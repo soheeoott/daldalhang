@@ -80,6 +80,9 @@ public class PageMaker extends Criteria {
         
         // 처음
         start = (startPage > 1 == true);
+        
+        // 끝
+        end = getPage() <= tempEndPage == true;
     }
     
     public String makeQuery(int page) {
@@ -120,6 +123,14 @@ public class PageMaker extends Criteria {
 
 	public void setStart(boolean start) {
 		this.start = start;
+	}
+	
+	public boolean isEnd() {
+		return end;
+	}
+
+	public void setEnd(boolean end) {
+		this.end = end;
 	}
 
 	public boolean isNext() {

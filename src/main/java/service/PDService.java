@@ -39,7 +39,7 @@ public interface PDService {
 	public int hashtagCount(String keyword) throws Exception;
 	
 	// 메뉴 목록
-	public List<ProductVO> category(String mubcode, String mucategory) throws Exception;
+	public List<ProductVO> category(String mubcode, String mucategory, PageMaker pageMaker) throws Exception;
 	
 	// 메뉴 갯수
 	public int categoryCount(String mubcode) throws Exception;

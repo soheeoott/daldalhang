@@ -37,7 +37,11 @@
 	height:600px;
 }
 
-#mapSearchResult td #addr_css {
+#mapBSearchResult td #addr_css {
+	font-size:10px;
+}
+
+#mapFSearchResult td #addr_css {
 	font-size:10px;
 }
 

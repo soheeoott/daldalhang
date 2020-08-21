@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ProductCri.PageMaker;
 import service.MUService;
 import service.PDService;
 import vo.MenuVO;
@@ -32,7 +33,8 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
-	public String home(Locale locale, ModelAndView mv, HttpSession session) {
+	public String home
+	(Locale locale, ModelAndView mv, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		List<MenuVO> menulist = muservice.menu();
@@ -41,15 +43,11 @@ public class HomeController {
 		List<ProductVO> bestlist = pdservice.BestList();
 		session.setAttribute("bestlist", bestlist);
 		
-		System.out.println("bestlist" + bestlist.get(1));
-		
 		List<ProductVO> newlist = pdservice.NewList();
 		session.setAttribute("newlist", newlist);
 		
 		List<ProductVO> seasonlist = pdservice.SeasonList();
 		session.setAttribute("seasonlist", seasonlist);
-		
-		// mv.addObject("bestlist", bestlist);
 		
 		return "home";
 	}

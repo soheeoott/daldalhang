@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import ProductCri.Criteria;
 import ProductCri.PageMaker;
 import vo.ProductVO;
 
@@ -19,6 +19,20 @@ public class ProductDAO {
 	private SqlSession sqlsession;
 	private static final String PD = "daldal.mappers.productMapper.";
 	
+	// 메뉴 목록
+	public List<ProductVO> category(String mubcode, String mucategory, PageMaker pageMaker) throws Exception {
+		Map<Object, Object> cate = new HashMap<Object, Object>();
+		cate.put("mubcode", mubcode);
+		cate.put("mucategory", mucategory);
+		cate.put("pageMaker", pageMaker);
+		return sqlsession.selectList(PD + "category", cate);
+	}
+	
+	// 메뉴 갯수
+	public int categoryCount(String mubcode) throws Exception {
+		return sqlsession.selectOne(PD + "categoryCount", mubcode);
+	}
+		
 	// Cri
 	public List<ProductVO> listCriteria (PageMaker pageMaker) throws Exception {
 		return sqlsession.selectList(PD + "listCriteria", pageMaker);
@@ -91,19 +105,6 @@ public class ProductDAO {
 	public int hashtagCount(String keyword) throws Exception {
 	    // 키워드 맵에 저장
 	    return sqlsession.selectOne(PD + "hashtagCount", keyword);
-	}
-	
-	// 메뉴 목록
-	public List<ProductVO> category(String mubcode, String mucategory) throws Exception {
-		Map<String, String> cate = new HashMap<String, String>();
-		cate.put("mubcode", mubcode);
-		cate.put("mucategory", mucategory);
-		return sqlsession.selectList(PD + "category", cate);
-	}
-	
-	// 메뉴 갯수
-	public int categoryCount(String mubcode) throws Exception {
-		return sqlsession.selectOne(PD + "categoryCount", mubcode);
 	}
 	
 	// 서브 메뉴 갯수
