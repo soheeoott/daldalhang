@@ -213,6 +213,7 @@ input::-moz-placeholder {color:#a8a8a8;}
 	right: 5px;
 	color: pink;
 	font-size: 20px;
+	z-index: 1;
 }
 
 #topImg {

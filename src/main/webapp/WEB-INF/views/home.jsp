@@ -7,7 +7,9 @@
 <head>
 <title>** DalDal **</title>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
- 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+ 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css"> -->
+ 	<link rel="stylesheet" type="text/css" href="resources/css/swiper.min.css">
+ 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
  	
  	<style>
@@ -19,7 +21,7 @@
     
     .swiper-slide {
       text-align: center;
-      font-size: 18px;
+      font-size: 15px;
       background: #fff;
 
       /* Center slide text vertically */
@@ -35,23 +37,36 @@
       -ms-flex-align: center;
       -webkit-align-items: center;
       align-items: center;
+      
+      top: -160px;
+      right: 40px;
     }
     
     .first {
-    	padding-top: 200px;
+    	padding-top: 350px;
     }
     
     .sub {
     	padding-top: 100px;
     }
+    
+    .hashtagsplit {
+    	color: gray;
+    }
+    
+    .swiper-pagination-bullet-active {
+		background: pink;
+	}
+	    
  	</style>
 </head>
 <body>
 	<div class="swiper-container first">
 	
-	<h2>신제품</h2>
-	
 	    <ul class="swiper-wrapper">
+	    	
+	    	<div>신제품</div>
+	    	
         	<c:forEach var="newlist" items="${newlist}">
 	        	<li class="swiper-slide plist">
 	        		<div>
@@ -101,7 +116,9 @@
 	
 	<div class="swiper-container sub">
 	    
-	    <h2>추천제품</h2>
+	<div>
+		추천제품
+	</div>
 	    
 	    <ul class="swiper-wrapper">
         	<c:forEach var="bestlist" items="${bestlist}">
@@ -157,7 +174,9 @@
 	
 	<div class="swiper-container sub">
 	    
-	    <h2>시즌제품</h2>
+	    <div>
+			시즌제품
+		</div>
 	    
 	    <ul class="swiper-wrapper">
 	        <c:forEach var="seasonlist" items="${seasonlist}">
