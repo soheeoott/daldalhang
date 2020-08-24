@@ -4,6 +4,7 @@ import java.util.List;
 
 import ProductCri.Criteria;
 import ProductCri.PageMaker;
+import vo.MenuVO;
 import vo.ProductVO;
 
 public interface PDService {
@@ -13,7 +14,7 @@ public interface PDService {
 	public int TotalCount() throws Exception;
 	
 	// 메뉴 목록
-	public List<ProductVO> Cricategory(String mubcode, String mucategory, PageMaker pageMaker) throws Exception;
+	public List<ProductVO> Cricategory(MenuVO mvo, PageMaker pageMaker) throws Exception;
 		
 	// 메뉴 갯수
 	public int CricategoryCount(String mubcode) throws Exception;

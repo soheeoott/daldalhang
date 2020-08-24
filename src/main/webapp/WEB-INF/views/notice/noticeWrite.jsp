@@ -82,7 +82,16 @@ function inCheck() {
 </script>
 </head>
 <body>
-<div align="center" id="wrap">
+
+<div id="wrap">
+      <div class="container">
+        <div class="main">
+          <div class="form">
+          </div>
+        </div>
+     </div>
+</div>          
+            
 	<span id="notice_title">공지작성</span><br><br><br>
 	<form action="ninsert" method="post">
 		<table id="noticeForm">
@@ -114,7 +123,6 @@ function inCheck() {
 			</tr>
 		</table>
 	</form>
-</div>
 
 
 <%@ include file="../common/footer.jsp" %>

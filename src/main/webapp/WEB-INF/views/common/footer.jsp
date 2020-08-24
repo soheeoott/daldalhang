@@ -17,7 +17,7 @@
 		<a href="#header"><img src="resources/image/top_button.png" id="topImg"/></a>
 	</div>
 
-	<font color="white" style="line-height: 2;">
+	<font color="gray" style="line-height: 2;">
 		
 		<a href="#" class="footer_menu">달달 프로젝트 소개</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 		<a href="#" class="footer_menu">홈페이지 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;

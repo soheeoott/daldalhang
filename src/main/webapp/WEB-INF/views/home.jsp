@@ -10,6 +10,30 @@
  	<link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
  	<link rel="stylesheet" type="text/css" href="resources/css/swiper.min.css">
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script> -->
+	
+	<style type="text/css">
+	/* footer */
+	#footer {
+		display: inline-table;
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    top: 2200px;
+	    width: 100%;
+	    margin-top: 60px;
+	    padding: 45px 0;
+	    font-size: 12px;
+	    text-align: center;
+	    background-color: #262626;
+	} 
+	
+	.footer_menu {
+	    width: 100%;
+	    color: white;
+	    font-weight: bold;
+	}
+	</style>
 </head>
 <body>
 <div class = "homeWrap">

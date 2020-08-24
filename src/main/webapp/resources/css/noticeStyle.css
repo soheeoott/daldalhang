@@ -26,8 +26,7 @@ table {
 
 /* search 요소를 감싸는 bar */
 #searchBar {
-    left: 240px;
-    position: relative;
+	width: 1000px;
 }
 
 /* 검색어 입력 부분 */
@@ -47,6 +46,7 @@ table {
     border: 0px;
     outline: none;
     cursor:pointer;
+    float: left;
 }
 
 /* noticeList category(No, 제목, 날짜, 조회수) */

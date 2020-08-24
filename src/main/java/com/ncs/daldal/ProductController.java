@@ -85,11 +85,11 @@ public class ProductController {
 	
 	@RequestMapping(value = "/categorylist", method = RequestMethod.GET) 
 	public ModelAndView category (MenuVO mvo, HttpSession session, 
-			@ModelAttribute("cri") PageMaker pageMaker, ModelAndView mv, 
-			String mubcode, String mucategory) throws Exception{
+			@ModelAttribute("cri") PageMaker pageMaker, ModelAndView mv 
+			) throws Exception{
 		
 		System.out.println("pageMaker=> " + pageMaker);
-		System.out.println("mubcode => " + mubcode);
+		System.out.println("mubcode => " + mvo.getMubcode());
 		
 		pageMaker.setPerPageNum(20);
 		pageMaker.setSno();
@@ -98,35 +98,39 @@ public class ProductController {
 			pageMaker.setPage(1);
 		}
 		
-		int totalNum = pdservice.CricategoryCount(mubcode);
+		int totalNum = pdservice.CricategoryCount(mvo.getMubcode());
 	    pageMaker.setTotalCount(totalNum);
 	    
 	    System.out.println("totalNum =>" + totalNum);
 	    
 	    // menu(커피, 디저트, 음료, 식품, 스페셜 출력)
- 		List<ProductVO> ctlist = pdservice.Cricategory(mubcode, mucategory, pageMaker);
+ 		List<ProductVO> ctlist = pdservice.Cricategory(mvo, pageMaker);
 
  		mv.addObject("pageMaker", pageMaker);
 	    mv.addObject("ctlist", ctlist);
 	    
-	    System.out.println("ctlist =>" + ctlist.get(0));
-	    
-		/* System.out.println("pageMaker=> " + pageMaker); */
-	    
 	    List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 		
-		List<MenuVO> cpdlist = muservice.productList(mucategory);
+		List<MenuVO> cpdlist = muservice.productList(mvo.getMucategory());
 		mv.addObject("cpdlist", cpdlist);
+
+		int page = pageMaker.getPage();
+		int startPage = pageMaker.getStartPage();
+		int endPage = pageMaker.getEndPage(); 
+		int tempEndPage = pageMaker.getTempEndPage();
 		
-		// 메뉴 상품 갯수
-		/*
-	    int count = pdservice.categoryCount(mubcode); 
-	    */
-	    
-		/* List<MenuVO> mulist = muservice.menu(); */
+		mv.addObject("page", page);
+		mv.addObject("startPage", startPage);
+		mv.addObject("endPage", endPage);
+		mv.addObject("tempEndPage", tempEndPage);
+		
 		mv.addObject("count", totalNum);
-		mv.addObject("mubcode", mubcode);
+		
+		mv.addObject("mubcode", mvo.getMubcode());
+		mv.addObject("mucategory", mvo.getMucategory());
+		
+		
 		
 		mv.setViewName("product/categoryList");
 	    
@@ -258,11 +262,10 @@ public class ProductController {
 	} 
 	
 	@RequestMapping(value="/pdinsertf")
-	public ModelAndView pinsertf(ModelAndView mv, List<MenuVO> mulist, 
-			List<FranchiseVO> frlist) {
+	public ModelAndView pinsertf(ModelAndView mv) {
 		
-		mulist = muservice.menu();
-		frlist = frservice.selectList();
+		List<FranchiseVO> frlist = frservice.selectList();
+		List<MenuVO> mulist = muservice.selectList();
 		
 		if(mulist != null || frlist != null) {			
 			mv.addObject("mulist", mulist);

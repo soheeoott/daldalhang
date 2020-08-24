@@ -26,8 +26,8 @@
 		}
 		
 		#paging_num {
-			font-size:15px;
-			margin-left: 2em;
+		    font-size: 15px;
+		    margin-left: 2em;
 		}
 		
 		#paging_numClick {
@@ -155,8 +155,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	
+<hr>	
 		   <!--
 			      이전 버튼이 클릭가능한 조건이면, a태그를 이용해 이전 버튼이 뜨도록 하고, href 로 링크를 걸되
 			      아까 만든 makeQuery 메서드를 이용해서 쿼리문자열을 만들어 줍니다.
@@ -165,14 +164,26 @@
 		   -->
 		   
 		  <c:if test="${pageMaker.start}">
-		          <a href="categorylist${pageMaker.makeQuery(1)}" id="paging_num">
+		          <%-- 
+		          		<a href="categorylist${pageMaker.makeQuery(1)}" id="paging_num"> 
+		    
+		          		<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}&${pageMaker.makeQuery(1)}" id="paging_num">
+		          --%>
+		          
+		          <a href="categorylist?mubcode=${mubcode}&mucategory=${mucategory}${pageMaker.makeQuery(1)}" id="paging_num">
 		          	&nbsp;
 		          	처음
 		          </a>
 		  </c:if>
 		  
 		  <c:if test="${pageMaker.prev}">
-		          <a href="categorylist${pageMaker.makeQuery(pageMaker.startPage-1)}">
+		          <%-- 
+		          		<a href="categorylist${pageMaker.makeQuery(pageMaker.startPage-1)}"> 
+
+		          		<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}&${pageMaker.makeQuery(pageMaker.startPage-1)}">
+		          --%>
+		          
+		          <a href="categorylist?mubcode=${mubcode}&mucategory=${mucategory}${pageMaker.makeQuery(startPage-1)}">
 	          		&nbsp;
 	          		<img src="resources/image/prev.jpg" class="npn_img" id="paging_num">
 		          </a>
@@ -183,20 +194,26 @@
 		      	표시해주되, a태그 눌렀을 때 이동하는 page 부분에 index 지정하는 부분을 유의
 		   -->
 
-		  <%-- <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-		      	  <a href="listPage${pageMaker.makeQuery(index)}" id="paging_num">
-		      	  	${index}
-		      	  </a>
-		  </c:forEach>  --%>
+		  <%-- 
+		  	<c:forEach var="index" begin="${pageMaker.startPage}" end="${pageMaker.endPage}"> 
+		  --%>
 		  
-		  <c:forEach var="index" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+		  <c:forEach var="index" begin="${startPage}" end="${endPage}">
 			<c:choose>
-				<c:when test="${pageMaker.page == index}">
+				<%-- <c:when test="${pageMaker.page == index}"> --%>
+				<c:when test="${page == index}">
 					&nbsp;<span id="paging_numClick">${index}</span>&nbsp;
 				</c:when>
 				<c:otherwise>
 				 	&nbsp;
-				 	<a href="categorylist${pageMaker.makeQuery(index)}" id="paging_num">${index}</a>
+				 	
+				 	<%-- 
+				 	<a href="categorylist${pageMaker.makeQuery(index)}" id="paging_num">${index}</a> 
+				 	
+				 	<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}&${pageMaker.makeQuery(index)}" id="paging_num">${index}</a> 
+				 	--%>
+				 	
+				 	<a href="categorylist?mubcode=${mubcode}&mucategory=${mucategory}${pageMaker.makeQuery(index)}" id="paging_num">${index}</a>
 				 	&nbsp;
 				</c:otherwise>
 			</c:choose>
@@ -206,18 +223,33 @@
 		      <!--
 		                  이전버튼과 마찬가지로 다음버튼을 끝 페이지보다1개 큰게 현재 페이지가 되도록 makeQuery에 page를 넣어줍시다.
 		       -->
-		          <a href="categorylist${pageMaker.makeQuery(pageMaker.endPage+1)}">
+		          <%-- 
+		          <a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}&${pageMaker.makeQuery(pageMaker.endPage+1)}">
+		           
+		          <a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}&${pageMaker.makeQuery(endPage+1)}"> 
+		          --%>
+		          
+		          <a href="categorylist?mubcode=${mubcode}&mucategory=${mucategory}${pageMaker.makeQuery(endPage+1)}">
 		          	&nbsp;
 		          	<img src="resources/image/next.jpg" class="npn_img" id="paging_num">
 		         </a>
 		  </c:if>
 
 		  <c:if test="${pageMaker.end}">
-		          <a href="categorylist${pageMaker.makeQuery(pageMaker.tempEndPage)}" id="paging_num">
+		          <%-- 
+		          <a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}&${pageMaker.makeQuery(pageMaker.tempEndPage)}" id="paging_num">
+		          
+		          <a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}&${pageMaker.makeQuery(tempEndPage)}" id="paging_num"> 
+		          --%>
+		          
+		          
+		          <a href="categorylist?mubcode=${mubcode}&mucategory=${mucategory}${pageMaker.makeQuery(tempEndPage)}" id="paging_num">
 		          	끝
 		          </a>
 		  </c:if>
-</div><hr>
+	</div>  
+</div>
+<hr>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

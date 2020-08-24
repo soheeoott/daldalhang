@@ -25,30 +25,36 @@ $(function() {
 </head>
 <body>
 <div align="center" id="wrap">
-	<span id="notice_title">공지사항</span>
+	
+	<div>
+		<a id="notice_title" href="nlist">
+			공지사항
+		</a>
+	</div>
 
-	<table class="ntable">
-		<tr id="notice_search">
+	<div class="box-body" id="searchBar" id="notice_search">
+		<form name="searchform" method="post" action="nlist">
+			<select name="searchType" id="searchType" hidden>
+				<option value="tc"
+					<c:out value="${cri.searchType eq 'tc' ? 'selected':''}"/>>제목&내용
+				</option>
+			</select>
 			
-				<div class="box-body" id="searchBar" align="right">
-				<select name="searchType" id="searchType" hidden>
-					<option value="tc"
-						<c:out value="${cri.searchType eq 'tc' ? 'selected':''}"/>>제목&내용
-					</option>
-				</select>
-					<div style= "float: left; position: relative; margin-left: 690px;">
-						<input type="text" name="keyword" id="keyword" 
-							value="${cri.keyword}" size="25" placeholder="검색어를 입력해 주세요.">
-					</div>
-						
-					<div style="float: left;">
-						<button id="nsearchBtn">
-							<img src="resources/image/search.png" alt="search_icon" width= "20" height = "20">
-						</button>
-					</div>
-				</div>
-		</tr>
-		<td colspan="9"></td>
+			<div style= "float: left; margin-left: 670px;">
+				<input type="text" name="keyword" id="keyword" 
+					value="${cri.keyword}" size="25" placeholder="검색어를 입력해 주세요.">
+			</div>
+				
+			<div>
+				<button id="nsearchBtn">
+					<img src="resources/image/search.png" alt="search_icon" width= "20" height = "20">
+				</button>
+			</div>
+		</form>
+	</div>
+		
+	<table class="ntable">
+				
 		<tr height="50"></tr>
 		<tr align="center" id="nlist_category">
 			<td>No</td><td>제목</td><td>날짜</td><td>조회수</td>
@@ -65,12 +71,14 @@ $(function() {
 		</tr>
 		</c:forEach>
 	</table>
+	
 	<div class="btn_nlist" align="right">
 		<c:if test="${logID=='DalDal'}">
 			<input type="button" value="등록" class="buttonStyle" onclick="location.href='ninsertf'">
 		</c:if>
-	</div>	
-	<br>
+	</div>
+		
+	<hr>
 	<!--
 		Page Criteria 추가
 		1) First <<, Prev < : enabled 여부

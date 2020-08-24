@@ -12,14 +12,14 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/franchiseStyle.css">
 </head>
 <body>
-<div id="product_box" align="center">
-	<div class="btn_nlist" align="left">
-		<c:if test="${logID=='DalDal'}">
-			<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href=''">
-		</c:if>
-	</div>
-				
-	<div id = "wrap">
+<div id="wrap" align="center">
+	<div id = "product_box" align="center">
+		<div class="btn_nlist" align="left">
+			<c:if test="${logID=='DalDal'}">
+				<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href=''">
+			</c:if>
+		</div>
+
 		<div class="container">
 			<div class="main">
 				<div class="productList">
@@ -27,9 +27,9 @@
 						<div class = "frlist">
 							<div class = "frwrap">
 								<a href = "franchiseSortList?frcode=${list.frcode}">
-									<img src="${list.fruploadfile}" width="200" height="200">
-									<p class = "pname">
-										${list.frkname}
+									<p class = "pname"> 
+										<img src="${list.fruploadfile}" width="200" height="200">
+										${list.frkname} 
 									</p>
 								</a>
 							</div>

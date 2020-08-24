@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ProductCri.Criteria;
 import ProductCri.PageMaker;
 import dao.ProductDAO;
+import vo.MenuVO;
 import vo.ProductVO;
 
 @Service
@@ -27,8 +28,8 @@ public class PDServiceImpl implements PDService {
 	}
 	
 	@Override
-	public List<ProductVO> Cricategory(String mubcode, String mucategory, PageMaker pageMaker) throws Exception {
-		return dao.Cricategory(mubcode, mucategory, pageMaker);
+	public List<ProductVO> Cricategory(MenuVO mvo, PageMaker pageMaker) throws Exception {
+		return dao.Cricategory(mvo, pageMaker);
 	}
 
 	@Override

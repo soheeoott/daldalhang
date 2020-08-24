@@ -71,33 +71,6 @@ public class FranchiseController {
 	    return mv;
 	}
 	
-	/*
-	@RequestMapping(value="/franchiseSortList")
-	public ModelAndView franchiseSortList(ModelAndView mv, String frcode, String frkname) throws Exception{
-	    
-		// 레코드의 갯수
-		int count = frservice.fsortCount(frcode);
-
-		List<MenuVO> mulist = muservice.selectList();
-		mv.addObject("mulist", mulist);
-		
-		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(frcode);
-		mv.addObject("frachiseMenu", frachiseMenu);
-		
-		List<FranchiseVO> fpdlist = frservice.fsortList(frcode, frkname);
-		mv.addObject("fpdlist", fpdlist);
-
-		System.out.println("frcode=" + frcode + "frkname=" + frkname);
-		System.out.println("fpdlist" + fpdlist); 
-		
-		mv.addObject("frkname", frkname);
-		mv.addObject("count", count);
-	    mv.setViewName("franchise/franchiseSortList");
-	    
-	    return mv;
-	}
-	*/
-	
 	@RequestMapping(value="/frlist")
 	public ModelAndView frlist(ModelAndView mv) {
 		

@@ -34,7 +34,7 @@ br { mso-data-placement:same-cell; }
 
 .homeWrap {
     position: relative;
-    top: 200px;
+    top: 250px;
 }
 
 #header {
@@ -95,7 +95,6 @@ br { mso-data-placement:same-cell; }
 
 .main_menu {
     font-size: 23px;
-    font-weight: bold;
     margin-left: 5.1em;
 }
 
@@ -123,10 +122,12 @@ br { mso-data-placement:same-cell; }
 }
 
 .menu_dropdown a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: black;
+    padding: 12px 0px;
+    text-decoration: none;
+    position: relative;
+    left: -5px;
+    display: block;
 }
 
 .menu_dropdown a:hover {
@@ -179,8 +180,8 @@ input::-moz-placeholder {color:#a8a8a8;}
 
 .searchInput {
 	font-size: 17px;
-    width: 690px;
-    padding: 12px;
+    width: 685px;
+    padding: 12.7px;
     border: 0px;
     outline: none;
     float: left;
@@ -205,17 +206,7 @@ input::-moz-placeholder {color:#a8a8a8;}
 
 /* footer */
 #footer {
-/*  	position: absolute;
-	left: 0;
-	right: 0;
- 	width: 100%;
-	font-size: 12px;
-	text-align: center;
-	background-color: #262626;
-    padding: 45px 0;
-    bottom: -500px; */
-    
-/*     
+	
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -224,26 +215,12 @@ input::-moz-placeholder {color:#a8a8a8;}
 	padding: 45px 0;
 	font-size: 12px;
 	text-align: center;
-	background-color: pink; 
-*/
-	
-	display: inline-table;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 2200px;
-    width: 100%;
-    margin-top: 60px;
-    padding: 45px 0;
-    font-size: 12px;
-    text-align: center;
-    background-color: pink;
+	background-color: #262626;
 } 
 
 .footer_menu {
     width: 100%;
-    color: black;
+    color: white;
     font-weight: bold;
 }
 

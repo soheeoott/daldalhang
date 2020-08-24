@@ -3,6 +3,10 @@
 	  font-family: 'Jeju Gothic', sans-serif;
 	}
 	
+	.explan {
+		line-height: 3;
+	}
+		
 	#wrap {
 	  position: relative;
 	  width: 100%;
@@ -10,56 +14,16 @@
 	  padding: 0;
 	  vertical-align: baseline;
 	  border: 0;
-      top: 250px;
+	  top: 250px;
 	}
 	
-	ol ul {
-	  list-style-type: circle;
-	  margin-block-start: 0px;
-	  margin-block-end: 0px;
+	.select {
+		height: 35px;
+	    border-radius: 3px;
+	    border: 1px solid lightgray;
+	    float: left;
 	}
-	
-	nav ul {
-	  list-style: none;
-	  display: list-item;
-	  text-align: -webkit-match-parent;
-	}
-	
-	li {
-		line-height: 25px;
-		list-style: none;
-	    display: list-item;
-	    text-align: -webkit-match-parent;
-	}
-	
-	ol {
-	  display: block;
-	  list-style-type: decimal;
-	  margin-block-start: 1em;
-	  margin-block-end: 1em;
-	  margin-inline-start: 0px;
-	  margin-inline-end: 0px;
-	  padding-inline-start: 40px;
-	}
-	
-	ul {
-	  display: block;
-	  list-style-type: disc;
-	  margin-block-start: 1em;
-	  margin-block-end: 1em;
-	  margin-inline-start: 0px;
-	  margin-inline-end: 0px;
-	}
-	
-	p {
-	  display: block;
-	  margin-block-start: 1em;
-	  margin-block-end: 1em;
-	  margin-inline-start: 0px;
-	  margin-inline-end: 0px;
-	  margin-left: 15px;
-	}
-	
+
 	div {
 	  display: block;
 	}
@@ -71,21 +35,7 @@
 	  vertical-align: top;
 	  border-radius: 0;
 	}
-	
-	label {
-	  position: relative;
-	  bottom: 15px;
-	  font-size: 18px;
-	}
-	
-	.top {
-	  background-color : rgb(241,188,213);
-	  height : 100px;
-	  position : fixed;
-	  width : 100%;
-	  z-index: 99;
-	}
-	
+
 	.container {
 	  width : 100%;
 	}
@@ -93,9 +43,8 @@
 	.main {
 	  max-width: 570px;
 	  margin: 0 auto;
-	  padding: 0 0 50px;
 	}
-	
+
 	.joinform {
 	  border-radius: 3px;
 	  box-sizing: border-box;
@@ -201,6 +150,33 @@
 	  max-width: 530px;
 	  padding: 15px;
 	  width: 100%;
+	}
+	
+	.input_box {
+	  padding: 10px 20px;
+	}
+	
+	.select_img {
+	    display: block;
+	    margin-left: auto;
+	    margin-right: auto;
+	    padding-top: 20px;
+	}
+	.select_box {
+	  float: left;
+	}
+	
+	.box {
+		/* float: left; */
+	}
+	
+	.MenuSelect {
+		height: 35px;
+	    border-radius: 3px;
+	    border: 1px solid lightgray;
+	    float: left;
+	    position: relative;
+	    margin-bottom: 20px;
 	}
 	
 	.input_check {

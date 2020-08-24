@@ -13,6 +13,22 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	
+	<style type="text/css">
+	#footer {
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    width: 100%;
+	    margin-top: 300px;
+	    /* margin-top: 60px; */
+	    bottom: -520px;
+	    padding: 45px 0;
+	    font-size: 12px;
+	    text-align: center;
+	    background-color: #262626;
+	}
+	</style>
+	
 	<script>
 	function agreeCheck() {
 		$("#submit").click(function(){
@@ -182,12 +198,11 @@
           <div class="main">
 
             <div class="form">
+              
               <form action="join" onsubmit="return validate();" method="post">
                 
                 <div>
 	
-	                <section class="joinform"> <!-- renew_joinform_v2 -->
-						
 					<section class="a_agreement">	
 						
 						<div class="a_agree-check">
@@ -197,15 +212,15 @@
 	                  	<div style="
 						    font-size: 18px;
 						    color: #222;
-						    font-weight: bold;
 						    margin-left: 50px;
+						    margin-bottom: 10px;
 						">
 	                  		전체 동의
 	                  	</div>
 	                  	
 	                </section>   	
 	                  
-	                  <section class="agreement"> <!-- mem_agreement_wrap -->
+                    <section class="agreement"> <!-- mem_agreement_wrap -->
 	                  
 	                  	 <div class="h_agree-check">
 	                        <input type="checkbox" name="check" id="check" class="check">
@@ -215,7 +230,6 @@
 	                      	<div style="
 							    font-size: 18px;
 							    color: #222;
-							    font-weight: bold;
 							    margin-left: 50px;">
 		                  		홈페이지 이용약관 동의
 		                      	<span class="necessary">(필수)</span>
@@ -357,7 +371,6 @@
 	                    <div style="
 							    font-size: 18px;
 							    color: #222;
-							    font-weight: bold;
 							    margin-left: 50px;">
 		                  		위치 기반 서비스 이용약관 동의
 		                      	<span class="necessary">(필수)</span>
@@ -565,7 +578,6 @@
 		               
 	                  </div>
 						
-	                </section>
 	                
 	               	  <div class="form_end">
 						  	<input type="submit" id = "submit" class = "submit" value="가입" onclick = "agreeCheck()">

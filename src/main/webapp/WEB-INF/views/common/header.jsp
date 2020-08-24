@@ -110,9 +110,8 @@
 				       </div>
 				       
 				       <div class= "searchB">
-				       		<button class="searchBtn" id="searchBtn" onclick="optionCheck()">
+				       		<button class="searchBtn" id="searchBtn">
 				       			<img src="resources/image/search.png" width= "23" height = "23">
-				      			<!-- <input type="submit" value="조회" class="searchBtn"> -->
 				      		</button>
 				       </div>
 				</form>
