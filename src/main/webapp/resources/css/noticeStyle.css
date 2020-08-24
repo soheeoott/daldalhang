@@ -12,11 +12,11 @@ table {
 
 /* 공지사항 메뉴를 누르면 바로 나오는 '공지사항' 텍스트 */
 #notice_title {
-	font-size:25px;
-	font-weight:bold;
-	cursor:pointer;
-	margin-left:-800px;
-	margin-bottom:-100px;
+	font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    right: 360px;
 }
 
 /* search를 포함한 tr */
@@ -26,18 +26,27 @@ table {
 
 /* search 요소를 감싸는 bar */
 #searchBar {
-	margin:20px 20px 20px;
+    left: 240px;
+    position: relative;
 }
 
 /* 검색어 입력 부분 */
 #keyword {
-	height:23px;
+	padding: 12px;
+    border: solid 1px lightgray;
+    border-radius: 3px;
 }
 
 /* search 실행 버튼 */
 #nsearchBtn {
-	margin-bottom:-12px;
-	width:30px;
+	width: 40px;
+    height: 40px;
+    color: #ffffff;
+    background-color: pink;
+    border-radius: 3px;
+    border: 0px;
+    outline: none;
+    cursor:pointer;
 }
 
 /* noticeList category(No, 제목, 날짜, 조회수) */

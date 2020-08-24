@@ -30,8 +30,10 @@
 	}
 	
 	.menu_css a {
-		margin-right: 5em;
-		line-height: 3;
+	    line-height: 3;
+	    border: 1px solid lightgray;
+	    border-radius: 20px;
+	    padding: 10px;
 	}
 	
 	.btn_nlist {

@@ -20,11 +20,24 @@ public class ProductDAO {
 	private static final String PD = "daldal.mappers.productMapper.";
 	
 	// 메뉴 목록
-	public List<ProductVO> category(String mubcode, String mucategory, PageMaker pageMaker) throws Exception {
+	public List<ProductVO> Cricategory(String mubcode, String mucategory, PageMaker pageMaker) throws Exception {
 		Map<Object, Object> cate = new HashMap<Object, Object>();
 		cate.put("mubcode", mubcode);
 		cate.put("mucategory", mucategory);
 		cate.put("pageMaker", pageMaker);
+		return sqlsession.selectList(PD + "Cricategory", cate);
+	}
+	
+	// 메뉴 갯수
+	public int CricategoryCount(String mubcode) throws Exception {
+		return sqlsession.selectOne(PD + "CricategoryCount", mubcode);
+	}
+	
+	// 메뉴 목록
+	public List<ProductVO> category(String mubcode, String mucategory) throws Exception {
+		Map<Object, Object> cate = new HashMap<Object, Object>();
+		cate.put("mubcode", mubcode);
+		cate.put("mucategory", mucategory);
 		return sqlsession.selectList(PD + "category", cate);
 	}
 	

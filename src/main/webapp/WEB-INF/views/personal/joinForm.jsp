@@ -190,27 +190,36 @@
 						
 					<section class="a_agreement">	
 						
-						<span class="a_agree-check">
+						<div class="a_agree-check">
 	                  		<input type="checkbox" class = "allcheck" name="allcheck" id="allcheck">
-	                  	</span>
+	                  	</div>
 	                  	
-	                  	<h5>
+	                  	<div style="
+						    font-size: 18px;
+						    color: #222;
+						    font-weight: bold;
+						    margin-left: 50px;
+						">
 	                  		전체 동의
-	                  	</h5>
+	                  	</div>
 	                  	
 	                </section>   	
 	                  
 	                  <section class="agreement"> <!-- mem_agreement_wrap -->
 	                  
-	                  	 <span class="h_agree-check">
+	                  	 <div class="h_agree-check">
 	                        <input type="checkbox" name="check" id="check" class="check">
 	                         <label for="h_agreement_yes"><!-- 동의 --></label>
-	                      </span>
+	                      </div>
 	                      
-	                      <h5>
-	                                                     홈페이지 이용약관 동의
-	                      	<span class="necessary">(필수)</span>
-	                      </h5>
+	                      	<div style="
+							    font-size: 18px;
+							    color: #222;
+							    font-weight: bold;
+							    margin-left: 50px;">
+		                  		홈페이지 이용약관 동의
+		                      	<span class="necessary">(필수)</span>
+	                  		</div>
 	
 	                      <div class="agreement_area">
 	                        <div id="privacy">
@@ -343,15 +352,21 @@
 	                  </section>
 	
 	                  <section class = "agreement">
-	                    <h5>
-	                      위치 기반 서비스 이용약관 동의
-	                      <span class="necessary">(필수)</span>
-	                    </h5>
-	
-	                    <span class="g_agree-check">
+	                    
+	                    
+	                    <div style="
+							    font-size: 18px;
+							    color: #222;
+							    font-weight: bold;
+							    margin-left: 50px;">
+		                  		위치 기반 서비스 이용약관 동의
+		                      	<span class="necessary">(필수)</span>
+	                  	</div>
+	                  	
+	                    <div class="g_agree-check">
 	                      <input type="checkbox" name="check" id="check" class="check">
 	                       <label for="gps_agreement_yes"><!-- 동의 --></label>
-	                    </span>
+	                    </div>
 	
 	                    <div class="agreement_area">
 	                      <div id="privacy">

@@ -1,19 +1,4 @@
-
-*{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 #searchIdPwSearch{
-    width: 1200px;
-    height: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-	position: relative;
-    
-    
 }
 
 #sipTitle{
@@ -26,7 +11,6 @@
     text-align: center;
     font-size: 40px;
     font-weight: bold;
-    
 }
 
 #siBoxes{
@@ -38,6 +22,7 @@
     background-color: #FAFAFA;
     float: left;
 }
+
 #siTextbox{
     width: 450px;
     height: 40px;
@@ -45,8 +30,8 @@
     margin-right: auto;
     margin-top: 30px;
     margin-bottom: 13px;
-    
 }
+
 #siTextTitle{
     width: 100px;
     height: 20px;
@@ -58,20 +43,19 @@
     padding-left: 20px;
     font-weight: bold;
     float: left;
-    
 }
+
 #siText{
     width: 250px;
     height: 15px;
     font-size: 11px;
     margin-top: 6px;
     float: left;
-    
 }
+
 #siInputTextBoxes{
     width: 430px;
     height: 130px;
-    
 }
 
 .siInputText{
@@ -82,6 +66,7 @@
     background-color: white;
     margin-bottom: 13px;
 }
+
 .siInputTextBox{
     width: 380px;
     height: 30px;
@@ -90,8 +75,8 @@
     margin-left: 9px;
     font-weight: bold;
     border: none;
-
 }
+
 .siInputTextBox_Email{
 	width: 175px;
     height: 30px;
@@ -101,6 +86,7 @@
     font-weight: bold;
     border: none;
 }
+
 #siOkbtn{
     margin-top: 10px;
     width: 101px;
@@ -109,6 +95,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 #pwBoxes{
     width: 450px;
     height:280px;
@@ -119,6 +106,7 @@
     background-color: #FAFAFA;
     float: left;
 }
+
 #spwTextbox{
     width: 450px;
     height: 40px;
@@ -126,8 +114,8 @@
     margin-right: auto;
     margin-top: 30px;
     margin-bottom: 13px;
-    
 }
+
 #spwTextTitle{
     width: 120px;
     height: 20px;
@@ -140,6 +128,7 @@
     font-weight: bold;
     float: left;
 }
+
 #spwText{
     width: 250px;
     height: 15px;
@@ -147,6 +136,7 @@
     margin-top: 6px;
     float: left;
 }
+
 .spwInputText{
     width: 400px;
     height: 50px;
@@ -155,6 +145,7 @@
     background-color: white;
     margin-bottom: 13px;
 }
+
 .spwInputTextBox{
     width: 380px;
     height: 30px;
@@ -164,6 +155,7 @@
     font-weight: bold;
     border: none;
 }
+
 #spwOkbtn{
     width: 99px;
     height: 36px;
@@ -173,11 +165,11 @@
     margin-top: 24px;
 }
 
-
 .setDiv {
     padding-top: 100px;
     text-align: center;
 }
+
 .mask {
     position:absolute;
     left:0;
@@ -186,6 +178,7 @@
     background-color:#000;
     display:none;
 }
+
 .mask2 {
     position:absolute;
     left:0;
@@ -194,6 +187,7 @@
     background-color:#000;
     display:none;
 }
+
 .window {
     width:500px;
     height: 300px;
@@ -202,6 +196,7 @@
     
     z-index:99999;
 }
+
 .window2 {
     width:500px;
     height: 300px;
@@ -210,11 +205,13 @@
     
     z-index:99999;
 }
+
 #modalTitleBox{
     width: 500px;
     height: 40px;
     background-color: rgb(46, 46, 46);
 }
+
 #modalTitle{
     width: 120px;
     height: 25px;
@@ -224,6 +221,7 @@
     float: left;
     margin-top: 7px;
 }
+
 #modalTitle2{
     width: 130px;
     height: 25px;
@@ -234,16 +232,16 @@
     margin-top: 7px;
     
 }
+
 .xbtn{
     width: 40px;
     height: 33px;
     font-size: 25px;
     margin-top: 3px;
     color: rgb(255, 255, 255);
-    
-    
     float: right;
 }
+
 .modalTextBox{
     width: 400px;
     height: 120px;
@@ -252,20 +250,22 @@
     display: inline-block;
     margin-top: 40px;
 }
+
 #modalText{
     width: 400px;
     height: 30px;
     margin-top: 35px;
     font-size: 14px;
 }
+
 #modalText1{
     width: 400px;
     height: 20px;
     font-size: 14px;
 }
+
 .close{
     width: 110px;
     height: 38px;
     margin-top: 30px;
 }
-

@@ -1,5 +1,6 @@
 package ProductCri;
 
+import vo.MenuVO;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -16,6 +17,8 @@ public class PageMaker extends Criteria {
 	/*
 	 * private Criteria pcri; // page, perPageNum
 	 */
+	
+	MenuVO mvo = new MenuVO();
 	
 	private int totalCount;				// 전체 게시글 수
 										// Mapper.xml 을 통해 DB에서 전체 게시글 수를 가져옴
@@ -86,9 +89,15 @@ public class PageMaker extends Criteria {
     }
     
     public String makeQuery(int page) {
-    	 
-        UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
-                .queryParam("perPageNum", getPerPageNum()).build();
+		
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+        		.queryParam("page", page)
+                .queryParam("perPageNum", getPerPageNum())
+                /*
+                .queryParam("mubcode", mvo.getMubcode())
+                .queryParam("mucategory", mvo.getMucategory())
+                */
+                .build();
  
         return uriComponents.toUriString();
     }

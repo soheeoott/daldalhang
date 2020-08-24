@@ -12,6 +12,16 @@ public interface PDService {
 	
 	public int TotalCount() throws Exception;
 	
+	// 메뉴 목록
+	public List<ProductVO> Cricategory(String mubcode, String mucategory, PageMaker pageMaker) throws Exception;
+		
+	// 메뉴 갯수
+	public int CricategoryCount(String mubcode) throws Exception;
+	
+	public List<ProductVO> category(String mubcode, String mucategory) throws Exception;
+	
+	public int categoryCount(String mubcode) throws Exception;
+	
 	public List<ProductVO> SeasonList();
 	
 	public List<ProductVO> NewList();
@@ -37,12 +47,6 @@ public interface PDService {
 	
 	// 해시태그 레코드 갯수 메서드 추가
 	public int hashtagCount(String keyword) throws Exception;
-	
-	// 메뉴 목록
-	public List<ProductVO> category(String mubcode, String mucategory, PageMaker pageMaker) throws Exception;
-	
-	// 메뉴 갯수
-	public int categoryCount(String mubcode) throws Exception;
 	
 	// 서브 메뉴 갯수
 	public int mProductCount(String muname) throws Exception;

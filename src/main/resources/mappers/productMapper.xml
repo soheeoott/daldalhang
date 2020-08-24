@@ -43,12 +43,38 @@
     </select>
     
     <!-- 2020-08-11 -->	
-	<select id="category" resultType="vo.ProductVO">
-		SELECT * FROM menu n JOIN product p 
+	<select id="Cricategory" resultType="vo.ProductVO">
+		<![CDATA[
+			SELECT DISTINCT 
+            pdseq, frcode, bcode, bname, mcode, mname, mkname, pdcode, pdname, price, pduploadfile,
+            pdurl, hashtag, mucode1, mucode2, mucode3, bestproduct, newproduct, seasonproduct
+			FROM menu n JOIN product p 
+			ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
+			WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') 
+			ORDER BY mucode ASC, pdseq ASC
+			limit #{sno}, #{perPageNum}
+		]]>
+	</select>
+	
+	<!-- 2020-08-11 -->
+	<select id="CricategoryCount" resultType="int">
+		SELECT COUNT(*) FROM menu n JOIN product p 
 		ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
 		WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') 
 		ORDER BY mucode asc, pdseq asc
-		limit #{sno}, #{perPageNum}
+	</select>
+	
+	<!-- 2020-08-11 -->	
+	<select id="category" resultType="vo.ProductVO">
+		<![CDATA[
+			SELECT DISTINCT 
+            pdseq, frcode, bcode, bname, mcode, mname, mkname, pdcode, pdname, price, pduploadfile,
+            pdurl, hashtag, mucode1, mucode2, mucode3, bestproduct, newproduct, seasonproduct
+			FROM menu n JOIN product p 
+			ON n.mucode = p.mucode1 OR n.mucode = p.mucode2 OR n.mucode = p.mucode3
+			WHERE n.mucode LIKE CONCAT('%',#{mubcode},'%') 
+			ORDER BY mucode ASC, pdseq ASC
+		]]>
 	</select>
 	
 	<!-- 2020-08-11 -->

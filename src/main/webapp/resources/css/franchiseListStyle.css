@@ -29,8 +29,11 @@
 	}
 	
 	.menu_css a {
-		margin-right: 5em;
-		line-height: 3;
+	    border: 1px solid lightgray;
+	    border-radius: 20px;
+	    padding: 10px;
+	    margin-right: em;
+	    line-height: 3;
 	}
 	
 	.btn_nlist {
@@ -48,9 +51,9 @@
 	}
 	
 	.brandHomebutton {
-		width:70px;
-		height:30px;
-		left: 100px;
+		width:80px;
+		height:45px;
+		left: 90px;
 		cursor:pointer;
 		background-color:white;
 		border-radius:5px;

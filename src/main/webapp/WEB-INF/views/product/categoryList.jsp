@@ -84,7 +84,7 @@
 		<div class="menu_css">
 			<c:forEach var="list" items="${menulist}">
 				<c:if test="${list.mucategory=='coffee'}">
-					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
+					<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}&pageMaker=${pageMaker}">커피</a>
 				</c:if>
 				
 				<c:if test="${list.mucategory=='dessert'}">
@@ -104,7 +104,8 @@
 				</c:if>							
 			</c:forEach>
 			<hr><br>
-			 <c:forEach var="cpdlist" items="${cpdlist}" end="5">
+			
+			<c:forEach var="cpdlist" items="${cpdlist}" end="5">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach> 
 			
@@ -112,6 +113,7 @@
 			<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>
+			
 		</div>
 		<br><br><br>
 			<div class="container">
@@ -163,14 +165,14 @@
 		   -->
 		   
 		  <c:if test="${pageMaker.start}">
-		          <a href="category${pageMaker.makeQuery(1)}" id="paging_num">
+		          <a href="categorylist${pageMaker.makeQuery(1)}" id="paging_num">
 		          	&nbsp;
 		          	처음
 		          </a>
 		  </c:if>
 		  
 		  <c:if test="${pageMaker.prev}">
-		          <a href="category${pageMaker.makeQuery(pageMaker.startPage-1)}">
+		          <a href="categorylist${pageMaker.makeQuery(pageMaker.startPage-1)}">
 	          		&nbsp;
 	          		<img src="resources/image/prev.jpg" class="npn_img" id="paging_num">
 		          </a>
@@ -194,7 +196,7 @@
 				</c:when>
 				<c:otherwise>
 				 	&nbsp;
-				 	<a href="category${pageMaker.makeQuery(index)}" id="paging_num">${index}</a>
+				 	<a href="categorylist${pageMaker.makeQuery(index)}" id="paging_num">${index}</a>
 				 	&nbsp;
 				</c:otherwise>
 			</c:choose>
@@ -204,14 +206,14 @@
 		      <!--
 		                  이전버튼과 마찬가지로 다음버튼을 끝 페이지보다1개 큰게 현재 페이지가 되도록 makeQuery에 page를 넣어줍시다.
 		       -->
-		          <a href="category${pageMaker.makeQuery(pageMaker.endPage+1)}">
+		          <a href="categorylist${pageMaker.makeQuery(pageMaker.endPage+1)}">
 		          	&nbsp;
 		          	<img src="resources/image/next.jpg" class="npn_img" id="paging_num">
 		         </a>
 		  </c:if>
 
 		  <c:if test="${pageMaker.end}">
-		          <a href="category${pageMaker.makeQuery(pageMaker.tempEndPage)}" id="paging_num">
+		          <a href="categorylist${pageMaker.makeQuery(pageMaker.tempEndPage)}" id="paging_num">
 		          	끝
 		          </a>
 		  </c:if>

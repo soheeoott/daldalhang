@@ -11,16 +11,6 @@
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <script src="resources/js/home.js"></script>
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<script type="text/javascript">
-	$(function(){
-		if (document.formName.searchOption[0].value.length == 0 && document.formName.searchOption[1].value.length == 0) {
-			alert('검색 조건을 선택해주세요!');
-			return false;
-		} else {
-			return true;
-		}
-	});	
-	</script>
 </head>
 <body>
 	<!-- header -->
@@ -75,7 +65,7 @@
 						<div class="menu_dropdown">
 							<c:forEach var="list" items="${menulist}">
 								<c:if test="${list.mucategory=='coffee'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
 								</c:if>
 								
 								<c:if test="${list.mucategory=='dessert'}">

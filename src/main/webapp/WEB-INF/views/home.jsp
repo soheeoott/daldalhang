@@ -7,68 +7,21 @@
 <head>
 <title>** DalDal **</title>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
- 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css"> -->
+ 	<link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
  	<link rel="stylesheet" type="text/css" href="resources/css/swiper.min.css">
- 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
- 	
- 	<style>
- 	
- 	.swiper-container {
-      width: 800px;
-      height:420px;
-    }
-    
-    .swiper-slide {
-      text-align: center;
-      font-size: 15px;
-      background: #fff;
-
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      
-      top: -160px;
-      right: 40px;
-    }
-    
-    .first {
-    	padding-top: 350px;
-    }
-    
-    .sub {
-    	padding-top: 100px;
-    }
-    
-    .hashtagsplit {
-    	color: gray;
-    }
-    
-    .swiper-pagination-bullet-active {
-		background: pink;
-	}
-	    
- 	</style>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script> -->
 </head>
 <body>
-	<div class="swiper-container first">
+<div class = "homeWrap">
 	
-	    <ul class="swiper-wrapper">
-	    	
-	    	<div>신제품</div>
+	<div class="swiper-container">
+	
+	<div id="slidetit" style="font-size: 23px;">신제품</div>
+	
+	    <ul class="swiper-wrapper first">
 	    	
         	<c:forEach var="newlist" items="${newlist}">
-	        	<li class="swiper-slide plist">
+	        	<li class="swiper-slide">
 	        		<div>
 						<p>
 							<a href = "${newlist.pdurl}" target="_blank">
@@ -95,7 +48,7 @@
 						
 		            	<c:forEach var="hashtag" items="${fn:split(newlist.hashtag,'#')}">
 		            		<a href="hashtagList?keyword=${hashtag}">
-		            			<span class = "hashtagsplit"># ${hashtag}</span>
+		            			<span class = "hashtagsplit" style="color: gray;"># ${hashtag}</span>
 		            		</a>
 		            	</c:forEach>
 		            </div>	
@@ -103,26 +56,22 @@
 			</c:forEach>
 	    </ul>
 	    
-	    <hr>
-	    
 	    <!-- Add Pagination -->
    		<div class="swiper-pagination"></div>
     
     	<!-- Add Arrows -->
     	<div class="swiper-button-prev"></div>
     	<div class="swiper-button-next"></div>
-	    
+    	
 	</div>  <!-- swiper-container -->
 	
 	<div class="swiper-container sub">
 	    
-	<div>
-		추천제품
-	</div>
+	<div id="slidetit" style="font-size: 23px;">추천제품</div>
 	    
 	    <ul class="swiper-wrapper">
         	<c:forEach var="bestlist" items="${bestlist}">
-	        	<li class="swiper-slide plist">
+	        	<li class="swiper-slide">
 	        		<div>
 	        			<p>
 							<a href= "${bestlist.pdurl}" target="_blank">
@@ -153,15 +102,13 @@
 						
 		            	<c:forEach var="hashtag" items="${fn:split(bestlist.hashtag,'#')}">
 		            		<a href="hashtagList?keyword=${hashtag}">
-		            			<span class = "hashtagsplit"># ${hashtag}</span>
+		            			<span class = "hashtagsplit" style="color: gray;"># ${hashtag}</span>
 		            		</a>
 		            	</c:forEach>
 		            </div>	
 		         </li>   	
-	        </c:forEach>	
+	        </c:forEach>
         </ul>
-    	
-    	<hr>
     	
     	<!-- Add Pagination -->
    		<div class="swiper-pagination"></div>
@@ -169,18 +116,15 @@
     	<!-- Add Arrows -->
     	<div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
-
     </div>
 	
 	<div class="swiper-container sub">
 	    
-	    <div>
-			시즌제품
-		</div>
+	    <div id="slidetit" style="font-size: 23px;">시즌제품</div>
 	    
 	    <ul class="swiper-wrapper">
 	        <c:forEach var="seasonlist" items="${seasonlist}">
-		        <li class="swiper-slide plist">
+		        <li class="swiper-slide">
 		        	<div>
 		        		<p>
 							<a href = "${seasonlist.pdurl}" target="_blank">
@@ -207,7 +151,7 @@
 						
 		            	<c:forEach var="hashtag" items="${fn:split(seasonlist.hashtag,'#')}">
 		            		<a href="hashtagList?keyword=${hashtag}">
-		            			<span class = "hashtagsplit"># ${hashtag}</span>
+		            			<span class = "hashtagsplit" style="color: gray;"># ${hashtag}</span>
 		            		</a>
 		            	</c:forEach>
 		            </div>
@@ -215,29 +159,29 @@
 			</c:forEach>
 	    </ul>
 		
-		<hr>
-		
 		<!-- Add Pagination -->
    		<div class="swiper-pagination"></div>
     
     	<!-- Add Arrows -->
     	<div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
-    	
 	</div>   <!-- swiper-container -->       
 	
 	<script src = "resources/js/swiper.min.js"></script>
 	
 	<script>
 		 var swiper = new Swiper('.swiper-container', {
-		      
+			  
+			  updateOnWindowResize: true,   // 창 크기 조정시 슬라이드 위치를 다시 계산
 			  speed: 500,
 			  autoplay: true,
 			  slidesPerView: 3,
-		      /* spaceBetween: 500, */
 		      slidesPerGroup: 1,
 		      loop: true,
 		      loopFillGroupWithBlank: true,
+		      uniqueNavElements: true,
+		      paginationClickable: true,
+		      autoplayDisableOnInteraction: false,
 		      pagination: {
 		        el: '.swiper-pagination',
 		        clickable: true,
@@ -245,12 +189,12 @@
 		      navigation: {
 		        nextEl: '.swiper-button-next',
 		        prevEl: '.swiper-button-prev',
-		      },
+		        autoplayDisableOnInteraction: false,
+		      }, 
 		    });
 	</script>
-	
-	<hr>
-	<%@ include file="common/footer.jsp" %>
+</div>	
+<%@ include file="common/footer.jsp" %>
 </body>
 </html>
 
@@ -258,7 +202,7 @@
 $(function(){
 	var swiper = new Swiper('.swiper-container', {
 	      
-		  effect: 'fade',
+	  effect: 'fade',
 	  speed: 500,
 	  crossEffect: { crossFade: true },
 	  autoplay: true,

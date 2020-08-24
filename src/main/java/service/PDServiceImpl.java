@@ -27,6 +27,26 @@ public class PDServiceImpl implements PDService {
 	}
 	
 	@Override
+	public List<ProductVO> Cricategory(String mubcode, String mucategory, PageMaker pageMaker) throws Exception {
+		return dao.Cricategory(mubcode, mucategory, pageMaker);
+	}
+
+	@Override
+	public int CricategoryCount(String mubcode) throws Exception {
+		return dao.CricategoryCount(mubcode);
+	}
+	
+	@Override
+	public List<ProductVO> category(String mubcode, String mucategory) throws Exception {
+		return dao.category(mubcode, mucategory);
+	}
+
+	@Override
+	public int categoryCount(String mubcode) throws Exception {
+		return dao.categoryCount(mubcode);
+	}
+	
+	@Override
 	public List<ProductVO> SeasonList() {
 		return dao.SeasonList();
 	}
@@ -81,16 +101,6 @@ public class PDServiceImpl implements PDService {
 	@Override
 	public int hashtagCount(String keyword) throws Exception {
 		return dao.hashtagCount(keyword);
-	}
-
-	@Override
-	public List<ProductVO> category(String mubcode, String mucategory, PageMaker pageMaker) throws Exception {
-		return dao.category(mubcode, mucategory, pageMaker);
-	}
-
-	@Override
-	public int categoryCount(String mubcode) throws Exception {
-		return dao.categoryCount(mubcode);
 	}
 
 	@Override

@@ -112,7 +112,6 @@
 	  position: relative;
 	  overflow: hidden;
 	  margin-left: 20px;
-   	  margin-top: 20px;
 	}
 	
 	.a_agreement h5{
@@ -150,6 +149,7 @@
 	  height: 170px;
 	  width: 100%;
 	  overflow:auto;
+	  margin-top: 20px;
 	}
 	
 	.a_agree-check {
@@ -157,7 +157,7 @@
 	    display: block;
 	    width: 26px;
 	    left: 3px;
-	    top: 6px;
+        margin-top: 30px;
 	}
 
 	.h_agree-check {
@@ -240,10 +240,6 @@
 	  font-weight: bold;
 	  color: #444;
 	  margin-bottom: 15px;
-	}
-	
-	.mb40 {
-	  margin-bottom: 40px;
 	}
 	
 	.privacy ol.pri_con ul li {

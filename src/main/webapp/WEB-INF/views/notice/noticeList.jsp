@@ -25,22 +25,30 @@ $(function() {
 </head>
 <body>
 <div align="center" id="wrap">
-	<span id="notice_title">공지사항</span><br><br>
+	<span id="notice_title">공지사항</span>
+
 	<table class="ntable">
 		<tr id="notice_search">
-			<td colspan="9">
+			
 				<div class="box-body" id="searchBar" align="right">
 				<select name="searchType" id="searchType" hidden>
 					<option value="tc"
 						<c:out value="${cri.searchType eq 'tc' ? 'selected':''}"/>>제목&내용
 					</option>
 				</select>
-					<input type="text" name="keyword" id="keyword" 
-						value="${cri.keyword}" size="25" placeholder="검색어를 입력해 주세요.">
-					<img src="resources/image/search_icon.png" alt="search_icon" id="nsearchBtn">
+					<div style= "float: left; position: relative; margin-left: 690px;">
+						<input type="text" name="keyword" id="keyword" 
+							value="${cri.keyword}" size="25" placeholder="검색어를 입력해 주세요.">
+					</div>
+						
+					<div style="float: left;">
+						<button id="nsearchBtn">
+							<img src="resources/image/search.png" alt="search_icon" width= "20" height = "20">
+						</button>
+					</div>
 				</div>
-			</td>
 		</tr>
+		<td colspan="9"></td>
 		<tr height="50"></tr>
 		<tr align="center" id="nlist_category">
 			<td>No</td><td>제목</td><td>날짜</td><td>조회수</td>
