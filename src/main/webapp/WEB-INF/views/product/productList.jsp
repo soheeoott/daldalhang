@@ -42,11 +42,6 @@
 <body>
 <div id = "wrap" align="center">
 	<div id="product_box" align="center">
-		<div class="btn_nlist" align="left">
-			<c:if test="${logID=='DalDal'}">
-				<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
-			</c:if>
-		</div>
 		
 		<!-- 2020.08.03 product menu name 출력 -->
 		<div class="menu_css">

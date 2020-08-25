@@ -21,7 +21,7 @@
 		    position: absolute;
 		    left: 0;
 		    right: 0;
-		    bottom: -610px;
+		    bottom: -710px;
 		    width: 100%;
 		    padding: 45px 0;
 		    font-size: 12px;
@@ -69,7 +69,7 @@
 		    $target.empty();
 		    
 		    if(frcode == ""){
-		        $target.append("<option value=''>------</option>");
+		        $target.append("<option value=''>대분류</option>");
 		        return;
 		    }
 		 
@@ -79,11 +79,12 @@
 		        data:{ frcode : frcode },
 		        success: function(jdata) {
 		            if(jdata.catem.length == 0){
-		                $target.append("<option value=''>코드가 없음</option>");
+		                $target.append("<option value=''>대분류</option>");
+		                
 		            }else{
 		                console.log("jdata.length=>"+jdata.catem.length);
 		                
-		                $target.append("<option value=''>------</option>");
+		                $target.append("<option value=''>대분류</option>");
 		                
 						for(var i=0; i < jdata.catem.length; i++){
 							$target.append("<option value=" +jdata.catem[i].bname+ ">" +jdata.catem[i].bname + "</option>");
@@ -108,7 +109,7 @@
 		    $target.empty();
 		    
 		    if(bname == ""){
-		        $target.append("<option value=''>----------</option>");
+		        $target.append("<option value=''>중분류</option>");
 		        return;
 		    }
 		 
@@ -121,9 +122,11 @@
 		        	},
 		        success: function(mdata) {
 		            if(mdata.cates.length == 0){
-		                $target.append("<option value=''>------</option>");
+		                $target.append("<option value=''>중분류</option>");
 		            }else{
 		            	console.log("mdata.length=>"+mdata.cates.length);
+		            	
+		            	$target.append("<option value=''>중분류</option>");
 		                
 		            	for(var j=0; j < mdata.cates.length; j++){
 							$target.append("<option value="+ mdata.cates[j].mname + ">" + mdata.cates[j].mname+"</option>");
@@ -153,7 +156,7 @@
 						<!-- <select id="frcode" name="frcode" class="select" onchange="coderead('A01')"> -->
 						
 						<select id="frcode" name="frcode" class="select" onchange="coderead(this.value)">
-							<option value= "" selected>---</option>
+							<option value="" selected>브랜드명</option>
 							 
 	 						<c:forEach var="franchise" items="${frlist}">
 								<option value= "${franchise.frcode}">${franchise.frkname}</option>
@@ -161,7 +164,7 @@
 	 					</select>
 	 					
 	 					<select id="bname" name="bname" class="select" onchange="bnameread(this.value)">
-	 						<option value= "" selected>---</option>
+	 						<option value= "" selected>대분류</option>
 	 						
 	 						<c:forEach var="big" items="${catem}">
 								<option value= "${big.bname}">${big.bname}</option>
@@ -169,7 +172,7 @@
 	 					</select>
 	 					
 	 					<select id="mname" name="mname" class="select">
-	 						<option value= "" selected>---</option>
+	 						<option value= "" selected>중분류</option>
 	 						
 	 						<c:forEach var="middle" items="${cates}">
 								<option value= "${middle.mname}">${middle.mkname}</option>
@@ -181,7 +184,7 @@
 					
 					<div class="input_box" style="display: inline-block;">
 						<select name="mucode1" class="MenuSelect">
-							<option value= "" selected>---</option>
+							<option value= "" selected>메뉴1</option>
 							
 							<c:forEach var="menu" items="${mulist}">
 								<option value= "${menu.mucode}">${menu.muname}</option>
@@ -189,7 +192,7 @@
 						</select>
 
 						<select name="mucode2" class="MenuSelect">
-							<option value= "" selected>---</option>
+							<option value= "" selected>메뉴2</option>
 							
 							<c:forEach var="menu" items="${mulist}">
 								<option value= "${menu.mucode}">${menu.muname}</option>
@@ -197,7 +200,7 @@
 						</select>
 			
 						<select name="mucode3" class="MenuSelect">
-							<option value= "" selected>---</option>
+							<option value= "" selected>메뉴3</option>
 							
 							<c:forEach var="menu" items="${mulist}">
 								<option value= "${menu.mucode}">${menu.muname}</option>
@@ -266,13 +269,13 @@
 						});
 						</script>
 					</div>	
-				</form>
 			</div>
 					
 					<div class="form_end">
 						<input type="submit" id="submit" class="submit" value="등록">
 				    	<input type="reset" class="reset" value="취소">
 				    </div>
+				 </form>   
             </div>
 		</div>
 	</div>

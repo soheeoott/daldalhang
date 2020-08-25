@@ -136,7 +136,6 @@ public class ProductController {
 	    return mv;
 	}
 	
-	
 	@RequestMapping(value="/category")
 	public ModelAndView category(ModelAndView mv, MenuVO mvo, String mubcode, String mucategory, HttpSession session) throws Exception{
 		
@@ -165,7 +164,6 @@ public class ProductController {
 		
 		return mv;
 	}
-	
 	
 	@RequestMapping(value="/hashtagList")
 	public ModelAndView hashtagList(ModelAndView mv, String keyword) throws Exception{
@@ -349,10 +347,11 @@ public class ProductController {
 			
 			if(!uploadfilef.isEmpty()) {
 				// 실제 저장 경로 생성하고 저장
-				file1 = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_product/"
+				/* file1 = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_product/" */
+				file1 = "C:/resources/img_product/"
 							+uploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				uploadfilef.transferTo(new File(file1));
-				file2="resources/img_product"+uploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
+				file2="resources/img_product/"+uploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
 			}
 		}
 		
@@ -360,12 +359,11 @@ public class ProductController {
 		
 		if (pdservice.insert(vo) > 0) {
 			// 성공
-			mv.setViewName("pdlist");
+			mv.setViewName("listPage");
 		} else {
 			// 실패
 			mv.setViewName("home");
 		}
-		
 		return mv;
 	}
 }

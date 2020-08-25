@@ -27,7 +27,7 @@
 						<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
 					</p>
 				</c:when>
-				
+
 				<c:when test="${slogID != null}">
 					<p id="login_success">
 						<a href="mypagef">${slogID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -47,10 +47,14 @@
 					</p>
 				</c:when>		
 			</c:choose>
-			
+				
+				<c:if test="${logID=='DalDal'}">
+					<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
+				</c:if>
 			</div>
 			<!-- 메인 메뉴 -->
 			<div id="menubar">
+		
 				<div class = "logo">
 					<a href="home">
 						<img src="resources/image/logo2.png" width="150" alt="Logo">

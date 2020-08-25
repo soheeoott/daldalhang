@@ -155,6 +155,24 @@ hr {
     width:80%;
 }
 
+	.btn_nlist {
+	    width: 838px;
+		padding-top:10px;
+	}
+	
+	.buttonStyle {
+	    cursor: pointer;
+	    background-color: white;
+	    border-radius: 5px;
+	    border: 1px solid lightgray;
+	    padding: 10px;
+	    float: left;
+    	position: relative;
+    	top: -30px;
+    	left: 95px;
+	}
+	}
+	
 /* 검색창 */
 input:-ms-input-placeholder {color:#a8a8a8; } 
 input::-webkit-input-placeholder {color:#a8a8a8;} 
@@ -181,7 +199,7 @@ input::-moz-placeholder {color:#a8a8a8;}
 .searchInput {
 	font-size: 17px;
     width: 685px;
-    padding: 12.7px;
+    padding: 12.4px;
     border: 0px;
     outline: none;
     float: left;
