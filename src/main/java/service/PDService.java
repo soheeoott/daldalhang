@@ -9,6 +9,10 @@ import vo.ProductVO;
 
 public interface PDService {
 
+	public List<ProductVO> categoryM(ProductVO vo);
+	
+	public List<ProductVO> categoryS(ProductVO vo);
+	
 	public List<ProductVO> listCriteria (PageMaker pageMaker) throws Exception;
 	
 	public int TotalCount() throws Exception;

@@ -15,6 +15,11 @@ public class FRServiceImpl implements FRService {
 	FranchiseDAO dao;
 	
 	@Override
+	public int insert(FranchiseVO fvo) {
+		return dao.insert(fvo);
+	}
+	
+	@Override
 	public List<FranchiseVO> selectList() {
 		return dao.selectList();
 	}

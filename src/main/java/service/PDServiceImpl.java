@@ -18,6 +18,16 @@ public class PDServiceImpl implements PDService {
 	ProductDAO dao;
 	
 	@Override
+	public List<ProductVO> categoryM(ProductVO vo) {
+		return dao.categoryM(vo);
+	}
+
+	@Override
+	public List<ProductVO> categoryS(ProductVO vo) {
+		return dao.categoryS(vo);
+	}
+	
+	@Override
 	public List<ProductVO> listCriteria (PageMaker pageMaker) throws Exception {
 		return dao.listCriteria(pageMaker);
 	}

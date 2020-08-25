@@ -19,6 +19,14 @@ public class ProductDAO {
 	@Autowired // 자동주입
 	private SqlSession sqlsession;
 	private static final String PD = "daldal.mappers.productMapper.";
+
+	public List<ProductVO> categoryM(ProductVO vo) {
+		return sqlsession.selectList(PD + "categoryM", vo);
+	}
+
+	public List<ProductVO> categoryS(ProductVO vo) {
+		return sqlsession.selectList(PD + "categoryS", vo);
+	}
 	
 	// 메뉴 목록
 	public List<ProductVO> Cricategory(MenuVO mvo, PageMaker pageMaker) throws Exception {

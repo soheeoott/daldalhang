@@ -14,7 +14,7 @@
 	.plist {
 		float: left;
 	    width: 25%;
-	    height: 380px;
+	    height: 400px;
 	    padding: 0 20px;
 	    box-sizing: border-box;
 		text-align: center;
@@ -22,6 +22,34 @@
 	
 	.plist p {
 		margin: 8px 0px 8px 0px;
+	}
+	
+	.modify {
+		color: white;
+	    opacity: 0.5;
+	    cursor: pointer;
+	    background: blue;
+	    padding: 5px;
+	    width: 50px;
+	    float: left;
+	}
+	
+	.delete {
+		color: white;
+	    opacity: 0.5;
+	    cursor: pointer;
+	    background: red;
+	    padding: 5px;
+	    width: 50px;
+	    float: left;
+	    margin-left: 1em;
+	}
+	
+	.mdwrap {
+		display: inline-block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
 	}
 	
 	.hashtagsplit {

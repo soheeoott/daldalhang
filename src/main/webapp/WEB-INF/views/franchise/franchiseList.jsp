@@ -16,7 +16,7 @@
 	<div id = "product_box" align="center">
 		<div class="btn_nlist" align="left">
 			<c:if test="${logID=='DalDal'}">
-				<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href=''">
+				<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href='franchiseinsertf'">
 			</c:if>
 		</div>
 

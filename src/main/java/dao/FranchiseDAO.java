@@ -62,4 +62,8 @@ public class FranchiseDAO {
 		submenu.put("frcode", frcode);
 		return sqlsession.selectOne(FD + "franchiseSubCount", submenu);
 	}
+
+	public int insert(FranchiseVO fvo) {
+		return sqlsession.insert(FD + "insert", fvo);
+	}
 }

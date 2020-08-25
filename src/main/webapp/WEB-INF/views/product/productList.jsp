@@ -87,37 +87,46 @@
 						<c:forEach var="list" items="${pdlist}">
 						
 						<div class = "plist">
-							<p>
-								<%-- <a href ="${list.pdurl}" target="_blank"> --%>
-									<a href ="${list.pdurl}" target="_blank">
-										<img src="${list.pduploadfile}" width="200" height="200">
-									</a>
-								<!-- </a> -->
-							</p>
-							
-							<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
-				            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
-				            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
-				            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
-				            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
-				            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
-				            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
-				            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
-				            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-				            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
-				            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
-				            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
-				            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
-
-							<p class = "pname">${list.pdname}</p>
-							<p>${list.price} 원</p>
-							
-			            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
-			            		<a href="hashtagList?keyword=${hashtag}">
-			            			<span class = "hashtagsplit"># ${hashtag}</span>
-			            		</a>
-			            	</c:forEach>
 						
+							<div>
+								<p>
+									<%-- <a href ="${list.pdurl}" target="_blank"> --%>
+										<a href ="${list.pdurl}" target="_blank">
+											<img src="${list.pduploadfile}" width="200" height="200">
+										</a>
+									<!-- </a> -->
+								</p>
+								
+								<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
+					            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
+					            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
+					            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
+					            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
+					            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
+					            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
+					            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
+					            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
+					            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
+					            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
+					            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
+					            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
+	
+								<p class = "pname">${list.pdname}</p>
+								<p>${list.price} 원</p>
+								
+				            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
+				            		<a href="hashtagList?keyword=${hashtag}">
+				            			<span class = "hashtagsplit"># ${hashtag}</span>
+				            		</a>
+				            	</c:forEach>
+							</div>
+							
+							<c:if test="${logID == 'DalDal'}">
+								<div class="mdwrap">
+									<div class = "modify">수정</div>
+									<div class = "delete">삭제</div>
+								</div>
+							</c:if>
 						</div>
 					</c:forEach>
 				</div>

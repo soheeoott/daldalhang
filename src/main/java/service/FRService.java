@@ -6,6 +6,8 @@ import vo.FranchiseVO;
 
 public interface FRService {
 	
+	
+	
 	List<FranchiseVO> selectList();
 	
 	FranchiseVO selectOne(FranchiseVO fvo);
@@ -21,4 +23,6 @@ public interface FRService {
 	List<FranchiseVO> franchiseSubMenu(String mname, String frcode);
 	
 	public int franchiseSubCount(String mname, String frcode);
+
+	int insert(FranchiseVO fvo);
 }

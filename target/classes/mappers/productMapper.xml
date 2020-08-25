@@ -23,6 +23,14 @@
     	resultType를 클래스 명으로만 쓰고 싶은 경우
 		=> Mybatis 설정시 <typeAlias>에 default 패키지를 지정
     -->
+    <select id="categoryM" resultType="vo.ProductVO">
+    	SELECT DISTINCT bname FROM product WHERE frcode = #{frcode}
+    </select>
+    
+    <select id="categoryS" resultType="vo.ProductVO">
+    	SELECT DISTINCT mname, mkname FROM product 
+    	WHERE frcode = #{frcode} AND bname = #{bname}
+    </select>
     
     <!-- 게시글 목록을 가지고 올 때, 페이지 마다 출력해야하는 VO를 담은 List를 반환하는 부분(listCriteria) -->
     <select id="listCriteria" resultType="vo.ProductVO">

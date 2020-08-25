@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import ProductCri.Criteria;
 import ProductCri.PageMaker;
 import service.FRService;
 import service.MUService;
@@ -262,11 +261,15 @@ public class ProductController {
 	} 
 	
 	@RequestMapping(value="/pdinsertf")
-	public ModelAndView pinsertf(ModelAndView mv) {
+	public ModelAndView pdinsertf(ModelAndView mv, ProductVO vo, HttpSession session) {
+		
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
 		
 		List<FranchiseVO> frlist = frservice.selectList();
 		List<MenuVO> mulist = muservice.selectList();
 		
+				
 		if(mulist != null || frlist != null) {			
 			mv.addObject("mulist", mulist);
 			mv.addObject("frlist", frlist);
@@ -276,8 +279,56 @@ public class ProductController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/bnameinsert")
+	public ModelAndView bnameinsert(ModelAndView mv, ProductVO vo) {
+		
+		System.out.println("bnameinsert=>"+vo);
+		
+		List<ProductVO> catem = pdservice.categoryM(vo); // 메서드 명 소문자
+		System.out.println("catem0=>"+catem.get(0));
+		
+		System.out.println("catemSize=>"+catem.size());
+		/*
+		  String cateb = vo.getFrcode(); // 대분류
+		  String catem = vo.getBname(); // 중분류
+		  String cates = vo.getMkname(); // 소분류\
+		  
+		  mv.addObject("cateb", cateb);
+		  mv.addObject("catem", catem);
+		  mv.addObject("cates", cates);
+		 */		
+		mv.addObject("catem", catem);
+		
+		mv.setViewName("jsonView");
+		return mv;
+	}
+	
+	@RequestMapping(value="/mnameinsert")
+	public ModelAndView mnameinsert(ModelAndView mv, ProductVO vo) {
+		
+		System.out.println("mnameinsert=>"+vo);
+		List<ProductVO> cates = pdservice.categoryS(vo);
+		
+		System.out.println("cates0=>"+cates.get(0));
+		
+		System.out.println("catesSize=>"+cates.size());
+		/*
+		  String cateb = vo.getFrcode(); // 대분류
+		  String catem = vo.getBname(); // 중분류
+		  String cates = vo.getMkname(); // 소분류
+		  
+		  mv.addObject("cateb", cateb);
+		  mv.addObject("catem", catem);
+		  mv.addObject("cates", cates);
+		 */		
+		mv.addObject("cates", cates);
+		
+		mv.setViewName("jsonView");
+		return mv;
+	}
+	
 	@RequestMapping(value = "/pdinsert")
-	public ModelAndView pinsert(ModelAndView mv, ProductVO vo) throws IOException {
+	public ModelAndView pdinsert(ModelAndView mv, ProductVO vo) throws IOException {
 
 		// uploadfile 처리
 		// => uploadfilef 의 정보에서 파일명을 get,
@@ -314,6 +365,7 @@ public class ProductController {
 			// 실패
 			mv.setViewName("home");
 		}
+		
 		return mv;
 	}
 }
