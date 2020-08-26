@@ -222,22 +222,27 @@
 					<div class="check_box">
 						<div class="explan">신제품</div>
 						<div class="checkbox">						
-							<input type = "checkbox" name = "newproduct" value="${pdetail.newproduct}"
-								<c:if test="${pdetail.newproduct == y}"> checked />
+							<input type="checkbox" name="newproduct" 
+							value="y" 
+							<c:if test="${pdetail.newproduct == 'y'}"> checked="checked"</c:if> />
 						</div>
 					</div>
 					
 					<div class="check_box">
 						<div class="explan">추천제품</div>
 						<div class="checkbox">						
-							<input type = "checkbox" name = "bestproduct" value="${pdetail.bestproduct}">
+							<input type = "checkbox" name = "bestproduct" 
+							value="y"
+							<c:if test="${pdetail.bestproduct == 'y'}"> checked="checked"</c:if> />
 						</div>
 					</div>
 					
 					<div class="check_box">
 						<div class="explan">시즌제품</div>
 						<div class="checkbox">						
-							<input type = "checkbox" name = "seasonproduct" value="${pdetail.seasonproduct}">
+							<input type = "checkbox" name = "seasonproduct" 
+							value="y"
+							<c:if test="${pdetail.seasonproduct == 'y'}"> checked="checked"</c:if> />
 						</div>
 					</div>
 					<!------------------------------------------------------------->

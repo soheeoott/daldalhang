@@ -112,7 +112,7 @@
 	</style>
 </head>
 <body>
-<div id = "wrap" align="center">
+<div id="wrap">
 	<div id="product_box" align="center">
 		
 		<!-- 2020.08.03 product menu name 출력 -->
@@ -139,13 +139,17 @@
 				</c:if>					
 			</c:forEach>
 			<hr><br>
+			
 			<c:forEach var="cpdlist" items="${cpdlist}" end="5">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>
+			
 			<br>
+			
 			<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>		
+			
 		</div>
 		<br><br><br>
 		<div class="container">

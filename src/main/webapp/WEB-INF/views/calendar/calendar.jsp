@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="../common/header.jsp" %>
+<%-- <%@ include file="../common/header.jsp" %> --%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -9,7 +9,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FullCalendar Example</title>
-    <link rel=" shortcut icon" href="resources/newcalendar/cimage/favicon.ico">
+    
+    <link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
+    <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="resources/newcalendar/cimage/favicon.ico">
 
     <link rel="stylesheet" href="resources/newcalendar/vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href="resources/newcalendar/vendor/css/bootstrap.min.css">
@@ -20,10 +24,128 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="resources/newcalendar/css/main.css">
-
+    
+    <style type="text/css">
+    #wrap {
+    	padding-top: 150px;
+	}
+    </style>
 </head>
 
 <body>
+
+<!-- header -->
+	<div id="header" align="center">
+		<div id="header-css">
+			<!-- 사이드 메뉴 -->
+			<div id="personalBar" align="right">
+			
+			<c:choose>	
+				<c:when test="${logID != null}">
+					<p id="login_success">
+						<a href="mypagef">${logID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="mypagef">마이페이지</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+					</p>
+				</c:when>
+
+				<c:when test="${slogID != null}">
+					<p id="login_success">
+						<a href="mypagef">${slogID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+					</p>
+				</c:when>
+			
+				<c:when test="${logID == null}">
+					<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
+				</c:when>
+				
+				<c:when test="${slogID == null}">
+					<p id="login_success">
+						<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
+					</p>
+				</c:when>		
+			</c:choose>
+				
+				<c:if test="${logID=='DalDal'}">
+					<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
+					<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href='franchiseinsertf'">
+				</c:if>
+			</div>
+			<!-- 메인 메뉴 -->
+			<div id="menubar">
+		
+				<div class = "logo">
+					<a href="home">
+						<img src="resources/image/logo2.png" width="150" alt="Logo">
+					</a>
+				</div>
+				<div class = "menu">
+					<a href="frlist" class="main_menu">브랜드</a>
+					
+					<div class="dropdown">
+						<a href="listPage" class="main_menu">메뉴</a>
+						<!-- <a href="pdlist" class="main_menu">메뉴</a> -->
+						<div class="menu_dropdown">
+							<c:forEach var="list" items="${menulist}">
+								<c:if test="${list.mucategory=='coffee'}">
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
+								</c:if>
+								
+								<c:if test="${list.mucategory=='dessert'}">
+									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
+								</c:if>
+								
+								<c:if test="${list.mucategory=='drink'}">
+									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
+								</c:if>
+								
+								<c:if test="${list.mucategory=='food'}">
+									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
+								</c:if>
+								
+								<c:if test="${list.mucategory=='special'}">
+									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
+								</c:if>					
+							</c:forEach>
+						 </div>
+					</div>
+					<a href="calendar" class="main_menu">이벤트</a>
+					<a href="maplist" class="main_menu">매장찾기</a>
+					<a href="nlist" class="main_menu">공지사항</a>
+				</div>
+			</div>
+			
+			<!-- 검색창 -->
+			<div class="searchWrap">
+				<form name="searchform" method="post" action="searchList">
+						<div class="searchSelect">
+					        <select name="searchOption" class="searchOption">
+					            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+					           <option selected="selected" value="">&nbsp;&nbsp;&nbsp;선택</option>
+					           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >&nbsp;&nbsp;해시태그</option>
+					           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;브랜드</option>
+					           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;상품명</option>
+					       </select>
+				       </div>
+				       
+				       <div class="search">
+				       		<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="통합 검색">
+				       </div>
+				       
+				       <div class= "searchB">
+				       		<button class="searchBtn" id="searchBtn">
+				       			<img src="resources/image/search.png" width= "23" height = "23">
+				      		</button>
+				       </div>
+				</form>
+    		</div>
+		</div>
+	</div>
+	<!-- /header -->
+	<hr>
 
 <div id = "wrap">
 
@@ -106,6 +228,7 @@
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-type">구분</label>
                                 <select class="inputModal" type="text" name="edit-type" id="edit-type">
+                                
                                     <option value="공차">공차</option>
                                     <option value="던킨도너츠">던킨도너츠</option>
                                     <option value="뚜레쥬르">뚜레쥬르</option>
@@ -129,28 +252,6 @@
                             </div>
                         </div>
                         
-                        <!-- 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-color">색상</label>
-                                <select class="inputModal" name="color" id="edit-color">
-                                    <option value="#D25565" style="color:#D25565;">빨간색</option>
-                                    <option value="#9775fa" style="color:#9775fa;">보라색</option>
-                                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
-                                    <option value="#74c0fc" style="color:#74c0fc;">파란색</option>
-                                    <option value="#f06595" style="color:#f06595;">핑크색</option>
-                                    <option value="#63e6be" style="color:#63e6be;">연두색</option>
-                                    <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
-                                    <option value="#4d638c" style="color:#4d638c;">남색</option>
-                                    <option value="#495057" style="color:#495057;">검정색</option>
-                                    <option value="#FFAA00" style="color:#FFAA00;">골드색</option>
-                                    <option value="#00AA00" style="color:#00AA00;">다크그린</option>
-                                    <option value="#AA0000" style="color:#AA0000;">다크레드</option>
-                                    <option value="#0000AA" style="color:#0000AA;">다크블루</option>
-                                </select>
-                            </div>
-                        </div>
-                        -->
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-desc">내용</label>
@@ -185,6 +286,7 @@
                     <label for="calendar_view">구분</label>
                     <div class="input-group">
                         <select class="filter" id="type_filter" multiple="multiple">
+                        
                             <option value="공차">공차</option>
                             <option value="던킨도너츠">던킨도너츠</option>
                             <option value="뚜레쥬르">뚜레쥬르</option>
@@ -973,7 +1075,35 @@ var calendar = $('#calendar').fullCalendar({
 
 
 </div><!-- wrap -->
-<%@ include file="../common/footer.jsp" %>
+<%-- <%@ include file="../common/footer.jsp" %> --%>
+
+<!-- footer -->
+<div id="footer">
+
+	<!-- TOP 버튼 -->
+	<div id="top">
+		<a href="#header"><img src="resources/image/top_button.png" id="topImg"/></a>
+	</div>
+
+	<font color="gray" style="line-height: 2;">
+		
+		<a href="#" class="footer_menu">달달 프로젝트 소개</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<a href="#" class="footer_menu">홈페이지 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<a href="#" class="footer_menu">위치정보 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<a href="#" class="footer_menu">사이트맵</a>&nbsp;&nbsp;&nbsp;
+		
+	<hr>
+
+	(주)달달행 대표이사 : 달달쓰 
+	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+	TEL : 1234-5555 
+	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+	 개인정보 책임자 : 김달달<br>
+	ⓒ 2020 DalDal Company. All Rights Reserved.
+	</font>
+	
+</div>
+<!-- /footer -->
 </body>
 
 </html>
