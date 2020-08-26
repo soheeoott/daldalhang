@@ -12,6 +12,78 @@
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 	
+	<script>
+	function likeddd() {
+		
+			$.ajax({
+				type: "Post",
+				url: "likecheck",
+				data:{
+					/* id:$("#id").val(), */
+					pdseq:$("#pdseq").val()
+				},
+				success:function(data){
+					var like = '';
+					
+				console.log('pdseq =>'+pdseq);
+				
+					if(data.lCode=="LL"){
+						alert("좋아요 성공");
+						like="resources/image/fullheart.png";
+					}
+					$("#like").attr('src',like);
+				}
+			}); //ajax
+		}
+		
+	function like() {
+		
+		$.ajax({
+			type: "Post",
+			url: "like",
+			data:{
+				/* id:$("#id").val(), */
+				pdseq:$("#pdseq").val()
+			},
+			success:function(data){
+				
+				var limg = '';
+				
+				if(data.lCode=="LL"){
+					alert("좋아요 성공");
+					limg="resources/image/fullheart.png";
+				}else if (data.lCode=="LD"){
+					alert("좋아요 취소");
+					limg="resources/image/emptyheart.png";
+				}
+				
+				$(".limg").attr('src',limg);
+			}
+		}); //ajax
+	}
+			
+	function likedelete(){
+		
+		$.ajax({
+			type: "Post",
+			url: "likedelete",
+			data:{
+				id:$("#id").val(),
+				pdseq:$("#pdseq").val()
+			},
+			success:function(data){
+				var likedelete = '';
+				
+				if(data.lCode=="LD"){
+					alert("좋아요 취소");
+					likedelete="resources/image/emptyheart.png";
+				}
+				$("#likedelete").attr('src',likedelete);
+			}
+		});	
+	}
+	</script>	
+
 	<style>
 		.pagination {
 			margin: 0 auto;
@@ -86,28 +158,55 @@
 							<div>
 								<p>
 									<%-- <a href ="${list.pdurl}" target="_blank"> --%>
-										<a href ="${list.pdurl}" target="_blank">
+										<a href ="${list.pdurl}" target="_blank" class="pdurl">
 											<img src="${list.pduploadfile}" width="200" height="200">
 										</a>
-									<!-- </a> -->
+										
+										<form id="form" name="form" method="post" onsubmit="return false;">
+											<input type="hidden" name="id" id="id" value="${logID}">
+											<input type="hidden" name="pdseq" id="pdseq" value="${list.pdseq}">
+		
+											<div class="lbutton">
+											<c:choose>
+												<c:when test="${logID ne null}">
+													<c:if test="${list.liked=='t'}" >
+													<input type="image" src="resources/image/fullheart.png" class="limg" onclick="return like()">
+													</c:if>
+													<c:if test="${list.liked!='t'}">
+													<input type="image" src="resources/image/emptyheart.png" class="limg" onclick="return like()">
+													</c:if>
+												</c:when>
+												<c:otherwise>
+													<a href="loginf" ><img src="resources/image/emptyheart.png" class="limg"></a>
+													<!-- <input type="image" src="resources/image/emptyheart.png" class="limg" onclick="location.href='loginForm.jsp'"  > -->
+												</c:otherwise>
+											</c:choose>
+											</div>
+										</form>
 								</p>
 								
-								<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
-					            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
-					            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
-					            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
-					            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
-					            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
-					            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
-					            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
-					            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-					            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
-					            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
-					            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
-					            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
-	
-								<p class = "pname">${list.pdname}</p>
-								<p>${list.price} 원</p>
+								<div class="namelist">
+									<div class="fname">
+									
+									<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
+						            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
+						            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
+						            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
+						            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
+						            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
+						            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
+						            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
+						            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
+						            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
+						            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
+						            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
+						            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
+									
+									</div>
+								
+									<p class = "pname">${list.pdname}</p>
+									<p class="prname">${list.price} 원</p>
+								</div>
 								
 				            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
 				            		<a href="hashtagList?keyword=${hashtag}">

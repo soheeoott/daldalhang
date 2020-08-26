@@ -19,9 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ProductCri.PageMaker;
 import service.FRService;
+import service.LLService;
 import service.MUService;
 import service.PDService;
+import service.PSService;
 import vo.FranchiseVO;
+import vo.LikeListVO;
 import vo.MenuVO;
 import vo.ProductVO;
 
@@ -37,9 +40,16 @@ public class ProductController {
 	@Autowired
 	FRService frservice;
 
+	@Autowired
+	LLService llservice;
+
+	@Autowired
+	PSService psservice;
+	
 	@RequestMapping(value = "/listPage", method = RequestMethod.GET) 
 	public ModelAndView listPage(MenuVO mvo, HttpSession session,
-			@ModelAttribute("cri") PageMaker pageMaker, ModelAndView mv) throws Exception {
+			@ModelAttribute("cri") PageMaker pageMaker, ModelAndView mv,
+			LikeListVO vo) throws Exception {
 		
 		System.out.println("pageMaker=> " + pageMaker);
 		
@@ -75,6 +85,22 @@ public class ProductController {
 
 		} else {
 			mv.addObject("message", "검색된 자료가 없습니다.");
+		}
+		
+		/* 좋아요 */
+		String id =(String)session.getAttribute("logID");
+
+		vo.setId(id);
+		List<LikeListVO> llist =llservice.idList(vo);
+
+		// pdlist의 liked처리하기
+		for(int i=0; i<pvo.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(pvo.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					pvo.get(i).setLiked("t");
+					break;
+				}
+			}
 		}
 		
 	    mv.setViewName("product/productList");

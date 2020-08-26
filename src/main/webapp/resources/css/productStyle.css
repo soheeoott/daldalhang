@@ -1,3 +1,8 @@
+	.productList {
+		position: relative;
+		left: 65px;
+	}
+	
 	.productList p {
 	  display: block;
 	  margin-block-start: 1em;
@@ -13,9 +18,8 @@
 	.plist {
 		float: left;
 	    width: 25%;
-	    height: 400px;
+	    height: 430px;
 	    padding: 0 20px;
-	    box-sizing: border-box;
 		text-align: center;
 	}
 	
@@ -56,6 +60,9 @@
 	.hashtagsplit {
     	color: gray;
     	margin: 0 auto;
+    	position: relative;
+    	top: 20px;
+    	font-size: 14px;
 	}
 	
 	.menu_css a {
@@ -71,4 +78,36 @@
 	    border-radius: 5px;
 	    border: 1px solid lightgray;
 	    padding: 10px;
+	}
+	
+	.lbutton{
+		position: relative;
+    	left: 70px;
+	}
+
+	.limg{
+		width: 10%;
+	}
+
+	.pdurl{
+		position: relative;
+	}
+
+	.namelist{
+		position: relative;
+    	top: 5px;
+	}
+
+	.fname{
+		position: relative;
+    	top: -10px;
+   		font-size: 15px;
+	}
+
+	.pname{
+		font-size: 19px;
+	}
+
+	.prname{
+		font-size: 17px;
 	}

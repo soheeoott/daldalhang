@@ -25,6 +25,8 @@ public class ProductVO {
 	private String seasonproduct;
 	
 	private MultipartFile uploadfilef; // form 의 inputTag 의 값 전달받기 // 설정 파일 필요
+	
+	private String liked;
 
 	public int getPdseq() {
 		return pdseq;
@@ -186,6 +188,14 @@ public class ProductVO {
 		this.uploadfilef = uploadfilef;
 	}
 
+	public String getLiked() {
+		return liked;
+	}
+
+	public void setLiked(String liked) {
+		this.liked = liked;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [pdseq=" + pdseq + ", frcode=" + frcode + ", bcode=" + bcode + ", bname=" + bname + ", mcode="
@@ -193,6 +203,6 @@ public class ProductVO {
 				+ ", price=" + price + ", pduploadfile=" + pduploadfile + ", pdurl=" + pdurl + ", hashtag=" + hashtag
 				+ ", mucode1=" + mucode1 + ", mucode2=" + mucode2 + ", mucode3=" + mucode3 + ", bestproduct="
 				+ bestproduct + ", newproduct=" + newproduct + ", seasonproduct=" + seasonproduct + ", uploadfilef="
-				+ uploadfilef + "]";
+				+ uploadfilef + ", liked=" + liked + "]";
 	}
 }

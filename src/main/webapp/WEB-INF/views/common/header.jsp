@@ -91,7 +91,7 @@
 							</c:forEach>
 						 </div>
 					</div>
-					<a href="#" class="main_menu">이벤트</a>
+					<a href="calendar" class="main_menu">이벤트</a>
 					<a href="maplist" class="main_menu">매장찾기</a>
 					<a href="nlist" class="main_menu">공지사항</a>
 				</div>
