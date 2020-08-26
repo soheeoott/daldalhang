@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dao.FranchiseDAO;
 import vo.FranchiseVO;
+import vo.ProductVO;
 
 @Service
 public class FRServiceImpl implements FRService {
@@ -30,25 +31,18 @@ public class FRServiceImpl implements FRService {
 	}
 
 	@Override
-	public List<FranchiseVO> fsortList(String frcode) {
-		return dao.fsortList(frcode);
+	public List<FranchiseVO> fsortList(ProductVO pvo) {
+		return dao.fsortList(pvo);
 	}
-	
-	/*
-	@Override
-	public List<FranchiseVO> fsortList(String frcode, String frkname) {
-		return dao.fsortList(frcode, frkname);
-	}
-	*/
 
 	@Override
-	public int fsortCount(String frcode) {
-		return dao.fsortCount(frcode);
+	public int fsortCount(ProductVO pvo) {
+		return dao.fsortCount(pvo);
 	}
 	
 	@Override
-	public List<FranchiseVO> franchiseMenu(String frcode) {
-		return dao.franchiseMenu(frcode);
+	public List<FranchiseVO> franchiseMenu(ProductVO pvo) {
+		return dao.franchiseMenu(pvo);
 	}
 	
 	@Override

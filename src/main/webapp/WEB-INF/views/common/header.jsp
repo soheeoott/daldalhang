@@ -50,6 +50,7 @@
 				
 				<c:if test="${logID=='DalDal'}">
 					<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
+					<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href='franchiseinsertf'">
 				</c:if>
 			</div>
 			<!-- 메인 메뉴 -->

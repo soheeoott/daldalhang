@@ -16,12 +16,6 @@
 <div id = "wrap">
 <div id="product_box" align="center">
 	
-	<div class="btn_nlist" align="right">
-		<c:if test="${logID=='DalDal'}">
-			<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href=''">
-		</c:if>
-	</div>
-	
 	<div class="btn_nlist" align="left">
 			<input type="button" value="브랜드 홈" class="brandHomebutton" onclick="location.href='http://localhost:8080/daldal/frlist'">
 	</div>
@@ -30,7 +24,7 @@
 	
 	<div class="count">
 	    <!-- 레코드의 갯수를 출력 -->
-	    ${count}개의 ${mname}(이)가 있습니다.
+	    ${count}개의 ${frcode}(이)가 있습니다.
     <br><br><br>
     </div>
 				
@@ -80,7 +74,7 @@
 								</a>
 							</p>
 							
-							<c:if test="${list.frcode=='A01'}"><p class = "brand">공차</p></c:if>
+							<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
 				            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
 				            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
 				            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>

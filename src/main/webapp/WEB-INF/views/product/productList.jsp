@@ -118,8 +118,13 @@
 							
 							<c:if test="${logID == 'DalDal'}">
 								<div class="mdwrap">
-									<div class = "modify">수정</div>
-									<div class = "delete">삭제</div>
+									<a href="pdetail?pdseq=${list.pdseq}">
+										<div class = "modify">수정</div>
+									</a>
+									
+									<a href="pdelete?pdseq=${list.pdseq}">
+										<div class = "delete">삭제</div>
+									</a>
 								</div>
 							</c:if>
 						</div>

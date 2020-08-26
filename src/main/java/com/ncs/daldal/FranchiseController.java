@@ -53,7 +53,7 @@ public class FranchiseController {
 		// => uploadfilef 의 정보에서 파일명을 get,
 		// => upload 된 이미지를 서버의 정해진 폴더에 저장하고,
 		// => 이 위치에 대한 정보를 table에 저장 (vo에 set)
-		MultipartFile uploadfilef = fvo.getFruploadfilef();
+		MultipartFile fruploadfilef = fvo.getFruploadfilef();
 		
 		// 이미지를 선택하지 않았을 시
 		String file1, file2 = "No Image";
@@ -64,14 +64,15 @@ public class FranchiseController {
 		// [Ajax 로 담겨지는 값(null) != 선택하지 않았을 경우의 값('')]
 		// => submit 으로 전송 시 선택하지 않은 경우 '' 전달 : isEmpty() 
 		if(fvo.getFruploadfilef() != null) {
-			uploadfilef = fvo.getFruploadfilef();
+			fruploadfilef = fvo.getFruploadfilef();
 			
-			if(!uploadfilef.isEmpty()) {
+			if(!fruploadfilef.isEmpty()) {
 				// 실제 저장 경로 생성하고 저장
-				file1 = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_logo/"
-							+uploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
-				uploadfilef.transferTo(new File(file1));
-				file2="resources/img_logo"+uploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
+				/*file1 = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_logo/"*/
+				file1 = "C:/resources/img_logo/"
+							+fruploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
+				fruploadfilef.transferTo(new File(file1));
+				file2="resources/img_logo/"+fruploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
 			}
 		}
 		
@@ -79,7 +80,7 @@ public class FranchiseController {
 		
 		if (frservice.insert(fvo) > 0) {
 			// 성공
-			mv.setViewName("frlist");
+			mv.setViewName("redirect:frlist");
 		} else {
 			// 실패
 			mv.setViewName("home");
@@ -89,18 +90,22 @@ public class FranchiseController {
 	}
 	
 	@RequestMapping(value="/franchiseSubList")
-	public ModelAndView franchiseSubList(ModelAndView mv, String mname, String frcode) throws Exception{
+	public ModelAndView franchiseSubList(HttpSession session, ModelAndView mv, String mname, String frcode, ProductVO pvo) throws Exception{
+
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
 
 		int count = frservice.franchiseSubCount(mname, frcode);
 		mv.addObject("count", count);
 		
-		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(frcode);
+		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(pvo);
 		mv.addObject("frachiseMenu", frachiseMenu);
 		
 		List<FranchiseVO> frachiseSub = frservice.franchiseSubMenu(mname, frcode);
 		mv.addObject("frachiseSub", frachiseSub);
 		
 		mv.addObject("mname", mname);
+		mv.addObject("frcode", frcode);
 		
 		mv.setViewName("franchise/franchiseSubList");
 		
@@ -108,18 +113,22 @@ public class FranchiseController {
 	}
 	
 	@RequestMapping(value="/franchiseSortList")
-	public ModelAndView franchiseSortList(ModelAndView mv, String frcode) throws Exception{
+	public ModelAndView franchiseSortList(
+			HttpSession session, ModelAndView mv, ProductVO pvo) throws Exception{
 	    
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
+		
 		// 레코드의 갯수
-		int count = frservice.fsortCount(frcode);
+		int count = frservice.fsortCount(pvo);
 
 		List<MenuVO> mulist = muservice.selectList();
 		mv.addObject("mulist", mulist);
 		
-		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(frcode);
+		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(pvo);
 		mv.addObject("frachiseMenu", frachiseMenu);
 		
-		List<FranchiseVO> fpdlist = frservice.fsortList(frcode);
+		List<FranchiseVO> fpdlist = frservice.fsortList(pvo);
 		mv.addObject("fpdlist", fpdlist);
 
 		mv.addObject("count", count);
@@ -129,7 +138,10 @@ public class FranchiseController {
 	}
 	
 	@RequestMapping(value="/frlist")
-	public ModelAndView frlist(ModelAndView mv) {
+	public ModelAndView frlist(HttpSession session, ModelAndView mv) {
+		
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
 		
 		List<FranchiseVO> frlist = frservice.selectList();
 		

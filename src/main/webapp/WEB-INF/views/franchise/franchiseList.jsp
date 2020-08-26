@@ -14,11 +14,6 @@
 <body>
 <div id="wrap" align="center">
 	<div id = "product_box" align="center">
-		<div class="btn_nlist" align="left">
-			<c:if test="${logID=='DalDal'}">
-				<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href='franchiseinsertf'">
-			</c:if>
-		</div>
 
 		<div class="container">
 			<div class="main">
@@ -29,7 +24,13 @@
 								<a href = "franchiseSortList?frcode=${list.frcode}">
 									<p class = "pname"> 
 										<img src="${list.fruploadfile}" width="200" height="200">
-										${list.frkname} 
+										<c:if test="${logID == 'DalDal'}">
+											<div class="mdwrap">
+												<div class = "modify">수정</div>
+												<div class = "delete">삭제</div>
+											</div>
+										</c:if>
+										<p class="frkname">${list.frkname}</p> 
 									</p>
 								</a>
 							</div>

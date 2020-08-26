@@ -156,7 +156,7 @@
 						<!-- <select id="frcode" name="frcode" class="select" onchange="coderead('A01')"> -->
 						
 						<select id="frcode" name="frcode" class="select" onchange="coderead(this.value)">
-							<option value="" selected>브랜드명</option>
+							<option value="브랜드명" selected>${pdetail.frcode}</option> <!-- 공차로 바꾸기 -->
 							 
 	 						<c:forEach var="franchise" items="${frlist}">
 								<option value= "${franchise.frcode}">${franchise.frkname}</option>
@@ -164,15 +164,15 @@
 	 					</select>
 	 					
 	 					<select id="bname" name="bname" class="select" onchange="bnameread(this.value)">
-	 						<option value= "" selected>대분류</option>
+	 						<option value= "대분류" selected>${pdetail.bname}</option>
 	 						
 	 						<c:forEach var="big" items="${catem}">
-								<option value= "${big.bname}">${big.bname}</option>
+								<option value="${big.bname}">${big.bname}</option>
 							</c:forEach>
 	 					</select>
 	 					
 	 					<select id="mname" name="mname" class="select">
-	 						<option value= "" selected>중분류</option>
+	 						<option value="중분류" selected>${pdetail.mname}</option>
 	 						
 	 						<c:forEach var="middle" items="${cates}">
 								<option value= "${middle.mname}" value="${middle.mkname}">${middle.mkname}</option>
@@ -184,7 +184,7 @@
 					
 					<div class="input_box" style="display: inline-block;">
 						<select name="mucode1" class="MenuSelect">
-							<option value= "" selected>메뉴1</option>
+							<option value="${pdetail.mucode1}" selected>${pdetail.mucode1}</option>
 							
 							<c:forEach var="menu" items="${mulist}">
 								<option value= "${menu.mucode}">${menu.muname}</option>
@@ -192,15 +192,15 @@
 						</select>
 
 						<select name="mucode2" class="MenuSelect">
-							<option value= "" selected>메뉴2</option>
+							<option value= "${pdetail.mucode2}" selected>${pdetail.mucode2}</option>
 							
 							<c:forEach var="menu" items="${mulist}">
-								<option value= "${menu.mucode}">${menu.muname}</option>
+								<option value="${menu.mucode}">${menu.muname}</option>
 	 						</c:forEach>
 						</select>
 			
 						<select name="mucode3" class="MenuSelect">
-							<option value= "" selected>메뉴3</option>
+							<option value="${pdetail.mucode3}" selected>${pdetail.mucode3}</option>
 							
 							<c:forEach var="menu" items="${mulist}">
 								<option value= "${menu.mucode}">${menu.muname}</option>
@@ -210,40 +210,41 @@
 					
 					<div class="input_box">
 						<div class="explan">상품명</div>		
-						<input type = "text" name = "pdname" id = "pdname" required>
+						<input type = "text" name = "pdname" id ="pdname" value="${pdetail.pdname}" required>
 					</div>
 					
 					<div class="input_box">
 						<div class="explan">가격</div>
-						<input type = "text" name = "price" id = "price" required>
+						<input type = "text" name = "price" id = "price" value="${pdetail.price}" required>
 					</div>
 					
 					<!------------------------------------------------------------->
 					<div class="check_box">
 						<div class="explan">신제품</div>
 						<div class="checkbox">						
-							<input type = "checkbox" name = "newproduct" value = "y">
+							<input type = "checkbox" name = "newproduct" value="${pdetail.newproduct}"
+								<c:if test="${pdetail.newproduct == y}"> checked />
 						</div>
 					</div>
 					
 					<div class="check_box">
 						<div class="explan">추천제품</div>
 						<div class="checkbox">						
-							<input type = "checkbox" name = "bestproduct" value = "y">
+							<input type = "checkbox" name = "bestproduct" value="${pdetail.bestproduct}">
 						</div>
 					</div>
 					
 					<div class="check_box">
 						<div class="explan">시즌제품</div>
 						<div class="checkbox">						
-							<input type = "checkbox" name = "seasonproduct" value = "y">
+							<input type = "checkbox" name = "seasonproduct" value="${pdetail.seasonproduct}">
 						</div>
 					</div>
 					<!------------------------------------------------------------->
 					
 					<div class="input_box">
 						<div class="explan">해시태그</div>
-						<input type = "text" name = "hashtag" id = "hashtag" placeholder="#커피,#디저트">						
+						<input type = "text" name = "hashtag" id = "hashtag" placeholder="#커피,#디저트" value="${pdetail.hashtag}">						
 					</div>
 					
 					<div class="input_box">
@@ -251,9 +252,10 @@
 						
 						<div class="filebox"> 
 							<label for="ex_filename">업로드</label>
-							<input class="upload-name" value="파일선택" disabled="disabled">
+							<input class="upload-name" disabled="disabled" value="${pdetail.pduploadfile}">
 							<input type="file" id="ex_filename" name = "uploadfilef" class="upload-hidden"> 
-							<img src ="" class="select_img"/>
+							<img src ="${pdetail.pduploadfile}" class="select_img"/>
+		
 						</div>
 						
 						<script>

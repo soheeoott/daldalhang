@@ -86,6 +86,11 @@ public class PDServiceImpl implements PDService {
 	public int insert(ProductVO vo) {
 		return dao.insert(vo);
 	}
+	
+	@Override
+	public ProductVO pdetail(ProductVO vo) {
+		return dao.pdetail(vo);
+	}
 
 	@Override
 	public List<ProductVO> mProductList(String muname) {

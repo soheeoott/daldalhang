@@ -16,12 +16,6 @@
 <div id = "wrap">
 <div id="product_box" align="center">
 	
-	<div class="btn_nlist" align="right">
-		<c:if test="${logID=='DalDal'}">
-			<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href=''">
-		</c:if>
-	</div>
-	
 	<div class="btn_nlist" align="left">
 			<input type="button" value="브랜드 홈" class="brandHomebutton" onclick="location.href='http://localhost:8080/daldal/frlist'">
 	</div>
@@ -30,8 +24,7 @@
 	
 	<div class="count">
 	    <!-- 레코드의 갯수를 출력 -->
-	    ${count}개의 <%-- ${frkname} --%>
-	    	가 있습니다.
+	    ${count}개의 
     <br><br><br>
     </div>
 				
@@ -45,15 +38,15 @@
 					<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">스페셜</a></c:if>		
 			</c:forEach> --%>
 			
-			<c:forEach var="menu" items="${frachiseMenu}" end="6">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mname}</a>
+			<c:forEach var="menu" items="${frachiseMenu}" end="5">
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mkname}</a>
+			</c:forEach>
+			
+			<c:forEach var="menu" items="${frachiseMenu}" begin="6">
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mkname}</a>
 			</c:forEach>
 			
 			<br>
-			
-			<c:forEach var="menu" items="${frachiseMenu}" begin="7">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mname}</a>
-			</c:forEach>
 			
 			<hr><br>
 			<c:forEach var="cpdlist" items="${cpdlist}" end="5">

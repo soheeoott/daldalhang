@@ -5,8 +5,11 @@
 	  margin-block-end: 1em;
 	  margin-inline-start: 0px;
 	  margin-inline-end: 0px;
-	  margin-left: 15px;
 	  font-size: 18px;
+	}
+	
+	.productList .frkname {
+		padding: 5px;
 	}
 	
 	.container {
@@ -22,10 +25,40 @@
 		text-align: center;
 	}
 	
+	.mdwrap {
+		display: inline-block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+	}
+	
+	.modify {
+		color: white;
+	    opacity: 0.5;
+	    cursor: pointer;
+	    background: blue;
+	    padding: 5px;
+	    width: 50px;
+	    float: left;
+	    border-radius: 3px;
+	}
+	
+	.delete {
+		color: white;
+	    opacity: 0.5;
+	    cursor: pointer;
+	    background: red;
+	    padding: 5px;
+	    width: 50px;
+	    float: left;
+	    margin-left: 1em;
+	    border-radius: 3px;
+	}
+	
 	.frwrap {
 		float: left;
 	    width: 25%;
-	    height: 380px;
+	    height: 350px;
 	    padding: 0 20px;
 	    box-sizing: border-box;
 	    text-align: center;

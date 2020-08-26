@@ -26,25 +26,16 @@ public class FranchiseDAO {
 		return sqlsession.selectOne(FD + "selectOne", fvo);
 	}
 	
-	public List<FranchiseVO> fsortList(String frcode) {
-		return sqlsession.selectList(FD + "fsortList", frcode);
+	public List<FranchiseVO> fsortList(ProductVO pvo) {
+		return sqlsession.selectList(FD + "fsortList", pvo);
+	}
+
+	public int fsortCount(ProductVO pvo) {
+	    return sqlsession.selectOne(FD + "fsortCount", pvo);
 	}
 	
-	/*
-	public List<FranchiseVO> fsortList(String frcode, String frkname) {
-		Map<String, String> fsort = new HashMap<String, String>();
-		fsort.put("frcode", frcode);
-		fsort.put("frkname", frkname);
-		return sqlsession.selectList(FD + "fsortList", fsort);
-	}
-	*/
-	
-	public int fsortCount(String frcode) {
-	    return sqlsession.selectOne(FD + "fsortCount", frcode);
-	}
-	
-	public List<FranchiseVO> franchiseMenu(String frcode) {
-		return sqlsession.selectList(FD + "franchiseMenu", frcode);
+	public List<FranchiseVO> franchiseMenu(ProductVO pvo) {
+		return sqlsession.selectList(FD + "franchiseMenu", pvo);
 	}
 	
 	public List<FranchiseVO> franchiseSubMenu(String mname, String frcode) {

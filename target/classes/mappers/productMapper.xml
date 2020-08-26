@@ -127,12 +127,16 @@
 		from product where pdseq=#{pdseq}
 	</select>
 	
+	<select id = "pdetail" resultType="vo.ProductVO">
+		select * from product where pdseq = #{pdseq}
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO product 
-		(pdseq, frcode, bname, mname, mucode1, mucode2, mucode3, pdname,
+		(pdseq, frcode, bname, mname, mkname, mucode1, mucode2, mucode3, pdname,
 			price,newproduct, bestproduct, seasonproduct, hashtag, pduploadfile)
 		VALUES ((SELECT IFNULL(MAX(pdseq),0)+1 FROM product pdseq)
-					,#{frcode},#{bname},#{mname},#{mucode1},#{mucode2},#{mucode3}
+					,#{frcode},#{bname},#{mname},#{mkname},#{mucode1},#{mucode2},#{mucode3}
 					,#{pdname},#{price},#{newproduct},#{bestproduct},#{seasonproduct}
 					,#{hashtag},#{pduploadfile}
 				)

@@ -97,6 +97,10 @@ public class ProductDAO {
 		return sqlsession.insert(PD + "insert", vo);
 	}
 	
+	public ProductVO pdetail(ProductVO vo) {
+		return sqlsession.selectOne(PD + "pdetail", vo);
+	}
+	
 	// 전체 제품 목록 출력
 	public List<ProductVO> productList() {
 		return sqlsession.selectList(PD + "productList");

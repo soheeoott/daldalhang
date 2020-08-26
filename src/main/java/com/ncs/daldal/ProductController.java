@@ -286,15 +286,6 @@ public class ProductController {
 		System.out.println("catem0=>"+catem.get(0));
 		
 		System.out.println("catemSize=>"+catem.size());
-		/*
-		  String cateb = vo.getFrcode(); // 대분류
-		  String catem = vo.getBname(); // 중분류
-		  String cates = vo.getMkname(); // 소분류\
-		  
-		  mv.addObject("cateb", cateb);
-		  mv.addObject("catem", catem);
-		  mv.addObject("cates", cates);
-		 */		
 		mv.addObject("catem", catem);
 		
 		mv.setViewName("jsonView");
@@ -310,15 +301,6 @@ public class ProductController {
 		System.out.println("cates0=>"+cates.get(0));
 		
 		System.out.println("catesSize=>"+cates.size());
-		/*
-		  String cateb = vo.getFrcode(); // 대분류
-		  String catem = vo.getBname(); // 중분류
-		  String cates = vo.getMkname(); // 소분류
-		  
-		  mv.addObject("cateb", cateb);
-		  mv.addObject("catem", catem);
-		  mv.addObject("cates", cates);
-		 */		
 		mv.addObject("cates", cates);
 		
 		mv.setViewName("jsonView");
@@ -364,6 +346,32 @@ public class ProductController {
 			// 실패
 			mv.setViewName("home");
 		}
+		return mv;
+	}
+	
+	@RequestMapping(value = "/pdetail")
+	public ModelAndView pdetail(ModelAndView mv, ProductVO vo, HttpSession session) throws IOException {
+		
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
+		
+		List<FranchiseVO> frlist = frservice.selectList();
+		List<MenuVO> mulist = muservice.selectList();
+		
+		mv.addObject("mulist", mulist);
+		mv.addObject("frlist", frlist);
+		
+		vo = pdservice.pdetail(vo);
+		mv.addObject("pdetail", vo);
+		mv.setViewName("product/productDetail");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/pdelete")
+	public ModelAndView pdelete(ModelAndView mv, ProductVO vo) throws IOException {
+		
+		
+		
 		return mv;
 	}
 }

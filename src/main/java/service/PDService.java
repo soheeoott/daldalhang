@@ -39,6 +39,8 @@ public interface PDService {
 	
 	int insert(ProductVO vo);
 	
+	ProductVO pdetail(ProductVO vo);
+	
 	List<ProductVO> mProductList(String muname);
 	
 	// 게시글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가

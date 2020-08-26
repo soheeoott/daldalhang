@@ -3,26 +3,23 @@ package service;
 import java.util.List;
 
 import vo.FranchiseVO;
+import vo.ProductVO;
 
 public interface FRService {
 	
-	
+	int insert(FranchiseVO fvo);
 	
 	List<FranchiseVO> selectList();
 	
 	FranchiseVO selectOne(FranchiseVO fvo);
 
-	List<FranchiseVO> fsortList(String frcode);
+	public int fsortCount(ProductVO pvo);
 	
-//	List<FranchiseVO> fsortList(String frcode, String frkname);
-	
-	public int fsortCount(String frcode);
-	
-	List<FranchiseVO> franchiseMenu(String frcode);
+	List<FranchiseVO> franchiseMenu(ProductVO pvo);
 	
 	List<FranchiseVO> franchiseSubMenu(String mname, String frcode);
 	
 	public int franchiseSubCount(String mname, String frcode);
 
-	int insert(FranchiseVO fvo);
+	List<FranchiseVO> fsortList(ProductVO pvo);
 }
