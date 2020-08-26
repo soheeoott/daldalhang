@@ -38,7 +38,6 @@ public class NoticeController {
 		return mv;
 	} // nlist
 	
-	// notice/noticeDetail.jsp
 	@RequestMapping(value="/ndetail")
 	public ModelAndView ndetail(ModelAndView mv, NoticeVO nvo, PrevNextVO pnvo,
 			HttpServletRequest request) {
@@ -74,7 +73,7 @@ public class NoticeController {
 		return mv;
 	} // ndetail
 	
-	// notice/noticeWrite.jsp 공지사항 작성폼
+	// 공지사항 작성폼
 	@RequestMapping(value = "/ninsertf")
 	public ModelAndView ninsertf(ModelAndView mv) {
 		mv.setViewName("notice/noticeWrite");
@@ -94,11 +93,11 @@ public class NoticeController {
 		return mv;
 	} // ninsert
 	
-	// notice/noticeUpdate.jsp 공지사항 수정폼
+	// 공지사항 수정폼
 	@RequestMapping(value="/nupdatef")
 	public ModelAndView nupdatef(ModelAndView mv, NoticeVO nvo,
 			HttpServletRequest request) {		
-		// 1) selectOne
+
 		nvo = service.selectOne(nvo);
 		
 		if (nvo!=null) {
@@ -108,7 +107,6 @@ public class NoticeController {
 //			mv.addObject("fCode","BU");				// 팝업창으로 메세지 띄워 주고 싶음
 			System.out.println("수정 폼 실행 실패!!");
 			mv.setViewName("nlist");
-//			mv.setViewName("member/doFinish");
 		}
 		return mv;
 	}// nupdatef
@@ -120,7 +118,6 @@ public class NoticeController {
 		} else {
 //			mv.addObject("fCode","BU");		// 팝업창으로 메세지 띄워 주고 싶음...
 			System.out.println("수정 실패!!");
-//			mv.setViewName("member/doFinish");
 		}	
 		return mv ;	
 	} // nupdate

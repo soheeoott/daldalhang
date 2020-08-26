@@ -16,8 +16,6 @@ public class CalendarVO {
 	private String frcode;
 	private String editurl;
 	
-	
-	
 	public String getEditurl() {
 		return editurl;
 	}
@@ -96,6 +94,7 @@ public class CalendarVO {
 	public void setAllday(String allday) {
 		this.allday = allday;
 	}
+	
 	@Override
 	public String toString() {
 		return "CalendarVO [calseq=" + calseq + ", caltitle=" + caltitle + ", calcontent=" + calcontent
@@ -103,11 +102,4 @@ public class CalendarVO {
 				+ username + ", frcolor=" + frcolor + ", textColor=" + textColor + ", allday=" + allday + ", curMon="
 				+ curMon + ", frcode=" + frcode + ", editurl=" + editurl + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
 } 

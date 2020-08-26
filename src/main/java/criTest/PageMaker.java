@@ -59,8 +59,6 @@ public class PageMaker {
 		next = ePageNo==lastPageNo ? false:true;
 	} // calcData
 
-
-	// get
 	public int getTotalRow() {
 		return totalRow;
 	}
@@ -114,7 +112,6 @@ public class PageMaker {
 		return uriComponents.toUriString();
 	} // makeSearch()
 	
-	// toString()
 	@Override
 	public String toString() {
 		return "PageMaker [totalRow=" + totalRow + ", sPageNo=" + sPageNo + ", ePageNo=" + ePageNo + ", prev=" + prev

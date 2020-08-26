@@ -1,162 +1,160 @@
 	a {
-		color : black;
+	color : black;
 	}
      
     #wrap {
-	  position: relative;
-	  width: 100%;
+	position: relative;
+	width: 100%;
 	}
 	
 	.container {
-	  width : 100%;
-	  margin-top: 30px;
+	width : 100%;
+	margin-top: 30px;
 	}
 	
 	#iMessage {
-		margin-top: 15px;
+	margin-top: 15px;
 	}
 	
 	.img {
-		display: block;
-	    overflow: hidden;
-	    width: 150px;
-	    height: 100%;
-	    margin: 0 auto;
-	    background-position: -1px -1px;
-	    font-size: 15px;
-	    color: transparent;
+	display: block;
+    overflow: hidden;
+    width: 150px;
+    height: 100%;
+    margin: 0 auto;
+    background-position: -1px -1px;
+    font-size: 15px;
+    color: transparent;
 	}
      
     .loginform {
-	  box-sizing: border-box;
-	  max-width: 500px;
-	  margin: 0 auto;
-	  position: relative;
+	box-sizing: border-box;
+	max-width: 500px;
+	margin: 0 auto;
+	position: relative;
 	} 
 	
 	.socialform {
-	  border-radius: 3px;
-	  box-sizing: border-box;
-	  max-width: 300px;
-	  margin: 0 auto;
-	  position: relative;
-	  display : block;
-	  bottom: -20px;
+	border-radius: 3px;
+	box-sizing: border-box;
+	max-width: 300px;
+	margin: 0 auto;
+	position: relative;
+	display : block;
+	bottom: -20px;
 	}
 	
 	.img_wrap {	   
-	    display: block;
-	    font-size: 2em;
-	    margin-block-start: 0.67em;
-	    margin-block-end: 0.67em;
-	    margin-inline-start: 0px;
-	    margin-inline-end: 0px;
-	    width: 100%;
-	    height: 100%;
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    width: 100%;
+    height: 100%;
 	} 
 	
 	.input_box input {
-	  border: 1px solid #ddd;
-	  border-radius: 3px;
-	  box-sizing: border-box;
-	  display: inline-block;
-	  max-width: 530px;
-	  padding: 15px;
-	  width: 100%;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-sizing: border-box;
+	display: inline-block;
+	max-width: 530px;
+	padding: 15px;
+	width: 100%;
 	}
 	
 	.id {
-	  background: #fff;
-	  padding: 20px 20px;
-	  position: relative;
-	  width: 450px;
-      margin: 0 auto;
+	background: #fff;
+	padding: 20px 20px;
+	position: relative;
+	width: 450px;
+	margin: 0 auto;
 	}
 	
 	.pw {
-	  background: #fff;
-	  padding : 0px 20px 20px 20px;
-	  position: relative;
-	  width: 450px;
-      margin: 0 auto;
+	background: #fff;
+	padding : 0px 20px 20px 20px;
+	position: relative;
+	width: 450px;
+	margin: 0 auto;
 	}
 	
 	.check {
-	  background: #fff;
-	  position: relative;
-	  float: left;
+	background: #fff;
+	position: relative;
+	float: left;
 	}
 	
 	.idsave_check {
-		margin-left : 20px;
+	margin-left : 20px;
 	}
      
     .submit {
-	    color: #fff;
-	    font-size: 20px;
-	    line-height: 45px;
-	    width: 450px;
-	    background: rgb(241,188,213);
-	    border-radius: 3px;
-	    text-align: center;
-	    max-width: 500px;
-	    border : 0px;
-	    
-	    display: block;
-	    overflow: hidden;
-	    height: 100%;
-	    margin: 0 auto;
-	    background-position: -1px -1px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 45px;
+    width: 450px;
+    background: rgb(241,188,213);
+    border-radius: 3px;
+    text-align: center;
+    max-width: 500px;
+    border : 0px;
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    margin: 0 auto;
+    background-position: -1px -1px;
 	} 
 	
 	.form_end {
-		padding: 30px 15px 30px 15px;
+	padding: 30px 15px 30px 15px;
 	}
 	
-	 .stick {
-     	color : #E5E1E6;
+	.stick {
+	color : #E5E1E6;
      }
      
-     .socialbtn {
-     	margin-right : 2em;
-     	width: 60px;
-     	height: 60px;
-     	float: left;
+	.socialbtn {
+   	margin-right : 2em;
+   	width: 60px;
+   	height: 60px;
+   	float: left;
      }
      
-     .sbtn{
-     float: left;
+    .sbtn{
+	float: left;
+    }
      
-     }
-     .icon {
-      background: url('/image/login_btn_google.png');
-     }
+    .icon {
+	background: url('/image/login_btn_google.png');
+    }
      
+    .find {
+   	display : block;
+   	margin-left: 260px;
+   	margin-top: 4px;
+    }
      
-     .find {
-     	display : block;
-     	margin-left: 260px;
-     	margin-top: 4px;
-     }
+    .find_id {
+   	display: inline-block;
+    }
      
-     .find_id {
-     	display: inline-block;
-     }
+    .find_pw {
+   	display: inline-block;
+    }
      
-     .find_pw {
-     	display: inline-block;
-     }
+    .joinf {
+   	display: inline-block;
+    }
      
-     .joinf {
-     	display: inline-block;
-     }
+    .btn {
+   	padding: 5px;
+	margin-left: 20px;
+   	margin-bottom: 90px;
+    }
      
-     .btn {
-     	padding: 5px;
-   		margin-left: 20px;
-    	margin-bottom: 90px;
-     }
-     
-     input[type=password] { font-family: "Iropke Batang", serif; }
-	
-	 input::placeholder { font-family: 'Jeju Gothic', sans-serif; }
+	input[type=password] { font-family: "Iropke Batang", serif; }
+
+	input::placeholder { font-family: 'Jeju Gothic', sans-serif; }

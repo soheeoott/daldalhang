@@ -7,12 +7,6 @@ public class NoticeVO {
 	private String content;
 	private String regdate;
 	private int cnt;
-
-	@Override
-	public String toString() {
-		return "NoticeVO [seq=" + seq + ", title=" + title + ", id=" + id + ", content=" + content + ", regdate="
-				+ regdate + ", cnt=" + cnt;
-	}
 	
 	public int getSeq() {
 		return seq;
@@ -49,5 +43,11 @@ public class NoticeVO {
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	
+	@Override
+	public String toString() {
+		return "NoticeVO [seq=" + seq + ", title=" + title + ", id=" + id + ", content=" + content + ", regdate="
+				+ regdate + ", cnt=" + cnt;
 	}
 }

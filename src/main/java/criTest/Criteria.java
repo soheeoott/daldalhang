@@ -21,6 +21,7 @@ public class Criteria {
 		} 
 		this.currPage = currPage;
 	}
+	
 	// 2) 1페이지당 보여 줄 row(record, 튜플)의 개수 확인
 	public void setPerPageRow(int perPageRow) {
 		if(perPageRow<1 || perPageRow>50) {
@@ -28,6 +29,7 @@ public class Criteria {
 		}
 		this.perPageRow = perPageRow;
 	}
+	
 	// 3) startRowNo, endRowNo 계산	
 	public void setSnoEno() {
 		if(sno<1) {
@@ -37,7 +39,6 @@ public class Criteria {
 		eno = (sno+perPageRow)-1;
 	}
 
-	// getter
 	public int getCurrPage() {
 		return currPage;
 	}
@@ -51,7 +52,6 @@ public class Criteria {
 		return eno;
 	}
 	
-	// toString()
 	@Override
 	public String toString() {
 		return "Criteria [currPage=" + currPage + ", perPageRow=" + perPageRow + ", sno=" + sno + ", eno=" + eno + "]";

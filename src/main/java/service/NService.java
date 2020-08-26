@@ -26,5 +26,4 @@ public interface NService {
 	int insert(NoticeVO vo);
 
 	int delete(NoticeVO vo);
-
 }

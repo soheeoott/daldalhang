@@ -13,8 +13,7 @@
 	 비동기 방식으로, 지정한 콜백 함수를 호출함 -->
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=j271ilogb7&callback=initMap"></script>
-<link rel="stylesheet" type="text/css"
-	href="resources/css/findAStore.css">
+<link rel="stylesheet" type="text/css" href="resources/css/findAStore.css">
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <script src="resources/js/findAStore.js"></script>
 </head>
@@ -30,6 +29,7 @@
 							<li class="tab-link current" data-tab="tab-1">브랜드명</li>
 							<li class="tab-link" data-tab="tab-2">매장명</li>
 						</ul>
+						
 						<div id="tab-1" class="tab-content current">
 							<div>
 								<div class="searchMap">
@@ -37,13 +37,16 @@
 										value="${mmap.mapBKeyword}" placeholder="브랜드명을 입력해 주세요."
 										class="MapsearchInput">
 								</div>
+								
 								<button class="searchMapBtn">
 									<img src="resources/image/search.png" width="23" height="23"
 										alt="search_icon" id="BSearchMapBtn">
 								</button>
 							</div>
+							
 							<br>
 							<hr>
+							
 							<div id="mapBSearchResult" class="tab_content_css" align="left">
 								<c:forEach var="list" items="${storeList}">
 									<a href="javascript:void(0);"

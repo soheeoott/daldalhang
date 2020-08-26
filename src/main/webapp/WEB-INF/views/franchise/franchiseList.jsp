@@ -24,13 +24,15 @@
 								<a href = "franchiseSortList?frcode=${list.frcode}">
 									<p class = "pname"> 
 										<img src="${list.fruploadfile}" width="200" height="200">
+										
+										<p class="frkname">${list.frkname}</p> 
+										
 										<c:if test="${logID == 'DalDal'}">
 											<div class="mdwrap">
 												<div class = "modify">수정</div>
 												<div class = "delete">삭제</div>
 											</div>
 										</c:if>
-										<p class="frkname">${list.frkname}</p> 
 									</p>
 								</a>
 							</div>

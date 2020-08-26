@@ -1,6 +1,5 @@
 package service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import vo.CalendarVO;
@@ -20,5 +19,4 @@ public interface CalendarService {
 	int delete(CalendarVO vo);
 
 	int listCount(CalendarVO vo);
-
 }

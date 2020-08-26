@@ -4,10 +4,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 	<mapper namespace="daldal.mappers.llmapMapper">
-	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
-				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 	
-		<select id="selectList" resultType="vo.LlmapVO">
+	<select id="selectList" resultType="vo.LlmapVO">
 		SELECT * FROM llmap ORDER BY llcode
 	</select>
 
@@ -30,8 +28,8 @@
 		ORDER BY llcode
 	</select>
 	
-	
-<!-- 	지도 검색 
+	<!-- 
+	[지도 검색]
 	<select id="mapSearch" resultType="vo.LlmapVO">
 		<![CDATA[
 			SELECT * FROM llmap l 
@@ -40,7 +38,7 @@
 		<include refid="search"></include>
 	</select>
 	
-	WHERE절
+	[WHERE절]
 	<sql id="search">
 		<choose>
 			브랜드명 검색
@@ -55,6 +53,6 @@
 				ORDER BY llcode
 			</when>
 		</choose>
-	</sql> -->
-	
+	</sql> 
+	-->
 	</mapper>

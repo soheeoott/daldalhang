@@ -47,8 +47,7 @@ public class CalendarController {
 
 	@RequestMapping(value = "/calendarUpdate")
 	public ModelAndView CalendarUpdate(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
-	 
-		
+
 		mv.setViewName("jsonView");
 		return mv;
 	}
@@ -67,11 +66,9 @@ public class CalendarController {
 	@RequestMapping(value = "calendarDelete")
 	public ModelAndView CalendarDelete(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
 		
-		
 		mv.setViewName("jsonView");
 		return mv;
 	}
-	
 	
 	@RequestMapping(value = "/calendar/view", method = RequestMethod.GET)
 	@ResponseBody
@@ -109,7 +106,6 @@ public class CalendarController {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}		
-		
 		return jArray;
 	}
 	
@@ -152,14 +148,12 @@ public class CalendarController {
 		vo.setCalseq(calseq);
 		vo.setEditurl(editurl);
 		
-		
 		System.out.println("UPDATE=>"+vo.toString());
 		
 		int sucFlag = service.update(vo);	
 		
 		return sucFlag;
 	}	
-	
 	
 	@RequestMapping(value = "/calendar/delete", method = RequestMethod.GET)
 	@ResponseBody

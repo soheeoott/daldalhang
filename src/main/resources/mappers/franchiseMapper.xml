@@ -4,8 +4,6 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 	<mapper namespace="daldal.mappers.franchiseMapper">
-	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
-				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 	
 	<insert id="insert">
 		INSERT INTO franchise 
@@ -53,5 +51,4 @@
 		WHERE p.mname = #{mname} AND p.frcode = #{frcode} 
 		ORDER BY pdcode, p.pdseq
 	</select>
-	
 </mapper>

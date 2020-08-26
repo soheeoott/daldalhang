@@ -93,7 +93,7 @@ public class ProductController {
 		vo.setId(id);
 		List<LikeListVO> llist =llservice.idList(vo);
 
-		// pdlist의 liked처리하기
+		// pdlist의 liked 처리
 		for(int i=0; i<pvo.size(); i++) {
 			for(int j=0; j<llist.size(); j++) {
 				if(pvo.get(i).getPdseq()==llist.get(j).getPdseq()) {
@@ -110,7 +110,7 @@ public class ProductController {
 	
 	@RequestMapping(value = "/categorylist", method = RequestMethod.GET) 
 	public ModelAndView category (MenuVO mvo, HttpSession session, 
-			@ModelAttribute("cri") PageMaker pageMaker, ModelAndView mv 
+			@ModelAttribute("cri") PageMaker pageMaker, ModelAndView mv, LikeListVO vo
 			) throws Exception{
 		
 		System.out.println("pageMaker=> " + pageMaker);
@@ -155,8 +155,21 @@ public class ProductController {
 		mv.addObject("mubcode", mvo.getMubcode());
 		mv.addObject("mucategory", mvo.getMucategory());
 		
-		
-		
+		/* 좋아요 */
+		String id =(String)session.getAttribute("logID");
+
+		vo.setId(id);
+		List<LikeListVO> llist=llservice.idList(vo);
+
+		// ctlist의 liked 처리
+		for(int i=0; i<ctlist.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(ctlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					ctlist.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
 		mv.setViewName("product/categoryList");
 	    
 	    return mv;
@@ -192,9 +205,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/hashtagList")
-	public ModelAndView hashtagList(ModelAndView mv, String keyword) throws Exception{
+	public ModelAndView hashtagList(ModelAndView mv, String keyword, HttpSession session, LikeListVO vo) throws Exception{
 	    
 		System.out.println("keyword => " + keyword);
+		
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
 		
 		List<ProductVO> htlist = pdservice.hashtagAll(keyword);
 		
@@ -207,17 +223,37 @@ public class ProductController {
 	    
 	    mv.addObject("count", count);
 	    mv.addObject("keyword", keyword);
-	    mv.setViewName("product/hashtagList");
 	    
+	    /* 좋아요 */
+		String id =(String)session.getAttribute("logID");
+
+		vo.setId(id);
+		List<LikeListVO> llist=llservice.idList(vo);
+
+		// htlist의 liked 처리
+		for(int i=0; i<htlist.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(htlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					htlist.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
+	    
+	    mv.setViewName("product/hashtagList");
 	    return mv;
 	}
 	
 	// @RequestParam(defaultValue="") ==> 기본값 할당	
 	@RequestMapping(value="/searchList")
 	public ModelAndView searchlist(
-				String searchOption, String keyword) throws Exception{
+				String searchOption, String keyword, HttpSession session, LikeListVO vo) throws Exception{
 	    
+		List<MenuVO> menulist = muservice.menu();
+		session.setAttribute("menulist", menulist);
+		
 		List<ProductVO> pdlist = pdservice.listAll(searchOption, keyword);
+		
 		// 레코드의 갯수
 	    int count = pdservice.countArticle(searchOption, keyword);
 	    
@@ -233,6 +269,22 @@ public class ProductController {
 	    mv.addObject("map", map); // 맵에 저장된 데이터를 mv에 저장
 	    mv.addObject("keyword", keyword); // 맵에 저장된 데이터를 mv에 저장
 	    
+	    /* 좋아요 */
+		String id =(String)session.getAttribute("logID");
+
+		vo.setId(id);
+		List<LikeListVO> llist=llservice.idList(vo);
+
+		// htlist의 liked 처리
+		for(int i=0; i<pdlist.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(pdlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					pdlist.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
+	    
 	    mv.setViewName("product/searchList");
 	    
 	    return mv;
@@ -243,20 +295,11 @@ public class ProductController {
 	public ModelAndView mpdlist(
 			ModelAndView mv, MenuVO mvo, HttpSession session,
 			String mubcode, String mucategory) throws Exception {
-		
-		// 세션에 저장된 값 menu 불러와 다시 저장 => session null
-/*		String menulist = (String)session.getAttribute("menulist");
-		mv.addObject("menulist", menulist);		
-		System.out.println("menulist => "+menulist);
-*/		
+
 		// 커피, 디저트, 음료, 식품, 스페셜 출력
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
-		
-//		// 2020.08.03 menu 출력
-//		List<MenuVO> mulist = muservice.menu();
-//		mv.addObject("mulist", mulist);
-		
+
 		List<ProductVO> ctlist = pdservice.category(mubcode, mucategory);
 		mv.addObject("ctlist", ctlist);
 		mv.addObject("mubcode", mubcode);
@@ -292,7 +335,6 @@ public class ProductController {
 		
 		List<FranchiseVO> frlist = frservice.selectList();
 		List<MenuVO> mulist = muservice.selectList();
-		
 				
 		if(mulist != null || frlist != null) {			
 			mv.addObject("mulist", mulist);
@@ -395,8 +437,6 @@ public class ProductController {
 	
 	@RequestMapping(value = "/pdelete")
 	public ModelAndView pdelete(ModelAndView mv, ProductVO vo) throws IOException {
-		
-		
 		
 		return mv;
 	}

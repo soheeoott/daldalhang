@@ -1,57 +1,57 @@
 	.productList p {
-	  display: block;
-	  margin-block-start: 1em;
-	  margin-block-end: 1em;
-	  margin-inline-start: 0px;
-	  margin-inline-end: 0px;
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
 	}
 	
 	.container {
-	  width : 100%;
+	width : 100%;
 	}
-
+	
 	.plist {
-		float: left;
-	    width: 25%;
-	    height: 380px;
-	    padding: 0 20px;
-	    box-sizing: border-box;
-		text-align: center;
+	float: left;
+	width: 25%;
+	height: 380px;
+	padding: 0 20px;
+	box-sizing: border-box;
+	text-align: center;
 	}
 	
 	.plist p {
-		margin: 8px 0px 8px 0px;
+	margin: 8px 0px 8px 0px;
 	}
 	
 	.hashtagsplit {
-    	color: gray;
-    	margin: 0 auto;
+	color: gray;
+	margin: 0 auto;
 	}
 	
 	.menu_css {
-		max-width: 750px;
+	max-width: 750px;
 	}
 	
 	.menu_css a {
-	    border: 1px solid lightgray;
-	    border-radius: 20px;
-	    padding: 10px;
-	    margin-right: em;
-	    line-height: 3;
+	border: 1px solid lightgray;
+	border-radius: 20px;
+	padding: 10px;
+	margin-right: em;
+	line-height: 3;
 	}
 	
 	.btn_nlist {
-		width:880px;
-		padding-top:10px;
+	width:880px;
+	padding-top:10px;
 	}
-
+	
 	.brandHomebutton {
-		width:80px;
-		height:45px;
-		left: 90px;
-		cursor:pointer;
-		background-color:white;
-		border-radius:5px;
-		border:1px solid silver;
-		position: fixed;
+	width:80px;
+	height:45px;
+	left: 90px;
+	cursor:pointer;
+	background-color:white;
+	border-radius:5px;
+	border:1px solid silver;
+	position: fixed;
 	}

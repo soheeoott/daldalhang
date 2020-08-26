@@ -8,12 +8,6 @@ public class PrevNextVO {
 	private int nextSeq;
 	private String nextTitle;
 	
-	@Override
-	public String toString() {
-		return "PrevNextVO [seq=" + seq + ", id=" + id + ", prevSeq=" + prevSeq + ", prevTitle=" + prevTitle
-				+ ", nextSeq=" + nextSeq + ", nextTitle=" + nextTitle + "]";
-	}
-	
 	public int getSeq() {
 		return seq;
 	}
@@ -49,5 +43,11 @@ public class PrevNextVO {
 	}
 	public void setNextTitle(String nextTitle) {
 		this.nextTitle = nextTitle;
+	}
+	
+	@Override
+	public String toString() {
+		return "PrevNextVO [seq=" + seq + ", id=" + id + ", prevSeq=" + prevSeq + ", prevTitle=" + prevTitle
+				+ ", nextSeq=" + nextSeq + ", nextTitle=" + nextTitle + "]";
 	}
 }

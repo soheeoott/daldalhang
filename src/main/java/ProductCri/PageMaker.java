@@ -9,14 +9,11 @@ import org.springframework.web.util.UriComponentsBuilder;
  *  PageMaker 객체를 사용할 때에는 setCriteria()와 setTotalCount()를 먼저 호출해서 값을 지정
  */
 
-// Criteria를 이용해서 출력할 Page View에 필요한 값을 완성
+// Criteria를 이용 => 출력할 View에 필요한 값 완성
 public class PageMaker extends Criteria {
 	
-	// page와 perPageNum을 이용하려면 Criteria 세팅
-	
-	/*
-	 * private Criteria pcri; // page, perPageNum
-	 */
+	// page와 perPageNum을 이용하려면 Criteria 세팅 => 여기서는 상속받음
+	// => private Criteria pcri; // page, perPageNum
 	
 	MenuVO mvo = new MenuVO();
 	
@@ -25,7 +22,7 @@ public class PageMaker extends Criteria {
 	
 	// [11][12][13].......[20] : 현재 페이지 13 = (startPage = 11, endPage = 20)
 	
-    private int startPage=1;				// 게시글 번호에 따른 (보여지는) 페이지의 시작 번호
+    private int startPage=1;			// 게시글 번호에 따른 (보여지는) 페이지의 시작 번호
     									// 현재 페이지가 12 = 11페이지가 startPage
     									// 현재 페이지가 27 = 21페이지가 startPage
     	
@@ -41,8 +38,7 @@ public class PageMaker extends Criteria {
     private int tempEndPage;
     
     // 전체 게시글 수
-    // 다른 변수들에 대한 계산 = totalCount(전체 게시글 수) 먼저 세팅
-    
+    // 변수들에 대한 계산 => totalCount(전체 게시글 수) 먼저 세팅
     public void setTotalCount(int totalCount) {
         this.totalCount = totalCount;
         
@@ -56,7 +52,6 @@ public class PageMaker extends Criteria {
     	// 페이지의 마지막 번호
     	// (현재 페이지 / 화면 하단 페이지의 개수) * 화면 하단 페이지의 개수)
     	// endPage = (무조건올림)(현재 페이지 / 페이지당 보여줄 게시글 수) * 페이지당 보여줄 게시글 수
-
         endPage = (int) (Math.ceil(getPage() / (double) displayPageNum) * displayPageNum);
  
         // 페이지의 시작 번호
@@ -93,10 +88,6 @@ public class PageMaker extends Criteria {
         UriComponents uriComponents = UriComponentsBuilder.newInstance()
         		.queryParam("page", page)
                 .queryParam("perPageNum", getPerPageNum())
-                /*
-                .queryParam("mubcode", mvo.getMubcode())
-                .queryParam("mucategory", mvo.getMucategory())
-                */
                 .build();
  
         return uriComponents.toUriString();
@@ -169,5 +160,11 @@ public class PageMaker extends Criteria {
 	public int getTotalCount() {
 		return totalCount;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "PageMaker [mvo=" + mvo + ", totalCount=" + totalCount + ", startPage=" + startPage + ", endPage="
+				+ endPage + ", prev=" + prev + ", next=" + next + ", start=" + start + ", end=" + end
+				+ ", displayPageNum=" + displayPageNum + ", tempEndPage=" + tempEndPage + "]";
+	}
 }

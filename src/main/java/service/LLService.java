@@ -18,5 +18,4 @@ public interface LLService {
 	List<LikeListVO> idList(LikeListVO vo);
 	
 	LikeListVO selectOne(LikeListVO vo);
-	
 }

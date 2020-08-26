@@ -1,4 +1,4 @@
-#menu_wrap {
+	#menu_wrap {
 	position:absolute;
 	top:0;
 	left:0;
@@ -9,9 +9,9 @@
 	padding:5px;
 	background:rgba(255, 255, 255, 0.8);
 	z-index: 1;
-}
+	}
 
-.MapsearchInput {
+	.MapsearchInput {
     width: 200px;
     padding: 10px;
     border: 0px;
@@ -19,67 +19,66 @@
     float: left;
     font-size: 15px;
     height: 20px;
-}
+	}
 
-/* map을 출력하는 div 스타일 */
-#map {
+	/* map을 출력하는 div 스타일 */
+	#map {
 	width:1200px;
 	height:600px;
-}
+	}
 
-#mapBSearchResult td #addr_css {
+	#mapBSearchResult td #addr_css {
 	font-size:10px;
-}
+	}
 
-#mapFSearchResult td #addr_css {
+	#mapFSearchResult td #addr_css {
 	font-size:10px;
-}
+	}
 
-/* 탭 메뉴 */
-.container{
+	/* 탭 메뉴 */
+	.container{
 	width: 300px;
 	height: 100%;
 	font-size:14px;
-}
+	}
 
-ul.tabs{
+	ul.tabs{
 	padding: 0px;
 	list-style: none;
-}
-ul.tabs li{
+	}
+	
+	ul.tabs li{
 	width: 147px;
 	height: 30px;
 	background: none;
 	display: inline-block;
 	cursor: pointer;
-}
+	}
 
- ul.tabs li.current{
+	 ul.tabs li.current{
 	border-bottom:3px solid #F1BCD5;
-}
+	}
 
-.tab-content{
+	.tab-content{
 	display: none;
-	/* padding: 15px; */
-}
+	}
 
-.tab-content.current{
+	.tab-content.current{
 	display: inherit;
-}
+	}
 
-div .tab_content_css {
-	/* font-size:12px; */
+	div .tab_content_css {
 	overflow-y: auto;
 	overflow-x: hidden;
 	height:370px;
-}
+	}
 
-.tab_table {
+	.tab_table {
 	width: 260px;
 	margin: 15px 5px 15px 5px;
-}
+	}
 
-.searchMap {
+	.searchMap {
 	font-size: 14px;
     width: 240px;
     background: #ffffff;
@@ -89,9 +88,9 @@ div .tab_content_css {
     border-radius: 3px;
     background: #ffffff;
     float: left;
-}
+	}
 
-.searchMapBtn {
+	.searchMapBtn {
 	width: 50px;
     height: 45px;
     border: 0px;
@@ -101,4 +100,4 @@ div .tab_content_css {
     background-color: pink;
     border-radius: 3px;
     cursor: pointer;
-}
+	}

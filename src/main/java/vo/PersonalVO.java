@@ -1,8 +1,6 @@
 package vo;
 
-// ** 공통모듈 구현 1.
 // VO (Value Object, DTO: Data Transfer Object) 
-// => member 테이블의 구조
 // => 자료를 주고 받는 통로 역할
 
 public class PersonalVO {
@@ -25,16 +23,13 @@ public class PersonalVO {
 	private String kakaoExpires_in;
 	private String kakaoRefresh_token_expires_in;
 	private String kakaoEmail;
-
 	
 	// 구글
 	private String googleEmail;
 	private String googleName;
-		
 	
 	// login flag
 	private String loginFlag;
-	
 	
 	public String getLoginFlag() {
 		return loginFlag;

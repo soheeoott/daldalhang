@@ -14,7 +14,8 @@ import vo.PrevNextVO;
 
 @Repository
 public class NoticeDAO {
-	// @Inject 는  Java 에서 제공 , @Autowired 는 스프링 이 제공
+	// @Inject =>  Java 제공
+	// @Autowired => 스프링 제공
 	@Autowired
 	private SqlSession sqlsession;
 	private static final String NS="daldal.mappers.noticeMapper.";

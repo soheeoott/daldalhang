@@ -4,8 +4,6 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 	<mapper namespace="daldal.mappers.menuMapper">
-	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
-				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 	
 	<select id="selectList" resultType="vo.MenuVO">
 		SELECT * FROM menu ORDER BY mucode
@@ -16,11 +14,12 @@
 	</select>
 
 	<select id="selectOne" resultType="vo.MenuVO">
-		<!-- SELECT DISTINCT muname FROM menu ORDER BY mucode -->
-		SELECT * FROM menu WHERE mucategory=#{mucategory} ORDER BY mucode
+		SELECT * FROM menu WHERE mucategory=#{mucategory} 
+		ORDER BY mucode
 	</select>
 	
 	<select id="productList" resultType="vo.MenuVO">
-		SELECT DISTINCT mucategory, muname FROM menu WHERE mucategory=#{mucategory} ORDER BY mucode
+		SELECT DISTINCT mucategory, muname 
+		FROM menu WHERE mucategory=#{mucategory} ORDER BY mucode
 	</select>		
 </mapper>

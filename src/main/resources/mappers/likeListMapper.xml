@@ -2,17 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="daldal.mappers.likeListMapper"> <!-- mapper의 이름표 -->
-
-
-	<!-- <insert id="like_create">
-		insert into likelist (id, pdseq) values (#{id}, #{pdseq})
-	</insert> -->
-	
-	<!-- <insert id="like_create">
-	 insert into likelist(id, pdseq, likecheck) select #{id}, #{pdseq}, 1 FROM DUAL WHERE NOT EXISTS 
-	(select id, pdseq from likelist where id = #{id} and pdseq = #{pdseq})
-	</insert> -->
+<mapper namespace="daldal.mappers.likeListMapper">
 	
 	<insert id="like_create">
 		insert into likelist (id, pdseq, likecheck) values (#{id}, #{pdseq}, 1)
@@ -27,14 +17,14 @@
 	</delete>
 	
 	<select id="selectList" resultType="vo.LikeListVO">
-	select * from likelist where id=#{id} and pdseq=#{pdseq} <!-- order by likeseq -->
+		select * from likelist where id=#{id} and pdseq=#{pdseq} <!-- order by likeseq -->
 	</select>
 	
 	<select id="idList" resultType="vo.LikeListVO">
-	select * from likelist where id=#{id}
+		select * from likelist where id=#{id}
 	</select>
 	 
 	<select id="selectOne" resultType="vo.LikeListVO">
-	select likecheck from likelist where id = #{id} and pdseq=#{pdseq}
+		select likecheck from likelist where id = #{id} and pdseq=#{pdseq}
 	</select>
 </mapper>

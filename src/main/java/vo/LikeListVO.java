@@ -7,7 +7,6 @@ public class LikeListVO {
 	private int pdseq;
 	private int likecheck;
 	
-	
 	public int getLikeseq() {
 		return likeseq;
 	}
@@ -32,10 +31,9 @@ public class LikeListVO {
 	public void setLikecheck(int likecheck) {
 		this.likecheck = likecheck;
 	}
+	
 	@Override
 	public String toString() {
 		return "LikeListVO [likeseq=" + likeseq + ", id=" + id + ", pdseq=" + pdseq + ", likecheck=" + likecheck + "]";
 	}
-	
-	
 }

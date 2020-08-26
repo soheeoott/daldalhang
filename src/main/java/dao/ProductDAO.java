@@ -35,13 +35,6 @@ public class ProductDAO {
 		cate.put("mubcode", mvo.getMubcode());
 		cate.put("sno", pageMaker.getSno());
 		cate.put("perPageNum", pageMaker.getPerPageNum());
-		
-		/*
-		cate.put("page", pageMaker.getPage());
-		cate.put("startPage", pageMaker.getStartPage());
-		cate.put("endPage", pageMaker.getEndPage());
-		cate.put("tempEndPage", pageMaker.getTempEndPage());
-		*/
 		return sqlsession.selectList(PD + "Cricategory", cate);
 	}
 	

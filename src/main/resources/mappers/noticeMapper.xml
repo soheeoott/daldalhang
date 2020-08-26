@@ -4,8 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="daldal.mappers.noticeMapper">
-<!-- namespace : 자바클래스에서 maper 를 찾는 경로
-				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<!-- namespace : 자바클래스에서 maper 를 찾는 경로 -->
 				  
 	<!-- Search Criteria -->
 	<sql id="search">
@@ -29,23 +28,27 @@
 		SELECT seq, title, id, date_format(regdate,'%Y/%m/%d') regdate, cnt
 		FROM (SELECT n.*, ROW_NUMBER() OVER(ORDER BY seq DESC) rnum
 		FROM notice n WHERE seq>0]]>
-	<!-- <![CDATA[
-		SELECT seq, title, id, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt
-		FROM (SELECT n.*, ROW_NUMBER() OVER(ORDER BY seq DESC) rnum
-		FROM notice n WHERE seq>0]]> -->
+		<!-- 
+		[오라클 쿼리]
+		<![CDATA[
+			SELECT seq, title, id, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt
+			FROM (SELECT n.*, ROW_NUMBER() OVER(ORDER BY seq DESC) rnum
+			FROM notice n WHERE seq>0]]> 
+		-->
 		<include refid="search"></include>
 		seqt WHERE rnum BETWEEN #{sno} AND #{eno}
 	</select>	
 	<!-- /Search Criteria -->  
 				  
-	<!-- totalRowCount() -->
 	<select id="totalRowCount" resultType="int">
 		SELECT COUNT(*) FROM notice
 	</select>
 			  
-	<!-- noticeDetail() -->
 	<select id="selectOne" resultType="vo.NoticeVO">
-		<!-- SELECT seq, title, id, content, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt -->
+		<!--
+		[오라클 쿼리] 
+		SELECT seq, title, id, content, TO_CHAR(regdate, 'YYYY/MM/DD') regdate, cnt 
+		-->
 		SELECT seq, title, id, content, date_format(regdate,'%Y/%m/%d') regdate, cnt 
 		FROM notice WHERE seq=#{seq}
 	</select>
@@ -64,9 +67,12 @@
 	
 	<!-- noticeInsert() -->
 	<insert id="insert">
-		INSERT INTO notice <!-- (seq, title, id, content, regdate, cnt) -->
-		<!-- VALUES((SELECT NVL(MAX(seq), 0)+1 FROM notice), #{title}, #{id}, #{content},
-			 SYSDATE, 0) -->
+		INSERT INTO notice 
+		<!-- 
+		   [오라클 쿼리]
+			VALUES((SELECT NVL(MAX(seq), 0)+1 FROM notice), #{title}, #{id}, #{content},
+			 SYSDATE, 0)
+		-->
 		VALUES((SELECT IFNULL(MAX(seq),0)+1 FROM notice ift), #{title}, #{id}, #{content},
 		NOW(), 0)
 	</insert>

@@ -39,21 +39,15 @@ public class LikeListController {
 		
 		String id =(String)session.getAttribute("logID");
 		vo.setId(id);
-		System.out.println("id:"+id);
-		List<LikeListVO> llist = llservice.selectList(vo);
-		System.out.println("실행 전:"+llist);
-
-		if(llist == null) {
+		
+		if(llservice.selectOne(vo) == null) {
 			llservice.likecreate(vo);
-			System.out.println("성공 후: "+llservice.selectList(vo));
 			mv.addObject("lCode","LL");
-		}else if(llist != null)  {
+		}else{
 			llservice.delete(vo);
-			System.out.println("삭제 후: "+llservice.selectList(vo));
 			mv.addObject("lCode","LD");
 		}
 		mv.setViewName("jsonView");
 		return mv;
 	}
-	
 }

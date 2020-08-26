@@ -57,5 +57,4 @@ public interface PDService {
 	
 	// 서브 메뉴 갯수
 	public int mProductCount(String muname) throws Exception;
-	
 }
