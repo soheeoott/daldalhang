@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="daldal.mappers.productMapper">
+	<!-- namespace : 자바클래스에서 mapper 를 찾는 경로
+				  다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+				  
+	<select id ="selectList" resultType="vo.ProductVO"> 
+		select * from product order by pdseq
+	</select>
+
+	<select id = "selectOne" resultType="vo.ProductVO">
+		select pdseq, frcode, bname, mname, pdname, price, pduploadfile, pdurl, hashtag, mucode1, mucode2, mucode3 
+		from product where pdseq=#{pdseq}
+	</select>
+	
+	<insert id="insert">
+		insert into product (pdseq, frcode, pdname, price, mucode1, mucode2, mucode3, hashtag, pduploadfile) 
+			values ((select nvl(max(pdseq), 0)+1 from product),${frcode},#{pdname},#{price},#{mucode1},#{mucode2},#{mucode3},#{hashtag},#{pduploadfile})
+	</insert>
+	
+</mapper>

@@ -1,0 +1,165 @@
+/* input type을 클릭해도 테두리 표시되지 않음 */
+input:focus {
+	 outline:none;
+}
+
+/* 공지사항  table */
+table {
+	width:900px;
+	border-collapse:collapse;	
+	font-size:14px;
+}
+
+/* 공지사항 메뉴를 누르면 바로 나오는 '공지사항' 텍스트 */
+#notice_title {
+	font-size:25px;
+	font-weight:bold;
+	cursor:pointer;
+	margin-left:-800px;
+	margin-bottom:-100px;
+}
+
+/* search를 포함한 tr */
+#notice_search{
+	background:#f4f4f2;
+}
+
+/* search 요소를 감싸는 bar */
+#searchBar {
+	margin:20px 20px 20px;
+}
+
+/* 검색어 입력 부분 */
+#keyword {
+	height:23px;
+}
+
+/* search 실행 버튼 */
+#searchBtn {
+	margin-bottom:-12px;
+	width:30px;
+}
+
+/* noticeList category(No, 제목, 날짜, 조회수) */
+#nlist_category {
+	font-weight:bold;
+	height:40px;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+}
+
+/* noticeList 내용 */
+#nlist_content {
+	border-bottom:1px solid #f4f4f2;
+	line-height:20px;
+}
+
+/* noticeList에서 title에 마우스 커서를 올렸을 때 효과 */
+#nlist_title:hover {
+	text-decoration:underline;
+}
+
+/* noticeDetail의 제목 효과 */
+#ndetail_title {
+	font-size:20px;
+	height:60px;
+	font-weight:bold;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+}
+
+#ndetail_regdate {
+	font-size:14px;
+}
+
+/* noticeDetail 내용 */
+#ndetail_content {
+	border-bottom:1px solid #f4f4f2;
+	line-height:20px;
+}
+
+/* noticeDetail -> noticeList(목록) 버튼 위치 */
+.btn_nlist {
+	width:880px;
+	padding-top:10px;
+}
+
+/* noticeDetail, noticeWrite, noticeUpdate 버튼 스타일 */
+.buttonStyle {
+	width:70px;
+	height:30px;
+	cursor:pointer;
+	background-color:white;
+	border-radius:5px;
+	border:1px solid silver;
+}
+
+.buttonStyle:hover {
+	border:1px solid #F1BCD5;	
+}
+
+/* 윗글/아랫글 table tr */
+#nlist_nextPrev tr {
+	border-top:1px solid darkgray;
+	border-bottom:1px solid darkgray;
+}
+
+/* 윗글/아랫글 td */
+.nlist_nextPrev {
+	background-color:#f4f4f2;
+	width:100px;
+	height:50px;
+	font-weight:bold;
+}
+
+/* noticeList 페이징 번호 */
+#paging_num {
+	font-size:15px;
+}
+
+/* noticeList 페이징 번호를 클릭했을 때 */
+#paging_numClick {
+	font-size:15px;
+	cursor:pointer;
+	color:#F1BCD5;
+	text-decoration:underline;
+}
+
+/* noticeList 페이징 버튼 이미지 위치 조정 */
+.npn_img {
+	margin-bottom:-8px;
+}
+
+/* noticeWrite.jsp 폼 */
+#noticeForm tr{
+	height:50px;
+}
+
+#writerID {
+	background-color:transparent;
+	border:0 solid black;
+	height:30px;
+}
+
+#seq {
+	background-color:transparent;
+	border:0 solid black;
+	height:30px;		
+}
+
+#nregdate {
+	background-color:transparent;
+	border:0 solid black;
+	height:30px;	
+}
+
+#title {
+	background-color:transparent;
+	border:0 solid black;
+	border-bottom:1px solid black;
+}
+
+/* tinymce textarea 사이즈 */
+.tox-tinymce {
+	min-height:300px;
+}
