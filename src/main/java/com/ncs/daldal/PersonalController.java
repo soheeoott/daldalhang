@@ -61,6 +61,7 @@ public class PersonalController {
 		vo.setId(id);
 		vo = service.selectOne(vo);
 		mv.addObject("myInfo", vo);
+		System.out.println("vo:"+vo);
 
 		// 4) 결과 ( Detail or Update 인지 )
 		// => request.getParameter("code") 가 U 인지 확인

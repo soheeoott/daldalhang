@@ -15,10 +15,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.FRService;
+import service.LLService;
 import service.MUService;
 import service.PDService;
+import service.PSService;
 import vo.FranchiseVO;
+import vo.LikeListVO;
 import vo.MenuVO;
+import vo.PersonalVO;
 import vo.ProductVO;
 
 @Controller
@@ -33,6 +37,12 @@ public class ProductController {
 	@Autowired
 	FRService frservice;
 
+	@Autowired
+	LLService llservice;
+	
+	@Autowired
+	PSService psservice;
+	
 	@RequestMapping(value="/hashtagList")
 	public ModelAndView hashtaglist(ModelAndView mv, String keyword) throws Exception{
 	    
@@ -115,7 +125,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/pdlist")
-	public ModelAndView pdlist(ModelAndView mv, MenuVO mvo, HttpSession session) {
+	public ModelAndView pdlist(ModelAndView mv, MenuVO mvo, LikeListVO vo, PersonalVO pvo, HttpSession session) {
 		
 		// 세션에 저장된 값 menu 불러와 다시 저장 => session null
 /*		String menulist = (String)session.getAttribute("menulist");
@@ -123,7 +133,22 @@ public class ProductController {
 	*/	
 		// 상품 리스트 출력
 		List<ProductVO> pdlist = pdservice.selectList();
-
+		
+		String id =(String)session.getAttribute("logID");
+		
+		vo.setId(id);
+		List<LikeListVO> llist =llservice.idList(vo);
+		
+		// pdlist의 liked처리하기
+		for(int i=0; i<pdlist.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(pdlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					pdlist.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
+	
 		// 2020.08.03 menu 출력
 		List<MenuVO> mulist = muservice.selectList();
 		mv.addObject("mulist", mulist);
@@ -134,12 +159,8 @@ public class ProductController {
 		List<MenuVO> cpdlist = muservice.productList(mucategory);
 		mv.addObject("cpdlist", cpdlist);
 		
-		if (pdlist != null) {
-			mv.addObject("pdlist", pdlist);
-
-		} else {
-			mv.addObject("message", "검색된 자료가 없습니다.");
-		}
+		mv.addObject("pdlist", pdlist);
+		
 		mv.setViewName("product/productList");
 		return mv;
 	}

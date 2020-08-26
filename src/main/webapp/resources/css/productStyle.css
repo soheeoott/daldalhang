@@ -7,6 +7,11 @@
 	  margin-inline-end: 0px;
 	}
 	
+	.productList{
+	    position: relative;
+    	left: 65px;
+	}
+	
 	.container {
 	  width : 100%;
 	}
@@ -14,19 +19,24 @@
 	.plist {
 		float: left;
 	    width: 25%;
-	    height: 380px;
+	    height: 430px;
 	    padding: 0 20px;
-	    box-sizing: border-box;
+	    /* box-sizing: border-box; */
 		text-align: center;
 	}
 	
 	.plist p {
 		margin: 8px 0px 8px 0px;
+		/* top: -10px; */
+    	/* position: relative; */
 	}
 	
 	.hashtagsplit {
     	color: gray;
     	margin: 0 auto;
+   		position: relative;
+    	top: 20px;
+    	font-size: 14px;
 	}
 	
 	.menu_css {
@@ -35,4 +45,36 @@
 	
 	.menu_css a {
 		margin-right: 5em;
+	}
+	
+	.lbutton{
+		position: relative;
+    	left: 70px;
+	}
+	
+	.limg{
+		width: 10%;
+	}
+	
+	.pdurl{
+		position: relative;
+	}
+	
+	.namelist{
+		position: relative;
+    	top: 5px;
+	}
+	
+	.fname{
+		position: relative;
+    	top: -10px;
+   		font-size: 15px;
+	}
+	
+	.pname{
+		font-size: 19px;
+	}
+	
+	.prname{
+		font-size: 17px;
 	}

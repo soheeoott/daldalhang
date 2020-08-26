@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import service.MUService;
 import vo.MenuVO;
@@ -26,11 +27,16 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpSession session) {
+	public String home(Locale locale, ModelAndView mv, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		List<MenuVO> menulist = menuservice.selectList();
 		session.setAttribute("menulist", menulist);
+		
+		/*
+		String id =(String)session.getAttribute("logID");
+		mv.addObject("id", id);
+		*/
 		
 		return "home";
 	}

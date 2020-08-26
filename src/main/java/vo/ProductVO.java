@@ -19,7 +19,7 @@ public class ProductVO {
 	private String mucode1;
 	private String mucode2;
 	private String mucode3;
-	
+	private String liked;
 	private MultipartFile uploadfilef; // form 의 inputTag 의 값 전달받기 // 설정 파일 필요
 
 	public int getPdseq() {
@@ -148,6 +148,14 @@ public class ProductVO {
 
 	public void setUploadfilef(MultipartFile uploadfilef) {
 		this.uploadfilef = uploadfilef;
+	}
+	
+	public String getLiked() {
+		return liked;
+	}
+
+	public void setLiked(String liked) {
+		this.liked = liked;
 	}
 
 	@Override
