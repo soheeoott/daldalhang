@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>** DalDal **</title>
-<!-- 발급받은 Client ID : j271ilogb7
+<!-- 발급받은 Naver Map API Client ID : j271ilogb7
 	 비동기 방식으로, 지정한 콜백 함수를 호출함 -->
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=j271ilogb7&callback=initMap"></script>

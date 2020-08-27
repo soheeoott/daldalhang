@@ -27,13 +27,38 @@ public class CalendarController {
 	@Qualifier("calendar")
 	private CalendarService service;
 
+	// eventPage.jsp -> 달력형, 목록형 이벤트 출력 페이지 mapping
+	@RequestMapping(value="/eventPage")
+	public ModelAndView eventPage(HttpServletRequest request, ModelAndView mv) {
+		mv.setViewName("event/eventPage");
+		return mv;
+	}
+	
+	// eventList.jsp -> 목록형 이벤트 출력 페이지 mapping
+	@RequestMapping(value="/eventList")
+	public ModelAndView eventList(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
+
+		List<CalendarVO> avo = new ArrayList<CalendarVO>();
+		avo = service.selectList(vo);
+
+		System.out.println("avo => "+avo);
+
+		if(avo!=null) {
+			mv.addObject("eventList", avo);
+			mv.setViewName("event/eventList");
+		} else {
+			mv.setViewName("event/eventPage");
+		}
+		return mv;
+	} // eventList
+	
 	@RequestMapping(value = "/calendar")
 	public ModelAndView Calendar
 	(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
 		
 		System.out.println("calendarMain 111");
 
-		mv.setViewName("calendar/calendar");
+		mv.setViewName("event/calendar");
 		return mv;
 	}
 

@@ -25,11 +25,11 @@
 	br { mso-data-placement:same-cell; } 
 	
 	#wrap {
-	padding-top: 200px;
+	padding-top: 220px;
 	}
 	
 	.wrap {
-	padding-top: 200px;
+	padding-top: 220px;
 	}
 	
 	.homeWrap {
@@ -44,7 +44,7 @@
 	right: 0;
     z-index: 100;
     width: 100%;
-    height: 200px;
+    height: 220px;
     background-color: #fff;
 	}
 	
@@ -151,12 +151,12 @@
 	
 	hr {
     border:none;
-    width:80%;
+    width:80%;	
 	}
 	
-	.btn_nlist {
-    width: 838px;
-	padding-top:10px;
+	#footerHr {
+    border:none;
+    width:80%;
 	}
 	
 	.buttonStyle {
@@ -236,7 +236,6 @@
 	.footer_menu {
 	    width: 100%;
 	    color: white;
-	    font-weight: bold;
 	}
 	
 	#top {

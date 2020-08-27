@@ -25,25 +25,32 @@
 	<div class="count">
 	    <!-- 레코드의 갯수를 출력 -->
 	    ${count}개의 
+	    
+	    <c:if test="${frcode=='A01'}">공차가</c:if>
+        <c:if test="${frcode=='A02'}">던킨도너츠가</c:if>
+        <c:if test="${frcode=='A03'}">뚜레쥬르가</c:if>
+        <c:if test="${frcode=='A04'}">메가커피가</c:if>
+        <c:if test="${frcode=='A05'}">빽다방이</c:if>
+        <c:if test="${frcode=='A06'}">스타벅스가</c:if>
+        <c:if test="${frcode=='A07'}">이디야가</c:if>
+        <c:if test="${frcode=='A08'}">쥬씨가</c:if>
+        <c:if test="${frcode=='A09'}">설빙이</c:if>
+        <c:if test="${frcode=='A10'}">투썸 플레이스가</c:if>
+        <c:if test="${frcode=='A11'}">파리바게뜨가</c:if>
+        <c:if test="${frcode=='A12'}">파스쿠찌가</c:if>
+        <c:if test="${frcode=='A13'}">흑화당이</c:if>
+		있습니다.
     <br><br><br>
     </div>
 				
 	<!-- 2020.08.12 franchise menu 출력 -->
 		<div class="menu_css">
-			<%-- <c:forEach var="list" items="${mulist}" end="5">
-					<c:if test="${list.mucategory=='coffee'}"><a href="pdlist?mucategory=${list.mucategory}" value="coffee">커피</a></c:if>
-					<c:if test="${list.mucategory=='dessert'}"><a href="pdlist?mucategory=${list.mucategory}" value="dessert">디저트</a></c:if>
-					<c:if test="${list.mucategory=='drink'}"><a href="pdlist?mucategory=${list.mucategory}" value="drink">음료</a></c:if>
-					<c:if test="${list.mucategory=='food'}"><a href="pdlist?mucategory=${list.mucategory}" value="food">음식</a></c:if>
-					<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">스페셜</a></c:if>		
-			</c:forEach> --%>
-			
 			<c:forEach var="menu" items="${frachiseMenu}" end="5">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mkname}</a>
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
 			</c:forEach>
 			
 			<c:forEach var="menu" items="${frachiseMenu}" begin="6">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mkname}</a>
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
 			</c:forEach>
 			
 			<br>
@@ -81,7 +88,7 @@
 				            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
 				            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
 				            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-				            <c:if test="${list.frcode=='A10'}"><p>투썸</p></c:if>
+				            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
 				            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
 				            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
 				            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>

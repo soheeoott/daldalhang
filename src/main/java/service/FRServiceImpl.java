@@ -46,12 +46,12 @@ public class FRServiceImpl implements FRService {
 	}
 	
 	@Override
-	public List<FranchiseVO> franchiseSubMenu(String mname, String frcode) {
-		return dao.franchiseSubMenu(mname, frcode);
+	public List<FranchiseVO> franchiseSubMenu(ProductVO pvo) {
+		return dao.franchiseSubMenu(pvo);
 	}
 	
 	@Override
-	public int franchiseSubCount(String mname, String frcode) {
-		return dao.franchiseSubCount(mname, frcode);
+	public int franchiseSubCount(ProductVO pvo) {
+		return dao.franchiseSubCount(pvo);
 	}
 }

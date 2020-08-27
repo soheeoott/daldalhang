@@ -38,20 +38,12 @@ public class FranchiseDAO {
 		return sqlsession.selectList(FD + "franchiseMenu", pvo);
 	}
 	
-	public List<FranchiseVO> franchiseSubMenu(String mname, String frcode) {
-		
-		Map<String, String> submenu = new HashMap<String, String>();
-		submenu.put("mname", mname);
-		submenu.put("frcode", frcode);
-		return sqlsession.selectList(FD + "franchiseSubMenu", submenu);
+	public List<FranchiseVO> franchiseSubMenu(ProductVO pvo) {
+		return sqlsession.selectList(FD + "franchiseSubMenu", pvo);
 	}
 	
-	public int franchiseSubCount(String mname, String frcode) {
-		
-		Map<String, String> submenu = new HashMap<String, String>();
-		submenu.put("mname", mname);
-		submenu.put("frcode", frcode);
-		return sqlsession.selectOne(FD + "franchiseSubCount", submenu);
+	public int franchiseSubCount(ProductVO pvo) {
+		return sqlsession.selectOne(FD + "franchiseSubCount", pvo);
 	}
 
 	public int insert(FranchiseVO fvo) {

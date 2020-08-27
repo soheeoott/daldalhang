@@ -8,7 +8,7 @@ package ProductCri;
 public class Criteria {
 	
 	private int page;					// 현재 페이지를 나타내는 필드 변수
-    private int perPageNum = 20;		// 페이지당 보여줄 수
+    private int perPageNum = 21;		// 페이지당 보여줄 수
 	
     private int sno=1; 					// Start Row No
     
@@ -35,7 +35,7 @@ public class Criteria {
      
     public Criteria() { 		// 최초 default 생성자로 기본 객체 생성시 초기값을 지정
         this.page=1; 			// 사용자가 세팅하지 않으면 기본 1
-        this.perPageNum=20;	// 페이지당 기본 n개씩 출력하도록 세팅
+        this.perPageNum=21;	// 페이지당 기본 n개씩 출력하도록 세팅
     }
 
 	public int getPage() {

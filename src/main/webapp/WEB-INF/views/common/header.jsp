@@ -91,7 +91,7 @@
 							</c:forEach>
 						 </div>
 					</div>
-					<a href="calendar" class="main_menu">이벤트</a>
+					<a href="eventPage" class="main_menu">이벤트</a>
 					<a href="maplist" class="main_menu">매장찾기</a>
 					<a href="nlist" class="main_menu">공지사항</a>
 				</div>
@@ -99,11 +99,11 @@
 			
 			<!-- 검색창 -->
 			<div class="searchWrap">
-				<form name="searchform" method="post" action="searchList">
+				
+				<form name="searchform" method="post" action="searchList" onsubmit="return check();">
 						<div class="searchSelect">
 					        <select name="searchOption" class="searchOption">
 					            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
-					           <option selected="selected" value="">&nbsp;&nbsp;&nbsp;선택</option>
 					           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >&nbsp;&nbsp;해시태그</option>
 					           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;브랜드</option>
 					           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;상품명</option>
@@ -111,7 +111,7 @@
 				       </div>
 				       
 				       <div class="search">
-				       		<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="통합 검색">
+				       		<input name="keyword" value="${map.keyword}" id="searchInput" class="searchInput" placeholder="통합 검색" value="searchInputCheck">
 				       </div>
 				       
 				       <div class= "searchB">
@@ -120,6 +120,20 @@
 				      		</button>
 				       </div>
 				</form>
+				
+				<script>
+				$(function(){
+			        $('form[name="searchform"]').on('submit', function(e){
+			            var keyword = $('input[name="keyword"]', this).val();
+			
+			            if ( keyword.split(' ').join('')  == '' || keyword.split(' ').join('').length < 1) {
+			                alert('검색어를 입력해주세요!');
+			                e.preventDefault();
+			                return false;
+			            }
+			        });
+    			});
+				</script>
     		</div>
 		</div>
 	</div>

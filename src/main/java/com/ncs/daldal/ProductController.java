@@ -53,7 +53,7 @@ public class ProductController {
 		
 		System.out.println("pageMaker=> " + pageMaker);
 		
-		pageMaker.setPerPageNum(20);
+		pageMaker.setPerPageNum(21);
 		pageMaker.setSno();
 		
 		if (pageMaker.getPage() < 1) {

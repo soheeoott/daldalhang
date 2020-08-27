@@ -24,7 +24,7 @@
 		<a href="#" class="footer_menu">위치정보 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 		<a href="#" class="footer_menu">사이트맵</a>&nbsp;&nbsp;&nbsp;
 		
-	<hr>
+	<hr id="footerHr">
 
 	(주)달달행 대표이사 : 달달쓰 
 	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 

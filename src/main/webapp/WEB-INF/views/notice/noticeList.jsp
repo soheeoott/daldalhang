@@ -74,7 +74,7 @@ $(function() {
 	
 	<div class="btn_nlist" align="right">
 		<c:if test="${logID=='DalDal'}">
-			<input type="button" value="등록" class="buttonStyle" onclick="location.href='ninsertf'">
+			<input type="button" value="등록" class="nButtonStyle" onclick="location.href='ninsertf'">
 		</c:if>
 	</div>
 		
@@ -85,29 +85,31 @@ $(function() {
 		2) sPage~ePage까지 perPageNo 값만큼 출력,
 		3) Next >, Last >> : enabled 여부	
 	-->
-	<!-- 1) -->
-	<c:if test="${pageMaker.prev}">	
-		<a href="nlist${pageMaker.makeSearch(pageMaker.sPageNo-1)}">
-			<img src="resources/image/prev.jpg" class="npn_img">&nbsp;</a>
-	</c:if>
+	<div align="center">
+		<!-- 1) -->
+		<c:if test="${pageMaker.prev}">	
+			<a href="nlist${pageMaker.makeSearch(pageMaker.sPageNo-1)}">
+				<img src="resources/image/prev.jpg" class="npn_img">&nbsp;</a>
+		</c:if>
 	
-	<!-- 2) -->
-	<c:forEach var="i" begin="${pageMaker.sPageNo}" end="${pageMaker.ePageNo}">
-		<c:choose>
-			<c:when test="${pageMaker.cri.currPage==i}">
-				&nbsp;<span id="paging_numClick">${i}</span>&nbsp;
-			</c:when>
-			<c:otherwise>
-			 	&nbsp;<a href="nlist${pageMaker.makeSearch(i)}" id="paging_num">${i}</a>&nbsp;
-			</c:otherwise>
-		</c:choose>
-	</c:forEach>
+		<!-- 2) -->
+		<c:forEach var="i" begin="${pageMaker.sPageNo}" end="${pageMaker.ePageNo}">
+			<c:choose>
+				<c:when test="${pageMaker.cri.currPage==i}">
+					&nbsp;<span id="paging_numClick">${i}</span>&nbsp;
+				</c:when>
+				<c:otherwise>
+				 	&nbsp;<a href="nlist${pageMaker.makeSearch(i)}" id="paging_num">${i}</a>&nbsp;
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
 		
-	<!-- 3) -->
- 	<c:if test="${pageMaker.next && pageMaker.ePageNo>0}">
-		<a href="nlist${pageMaker.makeQuery(pageMaker.ePageNo+1)}">
-			<img src="resources/image/next.jpg" class="npn_img"></a>
-	</c:if>
+		<!-- 3) -->
+	 	<c:if test="${pageMaker.next && pageMaker.ePageNo>0}">
+			<a href="nlist${pageMaker.makeQuery(pageMaker.ePageNo+1)}">
+				<img src="resources/image/next.jpg" class="npn_img"></a>
+		</c:if>
+	</div>
 </div>
 <%@ include file="../common/footer.jsp" %>
 </body>

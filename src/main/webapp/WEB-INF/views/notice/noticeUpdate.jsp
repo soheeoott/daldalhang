@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>** DalDal **</title>
 <script src="resources/js/noticeCheck.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/css/noticeStyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/noticeInputStyle.css">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 <!-- Tiny API Key : p94bjfog4l71b0rpo346ohluewcnl4st7roux4squjwp3ckz -->
 <script src="https://cdn.tiny.cloud/1/p94bjfog4l71b0rpo346ohluewcnl4st7roux4squjwp3ckz/tinymce/5/tinymce.min.js" 

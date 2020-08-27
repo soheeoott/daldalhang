@@ -12,6 +12,7 @@
 				b.end_date as end_date,
 				b.editurl as editurl,
 				a.frkname as frkname,
+				b.eventImg as eventImg,
 				'ADMIN' as username,
 				a.frcolor as frcolor,
 				'#ffffff' as textColor,

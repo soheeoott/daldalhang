@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>** DalDal **</title>
 <script src="resources/js/noticeCheck.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/css/noticeStyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/noticeInputStyle.css">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 <!-- Tiny API Key : p94bjfog4l71b0rpo346ohluewcnl4st7roux4squjwp3ckz -->
 <script src="https://cdn.tiny.cloud/1/p94bjfog4l71b0rpo346ohluewcnl4st7roux4squjwp3ckz/tinymce/5/tinymce.min.js" 
@@ -84,47 +84,50 @@ function inCheck() {
 <body>
 
 <div id="wrap">
-      <div class="container">
+      <div class="container" align="center">
         <div class="main">
+          
+          <span id="notice_title">공지작성</span><br><br><br>
+          
           <div class="form">
+          
+			<form action="ninsert" method="post">
+				<table id="noticeForm">
+					<tr>
+						<td>작성자</td>
+						<td><input type="text" name="id" id="writerID" value="${logID}" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>제목</td>
+						<td>
+							<input type="text" name="title" id="title" size="60"><br>
+							<span id="tMessage" class="eMessage"></span></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td>
+							<textarea rows="10" cols="50" name="content" id="content"></textarea>
+							<span id="cMessage" class="eMessage"></span>
+							<input name="image" type="file" id="upload" class="hidden" onchange=""></td>
+						</td>
+					</tr>
+					
+					<hr>
+					
+					<tr>
+						<td colspan="2" align="center" height="80">
+							<input type="submit" value="등록" class="buttonStyle" onclick="return inCheck()">&nbsp;&nbsp;&nbsp;
+							<input type="reset" value="취소" class="buttonStyle">&nbsp;&nbsp;&nbsp;
+							<input type="button" value="목록" class="buttonStyle" onclick="location.href='nlist'">
+						</td>
+					</tr>
+				</table>
+			</form>
+          
           </div>
         </div>
      </div>
 </div>          
-            
-	<span id="notice_title">공지작성</span><br><br><br>
-	<form action="ninsert" method="post">
-		<table id="noticeForm">
-			<tr>
-				<td>Writer</td>
-				<td><input type="text" name="id" id="writerID" value="${logID}" readonly="readonly"></td>
-			</tr>
-			<tr>
-				<td>Title</td>
-				<td>
-					<input type="text" name="title" id="title" size="60"><br>
-					<span id="tMessage" class="eMessage"></span></td>
-			</tr>
-			<tr>
-				<td>Content</td>
-				<td>
-					<textarea rows="10" cols="50" name="content" id="content"></textarea>
-					<span id="cMessage" class="eMessage"></span>
-					<input name="image" type="file" id="upload" class="hidden" onchange=""></td>
-				</td>
-				
-			</tr>
-			<tr>
-				<td colspan="2" align="center" height="80">
-					<input type="submit" value="등록" class="buttonStyle" onclick="return inCheck()">&nbsp;&nbsp;&nbsp;
-					<input type="reset" value="취소" class="buttonStyle">&nbsp;&nbsp;&nbsp;
-					<input type="button" value="목록" class="buttonStyle" onclick="location.href='nlist'">
-				</td>
-			</tr>
-		</table>
-	</form>
-
-
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

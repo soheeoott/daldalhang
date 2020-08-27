@@ -90,22 +90,27 @@ public class FranchiseController {
 	}
 	
 	@RequestMapping(value="/franchiseSubList")
-	public ModelAndView franchiseSubList(HttpSession session, ModelAndView mv, String mname, String frcode, ProductVO pvo) throws Exception{
+	public ModelAndView franchiseSubList(HttpSession session, ModelAndView mv, ProductVO pvo) throws Exception{
 
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 
-		int count = frservice.franchiseSubCount(mname, frcode);
+		int count = frservice.franchiseSubCount(pvo);
 		mv.addObject("count", count);
 		
 		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(pvo);
 		mv.addObject("frachiseMenu", frachiseMenu);
 		
-		List<FranchiseVO> frachiseSub = frservice.franchiseSubMenu(mname, frcode);
+		List<FranchiseVO> frachiseSub = frservice.franchiseSubMenu(pvo);
 		mv.addObject("frachiseSub", frachiseSub);
 		
-		mv.addObject("mname", mname);
-		mv.addObject("frcode", frcode);
+		System.out.println("pvo=" + pvo);
+		
+		mv.addObject("mname", pvo.getMname());
+		mv.addObject("frcode", pvo.getFrcode());
+		mv.addObject("mkname", pvo.getMkname());
+		
+		System.out.println("mkname=" +  pvo.getMkname());
 		
 		mv.setViewName("franchise/franchiseSubList");
 		
@@ -130,8 +135,10 @@ public class FranchiseController {
 		
 		List<FranchiseVO> fpdlist = frservice.fsortList(pvo);
 		mv.addObject("fpdlist", fpdlist);
-
+		
 		mv.addObject("count", count);
+		mv.addObject("frcode", pvo.getFrcode());
+		
 	    mv.setViewName("franchise/franchiseSortList");
 	    
 	    return mv;

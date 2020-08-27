@@ -24,28 +24,22 @@
 	
 	<div class="count">
 	    <!-- 레코드의 갯수를 출력 -->
-	    ${count}개의 ${frcode}(이)가 있습니다.
+	    ${count}개의 
+		${mkname}가(이) 있습니다.
     <br><br><br>
     </div>
 				
 	<!-- 2020.08.12 franchise menu 출력 -->
 		<div class="menu_css">
-			<%-- <c:forEach var="list" items="${mulist}" end="5">
-					<c:if test="${list.mucategory=='coffee'}"><a href="pdlist?mucategory=${list.mucategory}" value="coffee">커피</a></c:if>
-					<c:if test="${list.mucategory=='dessert'}"><a href="pdlist?mucategory=${list.mucategory}" value="dessert">디저트</a></c:if>
-					<c:if test="${list.mucategory=='drink'}"><a href="pdlist?mucategory=${list.mucategory}" value="drink">음료</a></c:if>
-					<c:if test="${list.mucategory=='food'}"><a href="pdlist?mucategory=${list.mucategory}" value="food">음식</a></c:if>
-					<c:if test="${list.mucategory=='special'}"><a href="pdlist?mucategory=${list.mucategory}" value="special">스페셜</a></c:if>		
-			</c:forEach> --%>
 			
 			<c:forEach var="menu" items="${frachiseMenu}" end="6">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mname}</a>
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
 			</c:forEach>
 			
 			<br>
 			
 			<c:forEach var="menu" items="${frachiseMenu}" begin="7">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}">${menu.mname}</a>
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}"">${menu.mkname}</a>
 			</c:forEach>
 			
 			<hr><br>

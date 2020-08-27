@@ -8,12 +8,12 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FullCalendar Example</title>
+    <title>** DalDal **</title>
     
     <link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
     <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="resources/newcalendar/cimage/favicon.ico">
+    <!-- <link rel="shortcut icon" href="resources/newcalendar/cimage/favicon.ico"> -->
 
     <link rel="stylesheet" href="resources/newcalendar/vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href="resources/newcalendar/vendor/css/bootstrap.min.css">
@@ -34,122 +34,9 @@
 
 <body>
 
-<!-- header -->
-	<div id="header" align="center">
-		<div id="header-css">
-			<!-- 사이드 메뉴 -->
-			<div id="personalBar" align="right">
-			
-			<c:choose>	
-				<c:when test="${logID != null}">
-					<p id="login_success">
-						<a href="mypagef">${logID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-						<a href="mypagef">마이페이지</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-						<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
-					</p>
-				</c:when>
-
-				<c:when test="${slogID != null}">
-					<p id="login_success">
-						<a href="mypagef">${slogID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-						<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
-					</p>
-				</c:when>
-			
-				<c:when test="${logID == null}">
-					<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-					<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
-				</c:when>
-				
-				<c:when test="${slogID == null}">
-					<p id="login_success">
-						<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-						<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
-					</p>
-				</c:when>		
-			</c:choose>
-				
-				<c:if test="${logID=='DalDal'}">
-					<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
-					<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href='franchiseinsertf'">
-				</c:if>
-			</div>
-			
-			<!-- 메인 메뉴 -->
-			<div id="menubar">
-		
-				<div class = "logo">
-					<a href="home">
-						<img src="resources/image/logo2.png" width="150" alt="Logo">
-					</a>
-				</div>
-				
-				<div class = "menu">
-					<a href="frlist" class="main_menu">브랜드</a>
-					
-					<div class="dropdown">
-						<a href="listPage" class="main_menu">메뉴</a>
-						
-						<div class="menu_dropdown">
-							<c:forEach var="list" items="${menulist}">
-								<c:if test="${list.mucategory=='coffee'}">
-									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
-								</c:if>
-								
-								<c:if test="${list.mucategory=='dessert'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
-								</c:if>
-								
-								<c:if test="${list.mucategory=='drink'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
-								</c:if>
-								
-								<c:if test="${list.mucategory=='food'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
-								</c:if>
-								
-								<c:if test="${list.mucategory=='special'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
-								</c:if>					
-							</c:forEach>
-						 </div>
-					</div>
-					<a href="calendar" class="main_menu">이벤트</a>
-					<a href="maplist" class="main_menu">매장찾기</a>
-					<a href="nlist" class="main_menu">공지사항</a>
-				</div>
-			</div>
-			
-			<!-- 검색창 -->
-			<div class="searchWrap">
-				<form name="searchform" method="post" action="searchList">
-						<div class="searchSelect">
-					        <select name="searchOption" class="searchOption">
-					           <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
-					           <option selected="selected" value="">&nbsp;&nbsp;&nbsp;선택</option>
-					           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >&nbsp;&nbsp;해시태그</option>
-					           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;브랜드</option>
-					           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;상품명</option>
-					       </select>
-				       </div>
-				       
-				       <div class="search">
-				       		<input name="keyword" value="${map.keyword}" class="searchInput" placeholder="통합 검색">
-				       </div>
-				       
-				       <div class= "searchB">
-				       		<button class="searchBtn" id="searchBtn">
-				       			<img src="resources/image/search.png" width= "23" height = "23">
-				      		</button>
-				       </div>
-				</form>
-    		</div>
-		</div>
-	</div>
-	<!-- /header -->
-	<hr>
-
-<div id = "wrap">
+<!-- 	<hr> -->
+<!-- <div id = "wrap"> -->
+<div>
 
     <div class="container">
 
@@ -258,7 +145,14 @@
                                 <input class="inputModal" type="text" name="edit-url" id="edit-url" />
                             </div>
                         </div>
-                        
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-eventImage">이미지 주소</label>
+                                <input class="inputModal" type="text" name="edit-eventImage" id="edit-eventImage" />
+                            </div>
+                        </div>
+                                               
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-desc">내용</label>
@@ -337,7 +231,7 @@
 	<!--  main.js 에 들어갈 부분 -->
 	<script>
 	
-	<!--
+	
 	  
 	var draggedEventIsAllDay;
 	var activeInactiveWeekends = true;
@@ -697,7 +591,7 @@
 	  selectLongPressDelay: 0
 	});
 	
-	-->
+	
 	</script>
 	<!-- main.js 종료 -->
 
@@ -707,7 +601,7 @@
 	
 	<!-- addEvents.js 에 들어갈 부분 -->
 	<script type="text/javascript">
-	<!--
+	
 	
 	var eventModal = $('#eventModal');
 
@@ -869,15 +763,12 @@
 	    });
 	};
 	
-	-->
+	
 	</script>
 	<!-- addEvents.js 종료 -->
 
-
-
 	<!-- editEvents.js 에 들어갈 부분 -->
 	<script type="text/javascript">
-	<!--
 	
 	/* ****************
 	 *  일정 편집
@@ -922,7 +813,7 @@
 	    modifyBtnContainer.show();
 	    eventModal.modal('show');
 
-	  //삭제 버튼 클릭시
+	    //삭제 버튼 클릭시
 	    $('#deleteEvent').unbind();
 	    $('#deleteEvent').on('click', function () {
 	    	
@@ -1046,7 +937,7 @@
     				var_frcode = "A01";
 			}
 	        
-	        alert(event.title+" "+event.description+" "+event.start+" "+event.end+" "+var_frcode+" "+event._id);	        
+	        alert("이게 된다고?"+event.title+" "+event.description+" "+event.start+" "+event.end+" "+var_frcode+" "+event._id);	        
 	        
 	       
 	        //일정 업데이트
@@ -1060,7 +951,7 @@
 	            	start_date : event.start,
 	            	end_date : event.end,
 	            	frcode : var_frcode,
-	            	editurl : event.editurl
+	            	editUrl : event.editurl
 	            },
 	            success: function (response) {
 	                alert('수정되었습니다.')
@@ -1071,7 +962,7 @@
 	        
     	});
 	};
-	-->
+
 	</script>
     <!-- editEvents.js 종료 -->
     
@@ -1081,36 +972,7 @@
     <script src="resources/newcalendar/js/etcSetting.js"></script>
 
 
-</div><!-- wrap -->
-<%-- <%@ include file="../common/footer.jsp" %> --%>
-
-<!-- footer -->
-<div id="footer">
-
-	<!-- TOP 버튼 -->
-	<div id="top">
-		<a href="#header"><img src="resources/image/top_button.png" id="topImg"/></a>
-	</div>
-
-	<font color="gray" style="line-height: 2;">
-		
-		<a href="#" class="footer_menu">달달 프로젝트 소개</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-		<a href="#" class="footer_menu">홈페이지 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-		<a href="#" class="footer_menu">위치정보 이용약관</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-		<a href="#" class="footer_menu">사이트맵</a>&nbsp;&nbsp;&nbsp;
-		
-	<hr>
-
-	(주)달달행 대표이사 : 달달쓰 
-	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
-	TEL : 1234-5555 
-	&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-	 개인정보 책임자 : 김달달<br>
-	ⓒ 2020 DalDal Company. All Rights Reserved.
-	</font>
-	
 </div>
-<!-- /footer -->
 </body>
 
 </html>

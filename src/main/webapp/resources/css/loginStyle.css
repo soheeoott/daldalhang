@@ -106,6 +106,7 @@
     height: 100%;
     margin: 0 auto;
     background-position: -1px -1px;
+    cursor: pointer;
 	} 
 	
 	.form_end {

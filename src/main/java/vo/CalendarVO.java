@@ -15,7 +15,14 @@ public class CalendarVO {
 	private String curMon;
 	private String frcode;
 	private String editurl;
+	private String eventImg;
 	
+	public String getEventImg() {
+		return eventImg;
+	}
+	public void setEventImg(String eventImg) {
+		this.eventImg = eventImg;
+	}
 	public String getEditurl() {
 		return editurl;
 	}
@@ -100,6 +107,6 @@ public class CalendarVO {
 		return "CalendarVO [calseq=" + calseq + ", caltitle=" + caltitle + ", calcontent=" + calcontent
 				+ ", start_date=" + start_date + ", end_date=" + end_date + ", frkname=" + frkname + ", username="
 				+ username + ", frcolor=" + frcolor + ", textColor=" + textColor + ", allday=" + allday + ", curMon="
-				+ curMon + ", frcode=" + frcode + ", editurl=" + editurl + "]";
+				+ curMon + ", frcode=" + frcode + ", editurl=" + editurl + ", eventImg=" + eventImg + "]";
 	}
 } 
