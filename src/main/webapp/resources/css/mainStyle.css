@@ -1,0 +1,24 @@
+	#footer {
+		display: inline-table;
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    top: 2200px;
+	    width: 100%;
+	    margin-top: 60px;
+	    padding: 45px 0;
+	    font-size: 12px;
+	    text-align: center;
+	    background-color: #262626;
+	} 
+	
+	.footer_menu {
+	    width: 100%;
+	    color: white;
+	    font-weight: bold;
+	}
+	
+	#slidetit {
+		font-size: 23px;
+	}

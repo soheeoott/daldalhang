@@ -21,7 +21,7 @@
 		    position: absolute;
 		    left: 0;
 		    right: 0;
-		    bottom: -710px;
+		    bottom: -1050px;
 		    width: 100%;
 		    padding: 45px 0;
 		    font-size: 12px;
@@ -152,7 +152,7 @@
 
 					<!-- 동적 셀렉트 박스 ---------------------------------------------------------------------------->
 					<div class="input_box"> <!-- padding-left: 20px; -->
-						<div class="explan"></div>						
+						<div class="explan">카테고리</div>						
 						<!-- <select id="frcode" name="frcode" class="select" onchange="coderead('A01')"> -->
 						
 						<select id="frcode" name="frcode" class="select" onchange="coderead(this.value)">
@@ -250,6 +250,11 @@
 					<div class="input_box">
 						<div class="explan">해시태그</div>
 						<input type = "text" name = "hashtag" id = "hashtag" placeholder="#커피,#디저트" value="${pdetail.hashtag}">						
+					</div>
+					
+					<div class="input_box">
+						<div class="explan">상품 경로</div>
+						<input type = "text" name = "pdurl" id = "pdurl" value="${pdetail.pdurl}">						
 					</div>
 					
 					<div class="input_box">

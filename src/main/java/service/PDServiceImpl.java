@@ -43,18 +43,18 @@ public class PDServiceImpl implements PDService {
 	}
 
 	@Override
-	public int CricategoryCount(String mubcode) throws Exception {
-		return dao.CricategoryCount(mubcode);
+	public int CricategoryCount(MenuVO mvo) throws Exception {
+		return dao.CricategoryCount(mvo);
 	}
 	
 	@Override
-	public List<ProductVO> category(String mubcode, String mucategory) throws Exception {
-		return dao.category(mubcode, mucategory);
+	public List<ProductVO> category(MenuVO mvo) throws Exception {
+		return dao.category(mvo);
 	}
 
 	@Override
-	public int categoryCount(String mubcode) throws Exception {
-		return dao.categoryCount(mubcode);
+	public int categoryCount(MenuVO mvo) throws Exception {
+		return dao.categoryCount(mvo);
 	}
 	
 	@Override
@@ -88,13 +88,18 @@ public class PDServiceImpl implements PDService {
 	}
 	
 	@Override
+	public int delete(ProductVO vo) {
+		return dao.delete(vo);
+	}
+	
+	@Override
 	public ProductVO pdetail(ProductVO vo) {
 		return dao.pdetail(vo);
 	}
 
 	@Override
-	public List<ProductVO> mProductList(String muname) {
-		return dao.mProductList(muname);
+	public List<ProductVO> mProductList(MenuVO mvo) {
+		return dao.mProductList(mvo);
 	}
 	
 	// 05. 게시글 전체 목록 boardDAO.listAll메서드 호출
@@ -120,7 +125,7 @@ public class PDServiceImpl implements PDService {
 	}
 
 	@Override
-	public int mProductCount(String muname) throws Exception {
-		return dao.mProductCount(muname);
+	public int mProductCount(MenuVO mvo) throws Exception {
+		return dao.mProductCount(mvo);
 	}
 }

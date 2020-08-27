@@ -12,34 +12,9 @@
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 	
-	<script>
-	function like(s) {
-		console.log("pdseq="+s);
-		
-		$.ajax({
-			type: "Post",
-			url: "like",
-			data:{
-				pdseq:s
-			},
-			success:function(data){
-				
-				var limg = '';
-				
-				if(data.lCode=="LL"){
-					alert("좋아요 성공");
-					limg="resources/image/fullheart.png";
-				}else{
-					alert("좋아요 취소");
-					limg="resources/image/emptyheart.png";
-				}
-				
-				$("#"+s).attr('src',limg);
-			}
-		}); //ajax
-	}
-	</script>	
-
+	<script src="resources/js/productDelete.js"></script>
+	<script src="resources/js/productLike.js"></script>
+	
 	<style>
 	.pagination {
 		margin: 0 auto;
@@ -129,15 +104,14 @@
 											<c:choose>
 												<c:when test="${logID ne null}">
 													<c:if test="${list.liked=='t'}" >
-													<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+														<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
 													</c:if>
 													<c:if test="${list.liked!='t'}">
-													<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+														<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
 													</c:if>
 												</c:when>
 												<c:otherwise>
 													<a href="loginf" ><img src="resources/image/emptyheart.png" class="limg"></a>
-													<!-- <input type="image" src="resources/image/emptyheart.png" class="limg" onclick="location.href='loginForm.jsp'"  > -->
 												</c:otherwise>
 											</c:choose>
 										</div>
@@ -146,24 +120,22 @@
 								
 								<div class="namelist">
 									<div class="fname">
-									
-									<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
-						            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
-						            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
-						            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
-						            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
-						            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
-						            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
-						            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
-						            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-						            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
-						            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
-						            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
-						            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
-									
+										<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
+							            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
+							            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
+							            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
+							            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
+							            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
+							            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
+							            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
+							            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
+							            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
+							            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
+							            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
+							            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
 									</div>
 								
-									<p class = "pname">${list.pdname}</p>
+									<p class="pname">${list.pdname}</p>
 									<p class="prname">${list.price} 원</p>
 								</div>
 								
@@ -179,8 +151,9 @@
 									<a href="pdetail?pdseq=${list.pdseq}">
 										<div class = "modify">수정</div>
 									</a>
-									
-									<a href="pdelete?pdseq=${list.pdseq}">
+
+									<%-- pdelete?pdseq=${list.pdseq}"> --%>
+									<a href="#" onclick="remove(${list.pdseq})">
 										<div class = "delete">삭제</div>
 									</a>
 								</div>
@@ -216,13 +189,6 @@
 		      [1][2][3]....[10] 이 부분을 삽입하는 부분이다. jstl 이용해for문을 돌면서 startPage ~ endPage까지
 		      	표시해주되, a태그 눌렀을 때 이동하는 page 부분에 index 지정하는 부분을 유의
 		   -->
-
-		  <%-- <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="index">
-		      	  <a href="listPage${pageMaker.makeQuery(index)}" id="paging_num">
-		      	  	${index}
-		      	  </a>
-		  </c:forEach>  --%>
-		  
 		  <c:forEach var="index" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 			<c:choose>
 				<c:when test="${pageMaker.page == index}">
@@ -236,20 +202,20 @@
 			</c:choose>
 		  </c:forEach>
 		
+		  <!--
+	                  이전버튼과 마찬가지로 다음버튼을 끝 페이지보다1개 큰게 현재 페이지가 되도록 makeQuery에 page를 넣어줍시다.
+	      -->
 		  <c:if test="${pageMaker.next}">
-		      <!--
-		                  이전버튼과 마찬가지로 다음버튼을 끝 페이지보다1개 큰게 현재 페이지가 되도록 makeQuery에 page를 넣어줍시다.
-		       -->
-		          <a href="listPage${pageMaker.makeQuery(pageMaker.endPage+1)}">
-		          	&nbsp;
-		          	<img src="resources/image/next.jpg" class="npn_img" id="paging_num">
-		         </a>
+	          <a href="listPage${pageMaker.makeQuery(pageMaker.endPage+1)}">
+	          	&nbsp;
+	          	<img src="resources/image/next.jpg" class="npn_img" id="paging_num">
+	          </a>
 		  </c:if>
 
 		  <c:if test="${pageMaker.end}">
-		          <a href="listPage${pageMaker.makeQuery(pageMaker.tempEndPage)}" id="paging_num">
-		          	끝
-		          </a>
+	          <a href="listPage${pageMaker.makeQuery(pageMaker.tempEndPage)}" id="paging_num">
+	          	끝
+	          </a>
 		  </c:if>
 	</div>
 </div>

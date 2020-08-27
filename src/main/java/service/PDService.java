@@ -21,11 +21,12 @@ public interface PDService {
 	public List<ProductVO> Cricategory(MenuVO mvo, PageMaker pageMaker) throws Exception;
 		
 	// 메뉴 갯수
-	public int CricategoryCount(String mubcode) throws Exception;
+	public int CricategoryCount(MenuVO mvo) throws Exception;
 	
-	public List<ProductVO> category(String mubcode, String mucategory) throws Exception;
+	// public List<ProductVO> category(String mubcode, String mucategory) throws Exception;
+	public List<ProductVO> category(MenuVO mvo) throws Exception;
 	
-	public int categoryCount(String mubcode) throws Exception;
+	public int categoryCount(MenuVO mvo) throws Exception;
 	
 	public List<ProductVO> SeasonList();
 	
@@ -39,9 +40,11 @@ public interface PDService {
 	
 	int insert(ProductVO vo);
 	
+	int delete(ProductVO vo);
+	
 	ProductVO pdetail(ProductVO vo);
 	
-	List<ProductVO> mProductList(String muname);
+	List<ProductVO> mProductList(MenuVO mvo);
 	
 	// 게시글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가
 	public List<ProductVO> listAll(String searchOption, String keyword) throws Exception;
@@ -56,5 +59,5 @@ public interface PDService {
 	public int hashtagCount(String keyword) throws Exception;
 	
 	// 서브 메뉴 갯수
-	public int mProductCount(String muname) throws Exception;
+	public int mProductCount(MenuVO mvo) throws Exception;
 }

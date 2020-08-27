@@ -132,6 +132,10 @@
 				)
 	</insert>
 	
+	<delete id="delete">
+		DELETE FROM product where pdseq = #{pdseq}
+	</delete>
+	
 	<!-- 2020-08-10  해시태그 전체목록 키워드 조회 -->
 	<select id = "hashtagAll" resultType="vo.ProductVO">
 		SELECT * FROM product WHERE hashtag LIKE CONCAT('%',#{keyword},'%') 

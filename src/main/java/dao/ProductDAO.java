@@ -39,21 +39,18 @@ public class ProductDAO {
 	}
 	
 	// 메뉴 갯수
-	public int CricategoryCount(String mubcode) throws Exception {
-		return sqlsession.selectOne(PD + "CricategoryCount", mubcode);
+	public int CricategoryCount(MenuVO mvo) throws Exception {
+		return sqlsession.selectOne(PD + "CricategoryCount", mvo);
 	}
 	
 	// 메뉴 목록
-	public List<ProductVO> category(String mubcode, String mucategory) throws Exception {
-		Map<Object, Object> cate = new HashMap<Object, Object>();
-		cate.put("mubcode", mubcode);
-		cate.put("mucategory", mucategory);
-		return sqlsession.selectList(PD + "category", cate);
+	public List<ProductVO> category(MenuVO mvo) throws Exception {
+		return sqlsession.selectList(PD + "category", mvo);
 	}
 	
 	// 메뉴 갯수
-	public int categoryCount(String mubcode) throws Exception {
-		return sqlsession.selectOne(PD + "categoryCount", mubcode);
+	public int categoryCount(MenuVO mvo) throws Exception {
+		return sqlsession.selectOne(PD + "categoryCount", mvo);
 	}
 		
 	// Cri
@@ -90,6 +87,10 @@ public class ProductDAO {
 		return sqlsession.insert(PD + "insert", vo);
 	}
 	
+	public int delete(ProductVO vo) {
+		return sqlsession.delete(PD + "delete", vo);
+	}
+	
 	public ProductVO pdetail(ProductVO vo) {
 		return sqlsession.selectOne(PD + "pdetail", vo);
 	}
@@ -100,8 +101,8 @@ public class ProductDAO {
 	}
 
 	// '메뉴' 이용했을 때 제품 목록 출력
-	public List<ProductVO> mProductList(String muname) {
-		return sqlsession.selectList(PD + "mProductList", muname);
+	public List<ProductVO> mProductList(MenuVO mvo) {
+		return sqlsession.selectList(PD + "mProductList", mvo);
 	}
 	
 	// 게시글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가
@@ -135,7 +136,7 @@ public class ProductDAO {
 	}
 	
 	// 서브 메뉴 갯수
-	public int mProductCount(String muname) throws Exception {
-		return sqlsession.selectOne(PD + "mProductCount", muname);
+	public int mProductCount(MenuVO mvo) throws Exception {
+		return sqlsession.selectOne(PD + "mProductCount", mvo);
 	}
 }

@@ -69,23 +69,17 @@ public class ProductController {
 	    
 	    System.out.println("pageMaker=> " + pageMaker);
 	    
-	    mv.addObject("list", pvo);
+		/* mv.addObject("list", pvo); */
 	    
 	    List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 		
 		// menu 클릭했을 때 나오는 category 출력
-		String mucategory = mvo.getMucategory();
+		/* String mucategory = mvo.getMucategory(); */
 
-		List<MenuVO> cpdlist = muservice.productList(mucategory);
+		List<MenuVO> cpdlist = muservice.productList(mvo);
 		mv.addObject("cpdlist", cpdlist);
-		
-		if (pvo != null) {
-			mv.addObject("pdlist", pvo);
-
-		} else {
-			mv.addObject("message", "검색된 자료가 없습니다.");
-		}
+		mv.addObject("pdlist", pvo);
 		
 		/* 좋아요 */
 		String id =(String)session.getAttribute("logID");
@@ -123,7 +117,7 @@ public class ProductController {
 			pageMaker.setPage(1);
 		}
 		
-		int totalNum = pdservice.CricategoryCount(mvo.getMubcode());
+		int totalNum = pdservice.CricategoryCount(mvo);
 	    pageMaker.setTotalCount(totalNum);
 	    
 	    System.out.println("totalNum =>" + totalNum);
@@ -137,7 +131,7 @@ public class ProductController {
 	    List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 		
-		List<MenuVO> cpdlist = muservice.productList(mvo.getMucategory());
+		List<MenuVO> cpdlist = muservice.productList(mvo);
 		mv.addObject("cpdlist", cpdlist);
 
 		int page = pageMaker.getPage();
@@ -176,28 +170,31 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/category")
-	public ModelAndView category(ModelAndView mv, MenuVO mvo, String mubcode, String mucategory, HttpSession session) throws Exception{
+	public ModelAndView category(ModelAndView mv, MenuVO mvo, 
+			// @RequestParam(value = "mubcode") String mubcode,
+			// @RequestParam(value = "mucategory") String mucategory
+			HttpSession session) throws Exception{
 		
-		System.out.println("mubcode => " + mubcode);
+		System.out.println("mubcode => " + mvo.getMubcode());
 		
 		// menu(커피, 디저트, 음료, 식품, 스페셜 출력)
-		List<ProductVO> ctlist = pdservice.category(mubcode, mucategory);
+		List<ProductVO> ctlist = pdservice.category(mvo);
 		mv.addObject("ctlist", ctlist);
 		
 		System.out.println("ctlist =>" + ctlist.get(0));
 		
 		// menu category 출력 (커피, 디저트, 음료, 식품, 스페셜을 눌렀을 때 각 하위 메뉴 출력)
-		List<MenuVO> cpdlist = muservice.productList(mucategory);
+		List<MenuVO> cpdlist = muservice.productList(mvo);
 		mv.addObject("cpdlist", cpdlist);
 		
 		// 메뉴 상품 갯수
-	    int count = pdservice.categoryCount(mubcode); 
+	    int count = pdservice.categoryCount(mvo); 
 	    
 	    List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 		
 		mv.addObject("count", count);
-		mv.addObject("mubcode", mubcode);
+		mv.addObject("mubcode", mvo.getMubcode());
 		
 		mv.setViewName("product/categoryList");
 		
@@ -300,19 +297,19 @@ public class ProductController {
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 
-		List<ProductVO> ctlist = pdservice.category(mubcode, mucategory);
+		List<ProductVO> ctlist = pdservice.category(mvo);
 		mv.addObject("ctlist", ctlist);
 		mv.addObject("mubcode", mubcode);
 		
 		// menu category 출력 (커피, 디저트, 음료, 식품, 스페셜을 눌렀을 때 각 하위 메뉴 출력)
-		String menucategory = mvo.getMucategory();
-		List<MenuVO> cpdlist = muservice.productList(menucategory);
+		/* String menucategory = mvo.getMucategory(); */
+		List<MenuVO> cpdlist = muservice.productList(mvo);
 		mv.addObject("cpdlist", cpdlist);
 		
 		// menu category 클릭 시 상품 리스트 출력
 		String muname = mvo.getMuname();
-		int count = pdservice.mProductCount(muname); 
-		List<ProductVO> mpdlist = pdservice.mProductList(muname);
+		int count = pdservice.mProductCount(mvo); 
+		List<ProductVO> mpdlist = pdservice.mProductList(mvo);
 		
 		mv.addObject("count", count);
 		mv.addObject("muname", muname);
@@ -409,7 +406,7 @@ public class ProductController {
 		
 		if (pdservice.insert(vo) > 0) {
 			// 성공
-			mv.setViewName("listPage");
+			mv.setViewName("redirect:listPage");
 		} else {
 			// 실패
 			mv.setViewName("home");
@@ -438,6 +435,15 @@ public class ProductController {
 	@RequestMapping(value = "/pdelete")
 	public ModelAndView pdelete(ModelAndView mv, ProductVO vo) throws IOException {
 		
+		if (pdservice.delete(vo) > 0) {
+			// 성공
+			mv.addObject("deleteCode", "deleteS");
+		} else {
+			// 실패
+			mv.addObject("deleteCode", "deleteF");
+		}
+		
+		mv.setViewName("jsonView");
 		return mv;
 	}
 }
