@@ -12,12 +12,12 @@
 </head>
 <body>
 <div align="center" id="eventListDiv">
-	<!-- 이벤트 목록형 -->
+	<!-- 이벤트 카드형 -->
 	<c:forEach var="eventList" items="${eventList}">
 		<div id="eventDiv">
 			<table id="eventTable">
 				<tr>
-		    		<td id="eventImg"><a href="${eventList.editurl}"><img src="${eventList.eventImg}"></a></td>
+		    		<td id="eventImg"><a href="${eventList.editurl}" target="_blank"><font align="center">NO IMAGE</font><img src="${eventList.eventImg}"></a></td>
 				</tr>
 				<tr>
 					<td id="eventTitle">${eventList.caltitle}</td>

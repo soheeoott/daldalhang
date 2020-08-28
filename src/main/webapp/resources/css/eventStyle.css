@@ -4,9 +4,14 @@
 		font-family: 'Trebuchet MS', serif;
 		line-height: 1.6
 	}
+	
+	#eWrap {
+	    padding-top: 140px;
+	}
+	
 	.container {
-		width: 1400px;
-		margin: 0 auto;
+		width: 1200px;
+		margin: 0 auto;	
 	}
 	
 	ul.tabs{
@@ -30,7 +35,7 @@
 	
 	.tab-content{
 		display: none;
-		padding: 20px;
+		padding-top: 20px;
 	}
 	
 	.tab-content.current{
@@ -38,14 +43,16 @@
 	}
 	
 	/* eventList.jsp */
+	/* 이벤트 List 전체 div*/
 	#eventListDiv {
 		padding-left:140px;
 	}
 	
+	/* 이벤트 카드 하나하나의 div */
 	#eventDiv {
+		height: 400px;
 		float: left;
-		padding-right: 20px;
-		padding-bottom: 20px;
+		padding: 20px 20px 20px 0;
 	}
 	
 	table #eventTable {
@@ -54,11 +61,11 @@
 	
 	#eventTable td {
 		padding: 5px;
-		width: 250px;
+		width: 220px;
 	}
 	
 	#eventImg {
-		height: 250px;
+		height: 220px;
 		background-color: pink;
 		opacity: .5;
 	}

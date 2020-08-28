@@ -25,17 +25,16 @@
 
     <link rel="stylesheet" href="resources/newcalendar/css/main.css">
     
-    <style type="text/css">
+<!--     <style type="text/css">
     #wrap {
     	padding-top: 150px;
 	}
-    </style>
+    </style> -->
 </head>
 
 <body>
 
 <!-- 	<hr> -->
-<!-- <div id = "wrap"> -->
 <div>
 
     <div class="container">

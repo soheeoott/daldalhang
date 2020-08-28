@@ -33,7 +33,7 @@
 	</select>
 	
 	<select id = "franchiseMenu" resultType="vo.ProductVO">
-		SELECT DISTINCT mname, mkname, f.frcode FROM franchise f 
+		SELECT DISTINCT p.mname, mkname, f.frcode FROM franchise f 
 		JOIN product p ON f.frcode = p.frcode 
 		WHERE f.frcode = #{frcode} ORDER BY pdcode, p.pdseq
 	</select>

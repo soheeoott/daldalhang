@@ -17,7 +17,16 @@
     cursor: pointer;
     position: relative;
     float: left;
-    left: 45px;
+    left: 26.5%;
+	}
+	
+	#wnotice_title {
+	font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    float: left;
+    left: 5%;
 	}
 	
 	/* search를 포함한 tr */
@@ -91,7 +100,7 @@
 	/* noticeDetail -> noticeList(목록) 버튼 위치 */
 	.btn_nlist {
     position: relative;
-    left: 680px;
+    right: 25%;
 	}
 	
 	/* noticeDetail, noticeWrite, noticeUpdate 버튼 스타일 */

@@ -39,7 +39,7 @@
 			<br>
 			
 			<c:forEach var="menu" items="${frachiseMenu}" begin="7">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}"">${menu.mkname}</a>
+					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
 			</c:forEach>
 			
 			<hr><br>

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -373,7 +374,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/pdinsert")
-	public ModelAndView pdinsert(ModelAndView mv, ProductVO vo) throws IOException {
+	public ModelAndView pdinsert(ModelAndView mv, ProductVO vo, HttpServletRequest request) throws IOException {
 
 		// uploadfile 처리
 		// => uploadfilef 의 정보에서 파일명을 get,
@@ -391,15 +392,15 @@ public class ProductController {
 		// => submit 으로 전송 시 선택하지 않은 경우 '' 전달 : isEmpty() 
 		if(vo.getUploadfilef() != null) {
 			uploadfilef = vo.getUploadfilef();
-			
+		
 			if(!uploadfilef.isEmpty()) {
 				// 실제 저장 경로 생성하고 저장
 				/* file1 = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_product/" */
-				file1 = "C:/resources/img_product/"
+				file1 = "C:/apache-tomcat-9.0.34/webapps/daldalhang/"
 							+uploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				uploadfilef.transferTo(new File(file1));
 				file2="resources/img_product/"+uploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
-			}
+			}				
 		}
 		
 		vo.setPduploadfile(file2);

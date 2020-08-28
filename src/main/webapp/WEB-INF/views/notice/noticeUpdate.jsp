@@ -111,9 +111,9 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center" height="60">
-					<input type="submit" value="수정" class="buttonStyle" onclick="return inCheck()">&nbsp;&nbsp;&nbsp;
-					<input type="reset" value="취소" class="buttonStyle">&nbsp;&nbsp;&nbsp;
-					<input type="button" value="목록" class="buttonStyle" onclick="location.href='nlist'">
+					<input type="submit" value="수정" class="nButtonStyle" onclick="return inCheck()">&nbsp;&nbsp;&nbsp;
+					<input type="reset" value="취소" class="nButtonStyle">&nbsp;&nbsp;&nbsp;
+					<input type="button" value="목록" class="nButtonStyle" onclick="location.href='nlist'">
 				</td>
 			</tr>
 		</table>

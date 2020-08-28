@@ -86,10 +86,9 @@ function inCheck() {
 <div id="wrap">
       <div class="container" align="center">
         <div class="main">
+			<span id="wnotice_title">공지작성</span><br><br><br>
           
-          <span id="notice_title">공지작성</span><br><br><br>
-          
-          <div class="form">
+			<div class="form">
           
 			<form action="ninsert" method="post">
 				<table id="noticeForm">
@@ -116,9 +115,9 @@ function inCheck() {
 					
 					<tr>
 						<td colspan="2" align="center" height="80">
-							<input type="submit" value="등록" class="buttonStyle" onclick="return inCheck()">&nbsp;&nbsp;&nbsp;
-							<input type="reset" value="취소" class="buttonStyle">&nbsp;&nbsp;&nbsp;
-							<input type="button" value="목록" class="buttonStyle" onclick="location.href='nlist'">
+							<input type="submit" value="등록" class="nButtonStyle" onclick="return inCheck()">&nbsp;&nbsp;&nbsp;
+							<input type="reset" value="취소" class="nButtonStyle">&nbsp;&nbsp;&nbsp;
+							<input type="button" value="목록" class="nButtonStyle" onclick="location.href='nlist'">
 						</td>
 					</tr>
 				</table>

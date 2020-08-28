@@ -41,8 +41,6 @@ public class CalendarController {
 		List<CalendarVO> avo = new ArrayList<CalendarVO>();
 		avo = service.selectList(vo);
 
-		System.out.println("avo => "+avo);
-
 		if(avo!=null) {
 			mv.addObject("eventList", avo);
 			mv.setViewName("event/eventList");

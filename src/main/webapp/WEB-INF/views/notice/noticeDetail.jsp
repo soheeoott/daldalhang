@@ -29,11 +29,11 @@
 	<br>
 	<div class="btn_nlist" align="right">
 		<c:if test="${logID == notice.id}">
-			<input type="button" value="등록" class="buttonStyle" onclick="location.href='ninsertf'">&nbsp;&nbsp;&nbsp;
-			<input type="button" value="수정" class="buttonStyle" onclick="location.href='nupdatef?seq=${notice.seq}'">&nbsp;&nbsp;&nbsp;
- 			<input type="button" value="삭제" class="buttonStyle" onclick="javascript:;ndelete(${notice.seq})">&nbsp;&nbsp;&nbsp;
+			<input type="button" value="등록" class="nButtonStyle" onclick="location.href='ninsertf'">&nbsp;&nbsp;&nbsp;
+			<input type="button" value="수정" class="nButtonStyle" onclick="location.href='nupdatef?seq=${notice.seq}'">&nbsp;&nbsp;&nbsp;
+ 			<input type="button" value="삭제" class="nButtonStyle" onclick="javascript:;ndelete(${notice.seq})">&nbsp;&nbsp;&nbsp;
 		</c:if>
-		<input type="button" value="목록" class="buttonStyle" onclick="location.href='nlist'">
+		<input type="button" value="목록" class="nButtonStyle" onclick="location.href='nlist'">
 	</div>
 	<br><br><br>
 	<table id="nlist_nextPrev">
