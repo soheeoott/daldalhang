@@ -25,11 +25,6 @@
 
     <link rel="stylesheet" href="resources/newcalendar/css/main.css">
     
-<!--     <style type="text/css">
-    #wrap {
-    	padding-top: 150px;
-	}
-    </style> -->
 </head>
 
 <body>

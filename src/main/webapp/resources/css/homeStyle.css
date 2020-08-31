@@ -1,6 +1,18 @@
 	* {
 	font-family: 'Jeju Gothic', sans-serif;
 	}
+	
+	textarea:focus {
+  	outline: none;
+	}
+	
+	button:focus {
+	  outline: none;
+	}
+	
+	input:focus {
+	  outline: none;
+	}
 
 	/* 스크롤바 항상 표시 */
 	html {
@@ -89,7 +101,7 @@
 	.logo {
     display: block;
     position: relative;
-    left: -600px;
+    left: -650px;
 	}
 	
 	.main_menu {
@@ -101,16 +113,19 @@
  	color: pink;
 	}
 	
-	.dropdown {
-	position: relative;
-	display: inline-block;
-	}
-	
-	#slidetit{
-	font-size: 23px;	
-	}
-	
+	/* 드롭다운 */
 	.menu_dropdown {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 200px;
+    z-index: 1;
+    margin-left: 43px;
+    padding-top: 18px;
+    padding-bottom: 15px;
+	}
+	
+	.AdminDropdown {
     display: none;
     position: absolute;
     background: white;
@@ -130,16 +145,92 @@
 	display: block;
 	}
 	
+	.AdminDropdown a {
+	color: black;
+	padding: 12px 0px;
+	text-decoration: none;
+	position: relative;
+	left: -5px;
+	display: block;
+	}
+	
 	.menu_dropdown a:hover {
 	color: pink;
+	}
+	
+	.AdminDropdown a:hover {
+	color: pink;
+	}
+	
+	.dropdown {
+	position: relative;
+	display: inline-block;
+	}
+	
+	.AdminDropdown {
+	position: relative;
+	display: inline-block;
 	}
 	
 	.dropdown:hover .menu_dropdown {
 	display: block;
 	}
 	
+	.AdminDropdown .AdminDropdown {
+	display: block;
+	}
+	
 	.dropdown:hover .dropbtn {
 	background-color: #3e8e41;
+	}
+	
+	.AdminDropdown:hover .dropbtn {
+	background-color: #3e8e41;
+	}
+	/* --------------------------------------  */
+	
+	/* 드롭다운
+	.AdminDropdown {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 200px;
+    z-index: 1;
+    margin-left: 43px;
+    padding-top: 18px;
+    padding-bottom: 15px;
+	}
+	
+	.AdminDropdown a {
+	color: black;
+	padding: 12px 0px;
+	text-decoration: none;
+	position: relative;
+	left: -5px;
+	display: block;
+	}
+	
+	.AdminDropdown a:hover {
+	color: pink;
+	}
+	
+	.AdminDropdown {
+	position: relative;
+	display: inline-block;
+	}
+	
+	.AdminDropdown:hover .AdminDropdown {
+	display: block;
+	}
+	
+	.AdminDropdown:hover .dropbtn {
+	background-color: #3e8e41;
+	}
+	*/
+	/* --------------------------------------  */
+	
+	#slidetit{
+	font-size: 23px;	
 	}
 	
 	/* 사이드 메뉴 포함 a태그 style */
@@ -197,7 +288,7 @@
 	.searchInput {
 	font-size: 17px;
     width: 685px;
-    padding: 12.4px;
+    padding: 12px;
     border: 0px;
     outline: none;
     float: left;
@@ -226,7 +317,6 @@
 		left: 0;
 		right: 0;
 	 	width: 100%;
-		margin-top: 60px;
 		padding: 45px 0;
 		font-size: 12px;
 		text-align: center;

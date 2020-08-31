@@ -1,3 +1,89 @@
+	.plist {
+	float: left;
+    width: 25%;
+    height: 500px;
+    padding: 0 20px;
+	text-align: center;
+	}
+	
+	.plist p {
+	margin: 8px 0px 8px 0px;
+	}
+	
+	.modify {
+	color: white;
+    opacity: 0.5;
+    cursor: pointer;
+    background: blue;
+    padding: 5px;
+    width: 50px;
+    float: left;
+    border-radius: 3px;
+	}
+	
+	.delete {
+	color: white;
+    opacity: 0.5;
+    cursor: pointer;
+    background: red;
+    padding: 5px;
+    width: 50px;
+    float: left;
+    margin-left: 1em;
+    border-radius: 3px;
+	}
+	
+	.mdwrap {
+    position: relative;
+    top: 30px;
+    display: -webkit-inline-box;
+	}
+	
+	.hashtagsplit {
+   	color: gray;
+   	margin: 0 auto;
+   	position: relative;
+   	top: 20px;
+   	font-size: 14px;
+	}
+	
+	.lbutton{
+	position: relative;
+   	left: 70px;
+	}
+	
+	.limg{
+	width: 10%;
+	}
+	
+	.pdurl{
+	position: relative;
+	}
+	
+	.namelist{
+	position: relative;
+   	top: 5px;
+	}
+
+	.fname{
+	position: relative;
+   	top: -10px;
+	font-size: 15px;
+	}
+
+	.pname{
+	font-size: 19px;
+	}
+
+	.prname{
+	font-size: 17px;
+	}
+	
+	.productList {
+	position: relative;
+	left: 65px;
+	}
+	
 	.productList p {
 	display: block;
 	margin-block-start: 1em;
@@ -10,7 +96,7 @@
 	width : 100%;
 	}
 	
-	.plist {
+/* 	.plist {
 	float: left;
 	width: 25%;
 	height: 380px;
@@ -21,12 +107,13 @@
 	
 	.plist p {
 	margin: 8px 0px 8px 0px;
-	}
+	} 
 	
 	.hashtagsplit {
 	color: gray;
 	margin: 0 auto;
 	}
+	*/
 	
 	.menu_css {
 	max-width: 750px;

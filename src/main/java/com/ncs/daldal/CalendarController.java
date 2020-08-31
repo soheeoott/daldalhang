@@ -18,15 +18,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONException;
 import service.CalendarService;
+import service.FRService;
 import vo.CalendarVO;
+import vo.FranchiseVO;
 
 @Controller
 public class CalendarController {
-
+	
+	@Autowired
+	FRService frservice;
+	
 	@Autowired
 	@Qualifier("calendar")
 	private CalendarService service;
 
+	
+	@RequestMapping(value="/eventinsertf")
+	public ModelAndView eventinsertf(HttpServletRequest request, ModelAndView mv) {
+		
+		List<FranchiseVO> frlist = frservice.selectList();
+		mv.addObject("frlist", frlist);
+		
+		mv.setViewName("event/eventWrite");
+		return mv;
+	}
+	
 	// eventPage.jsp -> 달력형, 목록형 이벤트 출력 페이지 mapping
 	@RequestMapping(value="/eventPage")
 	public ModelAndView eventPage(HttpServletRequest request, ModelAndView mv) {

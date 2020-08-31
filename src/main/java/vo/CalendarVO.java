@@ -1,5 +1,7 @@
 package vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class CalendarVO {
 	
 	private String calseq;
@@ -16,6 +18,8 @@ public class CalendarVO {
 	private String frcode;
 	private String editurl;
 	private String eventImg;
+	
+	private MultipartFile eventuploadfilef; // form 의 inputTag 의 값 전달받기 // 설정 파일 필요
 	
 	public String getEventImg() {
 		return eventImg;
@@ -101,12 +105,19 @@ public class CalendarVO {
 	public void setAllday(String allday) {
 		this.allday = allday;
 	}
+	public MultipartFile getEventuploadfilef() {
+		return eventuploadfilef;
+	}
+	public void setEventuploadfilef(MultipartFile eventuploadfilef) {
+		this.eventuploadfilef = eventuploadfilef;
+	}
 	
 	@Override
 	public String toString() {
 		return "CalendarVO [calseq=" + calseq + ", caltitle=" + caltitle + ", calcontent=" + calcontent
 				+ ", start_date=" + start_date + ", end_date=" + end_date + ", frkname=" + frkname + ", username="
 				+ username + ", frcolor=" + frcolor + ", textColor=" + textColor + ", allday=" + allday + ", curMon="
-				+ curMon + ", frcode=" + frcode + ", editurl=" + editurl + ", eventImg=" + eventImg + "]";
+				+ curMon + ", frcode=" + frcode + ", editurl=" + editurl + ", eventImg=" + eventImg
+				+ ", eventuploadfilef=" + eventuploadfilef + "]";
 	}
 } 

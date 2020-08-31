@@ -12,6 +12,8 @@
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 	
+	<link rel="stylesheet" href="resources/modal/css/bootstrap.min.css">
+	
 	<script src="resources/js/productDelete.js"></script>
 	<script src="resources/js/productLike.js"></script>
 	
@@ -40,6 +42,19 @@
 		text-decoration:underline;
 		margin-left: 2em;
 	}
+	
+	.modal { 
+	 position: fixed; 
+	 top: 0; 
+	 right: 0; 
+	 bottom: 0; 
+	 left: 0; 
+	 z-index: 1050; 
+	 display: none; 
+	 overflow: hidden; 
+	 -webkit-overflow-scrolling: touch; 
+	 outline: 0; 
+	} 
 	</style>
 </head>
 <body>
@@ -115,6 +130,35 @@
 												</c:otherwise>
 											</c:choose>
 										</div>
+										
+										<script src="resources/modal/js/jquery.min.js"></script>
+										<script src="resources/modal/js/bootstrap.min.js"></script>
+										
+										<button class="btn btn-default" data-target="#layerpop" data-toggle="modal">모달출력버튼</button><br/>
+										
+										<div class="modal fade" id="layerpop" >
+										  <div class="modal-dialog">
+										    <div class="modal-content">
+										      <!-- header -->
+										      <div class="modal-header">
+										        <!-- 닫기(x) 버튼 -->
+										        <button type="button" class="close" data-dismiss="modal">×</button>
+										        <!-- header title -->
+										        <h4 class="modal-title">Header</h4>
+										      </div>
+										      <!-- body -->
+										      <div class="modal-body">
+										            Body
+										      </div>
+										      <!-- Footer -->
+										      <div class="modal-footer">
+										        Footer
+										        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										      </div>
+										    </div>
+										  </div>
+										</div>
+								        
 									</form>
 								</p>
 								

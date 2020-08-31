@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList" %>
-    <!-- , vo.NoticeVO, service.NServiceImpl -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -8,7 +7,8 @@
 <meta charset="UTF-8">
 <title>** DalDal **</title>
 <link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
-<script src="resources/js/jquery-3.2.1.min.js"></script>
+<!-- <script src="resources/js/jquery-3.2.1.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/home.js"></script>
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 </head>
@@ -48,10 +48,18 @@
 				</c:when>		
 			</c:choose>
 				
+				<!--  
 				<c:if test="${logID=='DalDal'}">
-					<input type="button" value="상품 등록" class="buttonStyle" onclick="location.href='pdinsertf'">
-					<input type="button" value="브랜드 등록" class="buttonStyle" onclick="location.href='franchiseinsertf'">
+					<div class="AdminDropdown"> // dropdown
+						<a href="#">관리자 메뉴</a>
+						<div class="AdminDropdown"> // menu_dropdown
+							<a href="pdinsertf">상품 등록</a>
+							<a href="franchiseinsertf">브랜드 등록</a>
+							<a href="eventinsertf">이벤트 등록</a>
+						</div>
+					</div>
 				</c:if>
+				-->
 			</div>
 			<!-- 메인 메뉴 -->
 			<div id="menubar">
@@ -66,7 +74,6 @@
 					
 					<div class="dropdown">
 						<a href="listPage" class="main_menu">메뉴</a>
-						<!-- <a href="pdlist" class="main_menu">메뉴</a> -->
 						<div class="menu_dropdown">
 							<c:forEach var="list" items="${menulist}">
 								<c:if test="${list.mucategory=='coffee'}">
@@ -111,7 +118,7 @@
 				       </div>
 				       
 				       <div class="search">
-				       		<input name="keyword" value="${map.keyword}" id="searchInput" class="searchInput" placeholder="통합 검색" value="searchInputCheck">
+				       		<input name="keyword" value="${map.keyword}" id="searchInput" class="searchInput" placeholder="검색어를 입력해주세요." value="searchInputCheck">
 				       </div>
 				       
 				       <div class= "searchB">

@@ -395,8 +395,8 @@ public class ProductController {
 		
 			if(!uploadfilef.isEmpty()) {
 				// 실제 저장 경로 생성하고 저장
-				/* file1 = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_product/" */
-				file1 = "C:/apache-tomcat-9.0.34/webapps/daldalhang/"
+				/* file1 = "C:/apache-tomcat-9.0.34/webapps/daldalhang/" */
+				file1 = "C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/daldalhang/"
 							+uploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				uploadfilef.transferTo(new File(file1));
 				file2="resources/img_product/"+uploadfilef.getOriginalFilename(); // DB에서 사용하는 경로

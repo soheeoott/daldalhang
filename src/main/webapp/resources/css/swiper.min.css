@@ -51,7 +51,8 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-    right: 40px;
+    /* right: 40px; */
+    right: 20px;
 	}
 	
 .swiper-slide-invisible-blank{visibility:hidden}
@@ -129,7 +130,8 @@
 
 .swiper-pagination.swiper-pagination-hidden {opacity:0}
 
-.swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{left:0;width:100%}
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom,.swiper-pagination-fraction{left:0;width:100%;bottom: 0;}
 
 .swiper-pagination-bullets-dynamic{overflow:hidden;font-size:0}
 

@@ -26,10 +26,11 @@
 	}
 	
 	li {
-	line-height: 25px;
+	line-height: 30px;
 	list-style: none;
     display: list-item;
     text-align: -webkit-match-parent;
+    color: darkgray;
 	}
 	
 	ol {
@@ -58,6 +59,8 @@
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	margin-left: 15px;
+	font-weight: 300;
+    color: black;
 	}
 	
 	div {
@@ -169,6 +172,12 @@
 	width: 26px;
 	left: 3px;
 	top: 6px;
+	}
+	
+	.selectEmail {
+	height: 45px;
+	border: 1px solid lightgray;
+	border-radius: 3px;
 	}
 	
 	.id {
