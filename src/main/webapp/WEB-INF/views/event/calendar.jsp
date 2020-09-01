@@ -25,6 +25,11 @@
 
     <link rel="stylesheet" href="resources/newcalendar/css/main.css">
     
+    <style type="text/css">
+    .fc-day-grid-container.fc-scroller {
+    	height: 100%;/* !important; */
+    }
+    </style>
 </head>
 
 <body>
@@ -560,7 +565,7 @@
 	  weekNumbers: false,
 	  selectable: true,
 	  weekNumberCalculation: "ISO",
-	  eventLimit: true,
+	  eventLimit: false,
 	  views: {
 	    month: {
 	      eventLimit: 12

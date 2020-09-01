@@ -18,6 +18,11 @@ public class PDServiceImpl implements PDService {
 	ProductDAO dao;
 	
 	@Override
+	public List<ProductVO> fsortList(ProductVO vo) {
+		return dao.fsortList(vo);
+	}
+	
+	@Override
 	public List<ProductVO> categoryM(ProductVO vo) {
 		return dao.categoryM(vo);
 	}

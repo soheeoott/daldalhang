@@ -16,7 +16,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" /> -->
 
-	<link rel="stylesheet" type="text/css" href="resources/datepicker/bootstrap.css">
+	<!-- <link rel="stylesheet" type="text/css" href="resources/datepicker/bootstrap.css"> -->
 		
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/insertStyle.css">
@@ -60,6 +60,25 @@
 		.explan {
     		line-height: 4;
 		}
+		
+		.select {
+			padding: 10px;
+		}
+		
+		h2 {
+			font-weight: 100;
+		}		    
+		
+		.textareaWrap {
+			border: 1px solid #ddd;
+	    	border-radius: 3px;
+	    	box-sizing: border-box;
+	    	display: inline-block;
+	    	max-width: 530px;
+	    	padding: 15px;
+	    	width: 100%;
+	    	height: 100%;
+		}
 	</style>
 
 	<script type="text/javascript">
@@ -89,7 +108,7 @@
 	<div class="container">
 		<div class="main">
             <div class="form">
-            	<form action = "insert" name="event" method = "post" enctype="multipart/form-data"> 
+            	<form action = "calinsert" name="event" method = "post" enctype="multipart/form-data"> 
 					
 					<h2>이벤트 등록</h2>
 					
@@ -131,8 +150,7 @@
 					
 					<div class="input_box">
 						<div class="explan">이벤트 내용</div>		
-						<!-- <input type = "text" name = > -->
-						<textarea class="form-control col-sm-5" rows="5" name="calcontent" id = "calcontent"></textarea>
+						<textarea class="form-control col-sm-5 textareaWrap" rows="5" name="calcontent" id = "calcontent"></textarea>
 					</div>
 					
 					<!------------------------------------------------------------->

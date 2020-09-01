@@ -30,7 +30,7 @@ public class CalendarDAO {
 	public int insert(CalendarVO vo) {
 		return dao.insert(CD+"insertCalendar", vo);
 	}
-
+	
 	public int update(CalendarVO vo) {
 		return dao.update(CD+"updateCalendar", vo);
 	}

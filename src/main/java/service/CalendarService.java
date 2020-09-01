@@ -13,7 +13,7 @@ public interface CalendarService {
 	CalendarVO CalendarView (String calseq);
 	
 	int insert(CalendarVO vo);
-
+	
 	int update(CalendarVO vo);
 
 	int delete(CalendarVO vo);

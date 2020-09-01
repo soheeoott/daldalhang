@@ -125,9 +125,9 @@ public class ProductController {
 	    
 	    // menu(커피, 디저트, 음료, 식품, 스페셜 출력)
  		List<ProductVO> ctlist = pdservice.Cricategory(mvo, pageMaker);
-
+ 		mv.addObject("ctlist", ctlist);
+ 		
  		mv.addObject("pageMaker", pageMaker);
-	    mv.addObject("ctlist", ctlist);
 	    
 	    List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
@@ -156,6 +156,8 @@ public class ProductController {
 		vo.setId(id);
 		List<LikeListVO> llist=llservice.idList(vo);
 
+		System.out.println("llist" + llist);
+		
 		// ctlist의 liked 처리
 		for(int i=0; i<ctlist.size(); i++) {
 			for(int j=0; j<llist.size(); j++) {
@@ -165,15 +167,17 @@ public class ProductController {
 				}
 			}
 		}
+		
+		System.out.println("ctlist" + ctlist);
+		System.out.println("llist" + llist);
+		
 		mv.setViewName("product/categoryList");
 	    
 	    return mv;
 	}
 	
 	@RequestMapping(value="/category")
-	public ModelAndView category(ModelAndView mv, MenuVO mvo, 
-			// @RequestParam(value = "mubcode") String mubcode,
-			// @RequestParam(value = "mucategory") String mucategory
+	public ModelAndView category(ModelAndView mv, MenuVO mvo, LikeListVO vo,
 			HttpSession session) throws Exception{
 		
 		System.out.println("mubcode => " + mvo.getMubcode());
@@ -196,6 +200,24 @@ public class ProductController {
 		
 		mv.addObject("count", count);
 		mv.addObject("mubcode", mvo.getMubcode());
+		
+		/* 좋아요 */
+		String id =(String)session.getAttribute("logID");
+
+		vo.setId(id);
+		List<LikeListVO> llist=llservice.idList(vo);
+
+		System.out.println("llist" + llist);
+		
+		// ctlist의 liked 처리
+		for(int i=0; i<ctlist.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(ctlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					ctlist.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
 		
 		mv.setViewName("product/categoryList");
 		
@@ -245,7 +267,7 @@ public class ProductController {
 	// @RequestParam(defaultValue="") ==> 기본값 할당	
 	@RequestMapping(value="/searchList")
 	public ModelAndView searchlist(
-				String searchOption, String keyword, HttpSession session, LikeListVO vo) throws Exception{
+				String searchOption, String keyword, HttpSession session, LikeListVO vo, ProductVO pvo) throws Exception{
 	    
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
@@ -256,8 +278,24 @@ public class ProductController {
 	    int count = pdservice.countArticle(searchOption, keyword);
 	    
 	    ModelAndView mv = new ModelAndView();
+	    
+	    /* 좋아요 */
+		String id =(String)session.getAttribute("logID");
 
-	    // 데이터를 맵에 저장
+		vo.setId(id);
+		List<LikeListVO> llist=llservice.idList(vo);
+		
+		// 좋아요 liked 처리
+		for(int i=0; i<pdlist.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(pdlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					pdlist.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
+		
+		// 데이터를 맵에 저장
 	    Map<String, Object> map = new HashMap<String, Object>();
 	    map.put("pdlist", pdlist); // list
 	    map.put("count", count); // 레코드의 갯수
@@ -267,21 +305,7 @@ public class ProductController {
 	    mv.addObject("map", map); // 맵에 저장된 데이터를 mv에 저장
 	    mv.addObject("keyword", keyword); // 맵에 저장된 데이터를 mv에 저장
 	    
-	    /* 좋아요 */
-		String id =(String)session.getAttribute("logID");
-
-		vo.setId(id);
-		List<LikeListVO> llist=llservice.idList(vo);
-
-		// htlist의 liked 처리
-		for(int i=0; i<pdlist.size(); i++) {
-			for(int j=0; j<llist.size(); j++) {
-				if(pdlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
-					pdlist.get(i).setLiked("t");
-					break;
-				}
-			}
-		}
+	    System.out.println("map" + map);
 	    
 	    mv.setViewName("product/searchList");
 	    
@@ -291,7 +315,7 @@ public class ProductController {
 	// 2020-08-04 메뉴를 눌렀을 때 출력되는 상품 페이지
 	@RequestMapping(value="/mpdlist")
 	public ModelAndView mpdlist(
-			ModelAndView mv, MenuVO mvo, HttpSession session,
+			ModelAndView mv, MenuVO mvo, HttpSession session, LikeListVO vo,
 			String mubcode, String mucategory) throws Exception {
 
 		// 커피, 디저트, 음료, 식품, 스페셜 출력
@@ -314,6 +338,22 @@ public class ProductController {
 		
 		mv.addObject("count", count);
 		mv.addObject("muname", muname);
+		
+		/* 좋아요 */
+		String id =(String)session.getAttribute("logID");
+
+		vo.setId(id);
+		List<LikeListVO> llist=llservice.idList(vo);
+
+		// mpdlist 의 liked 처리
+		for(int i=0; i<mpdlist.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(mpdlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					mpdlist.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
 		
 		if (mpdlist != null) {
 			mv.addObject("mpdlist", mpdlist);

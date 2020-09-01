@@ -12,8 +12,13 @@
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 	
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="resources/modal/css/bootstrap.min.css">
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- 좋아요 -->
 	<script src="resources/js/productDelete.js"></script>
 	<script src="resources/js/productLike.js"></script>
 	
@@ -43,18 +48,15 @@
 		margin-left: 2em;
 	}
 	
-	.modal { 
-	 position: fixed; 
-	 top: 0; 
-	 right: 0; 
-	 bottom: 0; 
-	 left: 0; 
-	 z-index: 1050; 
-	 display: none; 
-	 overflow: hidden; 
-	 -webkit-overflow-scrolling: touch; 
-	 outline: 0; 
-	} 
+	.input_box input {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-sizing: border-box;
+	display: inline-block;
+	max-width: 530px;
+	padding: 15px;
+	width: 100%;
+	}
 	</style>
 </head>
 <body>
@@ -110,11 +112,7 @@
 										<img src="${list.pduploadfile}" width="200" height="200">
 									</a>
 									
-									<input type="hidden" name="id" id="id" value="${logID}">
-									
 									<form id="form" name="form" method="post" onsubmit="return false;">
-									<%-- <input type="hidden" name="pdseq" id="${list.pdseq}"> --%>
-									
 										<div class="lbutton">
 											<c:choose>
 												<c:when test="${logID ne null}">
@@ -130,36 +128,57 @@
 												</c:otherwise>
 											</c:choose>
 										</div>
-										
-										<script src="resources/modal/js/jquery.min.js"></script>
-										<script src="resources/modal/js/bootstrap.min.js"></script>
-										
-										<button class="btn btn-default" data-target="#layerpop" data-toggle="modal">모달출력버튼</button><br/>
-										
-										<div class="modal fade" id="layerpop" >
-										  <div class="modal-dialog">
-										    <div class="modal-content">
-										      <!-- header -->
-										      <div class="modal-header">
-										        <!-- 닫기(x) 버튼 -->
-										        <button type="button" class="close" data-dismiss="modal">×</button>
-										        <!-- header title -->
-										        <h4 class="modal-title">Header</h4>
-										      </div>
-										      <!-- body -->
-										      <div class="modal-body">
-										            Body
-										      </div>
-										      <!-- Footer -->
-										      <div class="modal-footer">
-										        Footer
-										        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-										      </div>
-										    </div>
-										  </div>
-										</div>
-								        
 									</form>
+									
+									<!-- 아래에서 data-toggle과 data-target 속성에서 data-toggle에는 modal 값을 data-target속성에는 모달 창 전체를 
+									감싸는 div의 id 이름을 지정하면 된다. -->
+									
+									<button type="button" data-toggle="modal" data-target="#myModal">상품 상세</button>
+									&nbsp;&nbsp;
+									<a data-toggle="modal" href="#myModal">상품 상세</a>
+									
+								  	<!-- 부트스트랩의 모달 창을 사용할려면 아래의 class 이름들을 그대로 사용해야 한다. 변경하면 모양이 달라진다.-->
+									  <!-- Modal -->
+									  <div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+									    <div class="modal-dialog">
+									
+									      <!-- Modal content-->
+									      <div class="modal-content">
+									        <div class="modal-header">
+									          <button type="button" class="close" data-dismiss="modal">×</button>
+									          <!-- 사용자 지정 부분② : 타이틀 -->
+									          <!-- <h4 class="modal-title">모달 창 타이틀</h4> --> 
+									        </div>
+									
+									        <div class="modal-body">
+									          <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+									          	
+									          	<img src="${list.pduploadfile}" width="200" height="200">
+									          	<!-- <img src="resources/image/bg_menu.png" width="200" height="200"> -->
+												<a href ="${list.pdurl}" target="_blank" class="pdurl">홈페이지로 이동</a>
+												
+												<div class="input_box">
+													<input type = "text" class="form-control" name = "comment" id = "comment">
+												</div>
+					
+												<!-- 
+												<div>
+													<button type="button" class="modal_modify_btn">수정</button>
+													<button type="button" class="modal_delete_btn">삭제</button>
+											 	</div>
+											 	-->
+									        
+									        </div>
+									
+									        <div class="modal-footer">
+									          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+									        </div>
+									        
+									      </div>
+									    </div>
+									  </div>
+									<br/><br/>
+									
 								</p>
 								
 								<div class="namelist">
@@ -203,7 +222,9 @@
 								</div>
 							</c:if>
 						</div>
+						
 					</c:forEach>
+					
 				</div>
 				<hr>
 			</div>

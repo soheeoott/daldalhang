@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ProductCri.PageMaker;
+import vo.FranchiseVO;
 import vo.MenuVO;
 import vo.ProductVO;
 
@@ -20,6 +21,11 @@ public class ProductDAO {
 	private SqlSession sqlsession;
 	private static final String PD = "daldal.mappers.productMapper.";
 
+	
+	public List<ProductVO> fsortList(ProductVO vo) {
+		return sqlsession.selectList(PD + "fsortList", vo);
+	}
+	
 	public List<ProductVO> categoryM(ProductVO vo) {
 		return sqlsession.selectList(PD + "categoryM", vo);
 	}

@@ -18,6 +18,13 @@
     	         시작 페이지 튜플의 행번호를 가져올 수 있다.
     -->
     
+    <select id="fsortList" resultType="vo.ProductVO">
+		SELECT * FROM franchise f 
+		JOIN product p ON f.frcode = p.frcode 
+		WHERE f.frcode = #{frcode}
+		ORDER BY f.frcode ASC, p.pdseq ASC
+	</select>
+	
     <select id="categoryM" resultType="vo.ProductVO">
     	SELECT DISTINCT bname FROM product WHERE frcode = #{frcode}
     </select>
@@ -166,7 +173,7 @@
 	<!-- 01_01. 게시글 전체목록 조회 및 검색 조회까지 -->
 	<select id="listAll" resultType="vo.ProductVO">
 	    <![CDATA[
-		SELECT DISTINCT f.frkname, p.frcode, p.pdname, p.price, p.hashtag, p.pdurl, p.pduploadfile, p.price
+		SELECT DISTINCT p.pdseq, f.frkname, p.frcode, p.pdname, p.price, p.hashtag, p.pdurl, p.pduploadfile, p.price
 		FROM product p
 		]]>
 	    <!-- WHERE절을 include 태그로 삽입 -->

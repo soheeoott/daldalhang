@@ -12,6 +12,10 @@
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 	
+	<!-- 좋아요 -->
+	<script src="resources/js/productDelete.js"></script>
+	<script src="resources/js/productLike.js"></script>
+	
 	<style>
 		.pagination {
 			margin: 0 auto;
@@ -38,34 +42,6 @@
 			margin-left: 2em;
 		}
 	</style>
-	
-	<script>
-	function like(s) {
-		console.log("pdseq="+s);
-		
-		$.ajax({
-			type: "Post",
-			url: "like",
-			data:{
-				pdseq:s
-			},
-			success:function(data){
-				
-				var limg = '';
-				
-				if(data.lCode=="LL"){
-					alert("좋아요 성공");
-					limg="resources/image/fullheart.png";
-				}else{
-					alert("좋아요 취소");
-					limg="resources/image/emptyheart.png";
-				}
-				
-				$("#"+s).attr('src',limg);
-			}
-		}); //ajax
-	}
-	</script>
 </head>
 <body>
 <div id = "wrap">
@@ -159,19 +135,19 @@
 										<div class="lbutton">
 											<c:choose>
 												<c:when test="${logID ne null}">
-													<c:if test="${list.liked=='t'}" >
-													<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+													<c:if test="${list.liked=='t'}">
+														<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
 													</c:if>
 													<c:if test="${list.liked!='t'}">
-													<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+														<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
 													</c:if>
 												</c:when>
 												<c:otherwise>
-													<a href="loginf" ><img src="resources/image/emptyheart.png" class="limg"></a>
-													<!-- <input type="image" src="resources/image/emptyheart.png" class="limg" onclick="location.href='loginForm.jsp'"  > -->
+													<a href="loginf"><img src="resources/image/emptyheart.png" class="limg"></a>
 												</c:otherwise>
 											</c:choose>
 										</div>
+										
 									</form>
 								</p>
 								
@@ -311,7 +287,8 @@
 		          	끝
 		          </a>
 		  </c:if>
-	</div>  
+		</div>  
+	</div>
 </div>
 <hr>
 <%@ include file="../common/footer.jsp" %>

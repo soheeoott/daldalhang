@@ -8,6 +8,8 @@ import vo.MenuVO;
 import vo.ProductVO;
 
 public interface PDService {
+	
+	public List<ProductVO> fsortList(ProductVO vo);
 
 	public List<ProductVO> categoryM(ProductVO vo);
 	

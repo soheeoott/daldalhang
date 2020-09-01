@@ -125,27 +125,28 @@
     padding-bottom: 15px;
 	}
 	
-	.AdminDropdown {
+	.Admin_menu_dropdown {
     display: none;
     position: absolute;
     background: white;
-    min-width: 200px;
+    min-width: 150px;
     z-index: 1;
-    margin-left: 43px;
     padding-top: 18px;
     padding-bottom: 15px;
+    border-radius: 3px;
 	}
 	
 	.menu_dropdown a {
 	color: black;
-	padding: 12px 0px;
-	text-decoration: none;
-	position: relative;
-	left: -5px;
-	display: block;
+    padding: 12px 0px;
+    text-decoration: none;
+    position: relative;
+    left: -5px;
+    display: block;
+    text-align: center;
 	}
 	
-	.AdminDropdown a {
+	.Admin_menu_dropdown a {
 	color: black;
 	padding: 12px 0px;
 	text-decoration: none;
@@ -158,7 +159,7 @@
 	color: pink;
 	}
 	
-	.AdminDropdown a:hover {
+	.Admin_menu_dropdown a:hover {
 	color: pink;
 	}
 	
@@ -167,16 +168,19 @@
 	display: inline-block;
 	}
 	
-	.AdminDropdown {
+	.Admin_dropdown {
 	position: relative;
-	display: inline-block;
+    display: inline-block;
+    float: left;
+    top: -30px;
+    left: 90px;
 	}
 	
 	.dropdown:hover .menu_dropdown {
 	display: block;
 	}
 	
-	.AdminDropdown .AdminDropdown {
+	.Admin_dropdown:hover .Admin_menu_dropdown {
 	display: block;
 	}
 	
@@ -184,49 +188,9 @@
 	background-color: #3e8e41;
 	}
 	
-	.AdminDropdown:hover .dropbtn {
+	.Admin_dropdown:hover .dropbtn {
 	background-color: #3e8e41;
 	}
-	/* --------------------------------------  */
-	
-	/* 드롭다운
-	.AdminDropdown {
-    display: none;
-    position: absolute;
-    background: white;
-    min-width: 200px;
-    z-index: 1;
-    margin-left: 43px;
-    padding-top: 18px;
-    padding-bottom: 15px;
-	}
-	
-	.AdminDropdown a {
-	color: black;
-	padding: 12px 0px;
-	text-decoration: none;
-	position: relative;
-	left: -5px;
-	display: block;
-	}
-	
-	.AdminDropdown a:hover {
-	color: pink;
-	}
-	
-	.AdminDropdown {
-	position: relative;
-	display: inline-block;
-	}
-	
-	.AdminDropdown:hover .AdminDropdown {
-	display: block;
-	}
-	
-	.AdminDropdown:hover .dropbtn {
-	background-color: #3e8e41;
-	}
-	*/
 	/* --------------------------------------  */
 	
 	#slidetit{
@@ -292,11 +256,13 @@
     border: 0px;
     outline: none;
     float: left;
+    
 	}
 	
 	.searchOption {
 	    height: 45px;
 	    border: solid 1px lightgray;
+	    border-radius: 3px;
 	}
 	
 	.searchBtn {

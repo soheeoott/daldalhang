@@ -319,7 +319,7 @@ var calendar = $('#calendar').fullCalendar({
   weekNumbers: false,
   selectable: true,
   weekNumberCalculation: "ISO",
-  eventLimit: true,
+  eventLimit: false,
   views: {
     month: {
       eventLimit: 12

@@ -85,10 +85,7 @@
 									<img src="${list.pduploadfile}" width="200" height="200">
 								</a>
 								
-								<input type="hidden" name="id" id="id" value="${logID}">
-									
 									<form id="form" name="form" method="post" onsubmit="return false;">
-									<%-- <input type="hidden" name="pdseq" id="${list.pdseq}"> --%>
 									
 										<div class="lbutton">
 											<c:choose>
@@ -101,7 +98,7 @@
 													</c:if>
 												</c:when>
 												<c:otherwise>
-													<a href="loginf" ><img src="resources/image/emptyheart.png" class="limg"></a>
+													<a href="loginf"><img src="resources/image/emptyheart.png" class="limg"></a>
 												</c:otherwise>
 											</c:choose>
 										</div>

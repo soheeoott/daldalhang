@@ -107,6 +107,24 @@
 										<a href = "${list.pdurl}" target="_blank">
 										<img src="${list.pduploadfile}" width="200" height="200">
 										</a>
+										
+										<form id="form" name="form" method="post" onsubmit="return false;">
+											<div class="lbutton">
+												<c:choose>
+													<c:when test="${logID ne null}">
+														<c:if test="${list.liked=='t'}" >
+															<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+														</c:if>
+														<c:if test="${list.liked!='t'}">
+															<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+														</c:if>
+													</c:when>
+													<c:otherwise>
+														<a href="loginf" ><img src="resources/image/emptyheart.png" class="limg"></a>
+													</c:otherwise>
+												</c:choose>
+											</div>
+										</form>
 									</p>
 									
 									<div class="namelist">

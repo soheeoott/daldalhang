@@ -1,5 +1,7 @@
 package com.ncs.daldal;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONException;
@@ -21,6 +24,7 @@ import service.CalendarService;
 import service.FRService;
 import vo.CalendarVO;
 import vo.FranchiseVO;
+import vo.ProductVO;
 
 @Controller
 public class CalendarController {
@@ -148,6 +152,49 @@ public class CalendarController {
 		return jArray;
 	}
 	
+	@RequestMapping(value = "/calinsert")
+	public ModelAndView calinsert(ModelAndView mv, CalendarVO vo, HttpServletRequest request) throws IOException {
+
+		// uploadfile 처리
+		// => uploadfilef 의 정보에서 파일명을 get,
+		// => upload 된 이미지를 서버의 정해진 폴더에 저장하고,
+		// => 이 위치에 대한 정보를 table에 저장 (vo에 set)
+		MultipartFile eventuploadfilef = vo.getEventuploadfilef();
+		
+		// 이미지를 선택하지 않았을 시
+		String file1, file2 = "No Image";
+		
+		// Ajax 의  FormData 는  이미지를 선택하지 않으면 append 시 오류 발생
+		// append 를 하지 않으면 → 서버의 vo.uploadfilef 에  null 값이 전달 됨
+		// vo.getUploadfilef() → null Check 
+		// [Ajax 로 담겨지는 값(null) != 선택하지 않았을 경우의 값('')]
+		// => submit 으로 전송 시 선택하지 않은 경우 '' 전달 : isEmpty() 
+		if(vo.getEventuploadfilef() != null) {
+			eventuploadfilef = vo.getEventuploadfilef();
+		
+			if(!eventuploadfilef.isEmpty()) {
+				// 실제 저장 경로 생성하고 저장
+				/* file1 = "C:/apache-tomcat-9.0.34/webapps/daldalhang/" */
+				file1="C:/img_product/"
+				/* file1="C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/daldalhang/" */
+							+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
+				eventuploadfilef.transferTo(new File(file1));
+				
+				file2="resources/img_product/"+eventuploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
+			}				
+		}
+		
+		vo.setEventImg(file2);
+		
+		if (service.insert(vo) > 0) {
+			// 성공
+			mv.setViewName("redirect:calendar");
+		} else {
+			// 실패
+			mv.setViewName("home");
+		}
+		return mv;
+	}
 	
 	@RequestMapping(value = "/calendar/insert", method = RequestMethod.GET)
 	@ResponseBody

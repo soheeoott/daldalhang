@@ -12,10 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.FRService;
+import service.LLService;
 import service.MAPService;
 import service.MUService;
 import service.PDService;
 import vo.FranchiseVO;
+import vo.LikeListVO;
 import vo.LlmapVO;
 import vo.MenuVO;
 import vo.ProductVO;
@@ -34,6 +36,9 @@ public class FranchiseController {
 	
 	@Autowired
 	MUService muservice;
+	
+	@Autowired
+	LLService llservice;
 	
 	@RequestMapping(value="/franchiseinsertf")
 	public ModelAndView franchiseinsertf(ModelAndView mv, FranchiseVO fvo, HttpSession session) throws Exception{
@@ -119,7 +124,7 @@ public class FranchiseController {
 	
 	@RequestMapping(value="/franchiseSortList")
 	public ModelAndView franchiseSortList(
-			HttpSession session, ModelAndView mv, ProductVO pvo) throws Exception{
+			HttpSession session, ModelAndView mv, ProductVO pvo, LikeListVO vo) throws Exception{
 	    
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
@@ -133,11 +138,31 @@ public class FranchiseController {
 		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(pvo);
 		mv.addObject("frachiseMenu", frachiseMenu);
 		
-		List<FranchiseVO> fpdlist = frservice.fsortList(pvo);
+		/*List<FranchiseVO> fpdlist = frservice.fsortList(pvo);*/
+		
+		List<ProductVO> fpdlist = pdservice.fsortList(pvo);
+		
 		mv.addObject("fpdlist", fpdlist);
 		
 		mv.addObject("count", count);
 		mv.addObject("frcode", pvo.getFrcode());
+		
+		/* 좋아요 */
+		String id =(String)session.getAttribute("logID");
+
+		vo.setId(id);
+		List<LikeListVO> llist=llservice.idList(vo);
+		
+		
+		// htlist의 liked 처리
+		for(int i=0; i<fpdlist.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(fpdlist.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					fpdlist.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
 		
 	    mv.setViewName("franchise/franchiseSortList");
 	    

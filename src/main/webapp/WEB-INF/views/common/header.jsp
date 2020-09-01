@@ -10,7 +10,34 @@
 <!-- <script src="resources/js/jquery-3.2.1.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="resources/js/home.js"></script>
-<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	
+	<style>
+	.admin {
+	    width: 150px;
+	    text-align: center;
+	    border: 1px solid lightgray;
+	    padding: 8px;
+	    border-radius: 3px;
+	}
+	</style>
+	
+	<script>
+	$(document).ready(function(){
+		$('.dropdown').hover(function(){
+		        if(!$(this).hasClass('open')) { // Keeps it open when hover it again
+		            $('.dropdown-toggle', this).trigger('click');
+		        }
+		});  
+	});
+	</script>
+	
 </head>
 <body>
 	<!-- header -->
@@ -47,19 +74,18 @@
 					</p>
 				</c:when>		
 			</c:choose>
-				
-				<!--  
-				<c:if test="${logID=='DalDal'}">
-					<div class="AdminDropdown"> // dropdown
-						<a href="#">관리자 메뉴</a>
-						<div class="AdminDropdown"> // menu_dropdown
-							<a href="pdinsertf">상품 등록</a>
-							<a href="franchiseinsertf">브랜드 등록</a>
-							<a href="eventinsertf">이벤트 등록</a>
-						</div>
-					</div>
-				</c:if>
-				-->
+         
+	         <c:if test="${logID=='DalDal'}">
+	         	<div class="Admin_dropdown">
+		            <a class="btn btn-default dropdown toggle admin" data-toggle="dropdown" href="#">관리자 페이지</a>
+		            <div class="Admin_menu_dropdown" role="menu">
+		                <a href="pdinsertf">상품 등록</a>
+		                <a href="franchiseinsertf">브랜드 등록</a>
+		                <a href="eventinsertf">이벤트 등록</a>
+		            </div>
+	        	</div>
+			 </c:if>
+		 		
 			</div>
 			<!-- 메인 메뉴 -->
 			<div id="menubar">
