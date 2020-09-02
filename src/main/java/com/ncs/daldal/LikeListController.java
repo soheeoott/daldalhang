@@ -20,6 +20,7 @@ public class LikeListController {
 	@Autowired
 	LLService llservice;
 	
+	/*
 	@RequestMapping(value="/likelist")
 	public ModelAndView likelist(ModelAndView mv, LikeListVO vo, HttpSession session) {
 		
@@ -33,6 +34,7 @@ public class LikeListController {
 		mv.setViewName("personal/likeList");		
 		return mv;
 	}
+	*/
 	
 	@RequestMapping(value="/like")
 	public ModelAndView like(ModelAndView mv, LikeListVO vo, HttpServletRequest request, HttpSession session) {

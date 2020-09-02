@@ -1,3 +1,38 @@
+	.pagination {
+		margin: 0 auto;
+	}
+	
+	.page {
+		align-content: center;
+	}
+	
+	.npn_img {
+		margin-bottom:-8px;
+	}
+	
+	#paging_num {
+		font-size:15px;
+		margin-left: 2em;
+	}
+	
+	#paging_numClick {
+		font-size:15px;
+		cursor:pointer;
+		color:#F1BCD5;
+		text-decoration:underline;
+		margin-left: 2em;
+	}
+	
+	.input_box input {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-sizing: border-box;
+	display: inline-block;
+	max-width: 530px;
+	padding: 15px;
+	width: 100%;
+	}
+	
 	.productList {
 	position: relative;
 	left: 65px;

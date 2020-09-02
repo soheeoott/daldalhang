@@ -32,10 +32,10 @@ public class Criteria {
     public int getPageStart(){
         return (this.page -1) * this.perPageNum;
     }
-     
+    
     public Criteria() { 		// 최초 default 생성자로 기본 객체 생성시 초기값을 지정
         this.page=1; 			// 사용자가 세팅하지 않으면 기본 1
-        this.perPageNum=21;	// 페이지당 기본 n개씩 출력하도록 세팅
+        this.perPageNum=21;		// 페이지당 기본 n개씩 출력하도록 세팅
     }
 
 	public int getPage() {
@@ -44,9 +44,9 @@ public class Criteria {
 
 	public void setPage(int page) {
 		if(page <= 0) {
-			this.page = 1;		// 페이지는 1페이지부터 = 0보다 작거나 같은값일 경우 무조건 첫번째 페이지로 설정
+			this.page=1;		// 페이지는 1페이지부터 = 0보다 작거나 같은값일 경우 무조건 첫번째 페이지로 설정
 		} else {
-			this.page = page;
+			this.page= page;
 		}
 	}
 

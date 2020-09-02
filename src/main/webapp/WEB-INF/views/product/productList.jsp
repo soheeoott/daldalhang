@@ -19,43 +19,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<!-- 좋아요 -->
-	<script src="resources/js/productDelete.js"></script>
-	<script src="resources/js/productLike.js"></script>
+	<script src="resources/js/likeFunc.js"></script>
 	
 	<style>
-	.pagination {
-		margin: 0 auto;
-	}
-	
-	.page {
-		align-content: center;
-	}
-	
-	.npn_img {
-		margin-bottom:-8px;
-	}
-	
-	#paging_num {
-		font-size:15px;
-		margin-left: 2em;
-	}
-	
-	#paging_numClick {
-		font-size:15px;
-		cursor:pointer;
-		color:#F1BCD5;
-		text-decoration:underline;
-		margin-left: 2em;
-	}
-	
-	.input_box input {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	box-sizing: border-box;
-	display: inline-block;
-	max-width: 530px;
-	padding: 15px;
-	width: 100%;
+	#footer {
+		margin-top: 50px;
 	}
 	</style>
 </head>
@@ -103,7 +71,7 @@
 		<div class="container">
 			<div class="main">
 				<div class="productList">
-						<c:forEach var="list" items="${pdlist}">
+						<c:forEach var="list" items="${pdlist}" varStatus="vs">
 						
 						<div class = "plist">
 							<div>
@@ -133,13 +101,62 @@
 									<!-- 아래에서 data-toggle과 data-target 속성에서 data-toggle에는 modal 값을 data-target속성에는 모달 창 전체를 
 									감싸는 div의 id 이름을 지정하면 된다. -->
 									
-									<button type="button" data-toggle="modal" data-target="#myModal">상품 상세</button>
-									&nbsp;&nbsp;
-									<a data-toggle="modal" href="#myModal">상품 상세</a>
+									<!--  
+									<script>
+								    function sampleModalPopup(){
+								        // 호출
+								        $("#sampleModalPopup > .modal-dialog").load(url, function() { 
+								            $("#sampleModalPopup").modal("show"); 
+								        });
+								    }
+									</script>
 									
-								  	<!-- 부트스트랩의 모달 창을 사용할려면 아래의 class 이름들을 그대로 사용해야 한다. 변경하면 모양이 달라진다.-->
+									<div class="modal fade" id="sampleModalPopup" role="dialog" tabindex="-1">
+									    <div class="modal-dialog modal-dialog-width1000 modal-dialog-height800">
+									        <div class="modal-header">
+									            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+									        </div>
+									        <div class="modal-body">
+									        </div>
+									        <div class="modal-footer">
+									            <button type="button" name="button" class="btn btn-color2" data-dismiss="modal" >닫기</button>
+									        </div>
+									    </div>
+									</div>
+									-->
+									
+									 
+									<button type="button" data-toggle="modal" data-target="#myModal${vs.index}">상품 상세</button>
+									&nbsp;&nbsp;
+									
+									<!--  
+									<a data-toggle="modal" href="#myModal">상품 상세</a>
+								 	-->
+									
+									<!--  
+									<script>
+									function myModal(){
+								        // 호출
+								        $("#myModal > .modal-dialog").load(url, function() { 
+								            $("#myModal").modal("show"); 
+								        });
+								    }
+									</script>
+									 -->
+									 
+									<%-- 
+									<button id="myModal" type="button" 
+										onclick="document.getElementById('myModal${vs.index}').style.display='block'" onclick="myModal()">
+										상품 상세</button>
+									--%>
+									
+								  	<!-- 부트스트랩의 모달 창을 사용할려면 아래의 class 이름들을 그대로 사용해야 한다. 변경하면 모양이 달라짐 -->
+								  	
+								  	  <!-- <div class="modal fade" id="myModal" role="dialog"> 사용자 지정 부분① : id명
+									    <div class="modal-dialog"> -->
+									    
 									  <!-- Modal -->
-									  <div class="modal fade" id="myModal" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+									  <div class="modal fade" id="myModal${vs.index}" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
 									    <div class="modal-dialog">
 									
 									      <!-- Modal content-->
@@ -154,7 +171,6 @@
 									          <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
 									          	
 									          	<img src="${list.pduploadfile}" width="200" height="200">
-									          	<!-- <img src="resources/image/bg_menu.png" width="200" height="200"> -->
 												<a href ="${list.pdurl}" target="_blank" class="pdurl">홈페이지로 이동</a>
 												
 												<div class="input_box">
@@ -222,9 +238,7 @@
 								</div>
 							</c:if>
 						</div>
-						
 					</c:forEach>
-					
 				</div>
 				<hr>
 			</div>

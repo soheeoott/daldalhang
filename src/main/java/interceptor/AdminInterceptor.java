@@ -1,4 +1,4 @@
-package com.ncs.daldal;
+package interceptor;
 
 import java.io.PrintWriter;
 
@@ -9,20 +9,21 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-//로그인처리를 담당하는 인터셉터
-//HandlerInterceptorAdapter
-//=> HandlerInterceptor 인터페이스를 사용하기 편리하게 구현해 놓은 추상 클래스
-//오버라이딩 단축키 : shift + alt + s + v 
+// 관리자 처리를 담당하는 인터셉터
+// HandlerInterceptorAdapter
+// => HandlerInterceptor 인터페이스를 사용하기 편리하게 구현해 놓은 추상 클래스
+// 오버라이딩 단축키 : shift + alt + s + v 
 
-public class LoginInterceptor extends HandlerInterceptorAdapter {
+public class AdminInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	// boolean preHandle() : 컨트롤러보다 먼저 수행되는 메서드
-	// => return 값 : 컨트롤러 요청 uri로 가도 되냐 안되냐를 허가하는 의미임
-	//	false: 더이상 컨트롤러 요청으로 가지 않도록 함
-	//	true : 컨트롤러의  uri로 가게 됨
+	// => return 값 : 컨트롤러 요청 uri로 가도 되냐 안되냐를 허가하는 의미
+	// false: 더이상 컨트롤러 요청으로 가지 않도록 함
+	// true : 컨트롤러의 uri로 가게 됨
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		
 		// 1) session 객체 가져오기
 		HttpSession session = request.getSession();
 		
@@ -39,15 +40,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			//response.sendRedirect("/green/loginf");
 			
 			// 2.2) forward 하는 경우
+			// request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('로그인 후 이용해주세요.');</script>"); /* location.href='이동주소'; */
+			out.println("<script>location.href='/daldal/home'; alert('관리자 권한이 필요합니다.');</script>"); // 코드부여
+			/* out.flush(); */
 			
-			request.getRequestDispatcher("/WEB-INF/views/login/loginForm.jsp").forward(request, response);
-			// 상당한 출력을 모았다가 한번에 출력 = 빈번한 출력을 매번 화면에 뿌리는 것보다 어느정도 모았다가 출력하는 것이 더 효율적
-			// 출력이 지연되어 나오므로 화면에 출력되는 시점과 명령을 내린 시점이 상당한 시간차이를 낸다.
-			out.flush();
-
 			return false ;
 		}
 	} // preHandle()

@@ -34,11 +34,7 @@
 	    padding: 0 20px;
 		text-align: center;
 	}
-	
-	.swiper-wrapper p {
-	margin: 8px 0px 8px 0px;
-	}
-	
+
 	.modify {
 	color: white;
     opacity: 0.5;

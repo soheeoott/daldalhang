@@ -11,6 +11,10 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="resources/css/franchiseListStyle.css">
+	
+	<!-- 좋아요 -->
+	<script src="resources/js/likeFunc.js"></script>
+	
 </head>
 <body>
 <div id = "wrap">
@@ -54,6 +58,7 @@
 					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 			</c:forEach>
 			--%>	
+			
 		</div>
 		<br><br><br>
 		<div class="container">

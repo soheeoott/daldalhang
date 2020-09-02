@@ -10,11 +10,11 @@
 <title></title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" type="text/css" href="resources/css/franchiseListStyle.css"> -->
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 	
-	<script src="resources/js/productDelete.js"></script>
-	<script src="resources/js/productLike.js"></script>
+	<!-- 좋아요 -->
+	<script src="resources/js/likeFunc.js"></script>
+	
 </head>
 <body>
 <div id = "wrap">
@@ -86,7 +86,6 @@
 								</a>
 								
 									<form id="form" name="form" method="post" onsubmit="return false;">
-									
 										<div class="lbutton">
 											<c:choose>
 												<c:when test="${logID ne null}">
@@ -106,21 +105,21 @@
 							</p>
 							
 							<div class="namelist">
-									<div class="fname">
-										<c:if test="${list.frcode=='A01'}"><p class = "brand">공차</p></c:if>
-							            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
-							            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
-							            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
-							            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
-							            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
-							            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
-							            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
-							            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-							            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
-							            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
-							            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
-							            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
-									</div>
+								<div class="fname">
+									<c:if test="${list.frcode=='A01'}"><p class = "brand">공차</p></c:if>
+						            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
+						            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
+						            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
+						            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
+						            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
+						            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
+						            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
+						            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
+						            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
+						            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
+						            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
+						            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
+								</div>
 							
 							<p class="pname">${list.pdname}</p>
 							<p class="prname">${list.price} 원</p>
@@ -147,7 +146,6 @@
 									</a>
 								</div>
 							</c:if>
-							
 						</div>
 					</c:forEach>
 				</div>

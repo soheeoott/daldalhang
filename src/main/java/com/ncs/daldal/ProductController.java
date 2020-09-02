@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ProductCri.Criteria;
 import ProductCri.PageMaker;
 import service.FRService;
 import service.LLService;
@@ -53,6 +54,8 @@ public class ProductController {
 			LikeListVO vo) throws Exception {
 		
 		System.out.println("pageMaker=> " + pageMaker);
+		System.out.println("pageMaker Page=>" + pageMaker.getPage());
+		System.out.println("listPage");
 		
 		pageMaker.setPerPageNum(21);
 		pageMaker.setSno();
@@ -105,13 +108,16 @@ public class ProductController {
 	
 	@RequestMapping(value = "/categorylist", method = RequestMethod.GET) 
 	public ModelAndView category (MenuVO mvo, HttpSession session, 
-			@ModelAttribute("cri") PageMaker pageMaker, ModelAndView mv, LikeListVO vo
+			PageMaker pageMaker, ModelAndView mv, LikeListVO vo
 			) throws Exception{
 		
 		System.out.println("pageMaker=> " + pageMaker);
+		System.out.println("pageMaker Page=> " + pageMaker.getPage());
+		System.out.println("pageMaker PerPageNum=> " + pageMaker.getPerPageNum());
 		System.out.println("mubcode => " + mvo.getMubcode());
+		System.out.println("끝");
 		
-		pageMaker.setPerPageNum(20);
+		pageMaker.setPerPageNum(21);
 		pageMaker.setSno();
 		
 		if (pageMaker.getPage() < 1) {
@@ -135,16 +141,6 @@ public class ProductController {
 		List<MenuVO> cpdlist = muservice.productList(mvo);
 		mv.addObject("cpdlist", cpdlist);
 
-		int page = pageMaker.getPage();
-		int startPage = pageMaker.getStartPage();
-		int endPage = pageMaker.getEndPage(); 
-		int tempEndPage = pageMaker.getTempEndPage();
-		
-		mv.addObject("page", page);
-		mv.addObject("startPage", startPage);
-		mv.addObject("endPage", endPage);
-		mv.addObject("tempEndPage", tempEndPage);
-		
 		mv.addObject("count", totalNum);
 		
 		mv.addObject("mubcode", mvo.getMubcode());

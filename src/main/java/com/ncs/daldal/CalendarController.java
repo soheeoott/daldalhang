@@ -106,7 +106,7 @@ public class CalendarController {
 		return mv;
 	}
 
-	@RequestMapping(value = "calendarDelete")
+	@RequestMapping(value = "/calendarDelete")
 	public ModelAndView CalendarDelete(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
 		
 		mv.setViewName("jsonView");
