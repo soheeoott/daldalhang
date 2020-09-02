@@ -143,7 +143,7 @@ public class PersonalController {
 		MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setSubject("[달달행 이메일 변경 확인]");
 		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
-				.append("이메일 변경을 확인해주세요.<br><a href='http://localhost:8080/daldal/eupdate?email_id=" + vo.getEmail_id()
+				.append("이메일 변경을 확인해주세요.<br><a href='http://daldalhang.appspot.com/daldal/eupdate?email_id=" + vo.getEmail_id()
 						+ "&email_domain=" + vo.getEmail_domain() + "&id=" + vo.getId())
 				.append("' target='_blenk'>이메일 인증 확인</a>").toString());
 		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
@@ -184,7 +184,7 @@ public class PersonalController {
 		MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setSubject("[이메일 인증]");
 		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
-				.append("가입해주셔서 감사합니다.<br><a href='http://localhost:8080/daldal/verify?email_id=" + vo.getEmail_id()
+				.append("가입해주셔서 감사합니다.<br><a href='http://daldalhang.appspot.com/daldal/verify?email_id=" + vo.getEmail_id()
 						+ "&email_domain=" + vo.getEmail_domain())
 				.append("' target='_blenk'>이메일 인증 확인</a>").toString());
 		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
@@ -212,6 +212,7 @@ public class PersonalController {
 		return mv;
 	}
 	
+	// 구글 소셜 로그인 설정 => servlet-context.xml
 	@RequestMapping("/login")
 	public ModelAndView login(ModelAndView mv, PersonalVO vo, HttpServletRequest request) throws Exception {
 		
@@ -221,9 +222,9 @@ public class PersonalController {
 		
 		if(vo.getLoginFlag().equals("N")) {
 			// 네이버 로그인
-			String clientId = "6S696taO_GdRdtrcL2WK";		//애플리케이션 클라이언트 아이디값";
-			String clientSecret = "o67GQ6g1dO";				//애플리케이션 클라이언트 시크릿값";
-			String redirectURI = URLEncoder.encode("http://localhost:8080/daldal/login", "UTF-8");
+			String clientId = "DZbaIchlFW7qOqVHBCip";		//애플리케이션 클라이언트 아이디값"; 6S696taO_GdRdtrcL2WK
+			String clientSecret = "xQ2O40wfQ6";				//애플리케이션 클라이언트 시크릿값"; o67GQ6g1dO
+			String redirectURI = URLEncoder.encode("http://daldalhang.appspot.com/daldal/login", "UTF-8");
 			String apiURL;
 			apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
 			apiURL += "client_id=" + clientId;
@@ -509,7 +510,7 @@ public class PersonalController {
 		sendMail.setSubject("[비밀번호 찾기]");
 		sendMail.setText(
 				new StringBuffer().append("<h1>임시 비밀번호 발급</h1>").append("<b>임시 비밀번호 발급 : " + temp_pw + "</b><br>")
-						.append("<a href='http://localhost:8080/daldal/home")
+						.append("<a href='http://daldalhang.appspot.com/daldal/home")
 						.append("' target='_blenk'>로그인 하기</a>").toString());
 		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
 		sendMail.setTo(vo.getEmail_id() + "@" + vo.getEmail_domain());

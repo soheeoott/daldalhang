@@ -49,17 +49,19 @@
 				
 	<!-- 2020.08.12 franchise menu 출력 -->
 	<div class="menu_css">
-		<c:forEach var="menu" items="${frachiseMenu}" end="5">
+	
+		<c:forEach var="menu" items="${frachiseMenu}" end="6">
 				<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
 		</c:forEach>
 		
-		<c:forEach var="menu" items="${frachiseMenu}" begin="6">
+		<c:forEach var="menu" items="${frachiseMenu}" begin="7">
 				<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
 		</c:forEach>
 		
 		<br>
 		
 		<hr><br>
+		
 		<c:forEach var="cpdlist" items="${cpdlist}" end="5">
 				<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
 		</c:forEach>

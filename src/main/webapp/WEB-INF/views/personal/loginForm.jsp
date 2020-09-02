@@ -43,7 +43,6 @@
 				        }else{ // ID 저장하기 체크 해제 시,
 				            deleteCookie("userInputId");
 				        }
-			    
 			    }); //idSaveCheck_change
 
 			 	// ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
@@ -53,9 +52,7 @@
 			            setCookie("userInputId", userInputId, 1); // 7일 동안 쿠키 보관
 			        }
 			    });
-			    
 			}); //ready
-
 			
 			function setCookie(cookieName, value, exdays){
 			    var exdate = new Date();
@@ -161,8 +158,8 @@
     					
     					<!-- 네이버로 로그인을 위한 설정 -->
 						<%
-   							String clientId = "6S696taO_GdRdtrcL2WK";//애플리케이션 클라이언트 아이디값";
-  							String redirectURI = URLEncoder.encode("http://localhost:8080/daldal/login?loginFlag=N", "UTF-8");
+   							String clientId = "DZbaIchlFW7qOqVHBCip";//애플리케이션 클라이언트 아이디값"; 6S696taO_GdRdtrcL2WK
+  							String redirectURI = URLEncoder.encode("http://daldalhang.appspot.com/daldal/login?loginFlag=N", "UTF-8");
   							SecureRandom random = new SecureRandom();
    							String state = new BigInteger(130, random).toString();
    							String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -235,8 +232,8 @@
 		      	 
 						<script type='text/javascript'>
 			      		  //<![CDATA[
-			      		  // 사용할 앱의 JavaScript 키를 설정해 주세요.
-			        		Kakao.init('7a1993d1c33d5ff4f8871de6ef549ab1');
+			      		  // 사용할 앱의 JavaScript 키를 설정해 주세요.  7a1993d1c33d5ff4f8871de6ef549ab1
+			        		Kakao.init('209250831acb79383c4b8e6eea532fe2');
 			       		 // 카카오 로그인 버튼을 생성합니다.
 			        		Kakao.Auth.createLoginButton({
 			            		container: '#kakao-login-btn',

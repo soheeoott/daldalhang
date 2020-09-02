@@ -17,7 +17,7 @@ public interface FRService {
 	
 	List<FranchiseVO> franchiseMenu(ProductVO pvo);
 	
-	List<FranchiseVO> franchiseSubMenu(ProductVO pvo);
+	List<ProductVO> franchiseSubMenu(ProductVO pvo);
 	
 	public int franchiseSubCount(ProductVO pvo);
 

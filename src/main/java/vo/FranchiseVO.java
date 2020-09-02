@@ -10,6 +10,9 @@ public class FranchiseVO {
 	private String frcolor;
 	private String fruploadfile;
 	
+	private int pdseq;
+	private String liked;
+	
 	private MultipartFile fruploadfilef; // form 의 inputTag 의 값 전달받기 // 설정 파일 필요
 
 	public String getFrcode() {
@@ -60,9 +63,26 @@ public class FranchiseVO {
 		this.fruploadfilef = fruploadfilef;
 	}
 
+	public int getPdseq() {
+		return pdseq;
+	}
+
+	public void setPdseq(int pdseq) {
+		this.pdseq = pdseq;
+	}
+
+	public String getLiked() {
+		return liked;
+	}
+
+	public void setLiked(String liked) {
+		this.liked = liked;
+	}
+
 	@Override
 	public String toString() {
 		return "FranchiseVO [frcode=" + frcode + ", frename=" + frename + ", frkname=" + frkname + ", frcolor="
-				+ frcolor + ", fruploadfile=" + fruploadfile + ", fruploadfilef=" + fruploadfilef + "]";
+				+ frcolor + ", fruploadfile=" + fruploadfile + ", pdseq=" + pdseq + ", liked=" + liked
+				+ ", fruploadfilef=" + fruploadfilef + "]";
 	}
 }

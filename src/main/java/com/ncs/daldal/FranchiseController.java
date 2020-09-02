@@ -95,7 +95,8 @@ public class FranchiseController {
 	}
 	
 	@RequestMapping(value="/franchiseSubList")
-	public ModelAndView franchiseSubList(HttpSession session, ModelAndView mv, ProductVO pvo) throws Exception{
+	public ModelAndView franchiseSubList(HttpSession session, ModelAndView mv, 
+			LikeListVO vo, ProductVO pvo) throws Exception{
 
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
@@ -106,7 +107,8 @@ public class FranchiseController {
 		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(pvo);
 		mv.addObject("frachiseMenu", frachiseMenu);
 		
-		List<FranchiseVO> frachiseSub = frservice.franchiseSubMenu(pvo);
+		List<ProductVO> frachiseSub = frservice.franchiseSubMenu(pvo);
+		/* List<FranchiseVO> frachiseSub = frservice.franchiseSubMenu(pvo); */
 		mv.addObject("frachiseSub", frachiseSub);
 		
 		System.out.println("pvo=" + pvo);
@@ -116,6 +118,22 @@ public class FranchiseController {
 		mv.addObject("mkname", pvo.getMkname());
 		
 		System.out.println("mkname=" +  pvo.getMkname());
+		
+		/* 좋아요 */
+		String id =(String)session.getAttribute("logID");
+
+		vo.setId(id);
+		List<LikeListVO> llist=llservice.idList(vo);
+		
+		// htlist의 liked 처리
+		for(int i=0; i<frachiseSub.size(); i++) {
+			for(int j=0; j<llist.size(); j++) {
+				if(frachiseSub.get(i).getPdseq()==llist.get(j).getPdseq()) {
+					frachiseSub.get(i).setLiked("t");
+					break;
+				}
+			}
+		}
 		
 		mv.setViewName("franchise/franchiseSubList");
 		
@@ -137,8 +155,6 @@ public class FranchiseController {
 		
 		List<FranchiseVO> frachiseMenu = frservice.franchiseMenu(pvo);
 		mv.addObject("frachiseMenu", frachiseMenu);
-		
-		/*List<FranchiseVO> fpdlist = frservice.fsortList(pvo);*/
 		
 		List<ProductVO> fpdlist = pdservice.fsortList(pvo);
 		

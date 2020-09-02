@@ -15,15 +15,7 @@
 	
 	<style type="text/css">
 	#footer {
-	    position: absolute;
-	    left: 0;
-	    right: 0;
-	    width: 100%;
-	    margin-top: 300px;
-	    padding: 45px 0;
-	    font-size: 12px;
-	    text-align: center;
-	    background-color: #262626;
+	margin-top: 300px;
 	}
 	</style>
 	
@@ -545,9 +537,9 @@
 	                  		<div style = "display:block;">
 	                  		<label>이메일</label>
 	                  		</div>
-				                  	<input type="text" name="email_id" id="email_id" class="email_id input_warn" required style= "width: 201px; height: 45px;">
+				                  	<input type="text" name="email_id" id="email_id" class="email_id input_warn" required style = "width: 201px; height: 45px;">
 				                  	@
-				                  	<input type="text" name="email_domain" id="email_domain" class="email_domain" required style= "width: 201px; height: 45px;">
+				                  	<input type="text" name="email_domain" id="email_domain" class="email_domain" required style ="width: 201px; height: 45px;">
 				                  	 	<select class="selectEmail" name="selectEmail" id="selectEmail">
 											<option value="1">직접입력</option>
 											<option value="naver.com">naver.com</option>

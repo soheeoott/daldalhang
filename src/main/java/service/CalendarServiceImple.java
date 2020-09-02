@@ -20,6 +20,11 @@ public class CalendarServiceImple implements CalendarService{
 	}
 	
 	@Override
+	public List<CalendarVO> eventOne(String frcode) throws Exception {
+		return dao.eventOne(frcode);
+	}
+	
+	@Override
 	public int listCount(CalendarVO vo) {
 		return dao.listCount(vo);
 	}

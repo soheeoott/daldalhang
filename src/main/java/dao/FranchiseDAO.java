@@ -38,7 +38,7 @@ public class FranchiseDAO {
 		return sqlsession.selectList(FD + "franchiseMenu", pvo);
 	}
 	
-	public List<FranchiseVO> franchiseSubMenu(ProductVO pvo) {
+	public List<ProductVO> franchiseSubMenu(ProductVO pvo) {
 		return sqlsession.selectList(FD + "franchiseSubMenu", pvo);
 	}
 	

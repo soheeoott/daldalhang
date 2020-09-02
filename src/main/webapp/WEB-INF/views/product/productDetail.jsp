@@ -16,32 +16,6 @@
 	=> 외부문서 (memberCheck.js) 에 작성 후 활용
 	=> 처리방식 : inCheck05 방식 (focusout(), submit 적용)
 	 -->
-	 <style type="text/css">
-		#footer {
-		    position: absolute;
-		    left: 0;
-		    right: 0;
-		    bottom: -1050px;
-		    width: 100%;
-		    padding: 45px 0;
-		    font-size: 12px;
-		    text-align: center;
-		    background-color: #262626;
-		    margin-top: 0;
-		} 
-		
-		.footer_menu {
-		    width: 100%;
-		    color: white;
-		    font-weight: bold;
-		}
-		
-		hr {
-			border: 0;
-			width: 0;
-		}
-	</style>
-
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var fileTarget = $('.filebox .upload-hidden');

@@ -12,34 +12,38 @@ import vo.CalendarVO;
 public class CalendarDAO {
 	
 	@Autowired
-	private SqlSession dao;
+	private SqlSession sqlsession;
 	private static final String CD="daldal.mappers.calendarMapper.";
 
 	public List<CalendarVO>selectList(CalendarVO vo){
-		return dao.selectList(CD+"selectList", vo);
+		return sqlsession.selectList(CD+"selectList", vo);
+	}
+	
+	public List<CalendarVO> eventOne(String frcode) throws Exception {
+		return sqlsession.selectList(CD+"eventOne", frcode);
 	}
 	
 	public int listCount(CalendarVO vo) {
-		return dao.selectOne(CD+"listCount", vo);
+		return sqlsession.selectOne(CD+"listCount", vo);
 	}
 
 	public CalendarVO selectOne(CalendarVO vo) {
-		return dao.selectOne(CD+"selectDetail", vo);
+		return sqlsession.selectOne(CD+"selectDetail", vo);
 	}
 
 	public int insert(CalendarVO vo) {
-		return dao.insert(CD+"insertCalendar", vo);
+		return sqlsession.insert(CD+"insertCalendar", vo);
 	}
-	
+
 	public int update(CalendarVO vo) {
-		return dao.update(CD+"updateCalendar", vo);
+		return sqlsession.update(CD+"updateCalendar", vo);
 	}
 
 	public int delete(CalendarVO vo) {
-		return dao.delete(CD+"deleteCalendar", vo);
+		return sqlsession.delete(CD+"deleteCalendar", vo);
 	}
 	
 	public CalendarVO CalendarView(String calseq) {
-		return dao.selectOne(CD+"CalendarView", calseq);
+		return sqlsession.selectOne(CD+"CalendarView", calseq);
 	}
 } // class

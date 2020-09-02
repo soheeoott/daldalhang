@@ -13,8 +13,6 @@
     <link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
     <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 
-    <!-- <link rel="shortcut icon" href="resources/newcalendar/cimage/favicon.ico"> -->
-
     <link rel="stylesheet" href="resources/newcalendar/vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href="resources/newcalendar/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href='resources/newcalendar/vendor/css/select2.min.css' />
@@ -24,17 +22,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="resources/newcalendar/css/main.css">
-    
-    <style type="text/css">
-    .fc-day-grid-container.fc-scroller {
-    	height: 100%;/* !important; */
-    }
-    </style>
 </head>
 
 <body>
-
-<!-- 	<hr> -->
 <div>
 
     <div class="container">
@@ -565,7 +555,7 @@
 	  weekNumbers: false,
 	  selectable: true,
 	  weekNumberCalculation: "ISO",
-	  eventLimit: false,
+	  eventLimit: true,
 	  views: {
 	    month: {
 	      eventLimit: 12
@@ -936,7 +926,7 @@
     				var_frcode = "A01";
 			}
 	        
-	        alert("이게 된다고?"+event.title+" "+event.description+" "+event.start+" "+event.end+" "+var_frcode+" "+event._id);	        
+	       /*  alert(event.title+" "+event.description+" "+event.start+" "+event.end+" "+var_frcode+" "+event._id); */	        
 	        
 	       
 	        //일정 업데이트

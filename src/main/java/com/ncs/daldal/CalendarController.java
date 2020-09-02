@@ -36,7 +36,6 @@ public class CalendarController {
 	@Qualifier("calendar")
 	private CalendarService service;
 
-	
 	@RequestMapping(value="/eventinsertf")
 	public ModelAndView eventinsertf(HttpServletRequest request, ModelAndView mv) {
 		
@@ -55,6 +54,7 @@ public class CalendarController {
 	}
 	
 	// eventList.jsp -> 목록형 이벤트 출력 페이지 mapping
+	/*
 	@RequestMapping(value="/eventList")
 	public ModelAndView eventList(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
 
@@ -69,6 +69,47 @@ public class CalendarController {
 		}
 		return mv;
 	} // eventList
+	*/
+	
+	// eventList.jsp -> 목록형 이벤트 출력 페이지 mapping
+	@SuppressWarnings("null")
+	@RequestMapping(value="/eventList")
+	public ModelAndView eventList(HttpServletRequest request, ModelAndView mv, CalendarVO vo) throws Exception {
+
+		List<CalendarVO> avo = new ArrayList<CalendarVO>();
+		avo = service.selectList(vo);
+		
+		List<FranchiseVO> fvo = frservice.selectList();
+
+		if(avo!=null) {
+			mv.addObject("eventList", avo);
+			mv.addObject("fvoList", fvo);
+			mv.setViewName("event/eventList");
+		} else if(avo.size()==0) {
+			mv.addObject("eCode", "1111");
+			mv.setViewName("event/eventList");
+		}
+		return mv;
+	} // eventList
+	
+	// eventList.jsp -> 각 브랜드명 선택 시 해당 브랜드의 이벤트만 return
+	@RequestMapping(value="/eventOne")
+	public ModelAndView eventOne(ModelAndView mv, CalendarVO vo, String frcode) throws Exception {
+		
+		List<CalendarVO> avo = new ArrayList<CalendarVO>();
+		avo = service.eventOne(frcode);
+
+		List<FranchiseVO> fvo = frservice.selectList();
+		
+		if(vo!=null) {
+			mv.addObject("eventList", avo);
+			mv.addObject("fvoList", fvo);
+			mv.setViewName("event/eventList");
+		} else {
+			mv.setViewName("event/eventPage");
+		}
+		return mv;
+	} // eventOne
 	
 	@RequestMapping(value = "/calendar")
 	public ModelAndView Calendar
@@ -90,7 +131,6 @@ public class CalendarController {
 
 	@RequestMapping(value = "/calendarUpdate")
 	public ModelAndView CalendarUpdate(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
-
 		mv.setViewName("jsonView");
 		return mv;
 	}
@@ -108,7 +148,6 @@ public class CalendarController {
 
 	@RequestMapping(value = "/calendarDelete")
 	public ModelAndView CalendarDelete(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
-		
 		mv.setViewName("jsonView");
 		return mv;
 	}

@@ -21,18 +21,6 @@
 				<div class="count">
 				    <!-- 레코드의 갯수를 출력 -->
 				    ${count}개의 
-				         
-				    <!-- 음료/디저트 -->
-				    <%-- 
-				    <c:forEach var="list" items="${mulist}">
-					    <c:if test="${list.mucategory=='coffee'}">커피</c:if>
-						<c:if test="${list.mucategory=='dessert'}">디저트</c:if>
-						<c:if test="${list.mucategory=='drink'}">음료</c:if>
-						<c:if test="${list.mucategory=='food'}">음식</c:if>
-						<c:if test="${list.mucategory=='special'}">스페셜</c:if>
-					</c:forEach>
-					--%>
-					
 					${muname}이(가) 있습니다.
 			    	<br><br><br>
 		    	</div>
@@ -41,23 +29,23 @@
 				<div class="menu_css">
 					<c:forEach var="list" items="${menulist}">
 						<c:if test="${list.mucategory=='coffee'}">
-							<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
+							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
 						</c:if>
 						
 						<c:if test="${list.mucategory=='dessert'}">
-							<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
+							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
 						</c:if>
 						
 						<c:if test="${list.mucategory=='drink'}">
-							<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
+							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
 						</c:if>
 						
 						<c:if test="${list.mucategory=='food'}">
-							<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
+							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
 						</c:if>
 						
 						<c:if test="${list.mucategory=='special'}">
-							<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
+							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
 						</c:if>							
 					</c:forEach>
 					<hr><br>

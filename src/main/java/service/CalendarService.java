@@ -19,4 +19,6 @@ public interface CalendarService {
 	int delete(CalendarVO vo);
 
 	int listCount(CalendarVO vo);
+	
+	List<CalendarVO> eventOne(String frcode) throws Exception;
 }

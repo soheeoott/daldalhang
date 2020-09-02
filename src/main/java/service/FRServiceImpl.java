@@ -46,7 +46,7 @@ public class FRServiceImpl implements FRService {
 	}
 	
 	@Override
-	public List<FranchiseVO> franchiseSubMenu(ProductVO pvo) {
+	public List<ProductVO> franchiseSubMenu(ProductVO pvo) {
 		return dao.franchiseSubMenu(pvo);
 	}
 	

@@ -11,8 +11,8 @@
  	<link rel="stylesheet" type="text/css" href="resources/css/swiper.min.css">
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script> -->
 	
-	<script src="resources/js/productDelete.js"></script>
-	<script src="resources/js/productLike.js"></script>
+	<!-- 좋아요 -->
+	<script src="resources/js/likeFunc.js"></script>
 	
 	<style type="text/css">
 	

@@ -27,17 +27,6 @@
 	    border-radius: 3px;
 	}
 	</style>
-	
-	<script>
-	$(document).ready(function(){
-		$('.dropdown').hover(function(){
-		        if(!$(this).hasClass('open')) { // Keeps it open when hover it again
-		            $('.dropdown-toggle', this).trigger('click');
-		        }
-		});  
-	});
-	</script>
-	
 </head>
 <body>
 	<!-- header -->
@@ -107,24 +96,32 @@
 								</c:if>
 								
 								<c:if test="${list.mucategory=='dessert'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
 								</c:if>
 								
 								<c:if test="${list.mucategory=='drink'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
 								</c:if>
 								
 								<c:if test="${list.mucategory=='food'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
 								</c:if>
 								
 								<c:if test="${list.mucategory=='special'}">
-									<a href="category?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
 								</c:if>					
 							</c:forEach>
 						 </div>
 					</div>
-					<a href="eventPage" class="main_menu">이벤트</a>
+					
+					<div class="dropdown">
+						<a href="eventPage" class="main_menu">이벤트</a>
+						<div class="menu_dropdown" align="center">
+							<a href="eventPage">이벤트 달력</a>
+							<a href="eventList">이벤트 모아보기</a>
+						</div>
+					</div>
+					
 					<a href="maplist" class="main_menu">매장찾기</a>
 					<a href="nlist" class="main_menu">공지사항</a>
 				</div>

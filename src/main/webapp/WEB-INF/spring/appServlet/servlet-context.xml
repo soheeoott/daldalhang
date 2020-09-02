@@ -109,7 +109,7 @@
  	<beans:bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
  		<beans:property name="scope" value="email"></beans:property>
  		<!-- <beans:property name="redirectUri" value="http://localhost:8080/daldal/home"/> 서버 -->
- 		<beans:property name="redirectUri" value="/daldal/home"/> <!-- 서버 -->
+ 		<beans:property name="redirectUri" value="http://daldalhang.appspot.com/daldal/home"/> <!-- 서버 -->
  	</beans:bean>
  	
  	<!-- JsonView 설정 -->
@@ -180,7 +180,36 @@
 			<mvc:mapping path="/franchiseinsertf"/> <!-- 브랜드 등록 -->
 			<mvc:mapping path="/eventinsertf"/> <!-- 이벤트 등록 -->
 
-			<beans:ref  bean="adminInterceptor"/>
+			<beans:ref bean="adminInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<!-- 스프링 모바일부분. -->
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			 <beans:bean class="org.springframework.mobile.device.DeviceWebArgumentResolver" />
+			 <beans:bean class="org.springframework.mobile.device.site.SitePreferenceWebArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+
+	<beans:bean class="org.springframework.mobile.device.view.LiteDeviceDelegatingViewResolver">
+
+	  <beans:constructor-arg>
+	    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	      <beans:property name="prefix" value="/WEB-INF/views/" />
+	      <beans:property name="suffix" value=".jsp" />
+	    </beans:bean>
+	  </beans:constructor-arg>
+
+	  <beans:property name="mobilePrefix" value="mobile/" />
+	  <beans:property name="tabletPrefix" value="mobile/" />
+	  <beans:property name="enableFallback" value="true"/>
+
+	</beans:bean>
+	
+	<mvc:interceptors>
+		<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor"></beans:bean>
+		<beans:bean class="org.springframework.mobile.device.site.SitePreferenceHandlerInterceptor"></beans:bean>
+	</mvc:interceptors>
+	<!-- 스프링 모바일부분 -->
 </beans:beans>

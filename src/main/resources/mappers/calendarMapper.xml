@@ -5,11 +5,11 @@
 <mapper namespace="daldal.mappers.calendarMapper">
 
 	<select id="selectList" resultType="vo.CalendarVO">
-		select 	b.calseq as calseq,
+			select 	b.calseq as calseq,
 				b.caltitle as caltitle,
-				b.calcontent as calcontent,
-				b.start_date as start_date,
-				b.end_date as end_date,
+				b.calcontent as calcontent,				
+ 				b.start_date as start_date,			
+				b.end_date as end_date,							
 				b.editurl as editurl,
 				a.frkname as frkname,
 				b.eventImg as eventImg,
@@ -17,8 +17,13 @@
 				a.frcolor as frcolor,
 				'#ffffff' as textColor,
 				'false' as allday
-		from franchise a, tb_calendar b 
-		where a.frcode = b.frcode
+			from franchise a, tb_calendar b 
+			where a.frcode = b.frcode
+			ORDER BY b.frcode
+	</select>
+	
+	<select id="eventOne" resultType="vo.CalendarVO">
+		SELECT * FROM tb_calendar WHERE frcode=#{frcode}
 	</select>
 	
 	<select id="listCount" resultType="int">
@@ -28,7 +33,7 @@
 	</select>
 	
 	<select id="CalendarView" resultType="vo.CalendarVO">
-		SELECT * FROM tb_calendar WHERE calseq = #{calseq};
+		SELECT * FROM tb_calendar WHERE calseq = #{calseq}
 	</select>
 	
 	<select id="selectDetail" resultType="vo.CalendarVO">
@@ -36,14 +41,8 @@
 	</select>
 	
 	<insert id="insertCalendar" >
-		INSERT INTO tb_calendar(id, caltitle, calcontent, start_date, end_date, frcode, editurl, eventImg) 
-		VALUES('DalDal', #{caltitle}, #{calcontent}, #{start_date}, #{end_date}, #{frcode}, #{editurl}, #{eventuploadfilef})
-		<!-- (SELECT IFNULL(MAX(calseq),0)+1 FROM tb_calendar calseq) -->
-	</insert>
-	
-	<insert id="insert">
-		INSERT INTO tb_calendar(calseq ,id, caltitle, calcontent, start_date, end_date, frcode, editurl, eventImg) 
-		VALUES((SELECT IFNULL(MAX(calseq),0)+1 FROM tb_calendar calseq), 'DalDal', #{caltitle}, #{calcontent}, #{start_date}, #{end_date}, #{frcode}, #{editurl}, #{eventuploadfilef})
+		INSERT INTO tb_calendar(calseq, id, caltitle, calcontent, start_date, end_date, frcode, editurl) 
+		VALUES((SELECT IFNULL(MAX(calseq),0)+1 FROM tb_calendar ift), 'DalDal', #{caltitle}, #{calcontent}, #{start_date}, #{end_date}, #{frcode}, #{editurl})
 	</insert>
 	
 	<update id="updateCalendar">
