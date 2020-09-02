@@ -10,6 +10,11 @@
 <link rel="stylesheet" type="text/css" href="resources/css/mypageStyle.css">
 <link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 <script src="resources/js/jquery-3.2.1.min.js"></script>
+	<style>
+	#footer {
+		bottom: -300px;
+	}
+	</style>
 </head>
 <body>
   <div id = "wrap">
@@ -30,8 +35,8 @@
                 <%-- <input id="input2" type="text" name="email" readonly="readonly" value="${myInfo.email}" style="vertical-align:middle;"> --%>
                  <div id="input2">${myInfo.email_id}@${myInfo.email_domain}</div>
             </div>
-        <!--  <button type="submit" class="button" name="update">내가 즐겨찾는 메뉴</button>&nbsp;&nbsp;&nbsp; -->
-          
+          	<input type="button" class="button" value="내 찜 목록" onclick="location.href='myLikelist'">
+          		&nbsp;&nbsp;&nbsp;
           	<input type="button" class="button" value="이메일 변경" onclick="location.href='mypagef?code=M'">
           		&nbsp;&nbsp;&nbsp;
           	<input type="button" class="button" value="비밀번호 변경" onclick="location.href='mypagef?code=P'">

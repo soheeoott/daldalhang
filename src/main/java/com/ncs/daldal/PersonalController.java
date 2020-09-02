@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.mail.MessagingException;
@@ -30,12 +31,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import service.LLService;
 import service.PSService;
+import vo.LikeListVO;
 import vo.PersonalVO;
 
 @Controller
 public class PersonalController {
-
+	
+	@Autowired
+	LLService llservice;
+	
 	@Autowired
 	PSService service; // 조상으로 정의, 후손으로 생성
 	private GoogleOAuth2Template googleOAuth2Template;
@@ -73,7 +79,25 @@ public class PersonalController {
 		} else if ("D".equals(request.getParameter("code"))) {
 			// 회원탈퇴 화면으로
 			mv.setViewName("personal/deleteForm");
+		} else if ("L".equals(request.getParameter("code"))) {
+			// 좋아요 모아보기 화면으로
+			mv.setViewName("personal/likeList");
 		}
+		return mv;
+	}
+	
+	@RequestMapping(value="/myLikelist")
+	public ModelAndView myLikelist(ModelAndView mv, LikeListVO vo, PersonalVO pvo, HttpSession session) {
+	    
+		// 좋아요 리스트 출력
+		String id =(String)session.getAttribute("logID");
+		vo.setId(id);
+		
+		List<LikeListVO> llist = llservice.selectList(vo);
+		
+		mv.addObject("llist",llist);
+		
+		mv.setViewName("personal/likeList");
 		return mv;
 	}
 	
