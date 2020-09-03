@@ -1,0 +1,5 @@
+ 	@media screen and (max-width: 1200px) { 
+ 		#wrap{ width:1170px;margin: 0 auto; }
+ 		.wrap{ width:1170px;margin: 0 auto; } 
+ 		#map{ width:1200px;height:600px; }
+ 	}

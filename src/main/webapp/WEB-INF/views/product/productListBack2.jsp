@@ -15,9 +15,6 @@
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<!-- <link rel="stylesheet" href="resources/modal/css/bootstrap.min.css"> -->
 	
-	<!-- [IE 9] -->
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -36,104 +33,78 @@
 		return false;
 	}
 	</script>
-	
-	<style type="text/css">
-/* 	img {
-    display: block;
-    width: 255px;
-    height: 300px;
-    margin: 0 0 15px;
-    position: relative;
-	} */
-
-	/* #plist .pdurl .img:after { */
-	#url img::after {
-    display: block;
-    content: "자세히보기";
-    width: 156px;
-    height: 156px;
-    position: absolute;
-   /*  top: 50%;
-    left: 50%; */
-    margin: -78px 0 0 -78px;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    transition: all .2s;
-    text-indent: -9999px;
-    z-index: 10;
-	}
-	</style>
 </head>
-<body id="wrap">
+<body>
+<div id="wrap">
 	<div id="product_box" align="center">
 		
-		<nav id="topMenu" > <!-- topMenu -->
-			<ul>
-				<c:forEach var="list" items="${menulist}">
-					<c:if test="${list.mucategory=='coffee'}">
-						<li>
-							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
-						</li>
-					</c:if>
-					
-					<c:if test="${list.mucategory=='dessert'}">
-						<li>
-							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
-						</li>
-					</c:if>
-					
-					<c:if test="${list.mucategory=='drink'}">
-						<li>
-							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
-						</li>
-					</c:if>
-					
-					<c:if test="${list.mucategory=='food'}">
-						<li>
-							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
-						</li>
-					</c:if>
-					
-					<c:if test="${list.mucategory=='special'}">
-						<li>
-							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
-						</li>
-					</c:if>	
-				</c:forEach>
-			</ul>
-		</nav>
-		<br><br><br><br><br><br>
+		<!-- 2020.08.03 product menu name 출력 -->
+		<div class="menu_css">
+			<c:forEach var="list" items="${menulist}">
+				<c:if test="${list.mucategory=='coffee'}">
+					<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
+				</c:if>
+				
+				<c:if test="${list.mucategory=='dessert'}">
+					<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
+				</c:if>
+				
+				<c:if test="${list.mucategory=='drink'}">
+					<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
+				</c:if>
+				
+				<c:if test="${list.mucategory=='food'}">
+					<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
+				</c:if>
+				
+				<c:if test="${list.mucategory=='special'}">
+					<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
+				</c:if>					
+			</c:forEach>
+			<hr><br>
 			
+			<c:forEach var="cpdlist" items="${cpdlist}" end="5">
+					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
+			</c:forEach>
+			
+			<br>
+			
+			<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
+					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
+			</c:forEach>		
+			
+		</div>
+		<br><br><br>
 		<div class="container">
 			<div class="main">
 				<div class="productList">
 						<c:forEach var="list" items="${pdlist}" varStatus="vs">
 						
-						<div class="plist" id="plist">
+						<div class = "plist">
 							<div>
-								<div id="url">
+								<p>
 									<a href ="${list.pdurl}" target="_blank" class="pdurl">
-											<img src="${list.pduploadfile}" width="200" height="200" class="img">
+										<img src="${list.pduploadfile}" width="200" height="200">
 									</a>
-								</div>
-								
-								<form id="form" name="form" method="post" onsubmit="return false;">
-									<div class="lbutton">
-										<c:choose>
-											<c:when test="${logID ne null}">
-												<c:if test="${list.liked=='t'}" >
-													<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
-												</c:if>
-												<c:if test="${list.liked!='t'}">
-													<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
-												</c:if>
-											</c:when>
-											<c:otherwise>
-												<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
-											</c:otherwise>
-										</c:choose>
-									</div>
-								</form>
+									
+									<form id="form" name="form" method="post" onsubmit="return false;">
+										<div class="lbutton">
+											<c:choose>
+												<c:when test="${logID ne null}">
+													<c:if test="${list.liked=='t'}" >
+														<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+													</c:if>
+													<c:if test="${list.liked!='t'}">
+														<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+													</c:if>
+												</c:when>
+												<c:otherwise>
+													<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
+												</c:otherwise>
+											</c:choose>
+										</div>
+									</form>
+								</p>
 								
 								<div class="namelist">
 									<div class="fname">
@@ -253,6 +224,8 @@
 		  
 		</div>   
 	</div>
+</div>
+<hr>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

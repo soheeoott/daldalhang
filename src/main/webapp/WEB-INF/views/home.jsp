@@ -353,6 +353,7 @@
       uniqueNavElements: true,
       paginationClickable: true,
       autoplayDisableOnInteraction: false,
+      freeMode: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,

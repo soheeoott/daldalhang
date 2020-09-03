@@ -1,11 +1,13 @@
 package com.ncs.daldal;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -24,7 +26,6 @@ import service.CalendarService;
 import service.FRService;
 import vo.CalendarVO;
 import vo.FranchiseVO;
-import vo.ProductVO;
 
 @Controller
 public class CalendarController {
@@ -46,49 +47,48 @@ public class CalendarController {
 		return mv;
 	}
 	
-	// eventPage.jsp -> 달력형, 목록형 이벤트 출력 페이지 mapping
-	@RequestMapping(value="/eventPage")
-	public ModelAndView eventPage(HttpServletRequest request, ModelAndView mv) {
-		mv.setViewName("event/eventPage");
+	// eventCalPage.jsp -> 달력형 이벤트 출력 페이지 mapping
+	@RequestMapping(value="/eventCalPage")
+	public ModelAndView eventCalPage(HttpServletRequest request, ModelAndView mv) {
+		mv.setViewName("event/eventCalPage");
 		return mv;
 	}
-	
+
 	// eventList.jsp -> 목록형 이벤트 출력 페이지 mapping
 	@SuppressWarnings("null")
 	@RequestMapping(value="/eventList")
-	public ModelAndView eventList(HttpServletRequest request, ModelAndView mv, CalendarVO vo) throws Exception {
-
-		List<CalendarVO> avo = new ArrayList<CalendarVO>();
-		avo = service.selectList(vo);
+	public ModelAndView eventList(ModelAndView mv, CalendarVO vo, HttpServletResponse response) throws Exception {
+		response.setCharacterEncoding("UTF-8");
 		
+		List<CalendarVO> avo = service.selectList(vo);
 		List<FranchiseVO> fvo = frservice.selectList();
 
 		if(avo!=null) {
 			mv.addObject("eventList", avo);
 			mv.addObject("fvoList", fvo);
-			mv.setViewName("event/eventList");
+			mv.setViewName("event/eventList"); 
 		} else if(avo.size()==0) {
 			mv.addObject("eCode", "1111");
-			mv.setViewName("event/eventList");
+			mv.setViewName("event/eventList"); 
 		}
 		return mv;
 	} // eventList
 	
 	// eventList.jsp -> 각 브랜드명 선택 시 해당 브랜드의 이벤트만 return
 	@RequestMapping(value="/eventOne")
-	public ModelAndView eventOne(ModelAndView mv, CalendarVO vo, String frcode) throws Exception {
+	public ModelAndView eventOne(ModelAndView mv, CalendarVO vo, String frcode, HttpServletResponse response) throws Exception {
+		response.setCharacterEncoding("UTF-8");
 		
 		List<CalendarVO> avo = new ArrayList<CalendarVO>();
 		avo = service.eventOne(frcode);
-
-		List<FranchiseVO> fvo = frservice.selectList();
 		
-		if(vo!=null) {
-			mv.addObject("eventList", avo);
-			mv.addObject("fvoList", fvo);
-			mv.setViewName("event/eventList");
+		if(avo.size()==0) {
+			System.out.println("출력 불가 메세지 전달");
+			mv.addObject("eCode","1111"); 
+			mv.setViewName("jsonView");
 		} else {
-			mv.setViewName("event/eventPage");
+			mv.addObject("eventList", avo);
+			mv.setViewName("jsonView");
 		}
 		return mv;
 	} // eventOne
@@ -96,17 +96,12 @@ public class CalendarController {
 	@RequestMapping(value = "/calendar")
 	public ModelAndView Calendar
 	(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
-		
-		System.out.println("calendarMain 111");
-
 		mv.setViewName("event/calendar");
 		return mv;
 	}
 
 	@RequestMapping(value = "/calendarInsert")
 	public ModelAndView CalendarInsert(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
-		System.out.println("calendarInsert 111" + vo);
-		System.out.println("calendarInsert 222" + vo);
 		mv.setViewName("jsonView");
 		return mv;
 	}
@@ -138,7 +133,7 @@ public class CalendarController {
 	@ResponseBody
 	public JSONArray viewCal(@RequestParam("curMon") String curMon) {
 		
-		System.out.println("view=1==="+curMon);
+		//System.out.println("view=1==="+curMon);
 		
 		CalendarVO vo = new CalendarVO();
 		vo.setCurMon(curMon);
@@ -150,7 +145,7 @@ public class CalendarController {
 		JSONArray jArray = new JSONArray();
 
 		try {
-			System.out.println("view=2=="+avo.get(0).toString());
+			//System.out.println("view=2=="+avo.get(0).toString());
 			
 			for (int i = 0; i < avo.size(); i++)	{
 				JSONObject sObject = new JSONObject();				
@@ -185,9 +180,6 @@ public class CalendarController {
 		// 이미지를 선택하지 않았을 시
 		String file1, file2 = "No Image";
 		
-		String path = "C:\\img_event"; //폴더 경로
-		File Folder = new File(path);
-		
 		// Ajax 의  FormData 는  이미지를 선택하지 않으면 append 시 오류 발생
 		// append 를 하지 않으면 → 서버의 vo.uploadfilef 에  null 값이 전달 됨
 		// vo.getUploadfilef() → null Check 
@@ -195,24 +187,16 @@ public class CalendarController {
 		// => submit 으로 전송 시 선택하지 않은 경우 '' 전달 : isEmpty() 
 		if(vo.getEventuploadfilef() != null) {
 			eventuploadfilef = vo.getEventuploadfilef();
-			
-			// 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
-			if (!Folder.exists()) {
-				try{
-				    Folder.mkdir(); //폴더 생성합니다.
-				    System.out.println("폴더가 생성되었습니다.");
-			        } 
-			        catch(Exception e){
-				    e.getStackTrace();
-				}        
-			}
 		
 			if(!eventuploadfilef.isEmpty()) {
 				// 실제 저장 경로 생성하고 저장
-				file1="C:/img_event/"+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
+				/* file1 = "C:/apache-tomcat-9.0.34/webapps/daldalhang/" */
+				file1="C:/img_product/"
+				/* file1="C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/daldalhang/" */
+							+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				eventuploadfilef.transferTo(new File(file1));
 				
-				file2="resources/img_event/"+eventuploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
+				file2="resources/img_product/"+eventuploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
 			}				
 		}
 		

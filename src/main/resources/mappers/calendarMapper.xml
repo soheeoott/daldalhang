@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="eventOne" resultType="vo.CalendarVO">
-		SELECT * FROM tb_calendar WHERE frcode=#{frcode}
+		SELECT * FROM tb_calendar WHERE frcode LIKE CONCAT(CONCAT('%',#{frcode}),'%')
 	</select>
 	
 	<select id="listCount" resultType="int">

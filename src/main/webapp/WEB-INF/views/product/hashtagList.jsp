@@ -26,6 +26,25 @@
 		return false;
 	}
 	</script>
+	
+	<script type="text/javascript">
+	function show_more(){
+	var page = $("#menu_page").val();
+	page = page*1;
+		$.ajax({
+			type: 'POST',
+			url: '/inc/ajax_brand.php?gubun=menu_more&product_cate=7&chked_val=&page='+page,						
+			success: function(result) {
+				if(result !="none"){
+					$("#menu_page").val(page+1);
+					$("#menu_ul").append(result);
+				}else{
+					$(".con_btn").hide();
+				}
+			}
+		}); 		
+	}
+	</script>
 </head>
 <body>
 <div id="wrap">
@@ -116,6 +135,11 @@
 							</c:if>
 				        </div>    
 			        </c:forEach>
+			        
+			    <div class="con_btn">
+            		<a class="line_btn" onClick="show_more()" style="cursor:pointer">더보기<span>+</span></a>
+          		</div>
+			        
 			    </div>
 			    <hr> 
 			</div>

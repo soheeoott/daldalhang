@@ -11,10 +11,12 @@
 <script src="resources/js/eventPage.js"></script>
 </head>
 <body>
-<div id="wrap" align="center" id="eventAllTab">
-	<div class="container">
-		<div align="center">		
-			<div id="resultArea01"></div>
+<div div id="calWrap">
+	<div align="center" id="eventAllTab">
+		<div class="container">
+			<div align="center">		
+				<div id="resultArea01"></div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <title>** DalDal **</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" media="screen and (max-width: 768px)" href="resources/css/smallStyle.css" />
+	<link rel="stylesheet" media="screen and (max-width: 992px)" href="resources/css/middleStyle.css" />
+	<link rel="stylesheet" media="screen and (max-width: 1200px)" href="resources/css/largeStyle.css" />
+
 	<link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="resources/js/home.js"></script>
@@ -119,7 +123,7 @@
 					<div class="dropdown">
 						<a href="eventPage" class="main_menu">이벤트</a>
 						<div class="menu_dropdown" align="center">
-							<a href="eventPage">이벤트 달력</a>
+							<a href="eventCalPage">이벤트 달력</a>
 							<a href="eventList">이벤트 모아보기</a>
 						</div>
 					</div>

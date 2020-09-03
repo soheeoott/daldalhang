@@ -7,7 +7,7 @@
 	}
 	
 	.npn_img {
-		margin-bottom:-8px;
+		margin-bottom:-10px;
 	}
 	
 	#paging_num {
@@ -19,7 +19,6 @@
 		font-size:15px;
 		cursor:pointer;
 		color:#F1BCD5;
-		text-decoration:underline;
 		margin-left: 2em;
 	}
 	
@@ -52,16 +51,12 @@
 
 	.plist {
 	float: left;
-    width: 25%;
+    width: 26%;
     height: 500px;
     padding: 0 20px;
-	text-align: center;
+    text-align: center;
 	}
-	
-	.plist p {
-	margin: 8px 0px 8px 0px;
-	}
-	
+
 	.modify {
 	color: white;
     opacity: 0.5;
@@ -120,7 +115,7 @@
 	}
 
 	.limg{
-	width: 10%;
+	width: 13%;
 	}
 
 	.pdurl{
@@ -132,6 +127,10 @@
    	top: 5px;
 	}
 
+	.pagingWrap {
+	margin-top: 50px;
+	}
+	
 	.fname{
 	position: relative;
    	top: -10px;
@@ -156,3 +155,70 @@
 	border:1px solid silver;
 	position: fixed;
 	}
+	
+	/* 메뉴 */
+	#topMenu  {
+		height: 30px;
+		width: 850px; 
+		margin: 30px 0;
+	}
+	
+	#topMenu  ul li {
+	background: rgb(51 38 2 / 70%);
+    list-style: none;
+    float: left;
+    line-height: 45px;
+    vertical-align: middle;
+    text-align: center;
+    }
+    
+    #topMenu  .menuLink {        
+    color: white;   
+	text-decoration: none;
+    display: block;
+    width: 150px;
+    font-size: 15px;
+    border-right: 1px solid gray;
+    }
+    
+    #topMenu  .menuLink:hover {     
+	background: white;      
+	color: black;    
+	transition:background .5s ease;
+	-webkit-transition:background .5s ease;
+	border: 0;
+    }
+    
+    /* 서브 메뉴 */
+	#SubMenu  {
+		height: 30px;
+		width: 850px; 
+		margin: 30px 0;
+	}
+	
+	#SubMenu  ul li {
+	background: rgb(179 153 83 / 70%);
+    list-style: none;
+    float: left;
+    line-height: 45px;
+    vertical-align: middle;
+    text-align: center;
+    }
+    
+    #SubMenu  .menuLink {           
+	color: white;
+	text-decoration: none;
+    display: block;
+    width: 150px;
+    font-size: 15px;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    }
+    
+    #SubMenu  .menuLink:hover {
+    background: white;           
+    color: black;   
+	transition:background .5s ease;
+	-webkit-transition:background .5s ease;
+	border: 0;
+    }

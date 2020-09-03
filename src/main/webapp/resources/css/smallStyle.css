@@ -1,0 +1,6 @@
+	/* @media screen and (max-width: 768px) { */
+	@media (max-width: 768px) { 
+ 		#wrap{ width:750px;margin: 0 auto; }
+ 		.wrap{ width:750px;margin: 0 auto; } 
+ 		#map{ width: 750px;height: 610px; }
+ 	}

@@ -1,51 +1,80 @@
-	/* eventPage.jsp */
-	body{
-		margin-top: 100px;
-		font-family: 'Trebuchet MS', serif;
-		line-height: 1.6;
-		padding-top: -30px;
+	#calWrap {
+		padding-top: 180px;
 	}
+	#eventListwrap {
+		padding-top: 230px;
+		padding-bottom: 70px;
+		position: relative;
+	}
+	
 	.container {
 		width: 1400px;
 		margin: 0 auto;
 	}
-	
-	ul.tabs{
-		margin: 0px;
-		padding: 0px;
-		list-style: none;
-	}
-	ul.tabs li{
-		background: none;
-	 	width: 47.8%;
-	 	font-size: 16px;
-		color: #222;
-		display: inline-block;
-		padding: 10px;
-		cursor: pointer;
+
+	/* eventList.jsp */	
+	.eContainer {
+		width: 1100px;
+		padding-left: 200px;
 	}
 	
-	ul.tabs li.current a {
- 		border-bottom:4px solid pink;
+	#frEventTab {
+		margin-left: -170px;
 	}
 	
-	.tab-content{
-		display: none;
-		padding: 20px;
+	/* 이벤트별 브랜드 드롭다운*/
+	.dropdown {
+	position: relative;
+	display: inline-block;
 	}
 	
-	.tab-content.current{
-		display: inherit;
+	/* 브랜드 선택 */
+	.eventB_menu {
+    font-size: 18px;
+    margin-left: -980px;
+    cursor: pointer;
 	}
 	
-	/* eventList.jsp */
-	#eventListDiv {
-		padding-left:140px;
+	.eventB_menu:hover {
+ 	color: pink;
 	}
 	
+	.event_dropdown {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 170px;
+    z-index: 1;
+    margin-left: -570px;
+    margin-top: -20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    height: 150px;
+    overflow-y: scroll;
+    opacity: 0.9;
+	}
+	
+	.event_dropdown a {
+	color: black;
+    padding: 12px 0px;
+    text-decoration: none;
+    position: relative;
+    left: -5px;
+    display: block;
+    text-align: center;
+	}
+	
+	.event_dropdown a:hover {
+	color: pink;
+	}
+	
+	.dropdown:hover .event_dropdown {
+	display: block;
+	}
+
 	#eventDiv {
 		float: left;
-		padding-right: 20px;
+		padding-right: 40px;
 		padding-bottom: 40px;
 	}
 	
@@ -76,4 +105,8 @@
 	#eventContent{
 		height: 50px;
 		border-top: 1px solid gray;
+	}
+	
+	#eventFooter {
+		bottom: 0;
 	}

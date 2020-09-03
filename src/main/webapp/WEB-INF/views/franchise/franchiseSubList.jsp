@@ -28,6 +28,41 @@
 	}
 	</script>
 	
+	<style type="text/css">
+	/* 프랜차이즈 메뉴 */
+	#franchiseMenu  {
+		height: 30px;
+		width: 850px; 
+		margin: 30px 0;
+	}
+	
+	#franchiseMenu  ul li {
+	background: rgb(51 38 2 / 70%);
+    list-style: none;
+    float: left;
+    line-height: 45px;
+    vertical-align: middle;
+    text-align: center;
+    }
+    
+    #franchiseMenu  .menuLink {        
+    color: white;   
+	text-decoration: none;
+    display: block;
+    width: 150px;
+    font-size: 15px;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    }
+    
+    #franchiseMenu  .menuLink:hover {     
+	background: white;      
+	color: black;    
+	transition:background .5s ease;
+	-webkit-transition:background .5s ease;
+	border: 0;
+    }
+	</style>
 </head>
 <body>
 <div id = "wrap">
@@ -46,20 +81,34 @@
     <br><br><br>
     </div>
 				
-	<!-- 프랜차이즈 메뉴 -->			
-	<div class="menu_css">
-		<c:forEach var="menu" items="${frachiseMenu}" end="6">
-				<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
-		</c:forEach>
-		
-		<br>
-		
-		<c:forEach var="menu" items="${frachiseMenu}" begin="7">
-				<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
-		</c:forEach>
-	</div>
+		<!-- 프랜차이즈 서브 메뉴 -->
+		<nav id="franchiseMenu" > <!-- topMenu -->
+			<ul>
+				<c:forEach var="menu" items="${frachiseMenu}" end="4">
+					<li>
+						<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
+					</li>
+				</c:forEach>
+			</ul>
+			
+			<ul>
+				<c:forEach var="menu" items="${frachiseMenu}" begin="5" end="9">
+					<li>
+						<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
+					</li>
+				</c:forEach>
+			</ul>
+			
+			<ul>
+				<c:forEach var="menu" items="${frachiseMenu}" begin="10">
+					<li>
+						<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
+					</li>
+				</c:forEach>
+			</ul>
+		</nav>
+		<br><br><br><br><br><br>
 	
-		<br><br><br>
 		<div class="container">
 			<div class="main">
 				<div class="productList">
@@ -115,7 +164,7 @@
 							
 			            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
 			            		<a href="hashtagList?keyword=${hashtag}">
-			            			<span class = "hashtagsplit"># ${hashtag}</span>
+			            			<span class = "hashtagsplit"> #${hashtag}</span>
 			            		</a>
 			            	</c:forEach>
 						</div>

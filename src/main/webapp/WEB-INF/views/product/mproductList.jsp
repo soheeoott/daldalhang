@@ -38,41 +38,71 @@
 			    	<br><br><br>
 		    	</div>
 		    	
-		    	<!-- 2020.08.03 product menu name 출력 -->
-				<div class="menu_css">
-					<c:forEach var="list" items="${menulist}">
-						<c:if test="${list.mucategory=='coffee'}">
-							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
-						</c:if>
-						
-						<c:if test="${list.mucategory=='dessert'}">
-							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
-						</c:if>
-						
-						<c:if test="${list.mucategory=='drink'}">
-							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
-						</c:if>
-						
-						<c:if test="${list.mucategory=='food'}">
-							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
-						</c:if>
-						
-						<c:if test="${list.mucategory=='special'}">
-							<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
-						</c:if>							
-					</c:forEach>
-					<hr><br>
+		<nav id="topMenu" > <!-- topMenu -->
+			<ul>
+				<c:forEach var="list" items="${menulist}">
+					<c:if test="${list.mucategory=='coffee'}">
+						<li>
+							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
+						</li>
+					</c:if>
 					
-					<c:forEach var="cpdlist" items="${cpdlist}" end="5">
-							<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
-					</c:forEach>
-					<br><br>
+					<c:if test="${list.mucategory=='dessert'}">
+						<li>
+							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
+						</li>
+					</c:if>
 					
-					<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
-							<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
-					</c:forEach>		
-				</div>
-				<br><br><br>
+					<c:if test="${list.mucategory=='drink'}">
+						<li>
+							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
+						</li>
+					</c:if>
+					
+					<c:if test="${list.mucategory=='food'}">
+						<li>
+							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
+						</li>
+					</c:if>
+					
+					<c:if test="${list.mucategory=='special'}">
+						<li>
+							<a class="menuLink" href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
+						</li>
+					</c:if>	
+				</c:forEach>
+			</ul>
+		</nav>
+			
+		<!-- 서브메뉴 -->	
+		<nav id="SubMenu" > <!-- topMenu -->
+			<ul>
+				<c:forEach var="cpdlist" items="${cpdlist}" end="4">
+					<li>
+						<a class="menuLink" href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
+					</li>
+				</c:forEach> 
+				
+			</ul>
+			
+			<ul>	
+				<c:forEach var="cpdlist" items="${cpdlist}" begin="5" end="9">
+					<li>
+						<a class="menuLink" href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
+					</li>
+				</c:forEach>
+			</ul>
+			
+			<ul>	
+				<c:forEach var="cpdlist" items="${cpdlist}" begin="10">
+					<li>
+						<a class="menuLink" href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
+					</li>
+				</c:forEach>
+			</ul>
+		</nav>
+		<br><br><br><br><br><br>
+				
 				<div class="container">
 					<div class="main">
 						<div class="productList">
