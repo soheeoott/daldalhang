@@ -13,7 +13,6 @@
 <script>
 $(document).ready(function(){
     $('#siOkbtn').on('click', function(){
-    	//alert($('#m_id').val());
         $.ajax({
             type: 'POST',
             url: '/daldal/findid',
@@ -63,10 +62,9 @@ $(document).ready(function(){
 			<div id="siInputTextBoxes">
 				
 				<div class="siInputText">
-					<input type="text" maxlength="50" class="siInputTextBox_Email"
-						id="email_id" placeholder="이메일">@ <input type="text"
-						maxlength="50" class="siInputTextBox_Email" id="email_domain"
-						placeholder="도메인">
+					<input type="text" maxlength="50" class="siInputTextBox_Email"id="email_id" placeholder="이메일">
+					@ 
+					<input type="text"maxlength="50" class="siInputTextBox_Email" id="email_domain" placeholder="도메인">
 				</div>
 			</div>
 			

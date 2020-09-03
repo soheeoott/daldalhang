@@ -159,6 +159,7 @@
     					<!-- 네이버로 로그인을 위한 설정 -->
 						<%
    							String clientId = "DZbaIchlFW7qOqVHBCip";//애플리케이션 클라이언트 아이디값"; 6S696taO_GdRdtrcL2WK
+   							// 로그인에 성공하면 만든 페이지로 돌아가는 페이지의 주소
   							String redirectURI = URLEncoder.encode("http://daldalhang.appspot.com/daldal/login?loginFlag=N", "UTF-8");
   							SecureRandom random = new SecureRandom();
    							String state = new BigInteger(130, random).toString();

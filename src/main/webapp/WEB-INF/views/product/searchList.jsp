@@ -14,6 +14,18 @@
 	<!-- 좋아요 -->
 	<script src="resources/js/likeFunc.js"></script>
 	
+	<!-- 상품 삭제 -->
+	<script src="resources/js/productDelete.js"></script>
+	
+	<!-- 외부 주소 인식 안됨 -->
+	<script>
+	function login() {
+		if (confirm("로그인 후 이용해주세요.")) {
+			window.location.href ="/daldal/loginf";
+		}
+		return false;
+	}
+	</script>
 </head>
 <body>
 <div id="wrap">
@@ -50,7 +62,7 @@
 													</c:if>
 												</c:when>
 												<c:otherwise>
-													<a href="loginf" ><img src="resources/image/emptyheart.png" class="limg"></a>
+													<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
 												</c:otherwise>
 											</c:choose>
 										</div>
@@ -81,7 +93,7 @@
 					            
 				            	<c:forEach var="hashtag" items="${fn:split(map.hashtag,'#')}">
 				            		<a href="hashtagList?keyword=${hashtag}">
-				            			<span class = "hashtagsplit"># ${hashtag}</span>
+				            			<span class="hashtagsplit"> #${hashtag}</span>
 				            		</a>
 				            	</c:forEach>
 				        	</div>
@@ -92,7 +104,8 @@
 										<div class = "modify">수정</div>
 									</a>
 									
-									<a href="pdelete?pdseq=${map.pdseq}">
+									<a onclick="remove(${map.pdseq})">
+									<%-- <a href="javascript:void(0);" onclick="remove(${map.pdseq})"> --%>
 										<div class = "delete">삭제</div>
 									</a>
 								</div>

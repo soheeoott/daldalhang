@@ -54,24 +54,6 @@ public class CalendarController {
 	}
 	
 	// eventList.jsp -> 목록형 이벤트 출력 페이지 mapping
-	/*
-	@RequestMapping(value="/eventList")
-	public ModelAndView eventList(HttpServletRequest request, ModelAndView mv, CalendarVO vo) {
-
-		List<CalendarVO> avo = new ArrayList<CalendarVO>();
-		avo = service.selectList(vo);
-
-		if(avo!=null) {
-			mv.addObject("eventList", avo);
-			mv.setViewName("event/eventList");
-		} else {
-			mv.setViewName("event/eventPage");
-		}
-		return mv;
-	} // eventList
-	*/
-	
-	// eventList.jsp -> 목록형 이벤트 출력 페이지 mapping
 	@SuppressWarnings("null")
 	@RequestMapping(value="/eventList")
 	public ModelAndView eventList(HttpServletRequest request, ModelAndView mv, CalendarVO vo) throws Exception {
@@ -203,6 +185,9 @@ public class CalendarController {
 		// 이미지를 선택하지 않았을 시
 		String file1, file2 = "No Image";
 		
+		String path = "C:\\img_event"; //폴더 경로
+		File Folder = new File(path);
+		
 		// Ajax 의  FormData 는  이미지를 선택하지 않으면 append 시 오류 발생
 		// append 를 하지 않으면 → 서버의 vo.uploadfilef 에  null 값이 전달 됨
 		// vo.getUploadfilef() → null Check 
@@ -210,16 +195,24 @@ public class CalendarController {
 		// => submit 으로 전송 시 선택하지 않은 경우 '' 전달 : isEmpty() 
 		if(vo.getEventuploadfilef() != null) {
 			eventuploadfilef = vo.getEventuploadfilef();
+			
+			// 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
+			if (!Folder.exists()) {
+				try{
+				    Folder.mkdir(); //폴더 생성합니다.
+				    System.out.println("폴더가 생성되었습니다.");
+			        } 
+			        catch(Exception e){
+				    e.getStackTrace();
+				}        
+			}
 		
 			if(!eventuploadfilef.isEmpty()) {
 				// 실제 저장 경로 생성하고 저장
-				/* file1 = "C:/apache-tomcat-9.0.34/webapps/daldalhang/" */
-				file1="C:/img_product/"
-				/* file1="C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/daldalhang/" */
-							+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
+				file1="C:/img_event/"+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				eventuploadfilef.transferTo(new File(file1));
 				
-				file2="resources/img_product/"+eventuploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
+				file2="resources/img_event/"+eventuploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
 			}				
 		}
 		

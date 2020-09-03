@@ -27,7 +27,7 @@ public class MenuDAO {
 		return sqlsession.selectList(MU + "productList", mvo);
 	}
 	
-	public List<MenuVO> menu() {
+	public List<MenuVO> menu() throws Exception {
 		return sqlsession.selectList(MU + "menu");
 	}
 }

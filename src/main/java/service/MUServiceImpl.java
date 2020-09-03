@@ -30,7 +30,7 @@ public class MUServiceImpl implements MUService {
 	}
 
 	@Override
-	public List<MenuVO> menu() {
+	public List<MenuVO> menu() throws Exception {
 		return dao.menu();
 	}
 }

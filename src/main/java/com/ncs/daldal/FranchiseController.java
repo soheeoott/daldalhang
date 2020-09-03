@@ -62,6 +62,9 @@ public class FranchiseController {
 		
 		// 이미지를 선택하지 않았을 시
 		String file1, file2 = "No Image";
+		
+		String path = "C:\\img_logo"; //폴더 경로
+		File Folder = new File(path);
 
 		// Ajax 의  FormData 는  이미지를 선택하지 않으면 append 시 오류 발생
 		// append 를 하지 않으면 → 서버의 vo.uploadfilef 에  null 값이 전달 됨
@@ -72,10 +75,20 @@ public class FranchiseController {
 			fruploadfilef = fvo.getFruploadfilef();
 			
 			if(!fruploadfilef.isEmpty()) {
+				
+				// 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
+				if (!Folder.exists()) {
+					try{
+					    Folder.mkdir(); //폴더 생성합니다.
+					    System.out.println("폴더가 생성되었습니다.");
+				        } 
+				        catch(Exception e){
+					    e.getStackTrace();
+					}        
+				}
+				
 				// 실제 저장 경로 생성하고 저장
-				/*file1 = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_logo/"*/
-				file1 = "C:/resources/img_logo/"
-							+fruploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
+				file1="C:/img_logo/"+fruploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				fruploadfilef.transferTo(new File(file1));
 				file2="resources/img_logo/"+fruploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
 			}
@@ -142,10 +155,12 @@ public class FranchiseController {
 	
 	@RequestMapping(value="/franchiseSortList")
 	public ModelAndView franchiseSortList(
-			HttpSession session, ModelAndView mv, ProductVO pvo, LikeListVO vo) throws Exception{
+			HttpSession session, ModelAndView mv, ProductVO pvo, LikeListVO vo, FranchiseVO fvo, String frkname) throws Exception{
 	    
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
+		
+		System.out.println("frkname=>" + frkname);
 		
 		// 레코드의 갯수
 		int count = frservice.fsortCount(pvo);
@@ -162,6 +177,7 @@ public class FranchiseController {
 		
 		mv.addObject("count", count);
 		mv.addObject("frcode", pvo.getFrcode());
+		mv.addObject("frkname", frkname);
 		
 		/* 좋아요 */
 		String id =(String)session.getAttribute("logID");
@@ -186,7 +202,7 @@ public class FranchiseController {
 	}
 	
 	@RequestMapping(value="/frlist")
-	public ModelAndView frlist(HttpSession session, ModelAndView mv) {
+	public ModelAndView frlist(HttpSession session, ModelAndView mv) throws Exception {
 		
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);

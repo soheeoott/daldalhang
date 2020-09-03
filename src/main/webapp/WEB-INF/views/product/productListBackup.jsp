@@ -20,19 +20,6 @@
 
 	<!-- 좋아요 -->
 	<script src="resources/js/likeFunc.js"></script>
-	
-	<!-- 상품 삭제 -->
-	<script src="resources/js/productDelete.js"></script>
-	
-	<!-- 외부 주소 인식 안됨 -->
-	<script>
-	function login() {
-		if (confirm("로그인 후 이용해주세요.")) {
-			window.location.href ="/daldal/loginf";
-		}
-		return false;
-	}
-	</script>
 </head>
 <body>
 <div id="wrap">
@@ -99,11 +86,112 @@
 													</c:if>
 												</c:when>
 												<c:otherwise>
-													<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
+													<a href="loginf" ><img src="resources/image/emptyheart.png" class="limg"></a>
 												</c:otherwise>
 											</c:choose>
 										</div>
 									</form>
+									
+									<!-- 아래에서 data-toggle과 data-target 속성에서 data-toggle에는 modal 값을 data-target속성에는 모달 창 전체를 
+									감싸는 div의 id 이름을 지정하면 된다. -->
+									
+									<!--  
+									<script>
+								    function sampleModalPopup(){
+								        // 호출
+								        $("#sampleModalPopup > .modal-dialog").load(url, function() { 
+								            $("#sampleModalPopup").modal("show"); 
+								        });
+								    }
+									</script>
+									
+									<div class="modal fade" id="sampleModalPopup" role="dialog" tabindex="-1">
+									    <div class="modal-dialog modal-dialog-width1000 modal-dialog-height800">
+									        <div class="modal-header">
+									            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+									        </div>
+									        <div class="modal-body">
+									        </div>
+									        <div class="modal-footer">
+									            <button type="button" name="button" class="btn btn-color2" data-dismiss="modal" >닫기</button>
+									        </div>
+									    </div>
+									</div>
+									-->
+									
+									<!--  
+									<a data-toggle="modal" href="#myModal">상품 상세</a>
+								 	-->
+									
+									<!--  
+									<script>
+									function myModal(){
+								        // 호출
+								        $("#myModal > .modal-dialog").load(url, function() { 
+								            $("#myModal").modal("show"); 
+								        });
+								    }
+									</script>
+									 -->
+									 
+									<%-- 
+									<button id="myModal" type="button" 
+										onclick="document.getElementById('myModal${vs.index}').style.display='block'" onclick="myModal()">
+										상품 상세</button>
+									--%>
+									
+								  	<!-- 부트스트랩의 모달 창을 사용할려면 아래의 class 이름들을 그대로 사용해야 한다. 변경하면 모양이 달라짐 -->
+								  	
+								  	  <!-- <div class="modal fade" id="myModal" role="dialog"> 사용자 지정 부분① : id명
+									    <div class="modal-dialog"> -->
+									    
+									<!--									    
+									<button type="button" data-toggle="modal" data-target="#myModal${vs.index}">상품 상세</button>
+									&nbsp;&nbsp;
+									-->
+									
+									  <!-- Modal -->
+									  <!--
+									  <div class="modal fade" id="myModal${vs.index}" role="dialog"> <!-- 사용자 지정 부분① : id명 -->
+									 
+									    <!-- <div class="modal-dialog"> -->
+
+									      <!-- Modal content-->
+									      <!-- <div class="modal-content">
+									        <div class="modal-header">
+									          <button type="button" class="close" data-dismiss="modal">×</button> -->
+									          <!-- 사용자 지정 부분② : 타이틀 -->
+									          <!-- <h4 class="modal-title">모달 창 타이틀</h4> --> 
+									        <!-- </div>
+									
+									        <div class="modal-body"> -->
+									          <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
+									          	
+									          	<%-- <img src="${list.pduploadfile}" width="200" height="200">
+												<a href ="${list.pdurl}" target="_blank" class="pdurl">홈페이지로 이동</a>
+												
+												<div class="input_box">
+													<input type = "text" class="form-control" name = "comment" id = "comment">
+												</div> --%>
+					
+												<!-- 
+												<div>
+													<button type="button" class="modal_modify_btn">수정</button>
+													<button type="button" class="modal_delete_btn">삭제</button>
+											 	</div>
+											 	-->
+									        
+									        <!-- </div>
+									
+									        <div class="modal-footer">
+									          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+									        </div>
+									        
+									      </div>
+									    </div>
+									  </div>
+									<br/><br/> -->
+									
 								</p>
 								
 								<div class="namelist">
@@ -129,7 +217,7 @@
 								
 				            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
 				            		<a href="hashtagList?keyword=${hashtag}">
-				            			<span class="hashtagsplit"> #${hashtag}</span>
+				            			<span class = "hashtagsplit"># ${hashtag}</span>
 				            		</a>
 				            	</c:forEach>
 							</div>
@@ -140,7 +228,8 @@
 										<div class = "modify">수정</div>
 									</a>
 
-									<a onclick="remove(${list.pdseq})">
+									<%-- pdelete?pdseq=${list.pdseq}"> --%>
+									<a href="#" onclick="remove(${list.pdseq})">
 										<div class = "delete">삭제</div>
 									</a>
 								</div>

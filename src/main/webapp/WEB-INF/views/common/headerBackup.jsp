@@ -19,7 +19,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script> 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 	
-	<!-- <link rel="stylesheet" type="text/css" href="resources/modal/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="resources/modal/css/bootstrap.min.css">
 	
 	
 	<style>
@@ -82,11 +82,13 @@
 			</div>
 			<!-- 메인 메뉴 -->
 			<div id="menubar">
-
+		
+				<div class = "logo">
+					<a href="home">
+						<img src="resources/image/logo2.png" width="150" alt="Logo">
+					</a>
+				</div>
 				<div class = "menu">
-					
-					<a href="home" class="main_menu">달달행</a>
-					
 					<a href="frlist" class="main_menu">브랜드</a>
 					
 					<div class="dropdown">

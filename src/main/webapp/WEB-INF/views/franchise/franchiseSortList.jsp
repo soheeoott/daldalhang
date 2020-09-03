@@ -15,6 +15,19 @@
 	<!-- 좋아요 -->
 	<script src="resources/js/likeFunc.js"></script>
 	
+	<!-- 상품 삭제 -->
+	<script src="resources/js/productDelete.js"></script>
+	
+	<!-- 외부 주소 인식 안됨 -->
+	<script>
+	function login() {
+		if (confirm("로그인 후 이용해주세요.")) {
+			window.location.href ="/daldal/loginf";
+		}
+		return false;
+	}
+	</script>
+	
 </head>
 <body>
 <div id = "wrap">
@@ -26,11 +39,11 @@
 	
 	<div class="container">
 	
+	<!-- 레코드의 갯수 출력 -->
 	<div class="count">
-	    <!-- 레코드의 갯수를 출력 -->
 	    ${count}개의 
-	    
-	    <c:if test="${frcode=='A01'}">공차가</c:if>
+	    ${frkname}가(이) 있습니다.
+	    <%-- <c:if test="${frcode=='A01'}">공차가</c:if>
         <c:if test="${frcode=='A02'}">던킨도너츠가</c:if>
         <c:if test="${frcode=='A03'}">뚜레쥬르가</c:if>
         <c:if test="${frcode=='A04'}">메가커피가</c:if>
@@ -42,35 +55,21 @@
         <c:if test="${frcode=='A10'}">투썸 플레이스가</c:if>
         <c:if test="${frcode=='A11'}">파리바게뜨가</c:if>
         <c:if test="${frcode=='A12'}">파스쿠찌가</c:if>
-        <c:if test="${frcode=='A13'}">흑화당이</c:if>
-		있습니다.
+        <c:if test="${frcode=='A13'}">흑화당이</c:if> --%>
     <br><br><br>
     </div>
 				
-	<!-- 2020.08.12 franchise menu 출력 -->
+	<!-- 프랜차이즈 메뉴 -->			
 	<div class="menu_css">
-	
 		<c:forEach var="menu" items="${frachiseMenu}" end="6">
 				<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
 		</c:forEach>
 		
+		<br>
+		
 		<c:forEach var="menu" items="${frachiseMenu}" begin="7">
 				<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
 		</c:forEach>
-		
-		<br>
-		
-		<hr><br>
-		
-		<c:forEach var="cpdlist" items="${cpdlist}" end="5">
-				<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
-		</c:forEach>
-		
-		<br>
-		
-		<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
-				<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
-		</c:forEach>		
 	</div>
 	
 		<br><br><br>
@@ -99,7 +98,7 @@
 													</c:if>
 												</c:when>
 												<c:otherwise>
-													<a href="loginf"><img src="resources/image/emptyheart.png" class="limg"></a>
+													<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
 												</c:otherwise>
 											</c:choose>
 										</div>
@@ -142,8 +141,7 @@
 										<div class = "modify">수정</div>
 									</a>
 
-									<%-- pdelete?pdseq=${list.pdseq}"> --%>
-									<a href="#" onclick="remove(${list.pdseq})">
+									<a onclick="remove(${list.pdseq})">
 										<div class = "delete">삭제</div>
 									</a>
 								</div>

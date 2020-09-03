@@ -25,7 +25,6 @@ $(function() {
 </head>
 <body>
 <div align="center" id="wrap">
-	
 	<div>
 		<a id="notice_title" href="nlist">
 			공지사항

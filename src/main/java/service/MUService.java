@@ -12,5 +12,5 @@ public interface MUService {
 	
 	List<MenuVO> productList(MenuVO mvo);
 	
-	List<MenuVO> menu();
+	List<MenuVO> menu() throws Exception;
 }

@@ -10,11 +10,23 @@
 <title></title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" type="text/css" href="resources/css/franchiseListStyle.css"> -->
 	<link rel="stylesheet" type="text/css" href="resources/css/productStyle.css">
 	
 	<!-- 좋아요 -->
 	<script src="resources/js/likeFunc.js"></script>
+	
+	<!-- 상품 삭제 -->
+	<script src="resources/js/productDelete.js"></script>
+	
+	<!-- 외부 주소 인식 안됨 -->
+	<script>
+	function login() {
+		if (confirm("로그인 후 이용해주세요.")) {
+			window.location.href ="/daldal/loginf";
+		}
+		return false;
+	}
+	</script>
 	
 </head>
 <body>
@@ -27,40 +39,26 @@
 	
 	<div class="container">
 	
+	<!-- 레코드의 갯수 출력 -->
 	<div class="count">
-	    <!-- 레코드의 갯수를 출력 -->
 	    ${count}개의 
 		${mkname}가(이) 있습니다.
     <br><br><br>
     </div>
 				
-	<!-- 2020.08.12 franchise menu 출력 -->
-		<div class="menu_css">
-			
-			<c:forEach var="menu" items="${frachiseMenu}" end="6">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
-			</c:forEach>
-			
-			<br>
-			
-			<c:forEach var="menu" items="${frachiseMenu}" begin="7">
-					<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
-			</c:forEach>
-			
-			<hr><br>
-			<%-- 
-			<c:forEach var="cpdlist" items="${cpdlist}" end="5">
-					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
-			</c:forEach>
-			
-			<br>
-			
-			<c:forEach var="cpdlist" items="${cpdlist}" begin="6">
-					<a href="mpdlist?mucategory=${cpdlist.mucategory}&muname=${cpdlist.muname}">${cpdlist.muname}</a>
-			</c:forEach>
-			--%>	
-			
-		</div>
+	<!-- 프랜차이즈 메뉴 -->			
+	<div class="menu_css">
+		<c:forEach var="menu" items="${frachiseMenu}" end="6">
+				<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
+		</c:forEach>
+		
+		<br>
+		
+		<c:forEach var="menu" items="${frachiseMenu}" begin="7">
+				<a href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
+		</c:forEach>
+	</div>
+	
 		<br><br><br>
 		<div class="container">
 			<div class="main">
@@ -86,7 +84,7 @@
 												</c:if>
 											</c:when>
 											<c:otherwise>
-												<a href="loginf"><img src="resources/image/emptyheart.png" class="limg"></a>
+												<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
 											</c:otherwise>
 										</c:choose>
 									</div>
@@ -128,8 +126,7 @@
 									<div class = "modify">수정</div>
 								</a>
 
-								<%-- pdelete?pdseq=${list.pdseq}"> --%>
-								<a href="#" onclick="remove(${list.pdseq})">
+								<a onclick="remove(${list.pdseq})">
 									<div class = "delete">삭제</div>
 								</a>
 							</div>
@@ -141,11 +138,6 @@
 		</div>
 	</div>
 </div>		
-<%-- 
-<c:if test="${message != null}">
- => ${message}
-</c:if> 
---%>
 </div><hr>
 <%@ include file="../common/footer.jsp" %>
 </body>

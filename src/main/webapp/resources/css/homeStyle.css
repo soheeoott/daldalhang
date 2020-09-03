@@ -46,19 +46,39 @@
 	
 	/* 같은 셀 안에서 br태그의 효과가 있도록 */
 	br { mso-data-placement:same-cell; } 
+
+	.wrap {
+		padding-top: 250px;
+		padding-right:15px;
+		padding-left:15px;
+		margin-right:auto;
+		margin-left:auto
+	}
 	
 	#wrap {
-	padding-top: 220px;
+		padding-top: 250px;
+		padding-right:15px;
+		padding-left:15px;
+		margin-right:auto;
+		margin-left:auto
 	}
 	
-	.wrap {
-	padding-top: 220px;
+	@media (min-width:1200px){
+ 		#wrap{width:1170px}
+ 		.swiper-container {}
+ 	}
+ 	
+ 	@media (min-width:992px){
+ 		#wrap{width:970px}
+ 		.swiper-container {}
+ 	}
+ 	
+	@media (min-width:768px){
+		#wrap{width:750px}
+		.swiper-container {}
 	}
 	
-	.homeWrap {
-    position: relative;
-    top: 250px;
-	}
+	.container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
 	
 	#header {
 	position: fixed;
@@ -82,6 +102,12 @@
 	max-width:1000px;
 	}
 	
+	.footer_menu {
+    width: 100%;
+    color: white;
+	font-weight: bold;
+	}
+	
 	.main {
 	width:auto;
 	height:auto;
@@ -95,7 +121,7 @@
 	.menu {
     position: relative;
     left: -45px;
-    top: -50px;
+    top: 30px;
 	}
 	
 	/* 메인 메뉴 */
@@ -117,7 +143,7 @@
 	
 	.main_menu {
     font-size: 23px;
-    margin-left: 5.1em;
+    margin-left: 2.5em;
 	}
 	
 	.main_menu:hover {
@@ -142,8 +168,6 @@
     background: white;
     min-width: 150px;
     z-index: 1;
-    padding-top: 18px;
-    padding-bottom: 15px;
     border-radius: 3px;
 	}
 	
@@ -164,6 +188,7 @@
 	position: relative;
 	left: -5px;
 	display: block;
+	text-align: center;
 	}
 	
 	.menu_dropdown a:hover {
@@ -288,7 +313,7 @@
 	    cursor:pointer;
 	}
 	
-	/* footer */
+	/*
 	#footer {
 		position: absolute;
 		left: 0;
@@ -300,6 +325,17 @@
 		text-align: center;
 		background-color: #262626;
 	} 
+	 */
+	 
+	#footer {
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 60px;
+    padding: 45px 0;
+    text-align: center;
+    background-color: #262626;
+	}
 	
 	.footer_menu {
 	    width: 100%;
@@ -320,4 +356,4 @@
 	    position: relative;
 	    left: -200px;
 	    top: -350px;
-	}
+	}	

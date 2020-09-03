@@ -43,7 +43,7 @@ public class HomeController {
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
 	public String home
 	(Locale locale, ModelAndView mv, HttpSession session, HttpServletRequest request, 
-			LikeListVO vo, @ModelAttribute("cri") PageMaker pageMaker) {
+			LikeListVO vo, @ModelAttribute("cri") PageMaker pageMaker) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Device device = DeviceUtils.getCurrentDevice(request);

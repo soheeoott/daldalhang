@@ -50,6 +50,7 @@ public class PersonalController {
 	@Inject
 	private JavaMailSender mailSender;
 	
+	/* 마이페이지 */
 	@RequestMapping(value = "/mypagef")
 	public ModelAndView mypagef(HttpServletRequest request, ModelAndView mv, PersonalVO vo) {
 
@@ -86,6 +87,7 @@ public class PersonalController {
 		return mv;
 	}
 	
+	/* 좋아요 목록 */
 	@RequestMapping(value="/myLikelist")
 	public ModelAndView myLikelist(ModelAndView mv, LikeListVO vo, PersonalVO pvo, HttpSession session) {
 	    
@@ -101,6 +103,7 @@ public class PersonalController {
 		return mv;
 	}
 	
+	/* 비밀번호 변경 처리 */
 	@RequestMapping(value = "/pwupdate")
 	public ModelAndView pwupdate(HttpServletRequest request, 
 			ModelAndView mv, PersonalVO vo) throws IOException {
@@ -117,6 +120,7 @@ public class PersonalController {
 		return mv;
 	}
 	
+	/* 회원 탈퇴 */
 	@RequestMapping(value = "/delete")
 	public ModelAndView mdelete(HttpServletRequest request, ModelAndView mv, PersonalVO vo) {
 		
@@ -137,6 +141,7 @@ public class PersonalController {
 		return mv;
 	}
 	
+	/* 이메일 변경 전송 */
 	@RequestMapping("/eupdateM")
 	public ModelAndView eupdate(ModelAndView mv, PersonalVO vo) throws MessagingException, UnsupportedEncodingException {
 
@@ -155,6 +160,7 @@ public class PersonalController {
 		return mv;
 	}
 	
+	/* 이메일 변경 처리 */
 	@RequestMapping(value = "/eupdate", method = RequestMethod.GET)
 	public ModelAndView eupdateSuccess(HttpServletResponse response, HttpServletRequest request, PersonalVO vo, ModelAndView mv,
 			@RequestParam String id, @RequestParam String email_id, @RequestParam String email_domain) {
@@ -176,6 +182,7 @@ public class PersonalController {
 		return mv;
 	}
 	
+	/* 회원가입 이메일 인증 전송 */
 	@RequestMapping("/join")
 	public ModelAndView join(ModelAndView mv, PersonalVO vo) throws MessagingException, UnsupportedEncodingException {
 
@@ -196,6 +203,7 @@ public class PersonalController {
 		return mv;
 	}
 
+	/* 이메일 인증 처리 */
 	@RequestMapping(value = "/verify", method = RequestMethod.GET)
 	public ModelAndView joinSuccess(ModelAndView mv,
 				@RequestParam String email_id, @RequestParam String email_domain) {
@@ -213,6 +221,7 @@ public class PersonalController {
 	}
 	
 	// 구글 소셜 로그인 설정 => servlet-context.xml
+	/* 로그인 처리 */
 	@RequestMapping("/login")
 	public ModelAndView login(ModelAndView mv, PersonalVO vo, HttpServletRequest request) throws Exception {
 		
@@ -426,25 +435,29 @@ public class PersonalController {
 		}
 			return mv;
 	}
-			
+	
+	/* 아이디 중복 체크 */
 	@RequestMapping(value = "/personal/idCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public int idCheck(@RequestParam("Id") String id) {
 		return service.IdCheck(id);
 	}
 
+	/* 회원가입 폼 */
 	@RequestMapping(value = "/joinf")
 	public ModelAndView joinf(ModelAndView mv) {
 		mv.setViewName("personal/joinForm");
 		return mv;
 	}
 
+	/* 로그인 폼 */
 	@RequestMapping(value = "/loginf")
 	public ModelAndView loginf(ModelAndView mv) {
 		mv.setViewName("personal/loginForm");
 		return mv;
 	}
 
+	/* 로그아웃 */
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, PersonalVO vo) {
 		
@@ -453,18 +466,20 @@ public class PersonalController {
 		return mv;
 	}
 	
+	/* 아이디, 비밀번호 찾기 폼 */
 	@RequestMapping(value = "/searchf")
 	public ModelAndView searchf(ModelAndView mv) {
 		mv.setViewName("personal/searchIdpass");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/findidf")
-	public ModelAndView findidf(ModelAndView mv) {
-		mv.setViewName("personal/searchIdpass");
+	@RequestMapping(value="/pwupdatef")
+	public ModelAndView pwupdatef (ModelAndView mv) {
+		mv.setViewName("personal/pwupdateForm");
 		return mv;
 	}
 	
+	/* 아이디 찾기 처리 */
 	@RequestMapping(value = "/findid", method = RequestMethod.POST)
 	public @ResponseBody String findid(HttpServletRequest request) {
 		System.out.println("아이디찾기");
@@ -488,6 +503,7 @@ public class PersonalController {
 		}
 	}
 
+	/* 비밀번호 찾기 처리 */
 	@ResponseBody
 	@RequestMapping(value = "/findpw", method = RequestMethod.POST)
 	public void findpw(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
@@ -501,11 +517,22 @@ public class PersonalController {
 		vo.setEmail_id(email_id);
 		vo.setEmail_domain(email_domain);
 		
+		/*
 		String temp_pw = "te" + id + "mp";
 		vo.setPassword(temp_pw);
-		
 		service.pwupdate(vo);
+		*/
 		
+		MailHandler sendMail = new MailHandler(mailSender);
+		sendMail.setText(
+				new StringBuffer().append("<h1>비밀번호 변경</h1>")
+				.append("가입해주셔서 감사합니다.<br><a href='http://daldalhang.appspot.com/daldal/pwupdatef?id=" + id)
+				.append("' target='_blenk'>비밀번호 변경 페이지</a>").toString());
+		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
+		sendMail.setTo(vo.getEmail_id() + "@" + vo.getEmail_domain());
+		sendMail.send();
+		
+		/*
 		MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setSubject("[비밀번호 찾기]");
 		sendMail.setText(
@@ -515,5 +542,6 @@ public class PersonalController {
 		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
 		sendMail.setTo(vo.getEmail_id() + "@" + vo.getEmail_domain());
 		sendMail.send();
+		*/
 	}
 }	

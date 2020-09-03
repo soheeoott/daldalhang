@@ -121,8 +121,8 @@
 <div id="wrap">
 	<div class="container">
 		<div class="main">
-            <div class="form">
-            	<form action = "pdinsert" name="product" method = "post" enctype="multipart/form-data"> <!-- img [enctype="multipart/form-data"] -->
+            <div class="form"> <!-- 수정 URL -->
+            	<form action = "#" name="product" method = "post" enctype="multipart/form-data"> <!-- img [enctype="multipart/form-data"] -->
 
 					<!-- 동적 셀렉트 박스 ---------------------------------------------------------------------------->
 					<div class="input_box"> <!-- padding-left: 20px; -->

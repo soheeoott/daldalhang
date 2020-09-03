@@ -1,21 +1,24 @@
-function remove(drop) {
-	console.log("pdseq="+drop);
+function remove(pdseq) {
+	console.log("pdseq="+pdseq);
 	
-	$.ajax({
-		type: "Post",
-		url: "pdelete",
-		data:{
-			pdseq: drop
-		},
-		success:function(data){
-			
-			if(data.deleteCode=="deleteS"){
-				alert("삭제 성공");
-				window.location.reload();
-			}else{
-				alert("삭제 실패");
-				window.location.reload();
+	if (confirm("삭제 하시겠습니까 ?")) {
+		$.ajax({
+			type: "Post",
+			url: "pdelete",
+			data:{
+				pdseq: pdseq
+			},
+			success:function(data){
+				
+				if(data.deleteCode=="deleteS"){
+					alert("삭제 성공");
+					location.reload()
+				}else{
+					alert("삭제 실패");
+					location.reload()
+				}
 			}
-		}
-	}); //ajax
+		});
+	}
+	return false;
 }
