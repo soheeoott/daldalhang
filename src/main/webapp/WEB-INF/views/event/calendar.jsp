@@ -137,8 +137,9 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-eventImage">이미지 주소</label>
-                                <input class="inputModal" type="text" name="edit-eventImage" id="edit-eventImage" />
+                                <label class="col-xs-4" for="edit-eventImage">업로드</label><br>
+								<input class="upload-name" value="파일선택" disabled="disabled">
+								<input type="file" id="ex_filename" name = "eventuploadfilef" class="upload-hidden">
                             </div>
                         </div>
                                                
