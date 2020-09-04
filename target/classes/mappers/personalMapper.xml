@@ -21,7 +21,8 @@
 	</select>
 	
 	<update id = "verify" parameterType="String">
-		update personal set verify='y' where email_id = #{email_id} and email_domain = #{email_domain}
+		<!-- update personal set verify='y' where email_id = #{email_id} and email_domain = #{email_domain} -->
+		update personal set verify='y' where id=#{id} and email_id=#{email_id} and email_domain=#{email_domain}
 	</update>
 
 	<select id="findid" resultType="vo.PersonalVO">

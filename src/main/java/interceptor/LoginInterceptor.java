@@ -45,7 +45,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>location.href='/daldal/loginf'; alert('로그인 후 이용해주세요.');</script> "); // 코드부여
+			out.println("<script>location.href='loginf'; alert('로그인 후 이용해주세요.');</script> "); // 코드부여
 			/* out.flush(); */
 			
 			return false ;

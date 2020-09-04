@@ -20,7 +20,7 @@
 					<c:forEach var="list" items="${frlist}">
 						<div class = "frlist">
 							<div class = "frwrap">
-								<a href = "franchiseSortList?frcode=${list.frcode}&frkname${list.frkname}">
+								<a href = "franchiseSortList?frcode=${list.frcode}&frkname=${list.frkname}">
 									<img src="${list.fruploadfile}" width="200" height="200">
 									<p class="frkname">${list.frkname}</p> 
 										
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 	</div>
-</div><hr>
+</div>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

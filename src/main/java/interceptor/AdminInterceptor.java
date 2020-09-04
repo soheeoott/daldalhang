@@ -44,7 +44,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>location.href='/daldal/home'; alert('관리자 권한이 필요합니다.');</script>"); // 코드부여
+			out.println("<script>location.href='home'; alert('관리자 권한이 필요합니다.');</script>"); // 코드부여
 			/* out.flush(); */
 			
 			return false ;

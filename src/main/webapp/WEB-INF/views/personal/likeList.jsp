@@ -34,22 +34,19 @@ $(function() {
 			<strong class="j_title">내 찜 목록</strong>
 			  <div class="mypage">
 				<div class="productList">
-						<c:forEach var="list" items="${llist}">
-						
+					<c:forEach var="list" items="${llist}">
 						<div class = "plist">
-							<p>
-								<a href = "${list.pdurl}" target="_blank" class="pdurl">
-									<img src="${list.pduploadfile}" width="200" height="200">
-								</a>
-								
-								<input type="hidden" name="id" id="id" value="${logID}">
-								<form id="form" name="form" method="post" onsubmit="return false;">
-								
-								<div class="lbutton">
-										<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
-								</div>
-								</form>
-							 </p>
+							<a href = "${list.pdurl}" target="_blank" class="pdurl">
+								<img src="${list.pduploadfile}" width="200" height="200">
+							</a>
+							
+							<input type="hidden" name="id" id="id" value="${logID}">
+							<form id="form" name="form" method="post" onsubmit="return false;">
+							
+							<div class="lbutton">
+									<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+							</div>
+							</form>
 							
 							<div class="namelist">
 							<div class="fname">
@@ -76,7 +73,6 @@ $(function() {
 			            			<span class = "hashtagsplit">#${hashtag} </span>
 			            		</a>
 			            	</c:forEach>
-			            	
 						</div>
 					</c:forEach>
 				</div>

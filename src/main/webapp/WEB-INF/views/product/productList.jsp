@@ -53,8 +53,6 @@
     width: 156px;
     height: 156px;
     position: absolute;
-   /*  top: 50%;
-    left: 50%; */
     margin: -78px 0 0 -78px;
     filter: alpha(opacity=0);
     opacity: 0;
@@ -102,7 +100,7 @@
 				</c:forEach>
 			</ul>
 		</nav>
-		<br><br><br><br><br><br>
+		<hr>
 			
 		<div class="container">
 			<div class="main">

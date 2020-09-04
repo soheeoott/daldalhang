@@ -101,7 +101,7 @@
 				</c:forEach>
 			</ul>
 		</nav>
-		<br><br><br><br><br><br>
+		<hr>
 				
 				<div class="container">
 					<div class="main">

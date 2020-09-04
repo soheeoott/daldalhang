@@ -24,6 +24,112 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 	
 	<!-- <link rel="stylesheet" type="text/css" href="resources/modal/css/bootstrap.min.css"> -->
+	
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing:  border-box;
+	}
+	
+	.admin {
+	    width: 150px;
+	    text-align: center;
+	    border: 1px solid lightgray;
+	    padding: 8px;
+	    border-radius: 3px;
+	}
+	
+	/* 
+		부모 요소에 
+		display: flex;
+		justify-content: center;
+		align-item: center; 
+		를 적용하면 자식 요소가
+		부모 요소의 정가운데 배치 
+	*/
+	#mainMenu {
+		width: 100%;
+		height: 56px;
+		border-bottom: 1px solid rgba(0,0,0,0.1);
+		display: flex;								/* flex : 1차원 레이아웃 방식으로 요소를 가로 혹은 세로 한 줄로 배치할 때 유용. 원하는 요소를 가운데 정렬할 때도 유용 */
+		flex-flow: column nowrap;
+		align-items: center;
+		justify-content: center; 
+	}
+	
+	/* 
+		display: flex를 원하는 부모 요소에게 주고 (ul 요소에 적용)
+		justify-content: space-evenly를 적용하면 
+		자식인 메뉴 아이템들이 간격을 유지하고 예쁘게 배열 
+	*/
+	.listGnb {
+		list-style: none;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly; 
+		align-items: center;
+		width: 70%;
+		height: inherit;
+	}
+	
+	.listGnb > li > a {
+		font-weight: bold;
+		color: #454569;
+		text-decoration: none;
+		text-align: center;
+		display: block;
+		border-bottom: 2px solid transparent;
+		padding: 4px 0;
+	}
+	
+	.listGnb > li > a:hover {
+		border-bottom: 2px solid currentColor;
+	}
+	
+	#megaMenu {
+		display: none;
+		width: 100%;
+	    height: 320px;
+	    background: #182952;
+	    position: absolute;
+	    top: 92px;
+	    left: 0;
+	    opacity: 0.3;
+	}
+	
+	.listLnb {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		float: left;
+		width: 33.3333%;
+		height: inherit;
+	}
+	
+	.listLnb > li {
+		padding: 26px 50px 0;
+	}
+	
+	.listLnb > li > a {
+		color: #bbb;
+		text-decoration: none;
+	}
+	
+	.listLnb > li:hover a,
+	.listLnb > li:active a {
+	}
+	
+	/* .listGnb > li:hover #megaMenu {
+		display: block;
+		opacity: 1;
+	} */
+	
+	.listGnb:hover #megaMenu {
+		display: block;
+		opacity: 1;
+	}
+	</style>
 </head>
 <body>
 	<!-- header -->
@@ -75,8 +181,8 @@
 			<!-- 메인 메뉴 -->
 			<nav id="mainMenu">
 				<ul class="listGnb">
-						<li><a href="home">로고</a></li>
-						<li><a href="frlist">브랜드</a>
+						<li><a href="#">로고</a></li>
+						<li><a href="#">브랜드</a>
 							<div id="megaMenu">
 								<ul class="listLnb 01">
 									<c:forEach var="list" items="${menulist}">
@@ -109,15 +215,65 @@
 							</div>
 						</li>
 						
-						<li><a href="listPage">메뉴</a></li>
+						<li><a href="#">메뉴</a></li>
 						
-						<li><a href="eventCalPage">이벤트</a></li>
+						<li><a href="#">이벤트</a> <!-- eventCalPage --></li>
 						
-						<li><a href="maplist">매장찾기</a></li>
+						<li><a href="#">매장찾기</a></li>
 						
-						<li><a href="nlist">공지사항</a></li>
+						<li><a href="#">공지사항</a></li>
 				</ul>
 			</nav>
+			
+			<!-- 메인 메뉴 
+			<div id="menubar">
+
+				<div class = "menu">
+					
+					<a href="home" class="main_menu">달달행</a>
+					
+					<a href="frlist" class="main_menu">브랜드</a>
+					
+					<div class="dropdown">
+						<a href="listPage" class="main_menu">메뉴</a>
+						<div class="menu_dropdown">
+							<c:forEach var="list" items="${menulist}">
+								<c:if test="${list.mucategory=='coffee'}">
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">커피</a>
+								</c:if>
+								
+								<c:if test="${list.mucategory=='dessert'}">
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">디저트</a>
+								</c:if>
+								
+								<c:if test="${list.mucategory=='drink'}">
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음료</a>
+								</c:if>
+								
+								<c:if test="${list.mucategory=='food'}">
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">음식</a>
+								</c:if>
+								
+								<c:if test="${list.mucategory=='special'}">
+									<a href="categorylist?mubcode=${list.mubcode}&mucategory=${list.mucategory}">스페셜</a>
+								</c:if>					
+							</c:forEach>
+						 </div>
+					</div>
+					
+					<div class="dropdown">
+						<a href="eventPage" class="main_menu">이벤트</a>
+						<div class="menu_dropdown" align="center">
+							<a href="eventCalPage">이벤트 달력</a>
+							<a href="eventList">이벤트 모아보기</a>
+						</div>
+					</div>
+					
+					<a href="maplist" class="main_menu">매장찾기</a>
+					<a href="nlist" class="main_menu">공지사항</a>
+				</div>
+			</div>
+			-->
 			
 			<!-- 검색창 -->
 			<div class="searchWrap">

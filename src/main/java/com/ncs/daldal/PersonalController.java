@@ -148,10 +148,10 @@ public class PersonalController {
 		MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setSubject("[달달행 이메일 변경 확인]");
 		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
-				.append("이메일 변경을 확인해주세요.<br><a href='http://daldalhang.appspot.com/daldal/eupdate?email_id=" + vo.getEmail_id()
+				.append("이메일 변경을 확인해주세요.<br><a href='http://daldalhang.appspot.com/eupdate?email_id=" + vo.getEmail_id()
 						+ "&email_domain=" + vo.getEmail_domain() + "&id=" + vo.getId())
 				.append("' target='_blenk'>이메일 인증 확인</a>").toString());
-		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
+		sendMail.setFrom("daldalhang.com", "달달행");
 		sendMail.setTo(vo.getEmail_id() + "@" + vo.getEmail_domain());
 		sendMail.send();
 		
@@ -191,10 +191,10 @@ public class PersonalController {
 		MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setSubject("[이메일 인증]");
 		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
-				.append("가입해주셔서 감사합니다.<br><a href='http://daldalhang.appspot.com/daldal/verify?email_id=" + vo.getEmail_id()
+				.append("가입해주셔서 감사합니다.<br><a href='http://daldalhang.appspot.com/verify?email_id=" + vo.getEmail_id()
 						+ "&email_domain=" + vo.getEmail_domain())
 				.append("' target='_blenk'>이메일 인증 확인</a>").toString());
-		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
+		sendMail.setFrom("daldalhang.com", "달달행");
 		sendMail.setTo(vo.getEmail_id() + "@" + vo.getEmail_domain());
 		sendMail.send();
 		
@@ -233,7 +233,7 @@ public class PersonalController {
 			// 네이버 로그인
 			String clientId = "DZbaIchlFW7qOqVHBCip";		//애플리케이션 클라이언트 아이디값"; 6S696taO_GdRdtrcL2WK
 			String clientSecret = "xQ2O40wfQ6";				//애플리케이션 클라이언트 시크릿값"; o67GQ6g1dO
-			String redirectURI = URLEncoder.encode("http://daldalhang.appspot.com/daldal/login", "UTF-8");
+			String redirectURI = URLEncoder.encode("http://daldalhang.appspot.com/login", "UTF-8");
 			String apiURL;
 			apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
 			apiURL += "client_id=" + clientId;
@@ -474,7 +474,9 @@ public class PersonalController {
 	}
 	
 	@RequestMapping(value="/pwupdatef")
-	public ModelAndView pwupdatef (ModelAndView mv) {
+	public ModelAndView pwupdatef (ModelAndView mv, HttpServletRequest request, String id) {
+		id = request.getParameter("id");
+		mv.addObject("id", id);
 		mv.setViewName("personal/pwupdateForm");
 		return mv;
 	}
@@ -526,7 +528,7 @@ public class PersonalController {
 		MailHandler sendMail = new MailHandler(mailSender);
 		sendMail.setText(
 				new StringBuffer().append("<h1>비밀번호 변경</h1>")
-				.append("가입해주셔서 감사합니다.<br><a href='http://daldalhang.appspot.com/daldal/pwupdatef?id=" + id)
+				.append("가입해주셔서 감사합니다.<br><a href='http://daldalhang.appspot.com/pwupdatef?id="+id)
 				.append("' target='_blenk'>비밀번호 변경 페이지</a>").toString());
 		sendMail.setFrom("daldalhang@daldalhang.com", "달달행");
 		sendMail.setTo(vo.getEmail_id() + "@" + vo.getEmail_domain());

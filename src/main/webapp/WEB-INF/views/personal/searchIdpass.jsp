@@ -15,7 +15,7 @@ $(document).ready(function(){
     $('#siOkbtn').on('click', function(){
         $.ajax({
             type: 'POST',
-            url: '/daldal/findid',
+            url: 'findid',
             data: {
                 "email_id" : $('#email_id').val(),
                 "email_domain" : $('#email_domain').val()
@@ -32,10 +32,9 @@ $(document).ready(function(){
     });    //end on    
     
     $('#spwOkbtn').on('click', function(){
-    	//alert($('#m_id').val());
         $.ajax({
             type: 'POST',
-            url: '/daldal/findpw',
+            url: 'findpw',
             data: {
                 "id" : $('#id2').val(),
                 "email_id" : $('#email_id2').val(),
@@ -94,7 +93,7 @@ $(document).ready(function(){
 			
 			<div id="spwTextbox">
 				<p id="spwTextTitle">비밀번호 찾기</p>
-				<p id="spwText">본인인증으로 비밀번호를 변경하세요</p>
+				<p id="spwText">본인인증으로 비밀번호를 변경하세요.</p>
 			</div>
 			
 			<div class="spwInputText">
@@ -122,11 +121,11 @@ $(document).ready(function(){
 					</div>
 					
 					<div class="modalTextBox">
-						<p id="modalText">입력하신 이메일로 임시비밀번호를 보내드렸습니다.</p>
-						<p id="modalText1">임시비밀번호로 로그인 후 비밀번호를 변경하세요.</p>
+						<p id="modalText">입력하신 이메일로 비밀번호 변경 경로를 보내드렸습니다.</p>
+						<p id="modalText1">이메일을 확인해주세요!</p>
 					</div>
 					
-					<img class="close" src="./img/btn_ok_02.png"
+					<img class="close" src="resources/image/btn_ok_02.png"
 						style="cursor: pointer;">
 				</div>
 			</div>

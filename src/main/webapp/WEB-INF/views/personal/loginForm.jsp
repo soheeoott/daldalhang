@@ -143,7 +143,7 @@
 						
 						<div class = "find">
 							<div class = "find_id">	
-								<a href="findidf">아이디/비밀번호 찾기</a> 
+								<a href="searchf">아이디/비밀번호 찾기</a> 
 									<span class = "stick">|</span>
 							</div>
 							
@@ -160,7 +160,7 @@
 						<%
    							String clientId = "DZbaIchlFW7qOqVHBCip";//애플리케이션 클라이언트 아이디값"; 6S696taO_GdRdtrcL2WK
    							// 로그인에 성공하면 만든 페이지로 돌아가는 페이지의 주소
-  							String redirectURI = URLEncoder.encode("http://daldalhang.appspot.com/daldal/login?loginFlag=N", "UTF-8");
+  							String redirectURI = URLEncoder.encode("http://daldalhang.appspot.com/login?loginFlag=N", "UTF-8");
   							SecureRandom random = new SecureRandom();
    							String state = new BigInteger(130, random).toString();
    							String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -171,8 +171,8 @@
   						%>
 
     		
-    					<div class = "socialform">
-        					<div class = "btn" align="center">
+    					<div class= "socialform">
+        					<div class= "btn" align="center">
         							
         							 <!-- 네이버 로그인 버튼 -->
         							<div class="sbtn">

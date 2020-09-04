@@ -41,8 +41,8 @@
 	</select>
 	
 	<insert id="insertCalendar" >
-		INSERT INTO tb_calendar(calseq, id, caltitle, calcontent, start_date, end_date, frcode, editurl) 
-		VALUES((SELECT IFNULL(MAX(calseq),0)+1 FROM tb_calendar ift), 'DalDal', #{caltitle}, #{calcontent}, #{start_date}, #{end_date}, #{frcode}, #{editurl})
+		INSERT INTO tb_calendar(calseq, id, caltitle, calcontent, start_date, end_date, frcode, editurl, eventImg) 
+		VALUES((SELECT IFNULL(MAX(calseq),0)+1 FROM tb_calendar ift), 'DalDal', #{caltitle}, #{calcontent}, #{start_date}, #{end_date}, #{frcode}, #{editurl}, #{eventuploadfilef})
 	</insert>
 	
 	<update id="updateCalendar">

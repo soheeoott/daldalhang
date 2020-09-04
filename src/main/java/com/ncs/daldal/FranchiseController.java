@@ -103,7 +103,6 @@ public class FranchiseController {
 			// 실패
 			mv.setViewName("home");
 		}
-		
 		return mv;
 	}
 	

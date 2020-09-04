@@ -28,12 +28,25 @@
 	}
 	</script>
 	
+	<script>
+	$(function() {
+		$(".plist").slice(0,6).show();
+		$("#more_btn").click(function(e) {
+			e.preventDefault();
+			$(".plist:hidden").slice(0,6).show();
+			if($(".plist:hidden").length==0){
+				alert("마지막 상품 입니다.");
+			}
+		});
+	});	
+	</script>
+	
 	<style type="text/css">
 	/* 프랜차이즈 메뉴 */
 	#franchiseMenu  {
-		height: 30px;
-		width: 850px; 
-		margin: 30px 0;
+	height: 30px;
+	width: 850px; 
+	margin: 30px 0;
 	}
 	
 	#franchiseMenu  ul li {
@@ -62,66 +75,73 @@
 	-webkit-transition:background .5s ease;
 	border: 0;
     }
+    
+    .plist {
+	display: none;
+    }
+    
+    #more_btn {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 10px 40px;
+    position: relative;
+    font-size: 20px;
+    top: 20px;
+    margin-left: 50px;
+	}
+	
+	.more {
+		width: 100%;
+		height: 100%;
+	}
 	</style>
 </head>
 <body>
 <div id = "wrap">
 	<div id="product_box" align="center">
-		
-		<div class="btn_nlist" align="left">
-				<input type="button" value="브랜드 홈" class="brandHomebutton" onclick="location.href='http://localhost:8080/daldal/frlist'">
-		</div>
-		
 		<div class="container">
+
+			<!-- 레코드의 갯수 출력 -->
+			<div class="count">
+			    ${count}개의 
+			    ${frkname}가(이) 있습니다.
+		    </div>
+	    
+	    	<hr>
 		
-		<!-- 레코드의 갯수 출력 -->
-		<div class="count">
-		    ${count}개의 
-		    ${frkname}가(이) 있습니다.
-		    <%-- <c:if test="${frcode=='A01'}">공차가</c:if>
-	        <c:if test="${frcode=='A02'}">던킨도너츠가</c:if>
-	        <c:if test="${frcode=='A03'}">뚜레쥬르가</c:if>
-	        <c:if test="${frcode=='A04'}">메가커피가</c:if>
-	        <c:if test="${frcode=='A05'}">빽다방이</c:if>
-	        <c:if test="${frcode=='A06'}">스타벅스가</c:if>
-	        <c:if test="${frcode=='A07'}">이디야가</c:if>
-	        <c:if test="${frcode=='A08'}">쥬씨가</c:if>
-	        <c:if test="${frcode=='A09'}">설빙이</c:if>
-	        <c:if test="${frcode=='A10'}">투썸 플레이스가</c:if>
-	        <c:if test="${frcode=='A11'}">파리바게뜨가</c:if>
-	        <c:if test="${frcode=='A12'}">파스쿠찌가</c:if>
-	        <c:if test="${frcode=='A13'}">흑화당이</c:if> --%>
-	    <br><br><br>
-	    </div>
-		
-		<!-- 프랜차이즈 메뉴 -->	
-		<nav id="franchiseMenu" > <!-- topMenu -->
-			<ul>
-				<c:forEach var="menu" items="${frachiseMenu}" end="4">
-					<li>
-						<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
-					</li>
-				</c:forEach>
-			</ul>
+			<!-- 프랜차이즈 메뉴 -->	
+			<nav id="franchiseMenu">
+				<ul>
+					<c:forEach var="menu" items="${frachiseMenu}" end="4">
+						<li>
+							<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
+						</li>
+					</c:forEach>
+				</ul>
+				
+				<hr>
+				
+				<ul>
+					<c:forEach var="menu" items="${frachiseMenu}" begin="5" end="9">
+						<li>
+							<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
+						</li>
+					</c:forEach>
+				</ul>
+				
+				<hr>
+				
+				<ul>
+					<c:forEach var="menu" items="${frachiseMenu}" begin="10">
+						<li>
+							<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
+						</li>
+					</c:forEach>
+				</ul>
+			</nav>
 			
-			<ul>
-				<c:forEach var="menu" items="${frachiseMenu}" begin="5" end="9">
-					<li>
-						<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
-					</li>
-				</c:forEach>
-			</ul>
+			<hr>
 			
-			<ul>
-				<c:forEach var="menu" items="${frachiseMenu}" begin="10">
-					<li>
-						<a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a>
-					</li>
-				</c:forEach>
-			</ul>
-		</nav>
-		<br><br><br><br><br><br>
-		
 			<div class="container">
 				<div class="main">
 					<div class="productList">
@@ -129,58 +149,55 @@
 							
 							<div class = "plist">
 								<div>
-								
-								<p>
-									<a href = "${list.pdurl}" target="_blank" class="pdurl">
+									<a href="${list.pdurl}" target="_blank" class="pdurl">
 										<img src="${list.pduploadfile}" width="200" height="200">
 									</a>
 									
-										<form id="form" name="form" method="post" onsubmit="return false;">
-											<div class="lbutton">
-												<c:choose>
-													<c:when test="${logID ne null}">
-														<c:if test="${list.liked=='t'}" >
-															<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
-														</c:if>
-														<c:if test="${list.liked!='t'}">
-															<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
-														</c:if>
-													</c:when>
-													<c:otherwise>
-														<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
-													</c:otherwise>
-												</c:choose>
-											</div>
-										</form>	
-								</p>
+									<form id="form" name="form" method="post" onsubmit="return false;">
+										<div class="lbutton">
+											<c:choose>
+												<c:when test="${logID ne null}">
+													<c:if test="${list.liked=='t'}" >
+														<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+													</c:if>
+													<c:if test="${list.liked!='t'}">
+														<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+													</c:if>
+												</c:when>
+												<c:otherwise>
+													<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
+												</c:otherwise>
+											</c:choose>
+										</div>
+									</form>	
 								
-								<div class="namelist">
-									<div class="fname">
-										<c:if test="${list.frcode=='A01'}"><p class = "brand">공차</p></c:if>
-							            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
-							            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
-							            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
-							            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
-							            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
-							            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
-							            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
-							            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-							            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
-							            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
-							            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
-							            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
-									</div>
+									<div class="namelist">
+										<div class="fname">
+											<c:if test="${list.frcode=='A01'}"><p class = "brand">공차</p></c:if>
+								            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
+								            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
+								            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
+								            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
+								            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
+								            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
+								            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
+								            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
+								            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
+								            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
+								            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
+								            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
+										</div>
+									
+									<p class="pname">${list.pdname}</p>
+									<p class="prname">${list.price} 원</p>
+									
+									</div>		
 								
-								<p class="pname">${list.pdname}</p>
-								<p class="prname">${list.price} 원</p>
-								
-								</div>		
-								
-				            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
-				            		<a href="hashtagList?keyword=${hashtag}">
-				            			<span class = "hashtagsplit"> #${hashtag}</span>
-				            		</a>
-				            	</c:forEach>
+					            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
+					            		<a href="hashtagList?keyword=${hashtag}">
+					            			<span class = "hashtagsplit"> #${hashtag}</span>
+					            		</a>
+					            	</c:forEach>
 								
 								</div>
 								
@@ -196,13 +213,19 @@
 									</div>
 								</c:if>
 							</div>
+							
 						</c:forEach>
 					</div>
+					
+					<div class="more">
+						<a id="more_btn">+ 더 보기</a>
+					</div>
+					
 				</div>
 			</div>
 		</div>
 	</div>		
-</div><hr>
+</div>
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

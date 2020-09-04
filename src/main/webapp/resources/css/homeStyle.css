@@ -56,33 +56,11 @@
 	#wrap {
 		padding-top: 250px;
 		margin-right:auto;
-		margin-left:auto
+		margin-left:auto;
+		width: 100%;
+    	height: 100%;
 	}
-	
-	/* @media (min-width:1200px){
- 		#wrap{width:1170px;margin: 0 auto;}
- 		.wrap{width:1170px;margin: 0 auto;}
- 		.swiper-container {}
- 	}
- 	
- 	@media (min-width:992px){
- 		#wrap{width:970px;margin: 0 auto;}
- 		.wrap{width:970px;margin: 0 auto;}
- 		.swiper-container {}
- 	}
- 	
-	@media (min-width:768px){
-		.wrap{width:750px;margin: 0 auto;}
-	}
-	
-	@media (min-width:768px){
-		#wrap{width:750px;margin: 0 auto;}
-	}
-	
-	@media (min-width:768px){
-		#map {width: 750px;height: 610px;}
-	} */
-	
+
 	.container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
 	
 	#header {
@@ -121,6 +99,113 @@
     position: relative;
     left: -45px;
     top: 30px;
+	}
+	
+	/* * {
+		margin: 0;
+		padding: 0;
+		box-sizing:  border-box;
+	} */
+	
+	.admin {
+	    width: 150px;
+	    text-align: center;
+	    border: 1px solid lightgray;
+	    padding: 8px;
+	    border-radius: 3px;
+	}
+	
+	/* 메인 메가 메뉴 */
+	/* 
+		부모 요소에 
+		display: flex;
+		justify-content: center;
+		align-item: center; 
+		를 적용하면 자식 요소가
+		부모 요소의 정가운데 배치 
+	*/
+	#mainMenu {
+		width: 100%;
+		height: 56px;
+		/* border-bottom: 1px solid rgba(0,0,0,0.1); */
+		display: flex;								/* flex : 1차원 레이아웃 방식으로 요소를 가로 혹은 세로 한 줄로 배치할 때 유용. 원하는 요소를 가운데 정렬할 때도 유용 */
+		flex-flow: column nowrap;
+		align-items: center;
+		justify-content: center; 
+	}
+	
+	/* 
+		display: flex를 원하는 부모 요소에게 주고 (ul 요소에 적용)
+		justify-content: space-evenly를 적용하면 
+		자식인 메뉴 아이템들이 간격을 유지하고 예쁘게 배열 
+	*/
+	.listGnb {
+		list-style: none;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly; 
+		align-items: center;
+		width: 70%;
+		height: inherit;
+	}
+	
+	.listGnb > li > a {
+		font-weight: bold;
+		color: #454569;
+		text-decoration: none;
+		text-align: center;
+		display: block;
+		padding: 4px 0;
+	}
+	
+	.listGnb > li > a:hover {
+	}
+	
+	#megaMenu {
+		display: none;
+		width: 100%;
+	    height: 320px;
+	    background: #182952;
+	    position: absolute;
+	    top: 92px;
+	    left: 0;
+	}
+	
+	.listLnb {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		float: left;
+		width: 33.3333%;
+		height: inherit;
+	}
+	
+	.listLnb > li {
+		padding: 26px 50px 0;
+	}
+	
+	.listLnb > li > a {
+		color: #bbb;
+		text-decoration: none;
+	}
+	
+	.listLnb > li:hover a,
+	.listLnb > li:active a {
+	}
+	
+	/* .listGnb > li:hover #megaMenu {
+		display: block;
+		opacity: 1;
+	} */
+	
+	.listGnb:hover #megaMenu {
+		display: block;
+		opacity: 0.3;
+	}
+	
+	.listGnb:active #megaMenu {
+		display: block;
+		opacity: 0.3;
 	}
 	
 	/* 메인 메뉴 */
@@ -241,7 +326,6 @@
 	
 	hr {
     border:none;
-    width:80%;	
 	}
 	
 	#footerHr {
@@ -322,6 +406,7 @@
  	padding: 45px 0;
     text-align: center;
     background-color: #262626;
+	bottom: 0;
 	}
 	
 	.footer_menu {
