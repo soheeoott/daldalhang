@@ -56,6 +56,12 @@
     padding: 0 20px;
     text-align: center;
 	}
+	
+	.mdwrap {
+    position: relative;
+    top: 30px;
+    display: -webkit-inline-box;
+	}
 
 	.modify {
 	color: white;
@@ -78,12 +84,6 @@
     float: left;
     margin-left: 1em;
     border-radius: 3px;
-	}
-	
-	.mdwrap {
-    position: relative;
-    top: 30px;
-    display: -webkit-inline-box;
 	}
 	
 	.hashtagsplit {
@@ -126,15 +126,15 @@
 	position: relative;
    	top: 5px;
 	}
-
-	.pagingWrap {
-	margin-top: 50px;
-	}
 	
 	.fname{
 	position: relative;
    	top: -10px;
 	font-size: 15px;
+	}
+
+	.pagingWrap {
+	margin-top: 50px;
 	}
 
 	.pname{

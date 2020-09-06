@@ -9,36 +9,78 @@
 <title></title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="resources/css/franchiseStyle.css">
+	<!-- <link rel="stylesheet" type="text/css" href="resources/css/franchiseStyle.css"> -->
+	<style>
+	.productList p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-size: 18px;
+	}
+	
+	.productList .frkname {
+	padding: 25px;
+	}
+	
+	.frlist {
+	float: left;
+    width: 33%;
+    height: 380px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 50px;
+	}
+	
+	#hero-no-slider {
+	height: 100%;
+	}
+	</style>
 </head>
 <body>
-<div id="wrap" align="center">
-	<div id = "product_box" align="center">
-		<div class="container">
-			<div class="main">
-				<div class="productList">
-					<c:forEach var="list" items="${frlist}">
-						<div class = "frlist">
-							<div class = "frwrap">
-								<a href = "franchiseSortList?frcode=${list.frcode}&frkname=${list.frkname}">
-									<img src="${list.fruploadfile}" width="200" height="200">
-									<p class="frkname">${list.frkname}</p> 
-										
-									<c:if test="${logID == 'DalDal'}">
-										<div class="mdwrap">
-											<div class="modify">수정</div>
-											<div class="delete">삭제</div>
-										</div>
-									</c:if>
-								</a>
-							</div>
-						</div>
-					</c:forEach>
+<section id="swiperSlider" class="swiperwrap d-flex justify-cntent-center align-items-center" style="margin-top: 180px;">
+	<div class="container">
+		<div class="productList">
+			<c:forEach var="franchise" items="${franchiseList}">
+				<div class = "frlist">
+					<div class = "frwrap">
+						<a href = "franchiseSortList?frcode=${franchise.frcode}&frkname=${franchise.frkname}">
+							<img src="${franchise.fruploadfile}" width="200" height="200">
+							<p class="frkname">${franchise.frkname}</p> 
+								
+							<c:if test="${logID == 'DalDal'}">
+								<div class="mdwrap">
+									<div class="modify">수정</div>
+									<div class="delete">삭제</div>
+								</div>
+							</c:if>
+						</a>
+					</div>
 				</div>
-			</div>
+			</c:forEach>
 		</div>
 	</div>
-</div>
-<%@ include file="../common/footer.jsp" %>
+</section>
+
+	<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script src="resources/assets/vendor/jquery/jquery.min.js"></script>
+	<script src="resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="resources/assets/vendor/php-email-form/validate.js"></script>
+	<script src="resources/assets/vendor/venobox/venobox.min.js"></script>
+	<script src="resources/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+	<script src="resources/assets/vendor/counterup/counterup.min.js"></script>
+	<script src="resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+	<script src="resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="resources/assets/vendor/aos/aos.js"></script>
+	
+	<!-- Template Main JS File -->
+	<script src="resources/assets/js/main.js"></script>
+
 </body>
+<%@ include file="../common/footer.jsp" %>
 </html>

@@ -16,7 +16,7 @@
 
 .swiper-container{
 	width: 800px;
-    height: 800px;
+    height: 660px;
     margin-left:auto;
     margin-right:auto;
     position:relative;
@@ -110,7 +110,7 @@
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	color:pink;
+	color: #8b5700;
 	}
 
 .swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled {opacity:.35;cursor:auto;pointer-events:none}
@@ -149,7 +149,7 @@
 	left:0;
 	width:100%;
     position: absolute;
-    top: 550px;
+    top: 500px;
 	}
 
 .swiper-pagination-bullets-dynamic{overflow:hidden;font-size:0}

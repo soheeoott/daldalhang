@@ -15,7 +15,7 @@
 <div id="eventListwrap" align="center">
 	<div class="eContainer">
 		<div id="eventListDiv">
-			<div class="dropdown">
+			<div class="eventB_div">
 				<p class="eventB_menu">브랜드 선택 ▼</p>
 				<div class="event_dropdown">
 					<a onclick="eventOne('A')">ALL</a>

@@ -200,16 +200,16 @@ public class FranchiseController {
 	    return mv;
 	}
 	
-	@RequestMapping(value="/frlist")
-	public ModelAndView frlist(HttpSession session, ModelAndView mv) throws Exception {
+	@RequestMapping(value="/franchiseList")
+	public ModelAndView franchiseList(HttpSession session, ModelAndView mv) throws Exception {
 		
 		List<MenuVO> menulist = muservice.menu();
 		session.setAttribute("menulist", menulist);
 		
-		List<FranchiseVO> frlist = frservice.selectList();
+		List<FranchiseVO> franchiseList = frservice.selectList();
 		
-		if(frlist != null) {
-			mv.addObject("frlist", frlist);
+		if(franchiseList != null) {
+			mv.addObject("franchiseList", franchiseList);
 		} else {
 			mv.addObject("message", "검색된 자료가 없습니다.");
 		}

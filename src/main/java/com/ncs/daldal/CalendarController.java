@@ -3,6 +3,7 @@ package com.ncs.daldal;
 import java.io.File;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,15 +62,15 @@ public class CalendarController {
 		response.setCharacterEncoding("UTF-8");
 		
 		List<CalendarVO> avo = service.selectList(vo);
-		List<FranchiseVO> fvo = frservice.selectList();
+		List<FranchiseVO> fvo = frservice.selectList();		
 
-		if(avo!=null) {
+		if(avo.size()==0) {
+			mv.addObject("eCode", "1111");
+			mv.setViewName("jsonView");
+		} else {
 			mv.addObject("eventList", avo);
 			mv.addObject("fvoList", fvo);
-			mv.setViewName("event/eventList"); 
-		} else if(avo.size()==0) {
-			mv.addObject("eCode", "1111");
-			mv.setViewName("event/eventList"); 
+			mv.setViewName("event/eventList");
 		}
 		return mv;
 	} // eventList
@@ -82,9 +83,18 @@ public class CalendarController {
 		List<CalendarVO> avo = new ArrayList<CalendarVO>();
 		avo = service.eventOne(frcode);
 		
+		/*
+		 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); java.util.Calendar
+		 * c1 = java.util.Calendar.getInstance(); String strToday =
+		 * sdf.format(c1.getTime());
+		 * 
+		 * System.out.println("Today= "+strToday);
+		 * System.out.println("현재 이벤트들 종료 날짜 = "+avo.get(0));
+		 */
+		
+		
 		if(avo.size()==0) {
-			System.out.println("출력 불가 메세지 전달");
-			mv.addObject("eCode","1111"); 
+			mv.addObject("eCode","1111"); 				// 현재 진행 중인 이벤트가 없습니다.
 			mv.setViewName("jsonView");
 		} else {
 			mv.addObject("eventList", avo);
@@ -206,20 +216,18 @@ public class CalendarController {
 				
 				// 실제 저장 경로 생성하고 저장
 				/* file1 = "C:/apache-tomcat-9.0.34/webapps/daldalhang/" */
-				file1="C:/img_product/"+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
+				file1="C:/img_event/"
+				/* file1="C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/daldalhang/" */
+							+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				eventuploadfilef.transferTo(new File(file1));
+				
 				file2="resources/img_event/"+eventuploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
 			}				
 		}
-		
 		vo.setEventImg(file2);
-		
-		System.out.println("file2=>" + file2);
-		System.out.println("EventImg=>" + vo.getEventImg());
 		
 		if (service.insert(vo) > 0) {
 			// 성공
-			vo.setEventImg(file2);
 			mv.setViewName("event/eventCalPage");
 		} else {
 			// 실패
