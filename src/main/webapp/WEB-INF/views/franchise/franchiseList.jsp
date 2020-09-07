@@ -7,9 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" type="text/css" href="resources/css/franchiseStyle.css"> -->
 	<style>
 	.productList p {
 	display: block;
@@ -37,10 +34,14 @@
 	#hero-no-slider {
 	height: 100%;
 	}
+	
+	.swiperwrap {
+    height: 100%;
+	}
 	</style>
 </head>
 <body>
-<section id="swiperSlider" class="swiperwrap d-flex justify-cntent-center align-items-center" style="margin-top: 180px;">
+<section id="swiperSlider" class="d-flex justify-cntent-center align-items-center" style="margin-top: 180px;">
 	<div class="container">
 		<div class="productList">
 			<c:forEach var="franchise" items="${franchiseList}">

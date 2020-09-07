@@ -19,7 +19,7 @@
 	
 	<!-- Vendor CSS Files -->
 	<link href="resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+	<!-- <link href="resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet"> -->
 	<link href="resources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
 	<link href="resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 	<link href="resources/assets/vendor/venobox/venobox.css" rel="stylesheet">
@@ -32,9 +32,108 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
 	
 	<!-- <link rel="stylesheet" type="text/css" href="resources/modal/css/bootstrap.min.css"> -->
+	<style type="text/css">
+	#info {
+	height: 45px;
+    transition: all 0.5s;
+    z-index: 997;
+    transition: all 0.5s;
+    padding: 20px 0;
+    background: blue;
+	}
+	
+	.nav-info {
+	position: relative;
+    top: -20px;
+	}
+	
+	#header {
+    position: fixed;
+    height: 180px;
+    z-index: 997;
+    transition: all 0.5s;
+    padding: 20px 0;
+    background: #8b5700;
+    top: 45px;
+	}
+	</style>
 </head>
 <body>
 	<!-- header -->
+	<header id="info" class="fixed-top header-transparent">
+		<div class="container">
+	
+			<nav class="nav-info nav-menu float-right d-none d-lg-block">
+				<ul>
+					<c:choose>	
+						<c:when test="${logID != null}">
+							<li>
+								<a href="mypagef">${logID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							</li>
+							
+							<li>
+								<a href="mypagef">마이페이지</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							</li>
+							
+							<li>
+								<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+							</li>
+						</c:when>
+		
+						<c:when test="${slogID != null}">
+							<li>
+								<a href="mypagef">${slogID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							</li>
+							
+							<li>
+								<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+							</li>
+						</c:when>
+					
+						<c:when test="${logID == null}">
+							<li>
+								<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							</li>
+							
+							<li>
+								<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
+							</li>
+						</c:when>
+						
+						<c:when test="${slogID == null}">
+							<li>
+								<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							</li>
+							
+							<li>
+								<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
+							</li>
+						</c:when>		
+					</c:choose>
+
+
+					<c:if test="${logID=='DalDal'}">
+			         	<li class="drop-down"><a href="#">관리자 페이지</a>
+						    <ul>
+						    	<li>
+						    		<a href="pdinsertf">상품 등록</a>
+						    	</li>
+						    	
+						    	<li>
+						    		<a href="franchiseinsertf">브랜드 등록</a>
+						    	</li>
+				                
+				                <li>
+				                	<a href="eventinsertf">이벤트 등록</a>
+				                </li>
+						    </ul>
+						</li>
+					</c:if>	
+				</ul>	
+			</nav><!-- .nav-menu -->
+		</div>	
+	</header><!-- End Header -->
+	
 	<header id="header" class="fixed-top header-transparent">
 		<div class="container">
 	

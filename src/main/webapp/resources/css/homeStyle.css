@@ -25,10 +25,6 @@
 	font-size: 23px;	
 	}
 	
-	.limg{
-	width: 7%;
-	}
-	
 	.lbutton{
 	position: relative;
    	left: 70px;
@@ -157,8 +153,6 @@
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
     position: relative;
     width: 100%;
 	}
@@ -168,5 +162,5 @@
 	}
 	
 	p {
-	line-height: 1;
+    line-height: 1.2;
 	}

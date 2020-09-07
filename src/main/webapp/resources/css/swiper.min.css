@@ -101,7 +101,7 @@
 
 .swiper-button-next,.swiper-button-prev {
 	position:absolute;
-	top:35%;
+    top: 45%;
 	width:calc(var(--swiper-navigation-size)/ 44 * 27);
 	height:var(--swiper-navigation-size);
 	margin-top:calc(-1 * var(--swiper-navigation-size)/ 2);
@@ -149,7 +149,7 @@
 	left:0;
 	width:100%;
     position: absolute;
-    top: 500px;
+    top: 530px;
 	}
 
 .swiper-pagination-bullets-dynamic{overflow:hidden;font-size:0}
@@ -188,7 +188,7 @@ button.swiper-pagination-bullet{border:none;margin:0;padding:0;box-shadow:none;-
 	display:inline-block;
 	transition:.2s transform,.2s top}
 	
-.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin:5px 5px}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{margin:5px;}
 
 .swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic{left:50%;transform:translateX(-50%);white-space:nowrap}
 
@@ -220,7 +220,14 @@ button.swiper-pagination-bullet{border:none;margin:0;padding:0;box-shadow:none;-
 
 .swiper-scrollbar{border-radius:10px;position:relative;-ms-touch-action:none;background:rgba(0,0,0,.1)}
 
-.swiper-container-horizontal>.swiper-scrollbar{position:absolute;left:1%;bottom:3px;z-index:50;height:5px;width:98%}
+.swiper-container-horizontal>.swiper-scrollbar{
+	position: absolute;
+    z-index: 50;
+    height: 5px;
+    top: 670px;
+    width: 98%;
+	}
+	
 
 .swiper-container-vertical>.swiper-scrollbar{position:absolute;right:3px;top:1%;z-index:50;width:5px;height:98%}
 

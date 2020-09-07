@@ -50,20 +50,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 
 .back-to-top:hover {
   color: #fff;
-  background: #85b6cf;
   transition: background 0.2s ease-in-out;
-}
-
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
-#header {
-  height: 180px;
-  transition: all 0.5s;
-  z-index: 997;
-  transition: all 0.5s;
-  padding: 20px 0;
-  background: #8b5700;
 }
 
 #header.header-transparent {
@@ -270,7 +257,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 .mobile-nav-toggle {
   position: fixed;
   right: 15px;
-  top: 25px;
+  top: 65px;
   z-index: 9998;
   border: 0;
   background: none;
@@ -618,6 +605,8 @@ section {
 }
 
 .services .icon-box {
+  width: 300px;
+  height: 500px;
   padding: 30px;
   position: relative;
   overflow: hidden;
@@ -631,12 +620,11 @@ section {
 
 .services .icon {
   margin: 0 auto 20px auto;
-  padding-top: 17px;
   display: inline-block;
   text-align: center;
   border-radius: 50%;
-  width: 72px;
-  height: 72px;
+  width: 200px;
+  height: 200px;
 }
 
 .services .icon i {
@@ -648,20 +636,14 @@ section {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
+  color: #8b5700;
 }
 
 .services .title a {
   color: #111;
 }
 
-.services .description {
-  font-size: 15px;
-  line-height: 28px;
-  margin-bottom: 0;
-}
-
 .services .icon-box-pink .icon {
-  background: #fceef3;
 }
 
 .services .icon-box-pink .icon i {

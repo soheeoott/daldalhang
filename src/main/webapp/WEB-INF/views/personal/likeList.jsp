@@ -14,10 +14,10 @@
 <link rel="stylesheet" type="text/css" href="resources/css/likeListStyle.css">
 <script>
 $(function() {
-	$(".plist").slice(0,6).show();
+	$(".plist").slice(0,12).show();
 	$("#more_btn").click(function(e) {
 		e.preventDefault();
-		$(".plist:hidden").slice(0,6).show();
+		$(".plist:hidden").slice(0,12).show();
 		if($(".plist:hidden").length==0){
 			alert("마지막 상품 입니다.");
 		}

@@ -29,10 +29,10 @@
 	
 	<script>
 	$(function() {
-		$(".plist").slice(0,12).show();
+		$(".plist").slice(0,6).show();
 		$("#more_btn").click(function(e) {
 			e.preventDefault();
-			$(".plist:hidden").slice(0,12).show();
+			$(".plist:hidden").slice(0,6).show();
 			if($(".plist:hidden").length==0){
 				alert("마지막 상품 입니다.");
 			}
@@ -74,6 +74,10 @@
 	border: 0;
     }
     
+    .plist {
+	display: none;
+    }
+    
     #more_btn {
     border: 1px solid lightgray;
     border-radius: 20px;
@@ -83,12 +87,12 @@
 	}
 	
 	.more {
-    width: 100%;
+	width: 100%;
     height: 100%;
-    display: block;
+    display: grid;
     position: inherit;
+    top: 15px;
     position: relative;
-    margin-bottom: 15px;
 	}
 	
 	.pagination {
@@ -126,6 +130,14 @@
 	margin-block-end: 1em;
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
+	}
+	
+	.plist {
+    float: left;
+    width: 31%;
+    height: 500px;
+    text-align: center;
+    margin-left: 1em;
 	}
 	
 	.mdwrap {
@@ -284,115 +296,112 @@
 	  right: 0;
 	  bottom: 0;
 	}
-	
-	.services .description {
-	}
-	
-	.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;}
-	
-	.plist {
-	display: none;
-    }
-    
-    .count {
-    margin-bottom: 50px;
-    }
 	</style>
 </head>
 <body>
-<main id="main">
-	<section class="services">
-	
-		<!-- 레코드의 갯수 출력 -->
-		<div class="count" align="center">
-		    ${count}개의 
-		    ${frkname}가(이) 있습니다.
-	    </div>
-		
-		<div class="container">
-       		<div class="row">
-        		<c:forEach var="list" items="${fpdlist}">
-	        			<div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-		            		<div class="plist">
-		            			<div class="icon-box icon-box-pink">
-			            		
-									<div class="icon">
-										<img src="${list.pduploadfile}" width="200" height="200">
-									</div>
-									
-									<form id="form" name="form" method="post" onsubmit="return false;">
-										<div class="lbutton">
-											<c:choose>
-												<c:when test="${logID ne null}">
-													<c:if test="${list.liked=='t'}" >
-														<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
-													</c:if>
-													<c:if test="${list.liked!='t'}">
-														<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
-													</c:if>
-												</c:when>
-												<c:otherwise>
-													<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
-												</c:otherwise>
-											</c:choose>
-										</div>
-									</form>	
-									
-									<h4 class="title">
-										<c:if test="${list.frcode=='A01'}"><p>공차</p></c:if>
-							            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
-							            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
-							            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
-							            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
-							            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
-							            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
-							            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
-							            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
-							            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
-							            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
-							            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
-							            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
-									</h4>
-									
-									<p class="description">
-										${list.pdname}
-									</p>
-									
-									<p class="description">
-										${list.price} 원
-									</p>
-									
-									<p class="description">
-										<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
-						            		<a href="hashtagList?keyword=${hashtag}">
-						            			<span class = "hashtagsplit"> #${hashtag}</span>
-						            		</a>
-					            		</c:forEach>
-									</p>
-									
-									<c:if test="${logID == 'DalDal'}">
-										<div class="mdwrap">
-											<a href="pdetail?pdseq=${list.pdseq}">
-												<div class = "modify">수정</div>
-											</a>
+<section id="productSlider" class="d-flex justify-cntent-center align-items-center" style="margin-top: 180px;">
+	<div class="container">
+		<div id="product_box" align="center" style="margin-bottom: 45px;"> <!--  -->
+	    
+	   		<!-- 레코드의 갯수 출력 -->
+			<div class="count">
+			    ${count}개의 
+			    ${frkname}가(이) 있습니다.
+		    </div>
+	    
+	    	<!-- 프랜차이즈 메뉴 -->	
+			<nav id="franchiseMenu" >
+				<ul>
+					<c:forEach var="menu" items="${frachiseMenu}">
+						&nbsp;&nbsp;
+						<li><a class="menuLink" href="franchiseSubList?frcode=${menu.frcode}&mname=${menu.mname}&mkname=${menu.mkname}">${menu.mkname}</a></li>
+						&nbsp;&nbsp;
+					</c:forEach>
+				</ul>
+			</nav>
 			
-											<a onclick="remove(${list.pdseq})">
-												<div class = "delete">삭제</div>
-											</a>
-										</div>
-									</c:if>
-			           			</div>
-		            		</div>
-		         		</div>
-         		</c:forEach>
-        	</div>
-        	
-        	<div class="more" align="center">
-	 			<a id="more_btn">+ 더 보기</a>
+			<div class="productList">
+				<c:forEach var="list" items="${fpdlist}">
+					
+					<div class = "plist">
+						<div>
+							<a href="${list.pdurl}" target="_blank" class="pdurl">
+								<img src="${list.pduploadfile}" width="200" height="200">
+							</a>
+							
+							<form id="form" name="form" method="post" onsubmit="return false;">
+								<div class="lbutton">
+									<c:choose>
+										<c:when test="${logID ne null}">
+											<c:if test="${list.liked=='t'}" >
+												<input type="image" src="resources/image/fullheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+											</c:if>
+											<c:if test="${list.liked!='t'}">
+												<input type="image" src="resources/image/emptyheart.png" class="limg" id="${list.pdseq}" onclick="like(${list.pdseq})">
+											</c:if>
+										</c:when>
+										<c:otherwise>
+											<a onclick="login()"><img src="resources/image/emptyheart.png" class="limg"></a>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</form>	
+						
+							<div class="namelist">
+								<div class="fname">
+									<c:if test="${list.frcode=='A01'}"><p class = "brand">공차</p></c:if>
+						            <c:if test="${list.frcode=='A02'}"><p>던킨도너츠</p></c:if>
+						            <c:if test="${list.frcode=='A03'}"><p>뚜레쥬르</p></c:if>
+						            <c:if test="${list.frcode=='A04'}"><p>메가커피</p></c:if>
+						            <c:if test="${list.frcode=='A05'}"><p>빽다방</p></c:if>
+						            <c:if test="${list.frcode=='A06'}"><p>스타벅스</p></c:if>
+						            <c:if test="${list.frcode=='A07'}"><p>이디야</p></c:if>
+						            <c:if test="${list.frcode=='A08'}"><p>쥬씨</p></c:if>
+						            <c:if test="${list.frcode=='A09'}"><p>설빙</p></c:if>
+						            <c:if test="${list.frcode=='A10'}"><p>투썸 플레이스</p></c:if>
+						            <c:if test="${list.frcode=='A11'}"><p>파리바게뜨</p></c:if>
+						            <c:if test="${list.frcode=='A12'}"><p>파스쿠찌</p></c:if>
+						            <c:if test="${list.frcode=='A13'}"><p>흑화당</p></c:if>
+								</div>
+							
+							<p class="pname">${list.pdname}</p>
+							<p class="prname">${list.price} 원</p>
+							
+							</div>		
+						
+			            	<c:forEach var="hashtag" items="${fn:split(list.hashtag,'#')}">
+			            		<a href="hashtagList?keyword=${hashtag}">
+			            			<span class = "hashtagsplit"> #${hashtag}</span>
+			            		</a>
+			            	</c:forEach>
+						
+						</div>
+						
+						<c:if test="${logID == 'DalDal'}">
+							<div class="mdwrap">
+								<a href="pdetail?pdseq=${list.pdseq}">
+									<div class = "modify">수정</div>
+								</a>
+
+								<a onclick="remove(${list.pdseq})">
+									<div class = "delete">삭제</div>
+								</a>
+							</div>
+						</c:if>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
-    </section>
-</main>
+		
+		<!-- <div class="more" >
+				<a class="btn-get-started">+ 더 보기</a>  <!-- id="more_btn"
+			 </div> -->
+			 	
+		 <div class="more" align="center">
+		 	<a id="more_btn">+ 더 보기</a>
+		 </div>	 
+	</div>
+</section>
 
 	<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
