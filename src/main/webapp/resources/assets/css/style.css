@@ -53,6 +53,16 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   transition: background 0.2s ease-in-out;
 }
 
+#header {
+	position: fixed;
+    height: 180px;
+    z-index: 997;
+    transition: all 0.5s;
+    padding: 20px 0;
+    background: #8b5700;
+    top: 45px;
+}
+	
 #header.header-transparent {
   /* background: none; */
 }
@@ -86,6 +96,21 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   margin-top: 180px;
 }
 
+#info {
+    height: 45px;
+    z-index: 997;
+    transition: all 0.5s;
+    padding: 20px 0;
+    position: fixed;
+    background: white;
+    display: flex;
+}
+
+.nav-info {
+	top: 0;
+    position: absolute;
+}
+
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -97,7 +122,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 .nav-menu > ul > li {
-  margin-right: 4em;
+  margin-left: 4em;
   position: relative;
   white-space: nowrap;
   float: left;
@@ -106,7 +131,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 .nav-menu a {
   display: block;
   position: relative;
-  color: #fff;
+  color: #ffa000;
   padding: 10px 15px;
   transition: 0.3s;
   font-size: 18px;
@@ -647,11 +672,11 @@ section {
 }
 
 .services .icon-box-pink .icon i {
-  color: #ff689b;
+  color: #8b57003d;
 }
 
 .services .icon-box-pink:hover {
-  border-color: #ff689b;
+  border-color: #8b57003d;
 }
 
 .services .icon-box-cyan .icon {

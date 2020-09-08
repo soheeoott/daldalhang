@@ -57,15 +57,22 @@
    	font-size: 14px;
 	}
 	
-	.mdwrap {
+	/* .mdwrap {
     position: relative;
     top: 30px;
+    display: -webkit-inline-box;
+	} */
+	
+	.mdwrap {
+    position: relative;
+    bottom: 430px;
+    right: 70px;
     display: -webkit-inline-box;
 	}
 
 	.modify {
 	color: white;
-    opacity: 0.5;
+    opacity: 0.7;
     cursor: pointer;
     background: blue;
     padding: 5px;
@@ -76,7 +83,7 @@
 	
 	.delete {
 	color: white;
-    opacity: 0.5;
+    opacity: 0.7;
     cursor: pointer;
     background: red;
     padding: 5px;
@@ -98,25 +105,12 @@
     text-align: center;
 	}
 	
-	/* #search {
-    width: 100%;
-    overflow: hidden;
-    position: fixed;
-    text-align: center;
-    background: #8b5700;
-	z-index: 1;
-	}
-	
-	#search .container {
-    padding-top: 66px;
-	} */
-	
 	#header form {
     margin-top: 30px;
     background: #fff;
     padding: 6px 10px;
-    position: relative;
     border-radius: 50px;
+    position: relative;
 	}
 	
 	#header form input[type="email"] {

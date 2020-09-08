@@ -10,10 +10,6 @@
 <title></title>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" type="text/css" href="resources/css/productStyle.css"> -->
-	
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-	<!-- <link rel="stylesheet" href="resources/modal/css/bootstrap.min.css"> -->
 	
 	<!-- [IE 9] -->
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

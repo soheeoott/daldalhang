@@ -105,7 +105,7 @@
 		<div class="services">
 			<div class="swiper-container" align="center">
 			
-				<div id="slidetit">NEW 신제품</div>
+				<div id="slidetit">NEW/신제품</div>
 				
 				<div class="swiper-wrapper">
 					<c:forEach var="newlist" items="${newlist}">
@@ -201,7 +201,7 @@
 		<div class="services">
 			<div class="swiper-container" align="center">
 			
-				<div id="slidetit">BEST 추천제품</div>
+				<div id="slidetit">BEST/추천제품</div>
 				
 				<div class="swiper-wrapper">
 					<c:forEach var="bestlist" items="${bestlist}">
@@ -297,7 +297,7 @@
 		<div class="services">
 			<div class="swiper-container" align="center">
 			
-				<div id="slidetit">SEASON 계절상품</div>
+				<div id="slidetit">SEASON/계절상품</div>
 				
 				<div class="swiper-wrapper">
 					<c:forEach var="seasonlist" items="${seasonlist}">

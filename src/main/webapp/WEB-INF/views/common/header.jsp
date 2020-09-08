@@ -13,6 +13,11 @@
   	
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	
+	<!-- mobile nav  -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
 	<!-- Favicons -->
 	<link href="resources/assets/img/favicon.png" rel="icon">
 	<link href="resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -32,81 +37,57 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
 	
 	<!-- <link rel="stylesheet" type="text/css" href="resources/modal/css/bootstrap.min.css"> -->
-	<style type="text/css">
-	#info {
-	height: 45px;
-    transition: all 0.5s;
-    z-index: 997;
-    transition: all 0.5s;
-    padding: 20px 0;
-    background: blue;
-	}
-	
-	.nav-info {
-	position: relative;
-    top: -20px;
-	}
-	
-	#header {
-    position: fixed;
-    height: 180px;
-    z-index: 997;
-    transition: all 0.5s;
-    padding: 20px 0;
-    background: #8b5700;
-    top: 45px;
-	}
-	</style>
+
 </head>
 <body>
 	<!-- header -->
 	<header id="info" class="fixed-top header-transparent">
-		<div class="container">
+		<div class="container" align="center">
 	
-			<nav class="nav-info nav-menu float-right d-none d-lg-block">
+			<nav class="nav-info nav-menu float-left d-lg-block">
 				<ul>
 					<c:choose>	
 						<c:when test="${logID != null}">
 							<li>
-								<a href="mypagef">${logID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+								<a href="mypagef">${logID} 님 환영합니다.</a> 
 							</li>
 							
 							<li>
-								<a href="mypagef">마이페이지</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+								<a href="mypagef">마이페이지</a>
 							</li>
 							
 							<li>
-								<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+								<a href="logout">로그아웃</a>
 							</li>
 						</c:when>
 		
 						<c:when test="${slogID != null}">
 							<li>
-								<a href="mypagef">${slogID}</a> 님 환영합니다.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+								<a href="mypagef">${slogID} 님 환영합니다.</a>
 							</li>
 							
 							<li>
-								<a href="logout">로그아웃</a>&nbsp;&nbsp;&nbsp;
+								<a href="logout">로그아웃</a>
 							</li>
 						</c:when>
 					
 						<c:when test="${logID == null}">
 							<li>
-								<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+								<a href="loginf">로그인</a>
 							</li>
 							
 							<li>
-								<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
+								<a href="joinf">회원가입</a>
 							</li>
 						</c:when>
 						
 						<c:when test="${slogID == null}">
 							<li>
-								<a href="loginf">로그인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+								<a href="loginf">로그인</a>
 							</li>
 							
 							<li>
-								<a href="joinf">회원가입</a>&nbsp;&nbsp;&nbsp;
+								<a href="joinf">회원가입</a>
 							</li>
 						</c:when>		
 					</c:choose>
@@ -137,13 +118,16 @@
 	<header id="header" class="fixed-top header-transparent">
 		<div class="container">
 	
-			<div class="logo float-left">
-	      		<h1 class="text-light"><a href="home"><span>달달행</span></a></h1>
-	     		<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-			</div>
+			<!-- <div class="logo float-left">
+	     		<a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+			</div> -->
 	
-			<nav class="nav-menu float-right d-none d-lg-block">
+			<nav class="nav-menu float-left d-none d-lg-block">
 				<ul>
+					<li class="logo">
+						<h1 class="text-light"><a href="home"><span>달달행</span></a></h1>
+					</li>
+					
 					<li><a href="franchiseList">브랜드</a></li>
 					
 					<li class="drop-down"><a href="listPage">메뉴</a>
