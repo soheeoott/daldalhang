@@ -136,7 +136,7 @@
 				
 				<form name="searchform" method="post" action="searchList" onsubmit="return check();">
 						<div class="searchSelect">
-					        <select name="searchOption" class="searchOption">
+					       <select name="searchOption" class="searchOption">
 					            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
 					           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >&nbsp;&nbsp;해시태그</option>
 					           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;브랜드</option>

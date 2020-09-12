@@ -350,15 +350,15 @@
 	input::-webkit-input-placeholder {color:#a8a8a8;} 
 	input::-moz-placeholder {color:#a8a8a8;} 
 	
-	.searchSelect {
-	float: left;
-    margin-left: 90px;	
-	}
-	
 	.searchWrap {
 	width: 100%;
 	}
 	
+	.searchSelect {
+	float: left;
+    margin-left: 90px;	
+	}
+		
 	.search {
 	height: 43px;
     width: 710px;
@@ -375,8 +375,7 @@
     border: 0px;
     outline: none;
     float: left;
-    
-	}
+    }
 	
 	.searchOption {
 	    height: 45px;

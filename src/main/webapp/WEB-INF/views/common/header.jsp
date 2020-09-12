@@ -23,6 +23,8 @@
 	<link href="resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 	
 	<!-- Vendor CSS Files -->
+	<link href="resources/css/bootstrap.custom.css" rel="stylesheet">
+	
 	<link href="resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- <link href="resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet"> -->
 	<link href="resources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -37,7 +39,22 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
 	
 	<!-- <link rel="stylesheet" type="text/css" href="resources/modal/css/bootstrap.min.css"> -->
-
+	<style type="text/css">
+	.searchOption {
+		border: 0;
+    	font-size: 17px;
+	}
+    
+	.searchInput {
+		width: 76%;
+	    font-size: 18px;
+	    border: 0px;
+	    outline: none;
+	    padding: 3px;
+	    position: relative;
+	    left: 5px;
+	}
+	</style>
 </head>
 <body>
 	<!-- header -->
@@ -186,10 +203,31 @@
 			<!-- 검색창 -->
 			<div class="row">
 				<div class="col-lg-6">
-					<form action="" method="post">
-						<input type="email" name="email">
+					<form name="searchform" method="post" action="searchList" onsubmit="return check();">
+						<select name="searchOption" class="searchOption">
+					            <!-- 검색조건을 검색처리후 결과화면에 보여주기위해  c:out 출력태그 사용, 삼항연산자 -->
+					           <option value="hashtag" <c:out value="${map.searchOption == 'hashtag'?'selected':''}"/> >&nbsp;&nbsp;해시태그</option>
+					           <option value="franchise" <c:out value="${map.searchOption == 'franchise'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;브랜드</option>
+					           <option value="pdname" <c:out value="${map.searchOption == 'pdname'?'selected':''}"/> >&nbsp;&nbsp;&nbsp;상품명</option>
+					    </select>
+						
+						<input name="keyword" value="${map.keyword}" id="searchInput" class="searchInput" placeholder="검색어를 입력해주세요." value="searchInputCheck">
 						<input type="submit" value="검색">
 					</form>
+					
+					<script>
+					$(function(){
+				        $('form[name="searchform"]').on('submit', function(e){
+				            var keyword = $('input[name="keyword"]', this).val();
+				
+				            if ( keyword.split(' ').join('')  == '' || keyword.split(' ').join('').length < 1) {
+				                alert('검색어를 입력해주세요!');
+				                e.preventDefault();
+				                return false;
+				            }
+				        });
+	    			});
+					</script>
 				</div>
 			</div>
 		</div>

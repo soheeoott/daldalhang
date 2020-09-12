@@ -12,6 +12,8 @@
   	
 	<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 	
+	<link href="resources/css/bootstrap.custom.css" rel="stylesheet">
+	
 	<!-- Favicons -->
 	<link href="resources/assets/img/favicon.png" rel="icon">
 	<link href="resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">

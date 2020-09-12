@@ -247,6 +247,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   color: #ddecf5;
   padding: 10px 20px;
   font-weight: 500;
+  font-size: 18px;
 }
 
 .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {

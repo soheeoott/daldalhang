@@ -65,7 +65,7 @@
 	
 	.mdwrap {
     position: relative;
-    bottom: 430px;
+    bottom: 400px;
     right: 70px;
     display: -webkit-inline-box;
 	}
@@ -111,6 +111,7 @@
     padding: 6px 10px;
     border-radius: 50px;
     position: relative;
+    height: 45px;
 	}
 	
 	#header form input[type="email"] {
@@ -127,7 +128,7 @@
     bottom: 0;
     border: 0;
     background: none;
-    font-size: 16px;
+    font-size: 18px;
     padding: 0 20px;
     margin: 3px;
     background: #68A4C4;
