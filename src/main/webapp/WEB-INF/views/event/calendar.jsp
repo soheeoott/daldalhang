@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <%@ include file="../common/header.jsp" %> --%>
+<%@ include file="../common/header.jsp" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="resources/newcalendar/css/main.css">
+    
+    <style>
+    ul.tabs li {
+    width: 120px;
+    height: 30px;
+    background: none;
+    display: inline-block;
+	}
+    </style>
 </head>
 
 <body>

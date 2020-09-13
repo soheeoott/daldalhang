@@ -158,4 +158,20 @@
 	
 	p {
     line-height: 1.2;
+    font-size: 18px;
+	}
+	
+	.searchOption {
+		border: 0;
+    	font-size: 17px;
+	}
+    
+	.searchInput {
+		width: 76%;
+	    font-size: 18px;
+	    border: 0px;
+	    outline: none;
+	    padding: 3px;
+	    position: relative;
+	    left: 5px;
 	}

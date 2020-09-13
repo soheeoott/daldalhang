@@ -39,22 +39,6 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
 	
 	<!-- <link rel="stylesheet" type="text/css" href="resources/modal/css/bootstrap.min.css"> -->
-	<style type="text/css">
-	.searchOption {
-		border: 0;
-    	font-size: 17px;
-	}
-    
-	.searchInput {
-		width: 76%;
-	    font-size: 18px;
-	    border: 0px;
-	    outline: none;
-	    padding: 3px;
-	    position: relative;
-	    left: 5px;
-	}
-	</style>
 </head>
 <body>
 	<!-- header -->
@@ -175,7 +159,8 @@
 					
 					<li><a href="maplist">매장찾기</a></li>
 					
-					<li class="drop-down"><a href="eventCalPage">이벤트</a>
+					<!-- <li class="drop-down"><a href="eventCalPage">이벤트</a> -->
+					<li class="drop-down"><a href="calendar">이벤트</a>
 					    <ul>
 							<li><a href="eventCalPage">이벤트 달력</a></li>
 							<li><a href="eventList">이벤트 모아보기</a></li>
