@@ -137,12 +137,11 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-eventImage">업로드</label><br>
-								<input class="upload-name" value="파일선택" disabled="disabled">
+                                <label class="col-xs-4" for="edit-eventImage">이미지</label><br>
 								<input type="file" id="ex_filename" name = "eventuploadfilef" class="upload-hidden">
                             </div>
                         </div>
-                                               
+                        
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-desc">내용</label>

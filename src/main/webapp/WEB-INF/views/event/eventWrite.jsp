@@ -166,7 +166,7 @@
 						<div class="filebox"> 
 							<label for="ex_filename">업로드</label>
 							<input class="upload-name" value="파일선택" disabled="disabled">
-							<input type="file" id="ex_filename" name = "eventuploadfilef" class="upload-hidden"> 
+							<input type="file" id="ex_filename" name="eventuploadfilef" class="upload-hidden"> 
 							<img src ="" class="select_img"/>
 						</div>
 						

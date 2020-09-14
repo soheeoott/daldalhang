@@ -33,7 +33,9 @@
 					<div id="eventDiv">
 						<table id="eventTable">
 							<tr>
-					    		<td id="eventImg"><a href="${eventList.editurl}" target="_blank"><img src="${eventList.eventImg}" width="250px" height="250px"></a></td>
+					    		<td id="eventImg">
+					    			<a href="${eventList.editurl}" target="_blank"><img src="${eventList.eventImg}" width="250px" height="250px"></a>
+					    		</td>
 							</tr>
 							<tr>
 								<td id="eventTitle">${eventList.caltitle}</td>

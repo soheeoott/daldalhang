@@ -19,11 +19,13 @@
 				'false' as allday
 			from franchise a, tb_calendar b 
 			where a.frcode = b.frcode
-			ORDER BY b.frcode
+			ORDER BY b.end_date DESC, b.start_date ASC
+			<!-- ORDER BY b.frcode ASC, b.end_date DESC, b.start_date ASC -->
 	</select>
 	
 	<select id="eventOne" resultType="vo.CalendarVO">
 		SELECT * FROM tb_calendar WHERE frcode LIKE CONCAT(CONCAT('%',#{frcode}),'%')
+		ORDER BY end_date DESC, start_date ASC
 	</select>
 	
 	<select id="listCount" resultType="int">
@@ -41,8 +43,8 @@
 	</select>
 	
 	<insert id="insertCalendar" >
-		INSERT INTO tb_calendar(calseq, id, caltitle, calcontent, start_date, end_date, frcode, editurl) 
-		VALUES((SELECT IFNULL(MAX(calseq),0)+1 FROM tb_calendar ift), 'DalDal', #{caltitle}, #{calcontent}, #{start_date}, #{end_date}, #{frcode}, #{editurl})
+		INSERT INTO tb_calendar
+		VALUES((SELECT IFNULL(MAX(calseq),0)+1 FROM tb_calendar iftb), 'DalDal', #{caltitle}, #{calcontent}, #{start_date}, #{end_date}, #{frcode}, #{editurl}, #{eventuploadfilef})
 	</insert>
 	
 	<update id="updateCalendar">

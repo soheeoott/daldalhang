@@ -56,7 +56,6 @@ public class CalendarController {
 	}
 
 	// eventList.jsp -> 목록형 이벤트 출력 페이지 mapping
-	@SuppressWarnings("null")
 	@RequestMapping(value="/eventList")
 	public ModelAndView eventList(ModelAndView mv, CalendarVO vo, HttpServletResponse response) throws Exception {
 		response.setCharacterEncoding("UTF-8");
@@ -82,16 +81,6 @@ public class CalendarController {
 		
 		List<CalendarVO> avo = new ArrayList<CalendarVO>();
 		avo = service.eventOne(frcode);
-		
-		/*
-		 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); java.util.Calendar
-		 * c1 = java.util.Calendar.getInstance(); String strToday =
-		 * sdf.format(c1.getTime());
-		 * 
-		 * System.out.println("Today= "+strToday);
-		 * System.out.println("현재 이벤트들 종료 날짜 = "+avo.get(0));
-		 */
-		
 		
 		if(avo.size()==0) {
 			mv.addObject("eCode","1111"); 				// 현재 진행 중인 이벤트가 없습니다.
@@ -190,7 +179,53 @@ public class CalendarController {
 		// 이미지를 선택하지 않았을 시
 		String file1, file2 = "No Image";
 		
-		String path = "C:\\img_event"; //폴더 경로
+//		String path = "C:/img_event"; //폴더 경로
+		String path = "C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_event"; //폴더 경로
+		
+		// 저장하려는 이벤트의 브랜드별로 폴더 구분
+		vo.getFrcode();
+		switch(vo.getFrcode()) {
+		case "A01":
+			path = path + "/A01_gongcha";
+			break;
+		case "A02":
+			path = path + "/A02_dunkindonuts";
+			break;
+		case "A03":
+			path = path + "/A03_touslesjours";
+			break;
+		case "A04":
+			path = path + "/A04_megacoffee";
+			break;
+		case "A05":
+			path = path + "/A05_paikdabang";
+			break;
+		case "A06":
+			path = path + "/A06_starbucks";
+			break;
+		case "A07":
+			path = path + "/A07_ediya";
+			break;
+		case "A08":
+			path = path + "/A08_juicy";
+			break;
+		case "A09":
+			path = path + "/A09_sulbing";
+			break;
+		case "A10":
+			path = path + "/A10_twosome";
+			break;
+		case "A11":
+			path = path + "/A11_parisbaguette";
+			break;
+		case "A12":
+			path = path + "/A12_pascucci";
+			break;
+		case "A13":
+			path = path + "/A13_heukhwadang";
+			break;
+		}
+		
 		File Folder = new File(path);
 		
 		// Ajax 의  FormData 는  이미지를 선택하지 않으면 append 시 오류 발생
@@ -216,15 +251,31 @@ public class CalendarController {
 				
 				// 실제 저장 경로 생성하고 저장
 				/* file1 = "C:/apache-tomcat-9.0.34/webapps/daldalhang/" */
-				file1="C:/img_event/"
+				
+				
+				switch(vo.getFrcode()) {
+				case "A01":
+					file1="C:/Users/Green_Computer/git/daldalhang/src/main/webapp/resources/img_event/A01_gongcha/"
+							+eventuploadfilef.getOriginalFilename();
+					eventuploadfilef.transferTo(new File(file1));
+					
+					file2="resources/img_event/A01_gongcha/"+eventuploadfilef.getOriginalFilename();
+					break;
+				}
+				
+				
+				/*file1="C:/img_event/"*/
 				/* file1="C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/daldalhang/" */
-							+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
+							/*+eventuploadfilef.getOriginalFilename(); // 드라이브에 저장되는 실제 경로
 				eventuploadfilef.transferTo(new File(file1));
 				
 				file2="resources/img_event/"+eventuploadfilef.getOriginalFilename(); // DB에서 사용하는 경로
+				*/
 			}				
 		}
 		vo.setEventImg(file2);
+		System.out.println("저장된 DB 파일 경로 다시 확인하자 => "+vo.getEventImg());
+		System.out.println("file2.toString() => "+file2);
 		
 		if (service.insert(vo) > 0) {
 			// 성공

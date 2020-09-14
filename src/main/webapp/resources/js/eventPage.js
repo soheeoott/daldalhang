@@ -1,16 +1,76 @@
 $(function(){
-	// 이벤트 메뉴 클릭 시 바로 출력되는 이벤트 달력
+	// '이벤트 달력' 메뉴 클릭 시 바로 출력되는 이벤트 달력
 	$.ajax({
 		url:'calendar',
 		success:function(result){
 			$('#resultArea01').html(result);
 		}
-	}); // ajax 			
+	}); // calendar_ajax
+	
+	// '이벤트 모아보기' 메뉴 클릭 시 바로 출력되는 카드형 이벤트 리스트
+	$.ajax({
+		type: 'GET',
+		url: 'eventOne',
+		data:{
+			frcode:'A'
+		},
+		success: function(data) {
+			if(data.eCode=='1111') {
+				$('#resultArea02').html('');
+				$('#resultArea02').append(
+					'<div id="event_null"><span>현재 진행 중인 이벤트가 없습니다.</span></div>'
+				);
+			} else {
+				$('#resultArea02').html('');
+				
+				// controller에서 return 받은 eventList를 배열에 저장
+				var eData = [];
+				eData = data.eventList;
+				
+				// 현재 날짜 구하기
+				var date = new Date();
+				let today = date.toISOString().slice(0,10);
+
+				// 선택한 브랜드 표시
+				$('#resultArea02').append(
+					'<div id="fr_choice"><span>ALL EVENT</span></div><br>'
+				);
+				
+				// 이벤트 출력
+				for(var i in eData) {
+					if (today > eData[i].end_date) {		// 이벤트 종료
+						$('#resultArea02').append(
+								'<div id="eventDiv"><table id="eventTable"><tr><td>'+
+								'<div id="eventImg_Div">'+
+								'<img src="'+eData[i].eventImg+'" width="250px" height="250px">'+
+								'<div id="end_event"></div></div></td></tr>'+
+								'<tr><td id="eventTitle">'+eData[i].caltitle+'</td></tr>'+
+								'<tr><td id="eventDate">'+eData[i].start_date+' ~ '+eData[i].end_date+'</td></tr>'+
+								'<tr><td id="eventContent">'+eData[i].calcontent+'</td></tr>'+   	
+								'</table></div>'
+						);
+					} else {								// 이벤트 진행 중
+						$('#resultArea02').append(
+							'<div id="eventDiv">'+
+							'<table id="eventTable">'+
+							'<tr><td id="eventImg">'+
+							'<a href="'+eData[i].editurl+'" target="_blank">'+
+							'<img src="'+eData[i].eventImg+'" width="250px" height="250px"></a></td></tr>'+	
+						    '<tr><td id="eventTitle">'+eData[i].caltitle+'</td></tr>'+
+							'<tr><td id="eventDate">'+eData[i].start_date+' ~ '+eData[i].end_date+'</td></tr>'+
+							'<tr><td id="eventContent">'+eData[i].calcontent+'</td></tr>'+   	
+							'</table></div>'
+						);
+					}
+				}
+			}
+		}
+	}); // eventList_ajax
 });
 
-// 이벤트 카드형 -> 브랜드 탭 메뉴 
+// 선택형 이벤트 리스트 -> 브랜드 탭 메뉴 
 function eventOne(frcode) {
-	var fr_choice = "";
+	var fr_choice = "";				// 선택한 이벤트의 브랜드명을 표시하기 위한 변수
 	
 	if(frcode=='A') {
 		fr_choice="ALL EVENT";
@@ -67,36 +127,16 @@ function eventOne(frcode) {
 				// 현재 날짜 구하기
 				var date = new Date();
 				let today = date.toISOString().slice(0,10);
-				console.log('today => '+today);
-				
-				if (today <= eData.end_date) {
-					console.log('이벤트 진행 중');
-				}
 
 				// 선택한 브랜드 표시
 				$('#resultArea02').append(
 					'<div id="fr_choice"><span>'+fr_choice+'</span></div><br>'
 				);
 				
+				// 이벤트 출력
 				for(var i in eData) {
-					if (today <= eData[i].end_date) {
-						console.log(eData[i].end_date+' => 이벤트 진행 중');
-					}
-				}
-				
-				for(var i in eData) {
-					if (today > eData[i].end_date) {
+					if (today > eData[i].end_date) {		// 이벤트 종료
 						$('#resultArea02').append(
-/*								'<div id="eventDiv">'+
-								'<div class="eventImg_Div"><td id="eventImg">'+
-								'<a href="'+eData[i].editurl+'" target="_blank">'+
-								'<img src="'+eData[i].eventImg+'" width="250px" height="250px"></a></td></tr>'+
-								'<div class="end_event">이벤트 종료 !!!!</div></div>'+
-								'<table id="eventTable">'+
-								'<tr><td id="eventTitle">'+eData[i].caltitle+'</td></tr>'+
-								'<tr><td id="eventDate">'+eData[i].start_date+' ~ '+eData[i].end_date+'</td></tr>'+
-								'<tr><td id="eventContent">'+eData[i].calcontent+'</td></tr>'+   	
-								'</table></div>'*/
 								'<div id="eventDiv"><table id="eventTable"><tr><td>'+
 								'<div id="eventImg_Div">'+
 								'<img src="'+eData[i].eventImg+'" width="250px" height="250px">'+
@@ -106,7 +146,7 @@ function eventOne(frcode) {
 								'<tr><td id="eventContent">'+eData[i].calcontent+'</td></tr>'+   	
 								'</table></div>'
 						);
-					} else {
+					} else {								// 이벤트 진행 중
 						$('#resultArea02').append(
 							'<div id="eventDiv">'+
 							'<table id="eventTable">'+

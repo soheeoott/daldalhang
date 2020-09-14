@@ -124,6 +124,11 @@
 		background-image: url('../image/end_event2.png');
 	}
 	
+	/* 이벤트 이미지 아래 공백 방지 */
+	#eventImg img {
+		vertical-align: bottom;
+	}
+	
 	#eventTitle {
 		font-weight: bold;
 		font-size: 17px;
