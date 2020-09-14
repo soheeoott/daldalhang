@@ -189,7 +189,7 @@ public class PersonalController {
 		service.insert(vo);
 
 		MailHandler sendMail = new MailHandler(mailSender);
-		sendMail.setSubject("[이메일 인증]");
+		sendMail.setSubject("이메일 인증");
 		sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
 				.append("가입해주셔서 감사합니다.<br><a href='http://daldalhang.appspot.com/verify?email_id=" + vo.getEmail_id()
 						+ "&email_domain=" + vo.getEmail_domain())

@@ -39,6 +39,23 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/homeStyle.css">
 	
 	<!-- <link rel="stylesheet" type="text/css" href="resources/modal/css/bootstrap.min.css"> -->
+	
+	<style type="text/css">
+	.searchOption {
+		border: 0;
+    	font-size: 17px;
+	}
+    
+	.searchInput {
+		width: 76%;
+	    font-size: 18px;
+	    border: 0px;
+	    outline: none;
+	    padding: 3px;
+	    position: relative;
+	    left: 5px;
+	}
+	</style>
 </head>
 <body>
 	<!-- header -->
