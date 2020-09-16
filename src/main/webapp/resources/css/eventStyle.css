@@ -104,6 +104,7 @@
 	#eventTable td {
 		padding: 5px;
 		width: 250px;
+		ling-height: 1.5;
 	}
 	
 	/* 이벤트 이미지, 종료된 이벤트 이미지 포함된 div */
@@ -136,7 +137,7 @@
 	}
 	
 	#eventDate {
-		font-size: 12px;
+		font-size: 15px;
 	}
 	
 	#eventContent{

@@ -5,27 +5,34 @@
 <mapper namespace="daldal.mappers.calendarMapper">
 
 	<select id="selectList" resultType="vo.CalendarVO">
-			select 	b.calseq as calseq,
-				b.caltitle as caltitle,
-				b.calcontent as calcontent,				
- 				b.start_date as start_date,			
-				b.end_date as end_date,							
-				b.editurl as editurl,
-				a.frkname as frkname,
-				b.eventImg as eventImg,
-				'ADMIN' as username,
-				a.frcolor as frcolor,
-				'#ffffff' as textColor,
-				'false' as allday
-			from franchise a, tb_calendar b 
-			where a.frcode = b.frcode
-			ORDER BY b.end_date DESC, b.start_date ASC
-			<!-- ORDER BY b.frcode ASC, b.end_date DESC, b.start_date ASC -->
+			SELECT b.calseq AS calseq,
+				b.caltitle AS caltitle,
+				b.calcontent AS calcontent,				
+ 				b.start_date AS start_date,			
+				b.end_date AS end_date,							
+				b.editurl AS editurl,
+				a.frkname AS frkname,
+				b.eventImg AS eventImg,
+				'ADMIN' AS username,
+				a.frcolor AS frcolor,
+				'#ffffff' AS textColor,
+				'false' AS allday
+			FROM franchise a, tb_calendar b 
+			WHERE a.frcode = b.frcode
+			ORDER BY
+			CASE WHEN end_date <![CDATA[>]]> CURDATE() AND start_date <![CDATA[<]]> CURDATE() THEN 0
+			     WHEN end_date <![CDATA[>]]> CURDATE() AND start_date <![CDATA[>]]> CURDATE() THEN 1
+			     ELSE 2 END,
+			CASE WHEN start_date <![CDATA[<]]> CURDATE() THEN end_date ELSE start_date END
 	</select>
 	
-	<select id="eventOne" resultType="vo.CalendarVO">
+	<select id="eventOne" resultType="vo.CalendarVO">	
 		SELECT * FROM tb_calendar WHERE frcode LIKE CONCAT(CONCAT('%',#{frcode}),'%')
-		ORDER BY end_date DESC, start_date ASC
+		ORDER BY
+		CASE WHEN end_date <![CDATA[>]]> CURDATE() AND start_date <![CDATA[<]]> CURDATE() THEN 0
+		     WHEN end_date <![CDATA[>]]> CURDATE() AND start_date <![CDATA[>]]> CURDATE() THEN 1
+		     ELSE 2 END,
+		CASE WHEN start_date <![CDATA[<]]> CURDATE() THEN end_date ELSE start_date END
 	</select>
 	
 	<select id="listCount" resultType="int">

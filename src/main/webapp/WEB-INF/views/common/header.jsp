@@ -121,7 +121,7 @@
 					</div>
 					
 					<div class="dropdown">
-						<a href="eventPage" class="main_menu">이벤트</a>
+						<a href="eventCalPage" class="main_menu">이벤트</a>
 						<div class="menu_dropdown" align="center">
 							<a href="eventCalPage">이벤트 달력</a>
 							<a href="eventList">이벤트 모아보기</a>

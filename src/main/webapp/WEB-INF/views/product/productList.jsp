@@ -36,33 +36,6 @@
 		return false;
 	}
 	</script>
-	
-	<style type="text/css">
-/* 	img {
-    display: block;
-    width: 255px;
-    height: 300px;
-    margin: 0 0 15px;
-    position: relative;
-	} */
-
-	/* #plist .pdurl .img:after { */
-	#url img::after {
-    display: block;
-    content: "자세히보기";
-    width: 156px;
-    height: 156px;
-    position: absolute;
-   /*  top: 50%;
-    left: 50%; */
-    margin: -78px 0 0 -78px;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    transition: all .2s;
-    text-indent: -9999px;
-    z-index: 10;
-	}
-	</style>
 </head>
 <body id="wrap">
 	<div id="product_box" align="center">
@@ -113,7 +86,7 @@
 							<div>
 								<div id="url">
 									<a href ="${list.pdurl}" target="_blank" class="pdurl">
-											<img src="${list.pduploadfile}" width="200" height="200" class="img">
+										<img src="${list.pduploadfile}" width="200" height="200" class="img">
 									</a>
 								</div>
 								

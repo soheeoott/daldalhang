@@ -50,6 +50,7 @@
 	}
 
 	.plist {
+	position: relative;
 	float: left;
     width: 26%;
     height: 500px;
