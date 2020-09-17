@@ -1,0 +1,104 @@
+	body {
+	line-height: 1;
+	}
+	
+	div {
+	display: block;
+	}
+	
+	.productList {
+	position: relative;
+	left: 65px;
+	}
+	
+	.productList p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	}
+	
+	.container {
+	width : 100%;
+	}
+
+	.plist {
+	float: left;
+    width: 25%;
+    height: 450px;
+    padding: 0 20px;
+	text-align: center;
+	margin-top: 50px;
+	display: none;
+	}
+	
+	.mypage{
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-sizing: content-box;
+	margin: 0 auto 30px;
+	overflow: hidden;
+	}
+	
+	.j_title {
+	display: block;
+	font-size: 30px;
+	font-weight: normal;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	}
+	
+	.main {
+	/* max-width: 570px; */
+	margin: 0 auto;
+	/* padding: 0;
+	border: 0; */
+	}
+	
+	.lbutton{
+	position: relative;
+   	left: 70px;
+	}
+
+	.limg{
+	width: 10%;
+	}
+	
+	.pdurl{
+	position: relative;
+	}
+
+	.namelist{
+	position: relative;
+   	top: 5px;
+	}
+
+	.fname{
+	position: relative;
+   	top: -10px;
+	font-size: 15px;
+	}
+
+	.pname{
+	font-size: 19px;
+	}
+	
+	.hashtagsplit {
+   	color: gray;
+   	margin: 0 auto;
+   	position: relative;
+   	top: 20px;
+   	font-size: 14px;
+	}
+	
+	#more_btn{
+	border: 1px solid lightgray;
+    border-radius: 20px;
+	    padding: 10px 40px;
+    text-align: center;
+    position: relative;
+    font-size: 20px;
+    left: 42%;
+    top: 20px;   
+	}

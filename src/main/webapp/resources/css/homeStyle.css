@@ -1,0 +1,150 @@
+	/* 홈페이지 설명 공간 */	
+	#daldal{
+	    position: relative;
+	    bottom: 545px;
+	    color: black;
+	    text-align: justify;
+	    background-color: rgba(0,0,0,0.2);
+	    padding: 40px;
+	}
+	
+	/* 상단 이미지 */
+	#colorblock {
+	    position: relative;
+	    height: 100%;
+	    top: -25px;
+	}
+	
+	/* 달달행(行)은? */
+	h1{
+		color: antiquewhite;
+		position: relative;
+    	top: 25px;
+    	font-weight: unset;
+    	font-size: 35px;
+    	left: 400px;
+	}
+	
+	/* 슬라이더 간 간격 조정 */
+	.container {
+    	margin-top: 150px;
+	}
+
+	/* 상품 박스 */
+	.services .icon-box {
+		width: 250px;
+		height: 500px;
+		padding: 30px;
+		position: relative;
+		overflow: hidden;
+		margin: 0  0 40px 0;
+		background: #fff;
+		box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
+		transition: all 0.3s ease-in-out;
+		text-align: center;
+		border: 1px solid #fff;
+	}
+	
+	/* 슬라이드 제목 */
+	#slidetit {
+	    font-size: 30px;
+	    margin: 50px;
+	    color: #8b5700;
+	    position: relative;
+	    top: -50px;
+	}
+	
+	/* 슬라이드 전체 공간 */
+	.swiper-container {
+	    width: 800px;
+	    height: 900px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    position: relative;
+	    overflow: hidden;
+	    list-style: none;
+	    padding: 0;
+	    z-index: 1;
+	}
+	
+	/* 슬라이드 상품 출력 공간 */
+	.swiper-wrapper {
+		float: left;
+	    width: 25%;
+	    height: 500px;
+	    padding: 0 20px;
+		text-align: center;
+	}
+	
+	/* 슬라이드 페이지번호 공간 */
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+	    left: 0;
+	    width: 100%;
+	    position: absolute;
+	    top: 690px;
+	}
+
+	/* 상품명 */
+	.pname{
+		font-size: 22px;
+		font-weight: bold;
+	}
+	
+	/* 가격 */
+	.prname{
+		font-size: 17px;
+		font-weight: bold;
+	}
+	
+	/* 좋아요 영역 */
+	.lbutton{
+		position: relative;
+	   	left: 70px;
+	}
+	
+	/* 좋아요 이미지 */
+	.limg{
+		width: 13%;
+	}
+	
+	/* 해시태그 */
+	.hashtagsplit {
+	   	color: gray;
+	   	margin: 0 auto;
+	   	position: relative;
+	   	top: 20px;
+	   	font-size: 15px;
+	   	line-height: 1.5;
+	}
+	
+	/* 관리자 수정/삭제 공간 */
+	.mdwrap {
+	    position: relative;
+	    top: 30px;
+	    display: -webkit-inline-box;
+	}
+	
+	/* 수정 */
+	.modify {
+		color: white;
+	    opacity: 0.5;
+	    cursor: pointer;
+	    background: blue;
+	    padding: 5px;
+	    width: 50px;
+	    float: left;
+	    border-radius: 3px;
+	}
+	
+	/* 삭제 */
+	.delete {
+		color: white;
+	    opacity: 0.5;
+	    cursor: pointer;
+	    background: red;
+	    padding: 5px;
+	    width: 50px;
+	    float: left;
+	    margin-left: 1em;
+	    border-radius: 3px;
+	}

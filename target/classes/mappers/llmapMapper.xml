@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="daldal.mappers.llmapMapper">
+	
+	<select id="selectList" resultType="vo.LlmapVO">
+		SELECT * FROM llmap ORDER BY llcode
+	</select>
+
+	<select id="selectOne" resultType="vo.LlmapVO">
+		SELECT frkname FROM llmap ORDER BY llcode
+	</select>
+	
+	<!-- 브랜드명으로 매장찾기 -->
+	<select id="mapBSearch" resultType="vo.LlmapVO">
+		SELECT * FROM llmap l 
+		JOIN franchise f ON l.frcode=f.frcode 
+		WHERE f.frkname LIKE CONCAT(CONCAT('%',#{mapBKeyword}),'%') 
+		ORDER BY llcode
+	</select>
+	
+	<!-- 매장명으로 매장찾기 -->
+	<select id="mapFSearch" resultType="vo.LlmapVO">
+		SELECT * FROM llmap l 
+		WHERE llname LIKE CONCAT(CONCAT('%',#{mapFKeyword}),'%')
+		ORDER BY llcode
+	</select>
+	
+	<!-- 
+	[지도 검색]
+	<select id="mapSearch" resultType="vo.LlmapVO">
+		<![CDATA[
+			SELECT * FROM llmap l 
+		]]>
+		WHERE절을 include 태그로 삽입
+		<include refid="search"></include>
+	</select>
+	
+	[WHERE절]
+	<sql id="search">
+		<choose>
+			브랜드명 검색
+			<when test="mapSearchOption=='frcode'">
+				JOIN franchise f ON l.frcode=f.frcode 
+				WHERE f.frkname LIKE CONCAT(CONCAT('%',#{mapKeyword}),'%') 
+				ORDER BY llcode
+			</when>
+			매장명 검색
+			<when test="mapSearchOption=='llname'">
+				WHERE llname LIKE CONCAT(CONCAT('%',#{mapKeyword}),'%')
+				ORDER BY llcode
+			</when>
+		</choose>
+	</sql> 
+	-->
+	</mapper>

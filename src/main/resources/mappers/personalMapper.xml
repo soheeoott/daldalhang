@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="daldal.mappers.personalMapper">
+	
+	<select id ="selectList" resultType="vo.PersonalVO"> 
+		select id, password, email_id, email_domain, verify from personal order by id
+	</select>
+
+	<select id = "selectOne" resultType="vo.PersonalVO">
+		select * from personal where id = #{id}
+	</select>
+	
+	<insert id = "insert" parameterType="vo.PersonalVO">
+		insert into personal VALUES (#{id}, #{password}, #{email_id}, #{email_domain}, DEFAULT)
+	</insert>
+	
+	<select id = "IdCheck" parameterType="String" resultType="int">
+		select count(*) from personal where id = #{id}
+	</select>
+	
+	<select id = "emailCheck" parameterType="String" resultType="int">
+		select count(*) from personal where email_id=#{email_id} AND email_domain=#{email_domain}
+	</select>
+	
+	<update id = "verify" parameterType="String">
+		<!-- update personal set verify='y' where email_id = #{email_id} and email_domain = #{email_domain} -->
+		update personal set verify='y' where email_id=#{email_id} and email_domain=#{email_domain}
+	</update>
+
+	<select id="findid" resultType="vo.PersonalVO">
+		select * from personal
+		where email_id=#{email_id} and email_domain=#{email_domain}
+	</select>
+	
+	<update id="eupdate">
+		update personal set email_id = #{email_id}, email_domain = #{email_domain} where id = #{id}
+	</update>
+	
+	<update id="pwupdate">
+		update personal set password = #{password} where id = #{id}
+	</update>
+	
+	<select id="delete">
+		delete from personal where id=#{id}
+	</select>
+</mapper>

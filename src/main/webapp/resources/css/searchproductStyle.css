@@ -1,0 +1,125 @@
+	.count {
+	margin-bottom: 20px;
+	}
+	
+	.productList {
+	position: relative;
+	left: 65px;
+	}
+	
+	.productList p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	}
+	
+	.container {
+	width : 100%;
+	}
+	
+	.hashtagsplit {
+	color: gray;
+   	margin: 0 auto;
+   	position: relative;
+   	top: 20px;
+   	font-size: 14px;
+	}
+	
+	.plist {
+	float: left;
+    width: 25%;
+    height: 500px;
+    padding: 0 20px;
+	text-align: center;
+	}
+	
+	.plist p {
+	margin: 8px 0px 8px 0px;
+	}
+	
+	.modify {
+	color: white;
+    opacity: 0.5;
+    cursor: pointer;
+    background: blue;
+    padding: 5px;
+    width: 50px;
+    float: left;
+    border-radius: 3px;
+	}
+	
+	.delete {
+	color: white;
+    opacity: 0.5;
+    cursor: pointer;
+    background: red;
+    padding: 5px;
+    width: 50px;
+    float: left;
+    margin-left: 1em;
+    border-radius: 3px;
+	}
+	
+	.mdwrap {
+    position: relative;
+    top: 30px;
+    display: -webkit-inline-box;
+	}
+	
+	.hashtag {
+	color : gray;
+	}
+	
+	.menu_css a {
+	line-height: 3;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 10px;
+	}
+	
+	.btn_nlist {
+	width:880px;
+	padding-top:10px;
+	}
+
+	.buttonStyle {
+	cursor: pointer;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 10px;
+	}
+	
+	.lbutton{
+	position: relative;
+   	left: 70px;
+	}
+
+	.limg{
+	width: 10%;
+	}
+
+	.pdurl{
+	position: relative;
+	}
+
+	.namelist{
+	position: relative;
+   	top: 5px;
+	}
+
+	.fname{
+	position: relative;
+   	top: -10px;
+	font-size: 15px;
+	}
+
+	.pname{
+	font-size: 19px;
+	}
+
+	.prname{
+	font-size: 17px;
+	}

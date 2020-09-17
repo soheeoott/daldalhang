@@ -1,0 +1,110 @@
+	body {
+	line-height: 1;
+	}
+	
+	.container {
+   	width: 100%;
+   	position: relative;
+    top: 50px;
+	}
+	
+	div {
+	display: block;
+	}
+	      
+	.icon{
+	display: block;
+	height: 45px;
+	padding-top: 40px;
+	margin: 0 auto;
+	}
+	      
+	.mypage{
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-sizing: border-box;
+	margin: 0 auto 30px;
+	height: 275px;
+	}
+	
+	#password {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-sizing: border-box;
+	display: block;
+	padding: 15px;
+	width: 60%;
+	margin: 0 auto;
+	position: relative;
+	top: 100px;
+	}
+	     
+	#pwCheck {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-sizing: border-box;
+	padding: 15px;
+	width: 60%;
+	display: block;
+	margin: 0 auto;
+	}
+	     
+	.pMessage {
+	display: block;
+	}
+	     
+	.pcMessage {
+	display: block;
+	}
+	
+	.j_title {
+	display: block;
+	font-size: 30px;
+	font-weight: normal;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	}
+	
+	.main {
+	max-width: 570px;
+	margin: 0 auto;
+	padding: 0;
+	border: 0;
+	}
+	
+	.button{
+	width: 75px;
+	height: 30px;
+	display: block;
+	border-radius: 3px;
+	cursor:pointer;
+	border: 0;
+	margin: 0 auto;
+	}
+	      
+	#pMessage{
+	font-style: italic;
+	font-size: 13px;
+	color: red;
+	display: block;
+	margin-left: 110px;
+	margin-top: -13px;
+	margin-bottom: -10px;
+	}
+	      
+	#pcMessage{
+	font-style: italic;
+	font-size: 13px;
+	color: red;
+	display: block;
+	margin-left: 115px;
+	margin-top: 5px;
+	}
+	  
+	input[type=password] { font-family: "Iropke Batang", serif; }
+	  
+	input::placeholder {font-family: 'Jeju Gothic', sans-serif;}
+	
+	input[type="password"]:focus {outline:2px solid #ddd;}
+	
+	input[type="submit"]:focus {outline:none;}

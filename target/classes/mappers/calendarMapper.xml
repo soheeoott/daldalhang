@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="daldal.mappers.calendarMapper">
+
+	<select id="selectList" resultType="vo.CalendarVO">
+			SELECT b.calseq AS calseq,
+				b.caltitle AS caltitle,
+				b.calcontent AS calcontent,				
+ 				b.start_date AS start_date,			
+				b.end_date AS end_date,							
+				b.editurl AS editurl,
+				a.frkname AS frkname,
+				b.eventImg AS eventImg,
+				'ADMIN' AS username,
+				a.frcolor AS frcolor,
+				'#ffffff' AS textColor,
+				'false' AS allday
+			FROM franchise a, tb_calendar b 
+			WHERE a.frcode = b.frcode
+			ORDER BY
+			CASE WHEN end_date <![CDATA[>]]> CURDATE() AND start_date <![CDATA[<]]> CURDATE() THEN 0
+			     WHEN end_date <![CDATA[>]]> CURDATE() AND start_date <![CDATA[>]]> CURDATE() THEN 1
+			     ELSE 2 END,
+			CASE WHEN start_date <![CDATA[<]]> CURDATE() THEN end_date ELSE start_date END
+	</select>
+	
+	<select id="eventOne" resultType="vo.CalendarVO">	
+		SELECT * FROM tb_calendar WHERE frcode LIKE CONCAT(CONCAT('%',#{frcode}),'%')
+		ORDER BY
+		CASE WHEN end_date <![CDATA[>]]> CURDATE() AND start_date <![CDATA[<]]> CURDATE() THEN 0
+		     WHEN end_date <![CDATA[>]]> CURDATE() AND start_date <![CDATA[>]]> CURDATE() THEN 1
+		     ELSE 2 END,
+		CASE WHEN start_date <![CDATA[<]]> CURDATE() THEN end_date ELSE start_date END
+	</select>
+	
+	<select id="listCount" resultType="int">
+		select 	count(*)
+		from franchise a, tb_calendar b 
+		where a.frcode = b.frcode
+	</select>
+	
+	<select id="CalendarView" resultType="vo.CalendarVO">
+		SELECT * FROM tb_calendar WHERE calseq = #{calseq}
+	</select>
+	
+	<select id="selectDetail" resultType="vo.CalendarVO">
+		SELECT * FROM tb_calendar WHERE id=#{id}
+	</select>
+	
+	<insert id="insertCalendar" >
+		INSERT INTO tb_calendar
+		VALUES((SELECT IFNULL(MAX(calseq),0)+1 FROM tb_calendar iftb), 'DalDal', #{caltitle}, #{calcontent}, #{start_date}, #{end_date}, #{frcode}, #{editurl}, #{eventuploadfilef})
+	</insert>
+	
+	<update id="updateCalendar">
+		UPDATE tb_calendar SET editurl=#{editurl}, start_date=#{start_date}, end_date=#{end_date}, caltitle=#{caltitle}, calcontent=#{calcontent}, frcode=#{frcode}
+		WHERE calseq=#{calseq}
+	</update>
+	
+	<delete id="deleteCalendar">
+		DELETE FROM tb_calendar WHERE calseq=#{calseq}
+	</delete>
+</mapper>

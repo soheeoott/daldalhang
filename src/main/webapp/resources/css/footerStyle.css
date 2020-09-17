@@ -1,0 +1,37 @@
+	/* footer */
+	#footer {
+		clear: both;
+    	width: 100%;
+    	padding: 45px 0;
+    	font-size: 12px;
+    	text-align: center;
+    	background-color: #262626;
+
+		/* position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	 	width: 100%;
+		padding: 45px 0;
+		font-size: 12px;
+		text-align: center;
+		background-color: #262626; */
+	} 
+	
+	.footer_menu {
+	    width: 100%;
+	    color: white;
+	    font-weight: bold;
+	}
+	
+	#top {
+		position: fixed;
+		bottom: 5px;
+		right: 5px;
+		font-size: 20px;
+		z-index: 1;
+	}
+	
+	#footerHr {
+    border:none;
+	}

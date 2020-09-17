@@ -1,0 +1,67 @@
+	body {
+	line-height: 1;
+	}
+
+	.container {
+   	width: 100%;
+   	position: relative;
+    top: 50px;
+	}
+	
+    #icon {
+    display: block;
+    width: 50px;
+    padding-top: 40px;
+    margin: 0 auto;
+	}
+	
+	.info {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding-bottom: 40px;
+	}
+
+    #input1{
+	font-size: 23px;
+	margin-top: 10px;
+	font-weight: bold;
+    }
+      
+    #input2 {
+	padding: 20px;
+	margin-top: -10px;
+	margin-bottom: 18px;
+	text-align: center;
+    }
+
+    .id_wrap {
+	padding: 20px 20px;
+	text-align: center;
+    }
+
+    .j_title {
+	display: block;
+	font-size: 30px;
+	font-weight: normal;
+	margin-bottom: 30px;
+	margin-top: 30px;
+    }
+
+    .main {
+	max-width: 570px;
+	margin: 0 auto;
+	padding: 0;
+	border: 0;
+    }
+
+	.button{
+	width: 200px;
+	height: 30px;
+	display: block;
+	border-radius: 20px;
+	cursor: pointer;
+	margin: 0 auto;
+	/* border: 0; */
+	border: 1px solid #ddd;
+    background-color: white;
+  	}

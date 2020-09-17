@@ -1,0 +1,83 @@
+이미지 명 : parisbaguette_pastry1.jpg
+상품명 : 레몬 크리미 페스츄리
+URL : https://www.paris.co.kr/product/%eb%a0%88%eb%aa%ac-%ed%81%ac%eb%a6%ac%eb%af%b8-%ed%8e%98%ec%8a%a4%ec%b8%84%eb%a6%ac/
+
+이미지 명 : parisbaguette_pastry2.jpg
+상품명 : 칠리소시지페스츄리
+URL : https://www.paris.co.kr/product/%ec%b9%a0%eb%a6%ac%ec%86%8c%ec%8b%9c%ec%a7%80%ed%8e%98%ec%8a%a4%ec%b8%84%eb%a6%ac/
+
+이미지 명 : 144겹파이만주
+상품명 : parisbaguette_pastry3.jpg
+URL : https://www.paris.co.kr/product/144%ea%b2%b9-%ed%8c%8c%ec%9d%b4%eb%a7%8c%ec%a3%bc/
+
+이미지 명 : 골든버터파이
+상품명 : parisbaguette_pastry4.jpg
+URL : https://www.paris.co.kr/product/%ea%b3%a8%eb%93%a0%eb%b2%84%ed%84%b0%ed%8c%8c%ec%9d%b4/
+
+이미지 명 : 스위트 몽블랑
+상품명 : parisbaguette_pastry5.jpg
+URL : https://www.paris.co.kr/product/%ec%8a%a4%ec%9c%84%ed%8a%b8%eb%aa%bd%eb%b8%94%eb%9e%91/
+
+이미지 명 : 크림치즈롤파이
+상품명 : parisbaguette_pastry6.jpg
+URL : https://www.paris.co.kr/product/%ed%81%ac%eb%a6%bc%ec%b9%98%ec%a6%88%eb%a1%a4%ed%8c%8c%ec%9d%b4/
+
+이미지 명 : 딸기잼롤파이
+상품명 : parisbaguette_pastry7.jpg
+URL : https://www.paris.co.kr/product/%eb%94%b8%ea%b8%b0%ec%9e%bc%eb%a1%a4%ed%8c%8c%ec%9d%b4/
+
+이미지 명 : 롱소시지스틱브레드
+상품명 : parisbaguette_pastry8.jpg
+URL : https://www.paris.co.kr/product/%eb%a1%b1%ec%86%8c%ec%8b%9c%ec%a7%80%ed%8e%98%ec%8a%a4%ec%b8%84%eb%a6%ac/
+
+이미지 명 : 미니초코칩트위스트
+상품명 : parisbaguette_pastry9.jpg
+URL : https://www.paris.co.kr/product/%eb%af%b8%eb%8b%88%ec%b4%88%ec%bd%94%ec%b9%a9%ed%8a%b8%ec%9c%84%ec%8a%a4%ed%8a%b8/
+
+이미지 명 : 미니크라상
+상품명 : parisbaguette_pastry10.jpg
+URL : https://www.paris.co.kr/product/%eb%af%b8%eb%8b%88%ed%81%ac%eb%9d%bc%ec%83%81/
+
+이미지 명 : 쫄깃한찹쌀스틱
+상품명 : parisbaguette_pastry11.jpg
+URL : https://www.paris.co.kr/product/%ec%ab%84%ea%b9%83%ed%95%9c-%ec%b0%b9%ec%8c%80%ec%8a%a4%ed%8b%b1/
+
+이미지 명 : 애플 파이
+상품명 : parisbaguette_pastry12.jpg
+URL : https://www.paris.co.kr/product/%ec%95%a0%ed%94%8c%ed%8c%8c%ec%9d%b4/
+
+이미지 명 : 초코칩트위스트
+상품명 : parisbaguette_pastry13.jpg
+URL : https://www.paris.co.kr/product/%ec%b4%88%ec%bd%94%ec%b9%a9%ed%8a%b8%ec%9c%84%ec%8a%a4%ed%8a%b8/
+
+이미지 명 : 치즈소시지페스츄리
+상품명 : parisbaguette_pastry14.jpg
+URL : https://www.paris.co.kr/product/%ec%b9%98%ec%a6%88%ec%86%8c%ec%8b%9c%ec%a7%80%ed%8e%98%ec%8a%a4%ec%b8%84%eb%a6%ac/
+
+이미지 명 : 크림치즈곡물페스츄리
+상품명 : parisbaguette_pastry15.jpg
+URL : https://www.paris.co.kr/product/%ed%81%ac%eb%a6%bc%ec%b9%98%ec%a6%88%ea%b3%a1%eb%ac%bc%ed%8e%98%ec%8a%a4%ec%b8%84%eb%a6%ac/
+
+이미지 명 : 소라파이
+상품명 : parisbaguette_pastry16.jpg
+URL : https://www.paris.co.kr/product/%ec%86%8c%eb%9d%bc%ed%8c%8c%ec%9d%b4/
+
+이미지 명 : 정통크라상
+상품명 : parisbaguette_pastry17.jpg
+URL : https://www.paris.co.kr/product/%ec%a0%95%ed%86%b5-%ed%81%ac%eb%9d%bc%ec%83%81/
+
+이미지 명 : 인절미통팥파이
+상품명 : parisbaguette_pastry18.jpg
+URL : https://www.paris.co.kr/product/%ec%9d%b8%ec%a0%88%eb%af%b8%ed%86%b5%ed%8c%a5%ed%8c%8c%ec%9d%b4/
+
+이미지 명 : 블루베리크림치즈페스츄리
+상품명 : parisbaguette_pastry19.jpg
+URL : https://www.paris.co.kr/product/%eb%b8%94%eb%a3%a8%eb%b2%a0%eb%a6%ac%ed%81%ac%eb%a6%bc%ec%b9%98%ec%a6%88%ed%8e%98%ec%8a%a4%ec%b8%84%eb%a6%ac/
+
+이미지 명 : 블루베리파이
+상품명 : parisbaguette_pastry20.jpg
+URL : https://www.paris.co.kr/product/%eb%b8%94%eb%a3%a8%eb%b2%a0%eb%a6%ac%ed%8c%8c%ec%9d%b4/
+
+이미지 명 : 아몬드모닝
+상품명 : parisbaguette_pastry21.jpg
+URL : https://www.paris.co.kr/product/%ec%95%84%eb%aa%ac%eb%93%9c%eb%aa%a8%eb%8b%9d/
